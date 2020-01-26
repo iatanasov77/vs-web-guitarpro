@@ -1,0 +1,27 @@
+{
+  "entrypoints": {
+    "app": {
+      "js": [
+        "/assets/build/runtime.js",
+        "/assets/build/vendors~app~tablature-player.js",
+        "/assets/build/vendors~app.js",
+        "/assets/build/app.js"
+      ],
+      "css": [
+        "/assets/build/vendors~app.css",
+        "/assets/build/app.css"
+      ]
+    },
+    "tablature-player": {
+      "js": [
+        "/assets/build/runtime.js",
+        "/assets/build/vendors~app~tablature-player.js",
+        "/assets/build/vendors~tablature-player.js",
+        "/assets/build/tablature-player.js"
+      ],
+      "css": [
+        "/assets/build/tablature-player.css"
+      ]
+    }
+  }
+}

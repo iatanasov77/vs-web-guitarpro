@@ -1,0 +1,31 @@
+/*
+ * https://getbootstrap.com/docs/4.1/components/dropdowns/
+ */
+
+
+#sidebar{
+    background: #ffffff !important;
+    color: #000000 !important;
+    border-right: 3px solid #e8e9ff;
+}
+
+#sidebar .sidebar-header {
+    padding: 0 10px 0 10px !important;
+    background: #ffffff !important;
+}
+
+.dropdown-menu {
+	position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 80px !important;
+    text-align: center;
+    background-color: #fff;
+    overflow-x: hidden;
+    overflow-y: auto;
+    box-shadow: 6px 0 17px -4px rgba(0,0,0,.1);
+    z-index: 90;
+    will-change: transform;
+    pointer-events: auto;
+    touch-action: manipulation;
+}

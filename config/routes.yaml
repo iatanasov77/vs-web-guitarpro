@@ -1,0 +1,9 @@
+
+home:
+   path: /test/player
+   controller: App\Controller\TestController::player
+
+demo_player:
+   path: /demo/player
+   controller: App\Controller\DemoController::player
+   

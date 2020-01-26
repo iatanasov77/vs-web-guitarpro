@@ -1,0 +1,40 @@
+.barCursor {
+    opacity: 0.15;
+    background: #FFF200;
+}
+
+.beatCursor {
+    opacity: 0.75;
+    background: #0078ff;
+}
+
+.selectionWrapper div {
+    opacity: 0.1;
+    background: #4040FF;
+}
+
+.atHighlight * {
+    fill: #0078ff;
+}
+
+.alphaTabSurface {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    background: #FFF;
+    border-radius: 3px;
+}
+
+#alphaTab {
+    width: 95%;
+    display: block;
+    margin: auto;
+}
+
+#wrapper {
+    position: absolute;
+    top: 100px;
+    background: blue;
+    height: 600px;
+    width: 80%;
+    overflow: auto;
+}
+
