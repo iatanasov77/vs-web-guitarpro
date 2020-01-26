@@ -253,3 +253,16 @@ a.article:hover {
         display: none;
     }
 }
+
+/* https://www.w3schools.com/howto/howto_css_arrows.asp */
+.dropdown-menu::before {
+    top: 35px;
+    left: -7px;
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: #7386D5;
+    transform: rotate(135deg);
+  	-webkit-transform: rotate(135deg);
+}
