@@ -1,4 +1,10 @@
 
+###> Eclipse project files
+/.buildpath
+/.project
+/.settings
+###< Eclipse project files
+
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php
