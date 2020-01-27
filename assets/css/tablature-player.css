@@ -24,9 +24,11 @@
 }
 
 #alphaTab {
-    width: 95%;
+    width: 90%;
     display: block;
     margin: auto;
+    position: absolute !important;
+    right:50px;
 }
 
 #wrapper {

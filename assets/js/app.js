@@ -16,3 +16,5 @@ import $ from 'jquery';
 import 'popper.js/dist/popper.js';
 import 'bootstrap';
 import 'bootstrap-slider';
+
+import '../css/navigation.css';
