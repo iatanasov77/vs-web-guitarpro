@@ -5,7 +5,6 @@
  */
 
 require( '../../css/tablature-player.css' );
-require( '../../css/tablature-sidebar.css' );
 
 //import Worker from 'worker-loader';
 
