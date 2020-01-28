@@ -1,3 +1,9 @@
+
+<style>
+
+</style>
+
+
 <nav id="sidebar" class="sidebar active">
     <ul class="nav list-group sticky-top sticky-offset">
         <li>
@@ -10,11 +16,12 @@
     			<i class="fa fa-stop"></i>
     		</button>
         </li>
+        <li><a href="#" id="looping" class="fa fa-refresh">Loop</a></li>
+        <li><a href="#" id="metronome" class="fa fa-edit" data-toggle="tooltip" data-placement="bottom" title="Metronome"></a></li>
         
-        
-        <li class="dropdown">
+        <li class="btn-group dropright">
           <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><div>Speed</div> <div id="playbackSpeed">100%</div> <span class="caret"></span></a>
-          <ul class="dropdown-menu dropright dropup" id="playbackSpeedSelector">
+          <ul class="dropdown-menu" id="playbackSpeedSelector">
             <li><a href="#" data-value="0.25">25%</a></li>
             <li><a href="#" data-value="0.5">50%</a></li>
             <li><a href="#" data-value="0.6">60%</a></li>
@@ -27,12 +34,9 @@
             <li><a href="#" data-value="1.5">150%</a></li>
             <li><a href="#" data-value="2">200%</a></li>
           </ul>
+          
         </li>
-        <li><a href="#" id="looping" class="fa fa-refresh"></a></li>
-        <li><a href="#" id="metronome" class="fa fa-edit" data-toggle="tooltip" data-placement="bottom" title="Metronome"></a></li>
-       
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
+        
         <!-- Loading indicator for soundfont -->
         <li id="soundFontProgressMenuItem">
             <p class="navbar-text">SoundFont</p>
@@ -45,16 +49,22 @@
         <!-- Print Button -->
         <li><a href="#" id="print">Print</a></li>
         <!-- Track Selector -->
-        <li class="dropdown">
+        <li class="btn-group dropright">
             <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="currentTrack">
                 Tracks
             </a>
-            <ul class="dropdown-menu dropright dropup" id="trackList">
+            <ul class="dropdown-menu" id="trackList">
             </ul>
-        </li>            
-        <!-- Buttons for changing the layout -->
-        <li><a href="#" id="page" data-layout="page" data-scrollmode="vertical">Page</a></li>
-        <li><a href="#" id="horizontalBarwise" data-layout="horizontal" data-scrollmode="horizontal-bar">Horizontal (Barwise)</a></li>
-        <li><a href="#" id="horizontalOffscreen" data-layout="horizontal" data-scrollmode="horizontal-offscreen">Horizontal (Offscreen)</a></li>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Layout</a>
+          <ul class="dropdown-menu dropright dropup" id="playbackSpeedSelector">          
+                <!-- Buttons for changing the layout -->
+                <li><a href="#" id="page" data-layout="page" data-scrollmode="vertical">Page</a></li>
+                <li><a href="#" id="horizontalBarwise" data-layout="horizontal" data-scrollmode="horizontal-bar">Horizontal (Barwise)</a></li>
+                <li><a href="#" id="horizontalOffscreen" data-layout="horizontal" data-scrollmode="horizontal-offscreen">Horizontal (Offscreen)</a></li>
+    		</ul>
+    	</li>
     </ul>
 </nav>
