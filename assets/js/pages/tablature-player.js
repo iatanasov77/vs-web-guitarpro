@@ -5,6 +5,7 @@
  */
 
 require( '../../css/tablature-player.css' );
+require( '../../css/player-controls.scss' );
 
 //import Worker from 'worker-loader';
 

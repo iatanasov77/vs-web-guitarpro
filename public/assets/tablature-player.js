@@ -23,6 +23,7 @@ at.on('alphaTab.playerReady', function() {
     $('#metronome').prop('disabled', false).removeAttr('disabled');            
     updateControls();
 });
+
 at.on('alphaTab.playerStateChanged', function() {
     updateControls();
 });
@@ -79,6 +80,7 @@ $('#playbackSpeedSelector a').click(function() {
 
 function updateControls() {
     var playerState = at.alphaTab('playerState');
+    
     switch(playerState) {
         case 0: // stopped/paused
         $('#playPause i').removeClass('fa-pause').addClass('fa-play');
