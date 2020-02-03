@@ -1,22 +1,33 @@
 security:
-    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    access_denied_url: /
+    encoders:
+        IA\UsersBundle\Entity\User:
+            algorithm: auto
     providers:
-        in_memory: { memory: null }
+        default_provider:
+            entity:
+                #class: App\Entity\User
+                class: IA\UsersBundle\Entity\User
+                property: email
+                
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
-            anonymous: lazy
+            pattern:    ^/(?!admin)
+            provider:   default_provider
+            anonymous:  true
+            
+            form_login:
+                login_path: /
+                check_path: /security/login_check
+                username_parameter: email
+                password_parameter: password
+                always_use_default_target_path: false
+                default_target_path:  /
 
-            # activate different ways to authenticate
-            # https://symfony.com/doc/current/security.html#firewalls-authentication
-
-            # https://symfony.com/doc/current/security/impersonating_user.html
-            # switch_user: true
-
-    # Easy way to control access for large sections of your site
-    # Note: Only the *first* access control that matches will be used
+    # ACL Setup
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }

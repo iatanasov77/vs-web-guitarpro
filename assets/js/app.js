@@ -19,3 +19,5 @@ import 'bootstrap-slider';
 
 import '../css/topbar.css';
 import '../css/navigation.css';
+
+import './login.js';

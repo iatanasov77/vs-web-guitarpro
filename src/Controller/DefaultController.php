@@ -12,4 +12,9 @@ class DefaultController extends AbstractController
             'tablature' => ''
         ]);
     }
+    
+    public function login()
+    {
+        
+    }
 }

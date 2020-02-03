@@ -6,4 +6,8 @@ home:
 demo_player:
    path: /demo/player
    controller: App\Controller\DemoController::player
-   
+
+security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+    prefix:   /security/
+       
