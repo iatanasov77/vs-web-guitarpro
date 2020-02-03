@@ -17,4 +17,5 @@ import 'popper.js/dist/popper.js';
 import 'bootstrap';
 import 'bootstrap-slider';
 
+import '../css/topbar.css';
 import '../css/navigation.css';

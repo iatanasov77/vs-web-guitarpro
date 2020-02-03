@@ -7,24 +7,11 @@
     background: #ffffff !important;
 }
 
-.dropdown {
-	position: relative !important;
-}
-
 .dropdown-menu {
-	position: relative;
-	left: 20px !important;
-    text-align: center;
-    background-color: #fff;
- 
-    overflow-x: hidden;
-    overflow-y: auto;
-    
-    box-shadow: 6px 0 17px -4px rgba(0,0,0,.1);
-    z-index: 9999 !important;
-    will-change: transform;
-    pointer-events: auto;
-    touch-action: manipulation;
+	background-color: transparent !important;
+	border-style: none !important;
+	left: 15px !important;
+	top: 115px !important;
 }
 
 .sidebar .nav > li {
@@ -42,4 +29,10 @@
     transform: rotate(-45deg);
     background: #6d7fcc;
     transition: all 0.6s;
+}
+
+#playbackSpeedSelector {
+	list-style: none; /* Remove list bullets */
+	padding: 0;
+  	margin: 0;
 }

@@ -15,8 +15,26 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Submit Tab</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Login</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link  dropdown-toggle" href="#"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    	Login
+                    </a>
+                    
+                    <div class="dropdown-menu dropdown-menu-right">
+						<form class="px-4 py-3">
+                        	<div class="form-group">
+                          		<label for="exampleDropdownFormEmail1">Email address</label>
+                          		<input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
+                        	</div>
+                        	<div class="form-group">
+                          		<label for="exampleDropdownFormPassword1">Password</label>
+                          		<input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
+                        	</div>
+                        
+                        	<button type="submit" class="btn btn-primary">Sign in</button>
+                      	</form>
+                	</div>
+                	
                 </li>
             </ul>
         </div>
