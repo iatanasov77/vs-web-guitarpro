@@ -94,8 +94,7 @@ function addTrack( scoreTrack )
  
 	// solo and mute buttons
 	var soloMute = $( '<div class="btn-group btn-group-xs"></div>' );
-	var solo = $( '<button type="button" class="btn btn-default solo">Solo</button>' );
-	
+	var solo = $( '<button type="button" class="btn btn-default solo"><svg class="icon"><use xlink:href="#icon-solo"></use></svg></button>' );
 	solo.on( 'click', function(e)
 	{
 		$(this).toggleClass('checked');
@@ -104,7 +103,7 @@ function addTrack( scoreTrack )
 		playerControls.player.alphaTab('soloTrack', track, isSolo);                    
 	});
  
-	var mute = $('<button type="button" class="btn btn-default mute">Mute</button>');
+	var mute = $('<button type="button" class="btn btn-default mute"><svg class="icon"><use xlink:href="#icon-mute"></use></svg></button>');
 	mute.on('click', function(e) {
 		$(this).toggleClass('checked');
 		var isMute = $(this).hasClass('checked');

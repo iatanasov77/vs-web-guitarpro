@@ -13,8 +13,10 @@ class DefaultController extends AbstractController
         ]);
     }
     
-    public function login()
+    public function login( Request $request )
     {
+        $response = \FOS\UserBundle\Controller\SecurityController::loginAction( $request );
         
+        var_dump( $response ); die;
     }
 }

@@ -1,5 +1,5 @@
 $( function()
-{alert('EHO');
+{
 	$( '#formLogin' ).on( 'submit', function( e )
 	{
 		e.preventDefault();
@@ -14,10 +14,10 @@ $( function()
 			data : data
 		}).done( function( response ) {
 			$( "#server-results" ).html( response );
-		}).fail( function() {
-			  alert( 'fail' );
+		}).fail( function( msg ) {
+			  console.log( msg );
 		}).always( function() {
-			alert( 'always' );
+			// alert( 'always' );
 		});
 	});
 });

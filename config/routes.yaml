@@ -1,5 +1,9 @@
 
 home:
+   path: /
+   controller: App\Controller\DefaultController::index
+   
+test_player:
    path: /test/player
    controller: App\Controller\TestController::player
 
@@ -10,4 +14,8 @@ demo_player:
 security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
     prefix:   /security/
-       
+  
+security_test:
+   path: /login
+   controller: App\Controller\DefaultController::login
+    
