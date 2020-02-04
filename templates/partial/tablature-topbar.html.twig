@@ -16,22 +16,31 @@
                 
                 <!--  Submit Tab  -->
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Submit Tab</a>
+                    <a class="nav-link" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Submit Tab
+                    </a>
+                     <div class="dropdown-menu dropdown-menu-right">
+                        {{ form_start( tabForm ) }}
+                            {{ form_widget( tabForm._token ) }}
+                        
+                            {{ form_row( tabForm.tablature ) }}
+                            {{ form_row( tabForm.btnSave ) }}
+                        {{ form_end( tabForm ) }}
+                    </div>
                 </li>
                 <!--/  Submit Tab  -->
             	<li class="nav-item">
-                    <a class="nav-link" href="#">Logout</a>
+                    <a class="nav-link" href="{{ path( 'logout' ) }}">Logout</a>
                 </li>
             {% else %}
                 <!--  User Login  -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link  dropdown-toggle" href="#"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     	Login
                     </a>
-                    
                     <div class="dropdown-menu dropdown-menu-right">
 						<form action="{{ path( 'fos_user_security_check' ) }}" method="post" class="px-4 py-3" id="formLogin" >
-                            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" />
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token( 'authenticate' ) }}" />
                             
                         	<div class="form-group">
                           		<label for="exampleDropdownFormEmail1">Email address</label>
@@ -45,7 +54,6 @@
                         	<button type="submit" class="btn btn-primary">Login</button>
                       	</form>
                 	</div>
-                	
                 </li>
                 <!--/ User Login  -->
             {% endif %}

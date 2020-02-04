@@ -2,20 +2,25 @@
 home:
    path: /
    controller: App\Controller\DefaultController::index
-   
-test_player:
-   path: /test/player
-   controller: App\Controller\TestController::player
-
-demo_player:
-   path: /demo/player
-   controller: App\Controller\DemoController::player
 
 security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
     prefix:   /security/
   
-security_test:
-   path: /login
-   controller: App\Controller\DefaultController::login
-    
+logout:
+   path: /logout
+
+##########################
+# Tablatures
+##########################
+demo_player:
+   path: /demo/player
+   controller: App\Controller\DemoController::player
+
+tablature_player:
+   path: /player
+   controller: App\Controller\PlayerController::player
+
+tablatures_new:
+   path: /tablatures/new
+   controller: App\Controller\TablatureController::new

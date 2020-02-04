@@ -11,12 +11,10 @@ security:
                 property: email
                 
     firewalls:
-        dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
-            security: false
+        #dev:
+        #    pattern: ^/(_(profiler|wdt)|css|images|js)/
+        #    security: false
         main:
-            pattern:    ^/(?!admin)
-            provider:   default_provider
             anonymous:  true
             
             form_login:
@@ -26,8 +24,13 @@ security:
                 password_parameter: password
                 always_use_default_target_path: false
                 default_target_path:  /
+            logout:
+                path:   /logout
+                target: /
+                invalidate_session: true
 
     # ACL Setup
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }                                              
+        - { path: ^/register$, role: IS_AUTHENTICATED_ANONYMOUSLY }                                           
+        - { path: ^/, role: IS_AUTHENTICATED_ANONYMOUSLY }                           

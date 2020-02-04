@@ -15,6 +15,11 @@
             <!-- Sidebar  -->
             {% include 'partial/tablature-sidebar.html.twig' %}
         
+            <div id="messages">
+                {% if error %}
+                    <div>{{ error.messageKey|trans( error.messageData, 'security' ) }}</div>
+                {% endif %}
+            </div>
         	<div id="tablatureWrapper">
                 <div id="file-info"></div>    
                 <div id="alphaTab" data-file="/tablatures/SoundOfHeaven.gp3" data-tracks="4"
