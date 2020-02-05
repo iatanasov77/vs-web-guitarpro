@@ -9,9 +9,11 @@ class DefaultController extends BaseController
 {
     public function index( Request $request ): Response
     {   
-        return $this->render( 'pages/tablature-player.html.twig', [
+        $er = $this->getDoctrine()->getRepository( 'App\Entity\Tablature' );
+        
+        return $this->render( 'pages/tablature-index.html.twig', [
             'tabForm'   => $this->_tabForm( new Tablature() )->createView(),
-            'tablature' => ''
+            'tabs'      => $er->findAll()
         ]);
     }
 }

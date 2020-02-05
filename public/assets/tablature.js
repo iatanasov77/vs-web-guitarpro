@@ -2,7 +2,7 @@
 $( '#playbackSpeedSelector a' ).click( function()
 {
     var playbackSpeed = $(this).data('value');
-    alert(playbackSpeed);
+    
     playerControls.player.alphaTab( 'playbackSpeed', playbackSpeed );
     $( '#speed-selector-value' ).text( $( this ).text() );
 }); 

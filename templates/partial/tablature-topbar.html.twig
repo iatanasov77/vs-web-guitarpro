@@ -20,11 +20,17 @@
                         Submit Tab
                     </a>
                      <div class="dropdown-menu dropdown-menu-right">
-                        {{ form_start( tabForm ) }}
+                        {{ form_start( tabForm, {'action': path( 'tablatures_new' ), 'method': 'POST', 'attr': {'class': 'px-4 py-3'}} ) }}
                             {{ form_widget( tabForm._token ) }}
-                        
-                            {{ form_row( tabForm.tablature ) }}
-                            {{ form_row( tabForm.btnSave ) }}
+                            {{ form_widget( tabForm._currentUrl, {
+                                'value': path( app.request.attributes.get( '_route' ), app.request.attributes.get( '_route_params' ) )} )
+                            }}
+                                
+                            <div class="form-group">{{ form_row( tabForm.artist ) }}</div>
+                            <div class="form-group">{{ form_row( tabForm.song ) }}</div>
+                            <div class="form-group">{{ form_row( tabForm.tablature ) }}</div>
+                            
+                            <div class="form-group">{{ form_widget( tabForm.btnSave ) }}</div>
                         {{ form_end( tabForm ) }}
                     </div>
                 </li>

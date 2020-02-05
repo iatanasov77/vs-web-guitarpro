@@ -11,16 +11,27 @@ logout:
    path: /logout
 
 ##########################
-# Tablatures
+# Tablatures DEMO
 ##########################
 demo_player:
    path: /demo/player
    controller: App\Controller\DemoController::player
-
+   
+##########################
+# Tablatures
+##########################
+tablature_read:
+   path: /tablatures/{id}/read
+   controller: App\Controller\TablatureController::read
+   
 tablature_player:
-   path: /player
-   controller: App\Controller\PlayerController::player
+   path: /tablatures/{id}
+   controller: App\Controller\TablatureController::show
 
 tablatures_new:
    path: /tablatures/new
    controller: App\Controller\TablatureController::new
+   
+tablatures_index:
+   path: /tablatures
+   controller: App\Controller\TablatureController::index

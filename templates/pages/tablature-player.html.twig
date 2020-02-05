@@ -21,10 +21,14 @@
                 {% endif %}
             </div>
         	<div id="tablatureWrapper">
-                <div id="file-info"></div>    
-                <div id="alphaTab" data-file="/tablatures/SoundOfHeaven.gp3" data-tracks="4"
-                                   data-player="/assets/AlphaTab/default.sf2"
-                                   data-player-offset="[-10,-70]"></div>
+                <div id="file-info"></div>
+                
+                <div id="alphaTab"
+                    data-file="{{ path( 'tablature_read', {id: 1} ) }}"
+                    data-display-staveprofile="tab"
+                    data-notation-rhythmmode="ShowWithBars"
+                    data-player="/assets/AlphaTab/default.sf2"
+                ></div>
         	</div>
         </div>                   
 	</div>

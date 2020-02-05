@@ -3,6 +3,7 @@
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * @ORM\Entity
  * @ORM\Table(name="APP_Tablatures")
  */
 class Tablature
@@ -13,6 +14,16 @@ class Tablature
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+    
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $artist;
+    
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $song;
     
     /**
      * @ORM\Column(type="string")
@@ -32,6 +43,30 @@ class Tablature
     public function setTablature($tablature)
     {
         $this->tablature = $tablature;
+        
+        return $this;
+    }
+    
+    public function getArtist()
+    {
+        return $this->artist;
+    }
+    
+    public function setArtist($artist)
+    {
+        $this->artist   = $artist;
+        
+        return $this;
+    }
+    
+    public function getSong()
+    {
+        return $this->song;
+    }
+    
+    public function setSong($song)
+    {
+        $this->song = $song;
         
         return $this;
     }
