@@ -16,6 +16,12 @@ class Tablature
     private $id;
     
     /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="tablatures")
+     * @ORM\JoinColumn(name="userId", referencedColumnName="id")
+     */
+    private $user;
+    
+    /**
      * @ORM\Column(type="string")
      */
     private $artist;
@@ -33,6 +39,18 @@ class Tablature
     public function getId()
     {
         return $this->id; 
+    }
+    
+    public function getUser()
+    {
+        return $this->user;
+    }
+    
+    public function setUser($user)
+    {
+        $this->user = $user;
+        
+        return $this;
     }
     
     public function getTablature()

@@ -6,20 +6,37 @@
         
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="nav navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Songs</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Tabs</a>
+                    <div class="dropdown-menu dropdown-menu-right scrollable-menu">
+                        <!-- My tabs list -->
+                        <div class="sm-main-nav" >
+                            {% for tab in app.user.tablatures %}
+                                <a class="dropdown-item" href="#">{{ tab.artist }} - {{ tab.song }}</a><hr>
+                            {% endfor %}
+                        </div>
+                    </div>
                 </li>
             {% if app.user %}
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Favorites</a>
+                    <a class="nav-link" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Favorites</a>
+                    <div class="dropdown-menu dropdown-menu-right scrollable-menu">
+                        <!-- Favorite tabs list -->
+                        <div class="sm-main-nav" >
+                            <a class="dropdown-item" href="#">Cars</a><hr>
+                            <a class="dropdown-item" href="#">Vans & Pickup</a><hr>
+                            <a class="dropdown-item" href="#">SUVs & Crossover</a><hr>
+                            <a class="dropdown-item" href="#">MPVs</a><hr>
+                            <a class="dropdown-item" href="#">Hybrid</a><hr>
+                            <a class="dropdown-item" href="#">Performance</a>
+                        </div>
+                    </div>
                 </li>
                 
                 <!--  Submit Tab  -->
                 <li class="nav-item">
-                    <a class="nav-link" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Submit Tab
-                    </a>
-                     <div class="dropdown-menu dropdown-menu-right">
+                    <a class="nav-link" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Submit Tab</a>
+                    <div class="dropdown-menu dropdown-menu-right">
                         {{ form_start( tabForm, {'action': path( 'tablatures_new' ), 'method': 'POST', 'attr': {'class': 'px-4 py-3'}} ) }}
                             {{ form_widget( tabForm._token ) }}
                             {{ form_widget( tabForm._currentUrl, {
@@ -41,9 +58,7 @@
             {% else %}
                 <!--  User Login  -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    	Login
-                    </a>
+                    <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Login</a>
                     <div class="dropdown-menu dropdown-menu-right">
 						<form action="{{ path( 'fos_user_security_check' ) }}" method="post" class="px-4 py-3" id="formLogin" >
                             <input type="hidden" name="_csrf_token" value="{{ csrf_token( 'authenticate' ) }}" />

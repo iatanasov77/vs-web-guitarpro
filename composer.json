@@ -13,9 +13,11 @@
         "symfony/webpack-encore-bundle": "^1.7",
         "symfony/yaml": "^4.0",
         
-        "iatanasov77/vs-users-bundle": "dev-develop"
+        "iatanasov77/vs-users-bundle": "dev-develop",
+        "symfony/monolog-bundle": "^3.5"
     },
     "require-dev": {
+        "symfony/profiler-pack": "^1.0"
     },
 	"repositories": [
 		{

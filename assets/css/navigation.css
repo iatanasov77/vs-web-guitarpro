@@ -246,3 +246,10 @@ a.article:hover {
     transform: rotate(135deg);
   	-webkit-transform: rotate(135deg);
 }
+
+.scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+}
+

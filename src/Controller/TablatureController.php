@@ -40,9 +40,12 @@ class TablatureController extends BaseController
             $em = $this->getDoctrine()->getManager();
             $em->persist( $entity );
             $em->flush();
+            
+            //return $this->redirect( $form->get( '_currentUrl' )->getData() );
+            return $this->redirect( $this->generateUrl( 'tablature_player', ['id' => $entity->getId()] ) );
         }
         
-        return $this->redirect( $form->get( '_currentUrl' )->getData() );
+        // @TODO throw exception or redirect to home with error message
     }
     
     public function index( Request $request )
@@ -57,8 +60,12 @@ class TablatureController extends BaseController
     
     public function show( Request $request )
     {
+        $er             = $this->getDoctrine()->getRepository( 'App\Entity\Tablature' );
+        $oTablature     = $er->find( $request->attributes->get( 'id' ) );
+        
         return $this->render( 'pages/tablature-player.html.twig', [
-            'tabForm'       => $this->_tabForm( new Tablature() )->createView(),
+            'tabForm'   => $this->_tabForm( new Tablature() )->createView(),
+            'item'      => $oTablature
         ]);
     }
     

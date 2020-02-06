@@ -1,13 +1,13 @@
 security:
     access_denied_url: /
     encoders:
-        IA\UsersBundle\Entity\User:
+        App\Entity\User:
             algorithm: auto
     providers:
         default_provider:
             entity:
                 #class: App\Entity\User
-                class: IA\UsersBundle\Entity\User
+                class: App\Entity\User
                 property: email
                 
     firewalls:

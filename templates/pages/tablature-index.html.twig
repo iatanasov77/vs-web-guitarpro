@@ -28,7 +28,7 @@
                                 <tr>
                                     <td>{{ t.artist }}</td>
                                     <td>{{ t.song }}</td>
-                                    <td><a href="{{ path( 'tablature_player', {id: 1} ) }}" class="btn btn-primary">Play</a></td>
+                                    <td><a href="{{ path( 'tablature_player', {id: t.id} ) }}" class="btn btn-primary">Play</a></td>
                                 </tr>
                             {% endfor %}
                             </tbody>

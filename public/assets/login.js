@@ -3,6 +3,7 @@ $( function()
 	$( '#formLogin' ).on( 'submit', function( e )
 	{
 		e.preventDefault();
+		e.stopPropagation();
 		
 		var url		= $( this ).attr( "action" );
 		var method	= $( this ).attr( "method" );
