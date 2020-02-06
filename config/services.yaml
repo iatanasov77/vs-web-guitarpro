@@ -7,8 +7,7 @@ parameters:
     locale: 'bg'
     siteTitle: 'VS WebGuitarPro'
     mailer_user: 'webmaster@wgp.vankosoft.org'
-    #tablatures_directory: '%env(DIR_TABLATURES)%'
-    tablatures_directory: '/projects/VS_WebGuitarPro/storage'
+    tablatures_directory: '%env(DIR_TABLATURES)%'
     
 services:
     # default configuration for services in *this* file
