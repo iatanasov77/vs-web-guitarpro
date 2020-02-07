@@ -35,3 +35,7 @@ tablatures_new:
 tablatures_index:
    path: /tablatures
    controller: App\Controller\TablatureController::index
+
+tablature_favorite:
+   path: /tablatures/{id}/add-favorite
+   controller: App\Controller\TablatureController::addFavorite

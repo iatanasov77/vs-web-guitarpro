@@ -5,6 +5,7 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 use App\Entity\Tablature;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class TablatureController extends BaseController
 {
@@ -83,6 +84,21 @@ class TablatureController extends BaseController
         $fileTablature  = $this->getParameter( 'tablatures_directory' ) . '/' . $oTablature->getTablature();
         
         return new BinaryFileResponse( $fileTablature, 200, ["Content-Type" => "audio/x-guitar-pro"] );
+    }
+    
+    public function addFavorite( Request $request )
+    {
+        $em             = $this->getDoctrine()->getManager();
+        $er             = $this->getDoctrine()->getRepository( 'App\Entity\Tablature' );
+        
+        $oTablature     = $er->find( $request->attributes->get( 'id' ) );
+        $oUser          = $this->getUser();
+        
+        $oUser->addFavorite( $oTablature );
+        $em->persist( $oUser );
+        $em->flush();
+        
+        return new JsonResponse( 'Success' );
     }
     
     protected function _newFileName( $originalFileName )

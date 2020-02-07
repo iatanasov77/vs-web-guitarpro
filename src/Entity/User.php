@@ -27,10 +27,20 @@ class User extends BaseUser
      */
     protected $tablatures;
     
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Tablature", inversedBy="favoriteUsers")
+     * @ORM\JoinTable(name="APP_Users_Favorites", 
+     * joinColumns={@ORM\JoinColumn(name="userId", referencedColumnName="id")}, 
+     * inverseJoinColumns={@ORM\JoinColumn(name="favoriteId", referencedColumnName="id")}
+     * )
+     */
+    protected $favorites;
+    
     public function __construct() {
         parent::__construct();
         
-        $this->tablatures = new ArrayCollection();
+        $this->tablatures   = new ArrayCollection();
+        $this->favorites    = new ArrayCollection();
     }
     
     /**
@@ -39,5 +49,30 @@ class User extends BaseUser
     public function getTablatures()
     {
         return $this->tablatures;
+    }
+    
+    /**
+     * @return Collection|Tablature[]
+     */
+    public function getFavorites()
+    {
+        return $this->favorites;
+    }
+    
+    public function addFavorite(Tablature $tablature): self
+    {
+        if (!$this->favorites->contains($tablature)) {
+            $this->favorites[] = $tablature;
+        }
+        
+        return $this;
+    }
+    
+    public function removeFavorite(Tablature $tablature): self
+    {
+        if ($this->favorites->contains($tablature)) {
+            $this->favorites->removeElement($tablature);
+        }
+        return $this;
     }
 }

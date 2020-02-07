@@ -22,6 +22,11 @@ class Tablature
     private $user;
     
     /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="favorites", cascade={"persist"})
+     */
+    private $favoriteUsers;
+    
+    /**
      * @ORM\Column(type="string")
      */
     private $artist;
@@ -51,6 +56,21 @@ class Tablature
         $this->user = $user;
         
         return $this;
+    }
+    
+    public function addFavoriteUsers(User $user)
+    {
+        $this->favoriteUsers[] = $user;
+    }
+    
+    /**
+     * Get items
+     *
+     * @return Doctrine\Common\Collections\Collection
+     */
+    public function getFavoriteUsers()
+    {
+        return $this->favoriteUsers;
     }
     
     public function getTablature()

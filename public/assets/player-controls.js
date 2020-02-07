@@ -61,7 +61,10 @@ var playerControls	= new Vue({
 		},
 		
 		favorite() {
-
+			$.get( $( '#add-favorite-url' ).data( 'url' ), function( data ) {
+				alert('READY');
+				//document.location.reload();
+			});
 		}
 	},
 	created() {
