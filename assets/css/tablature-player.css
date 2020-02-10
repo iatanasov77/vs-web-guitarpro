@@ -48,7 +48,8 @@
 	width: 280px;
 }
 
-#trackList .track {
+#trackList .track,
+#layoutSelector .track {
 	border-bottom: 1px solid black;
 	padding: 20px;
 }

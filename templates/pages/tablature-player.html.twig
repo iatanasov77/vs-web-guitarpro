@@ -34,18 +34,20 @@
 	</div>
 {% endblock %}
 
+{% block svg %}
+	{% include 'partial/tablature-player-svg.html.twig' %}
+{% endblock %}
+
 {% block javascripts %}
 	{{ parent() }}
 
     <!-- Including alphaTab -->
     <script type="text/javascript" src="/assets/AlphaTab/swfobject.js"></script>
     <script type="text/javascript" src="/assets/AlphaTab/AlphaTab_DEMO.js"></script>
-    
-	
-	
+
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
 	<script type="text/javascript" src="/assets/player-controls.js"></script>
 	
-	<script type="text/javascript" src="/assets/tablature.js"></script>
+	<script type="text/javascript" src="/assets/tablature-tracks.js"></script>
 	
 {% endblock %}

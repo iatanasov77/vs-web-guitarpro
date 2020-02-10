@@ -5,8 +5,9 @@
         </div>
         
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="nav navbar-nav ml-auto">
-                <li class="nav-item dropdown btn-group">
+            <ul class="nav navbar-nav ml-auto">   
+            {% if app.user %}
+            	<li class="nav-item dropdown btn-group">
                     <a class="nav-link dropdown-toggle" id="btnMyTabs" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Tabs</a>
                     <div class="dropdown-menu dropdown-menu-right scrollable-menu" aria-labelledby="btnMyTabs">
                         <!-- My tabs list -->
@@ -17,7 +18,7 @@
                         </div>
                     </div>
                 </li>
-            {% if app.user %}
+                
                 <li class="nav-item dropdown btn-group">
                     <a class="nav-link dropdown-toggle" id="btnFavorites" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Favorites</a>
                     <div class="dropdown-menu dropdown-menu-right scrollable-menu" aria-labelledby="btnFavorites">

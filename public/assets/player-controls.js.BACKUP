@@ -1,25 +1,3 @@
-
-function createTrack( scoreTrack )
-{
-	return `
-	<div class="track" data-track="${scoreTrack.Index}">
-		<div class="title" v-on:click="onClickTrackTitle"><i class="fa fa-eye-slash showHide"></i>${scoreTrack.Name}</div>
-		<div class="btn-group btn-group-xs">
-			<button type="button" class="btn btn-default solo" v-on:click="onClickTrackSolo">
-				<svg class="icon"><use xlink:href="#icon-solo"></use></svg>
-			</button>
-			<button type="button" class="btn btn-default mute" v-on:click="onClickTrackMute">
-				<svg class="icon"><use xlink:href="#icon-mute"></use></svg>
-			</button>
-		</div>
-		<input id="volume-${scoreTrack.Index}" type="text" />
-	</div>
-	<script>
-		$( "#volume-${scoreTrack.Index}" ).slider({ min: 0, max: 16, step: 1, value: ${scoreTrack.PlaybackInfo.Volume}, handle: "square" });
-	</script>
-	`;
-}
-
 var playerControls	= new Vue({
 	delimiters: ['${', '}'],
 	el: "#player-controls",
@@ -27,6 +5,7 @@ var playerControls	= new Vue({
 	data() {
 		return {
 			player: null,
+			
 			playerState: null,
 			loopingState: null,
 			metronomeVolume: null,
@@ -151,6 +130,70 @@ var playerControls	= new Vue({
 			});
 		},
 		
+		displayTrack: function( scoreTrack ) {
+			// build div container item for track
+			var trackContainer = $( '<div class="track"></div>' ).data( 'track', scoreTrack.Index );
+		 
+			// show/hide button and track title
+			var title = $( '<div class="title"></div>' ).on( 'click', function( e )
+			{
+				var track = $( this ).closest( 'div.track' ).data( 'track' );
+				tracks = [track];
+				$( this ).find( '.showHide' ).removeClass( 'fa-eye-slash' ).addClass( 'fa-eye' );
+		     
+				console.log(tracks);
+				
+				// render new tracks
+				this.player.alphaTab( 'tracks', tracks );
+			});
+			
+			trackContainer.append( title );
+		 
+			var showHide = $( '<i class="fa fa-eye-slash showHide"></i>' );
+			title.append( showHide );
+			title.append( scoreTrack.Name );
+			
+		 
+			// solo and mute buttons
+			var soloMute = $( '<div class="btn-group btn-group-xs"></div>' );
+			var solo = $( '<button type="button" class="btn btn-default solo"><svg class="icon"><use xlink:href="#icon-solo"></use></svg></button>' );
+			solo.on( 'click', function(e)
+			{
+				$(this).toggleClass('checked');
+				var isSolo = $(this).hasClass('checked');
+				var track = $(this).closest('div').data('track');
+				this.player.alphaTab('soloTrack', track, isSolo);                    
+			});
+		 
+			var mute = $('<button type="button" class="btn btn-default mute"><svg class="icon"><use xlink:href="#icon-mute"></use></svg></button>');
+			mute.on('click', function(e) {
+				$(this).toggleClass('checked');
+				var isMute = $(this).hasClass('checked');
+				var track = $(this).closest('div').data('track');
+				this.player.alphaTab('muteTrack', track, isMute);                    
+			});                
+			soloMute.append(solo).append(mute);
+			trackContainer.append(soloMute);
+		 
+			// volume slider
+			var volume = $( '<input type="text" />').on( 'slide', function( e )
+			{
+		         var track = $( this ).closest( 'div' ).data( 'track' );
+		         this.player.alphaTab( 'trackVolume', track, e.value );
+		    });
+			trackContainer.append( volume );
+			
+			volume.slider({
+				min: 0,
+				max: 16,
+				step: 1,
+				value: scoreTrack.PlaybackInfo.Volume,
+				handle: 'square'
+			});
+			
+			return trackContainer;
+		},
+		
 		// Alphatab Event Handlers
 		onSoundFontLoad: function( e, progress ) {
 			var percentage = ( ( progress.loaded / progress.total ) * 100 ) | 0;
@@ -158,45 +201,26 @@ var playerControls	= new Vue({
 		    
 		    $( '#soundFontProgressMenuItem' ).hide();
 		},
-		
 		onPlayStateChanged: function() {
 			this.playerState = this.player.alphaTab( 'playerState' );
 		},
-		
 		onLoaded: function( e, score ) {
-			$( '#trackList' ).empty();
-			
+			var trackList = $( '#trackList' );
+
+			trackList.empty();
+
 			for( var i = 0; i < score.Tracks.length; i++) {
-				$( '#trackList' ).append( createTrack( score.Tracks[i] ) );
+				trackList.append( this.displayTrack( score.Tracks[i] ) );
 			}
 		},
-		
 		onRendered: function( e, score ) {
-			var tracks = this.player.alphaTab( 'tracks' );
 			
-			for( var i = 0; i < tracks.length; i++ ) {
-			   tracks[i] = tracks[i].Index;
-			}
-			
-			// check checkboxes 
-			$( '#trackList div.track' ).each( function()
-			{
-				var track = $( this ).data( 'track' );
-				var isSelected = tracks.indexOf( track ) > -1;
-				if( isSelected ) {
-					$( this ).find( '.showHide' ).removeClass( 'fa-eye-slash' ).addClass( 'fa-eye' );
-				}
-				else {
-					$( this ).find( '.showHide' ).removeClass( 'fa-eye' ).addClass( 'fa-eye-slash' );
-				}
-			});
 		},
 		
 		/*
 		 * Track Event Handlers
 		 */
-		onClickTrackTitle: function ( e ) {
-			alert('EHO');
+		onClickTrackTitle: function() {
 			var track = $( this ).closest( 'div.track' ).data( 'track' );
 			tracks = [track];
 			$( this ).find( '.showHide' ).removeClass( 'fa-eye-slash' ).addClass( 'fa-eye' );
@@ -207,14 +231,14 @@ var playerControls	= new Vue({
 			this.player.alphaTab( 'tracks', tracks );
 		},
 		
-		onClickTrackSolo: function ( e ) {
+		onClickTrackSolo: function() {
 			$(this).toggleClass('checked');
 			var isSolo = $(this).hasClass('checked');
 			var track = $(this).closest('div').data('track');
 			this.player.alphaTab('soloTrack', track, isSolo);    
 		},
 		
-		onClickTrackMute: function ( e ) {
+		onClickTrackMute: function() {
 			$(this).toggleClass('checked');
 			var isMute = $(this).hasClass('checked');
 			var track = $(this).closest('div').data('track');
@@ -232,3 +256,25 @@ var playerControls	= new Vue({
 		this.player.on(  'alphaTab.rendered', this.onRendered );
 	  }
 });
+
+Vue.component( 'todo-item', {
+	template: '\
+		<div class="track">\
+			<div class="title" v-on:click="onClickTrackTitle"><i class="fa fa-eye-slash showHide"></i>${ scoreTrack.Name }</div>\
+			<div class="btn-group btn-group-xs">\
+				<button type="button" class="btn btn-default solo" v-on:click="onClickTrackSolo">\
+					<svg class="icon"><use xlink:href="#icon-solo"></use></svg>\
+				</button>\
+				<button type="button" class="btn btn-default mute" v-on:click="onClickTrackMute">\
+					<svg class="icon"><use xlink:href="#icon-mute"></use></svg>\
+				</button>\
+			</div>\
+			<input id="volume-${ scoreTrack.Index }" type="text" />\
+		</div>\
+		<script>\
+			$( "volume-${ scoreTrack.Index }" ).slider({ min: 0, max: 16, step: 1, value: ${ scoreTrack.PlaybackInfo.Volume }, handle: "square" });\
+		</script>\
+	',
+	props: ['scoreTrack']
+});
+

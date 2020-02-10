@@ -253,3 +253,8 @@ a.article:hover {
     overflow-x: hidden;
 }
 
+.scrollable-menu-side {
+	height: auto;
+    max-height: 385px;
+    overflow-x: hidden;
+}

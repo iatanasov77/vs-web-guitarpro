@@ -10,8 +10,8 @@
 .dropdown-menu {
 	background-color: transparent !important;
 	border-style: none !important;
-	left: 15px !important;
-	top: 115px !important;
+	left: 50px !important;
+	top: -20px !important;
 }
 
 .sidebar .nav > li {
@@ -31,8 +31,30 @@
     transition: all 0.6s;
 }
 
-#playbackSpeedSelector {
+#playbackSpeedSelector,
+#layoutSelector {
 	list-style: none; /* Remove list bullets */
 	padding: 0;
   	margin: 0;
+}
+
+.dropdown-toggle::after {
+	content: none !important;
+}
+
+.icon-metronome {
+	background-position: 0 -160px !important;
+	width: 40px;
+	height: 40px;
+	background: url(../images/player-icons.svg);
+	background-size: 200px 240px;
+}
+
+.icon-settings {
+	content: "" !important;
+	background-position: -40px -155px !important;
+	width: 40px;
+	height: 40px;
+	background: url(../images/player-icons.svg);
+	background-size: 200px 240px;
 }
