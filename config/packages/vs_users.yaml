@@ -3,11 +3,13 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: App\Entity\User
+    group:
+        group_class: IA\UsersBundle\Entity\UserGroup
     from_email:
         address: "%mailer_user%"
         sender_name: "%mailer_user%"
-        
-    # needs to sitch off needed config 'templating' that is depracated
+
+    # needs to switch off needed config 'templating' that is depracated
     service:
-        mailer: fos_user.mailer.twig_swift     
+        mailer: fos_user.mailer.twig_swift 
         

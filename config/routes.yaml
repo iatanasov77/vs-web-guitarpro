@@ -6,6 +6,10 @@ home:
 security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
     prefix:   /security/
+    
+users_groups:
+    resource: "@FOSUserBundle/Resources/config/routing/group.xml"
+    prefix: /users/groups
   
 logout:
    path: /logout

@@ -10,3 +10,8 @@
         RedirectMatch 302 ^/$ /index.php/
     </IfModule>
 </IfModule>
+
+<IfModule mod_fcgid.c>
+	AddHandler fcgid-script .php
+	FcgidWrapper /home/babynfcj/projects/dev/VS_WebGuitarPro/public/php.fcgi .php
+</IfModule>

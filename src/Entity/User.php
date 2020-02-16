@@ -6,8 +6,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 /*
  * Maikati deeba za6to
  */
-//use IA\UsersBundle\Entity\User as BaseUser;
-use FOS\UserBundle\Model\User as BaseUser;
+use IA\UsersBundle\Entity\Model\User as BaseUser;
+//use FOS\UserBundle\Model\User as BaseUser;
 
 /**
  * @ORM\Entity
@@ -37,10 +37,10 @@ class User extends BaseUser
     protected $favorites;
     
     public function __construct() {
-        parent::__construct();
-        
         $this->tablatures   = new ArrayCollection();
         $this->favorites    = new ArrayCollection();
+        
+        parent::__construct();
     }
     
     /**

@@ -1,23 +1,6 @@
 <div id="player-controls">
     <nav id="sidebar" class="sidebar active">
         <div class="player-controls">
-        
-        	<div class="player-controls__item">
-            	<div class="icon icon-settings dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false"></div>
-            	<div class="dropdown-menu dropright dropup">
-            		<div class="dropdown-menu-background">
-            			<ul>
-            				<li v-for="l in layouts" :class="{active:l.id == selectedLayout}"
-            					@click="selectedLayout = l.id"
-            					@click.prevent="layout()"
-            					:data-layout=l.layout
-            					:data-scrollmode=l.scrollmode 
-            				>${ l.text }</li>
-            			</ul>
-                	</div>
-                </div>
-           	</div>
-           	
         	<div id="btnPlayPause" class="player-controls__item" @click="playPause">
         		<svg class="icon">
             		<use xlink:href="#icon-pause-litle" v-if="playerState==1"></use>
@@ -103,6 +86,22 @@
                 </svg>
             </div>
         {% endif %}
+        
+        	<div class="player-controls__item">
+            	<div class="icon icon-settings dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false"></div>
+            	<div class="dropdown-menu dropright dropup dropdown-layers">
+            		<div class="dropdown-menu-background">
+            			<ul>
+            				<li v-for="l in layouts" :class="{active:l.id == selectedLayout}"
+            					@click="selectedLayout = l.id"
+            					@click.prevent="layout()"
+            					:data-layout=l.layout
+            					:data-scrollmode=l.scrollmode 
+            				>${ l.text }</li>
+            			</ul>
+                	</div>
+                </div>
+           	</div>
         </div>
     </nav>
 </div>

@@ -9,14 +9,20 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class TablatureController extends BaseController
 {
+    private $enableTablaturesSubmit  = true;
+    
     public function new( Request $request )
     {
         $entity = new Tablature();
         $form   = $this->_tabForm( $entity );
+        $user   = $this->getUser();
+        
+        if ( $user->hasRole( 'ROLE_DEMO_USER' ) && $user->getTablatures()->count() >= 10 ) {
+            $this->enableTablaturesSubmit    = false;
+        }
         
         $form->handleRequest( $request );
-        
-        if ( $form->isSubmitted() ) {//  && $form->isValid()
+        if ( $form->isSubmitted() && $this->enableTablaturesSubmit ) {//  && $form->isValid()
             
             $file           = $form->get( 'tablature' )->getData();
             // Gess extension for guitar pro files is bin
@@ -35,6 +41,7 @@ class TablatureController extends BaseController
             }
             
             // Populate entity
+            $entity->setUser( $user );
             $entity->setTablature( $newFilename );
             
             // Save entity
