@@ -1,25 +1,6 @@
-
-function createTrack( scoreTrack )
-{
-	return `
-	<div class="track" data-track="${scoreTrack.Index}">
-		<div class="title" v-on:click="onClickTrackTitle"><i class="fa fa-eye-slash showHide"></i>${scoreTrack.Name}</div>
-		<div class="btn-group btn-group-xs">
-			<button type="button" class="btn btn-default solo" v-on:click="onClickTrackSolo">
-				<svg class="icon"><use xlink:href="#icon-solo"></use></svg>
-			</button>
-			<button type="button" class="btn btn-default mute" v-on:click="onClickTrackMute">
-				<svg class="icon"><use xlink:href="#icon-mute"></use></svg>
-			</button>
-		</div>
-		<input id="volume-${scoreTrack.Index}" type="text" />
-	</div>
-	<script>
-		$( "#volume-${scoreTrack.Index}" ).slider({ min: 0, max: 16, step: 1, value: ${scoreTrack.PlaybackInfo.Volume}, handle: "square" });
-	</script>
-	`;
-}
-
+/**
+ * Vue.Js component
+ */
 var playerControls	= new Vue({
 	delimiters: ['${', '}'],
 	el: "#player-controls",
@@ -165,9 +146,8 @@ var playerControls	= new Vue({
 		
 		onLoaded: function( e, score ) {
 			$( '#trackList' ).empty();
-			
-			for( var i = 0; i < score.Tracks.length; i++) {
-				$( '#trackList' ).append( createTrack( score.Tracks[i] ) );
+			for( var i = 0; i < score.tracks.length; i++) {
+				$( '#trackList' ).append( createTrack( score.tracks[i] ) );
 			}
 		},
 		
@@ -175,7 +155,7 @@ var playerControls	= new Vue({
 			var tracks = this.player.alphaTab( 'tracks' );
 			
 			for( var i = 0; i < tracks.length; i++ ) {
-			   tracks[i] = tracks[i].Index;
+			   tracks[i] = tracks[i].index;
 			}
 			
 			// check checkboxes 
