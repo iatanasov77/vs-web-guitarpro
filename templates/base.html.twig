@@ -11,8 +11,10 @@
     	<div class="wrapper">
     		{% block body %}{% endblock %}
     	</div>
-        
+    	
+        {% block widgets %}{% endblock %}
         {% block svg %}{% endblock %}
+        
         {% block javascripts %}
         	{#
         	{{ encore_entry_script_tags( 'app' ) }}

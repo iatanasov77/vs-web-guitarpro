@@ -58,3 +58,12 @@
 	background: url(../images/player-icons.svg);
 	background-size: 200px 240px;
 }
+
+.widget-progress {
+	width:50% !important;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%)
+}
