@@ -1,4 +1,7 @@
 
+/**
+ * Vue.Js component
+ */
 function createTrack( scoreTrack )
 {
 	return `
@@ -171,9 +174,8 @@ var playerControls	= new Vue({
 		
 		onLoaded: function( e, score ) {
 			$( '#trackList' ).empty();
-			
-			for( var i = 0; i < score.Tracks.length; i++) {
-				$( '#trackList' ).append( createTrack( score.Tracks[i] ) );
+			for( var i = 0; i < score.tracks.length; i++) {
+				$( '#trackList' ).append( createTrack( score.tracks[i] ) );
 			}
 		},
 		
@@ -181,7 +183,7 @@ var playerControls	= new Vue({
 			var tracks = this.player.alphaTab( 'tracks' );
 			
 			for( var i = 0; i < tracks.length; i++ ) {
-			   tracks[i] = tracks[i].Index;
+			   tracks[i] = tracks[i].index;
 			}
 			
 			// check checkboxes 
