@@ -13,13 +13,6 @@ users_groups:
   
 logout:
    path: /logout
-
-##########################
-# Tablatures DEMO
-##########################
-demo_player:
-   path: /demo/player
-   controller: App\Controller\DemoController::player
    
 ##########################
 # Tablatures

@@ -5,7 +5,22 @@
         </div>
         
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="nav navbar-nav ml-auto">   
+            <ul class="nav navbar-nav ml-auto">
+            
+            {% if demo_menue %}
+            	<li class="nav-item dropdown btn-group">
+                    <a class="nav-link dropdown-toggle" id="btnMyTabs" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">DEMO Pages</a>
+                    <div class="dropdown-menu dropdown-menu-right scrollable-menu" aria-labelledby="btnMyTabs">
+                        <div class="sm-main-nav" >
+                            <a class="dropdown-item" href="{{ path( 'demo_player_working', {'id': demo_tab_id} ) }}" target="_blank">Working Demo</a><hr>
+                            <a class="dropdown-item" href="{{ path( 'demo_player_latest', {'id': demo_tab_id} ) }}" target="_blank">Latest From GitHub</a><hr>
+                            <a class="dropdown-item" href="{{ path( 'demo_player_encore', {'id': demo_tab_id} ) }}" target="_blank">Encore Build</a><hr>
+                        </div>
+                    </div>
+                </li>
+             {% endif %}
+            </ul>   
+                
             {% if app.user %}
             	<li class="nav-item dropdown btn-group">
                     <a class="nav-link dropdown-toggle" id="btnMyTabs" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Tabs</a>
