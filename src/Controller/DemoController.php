@@ -7,6 +7,16 @@ use Symfony\Component\HttpFoundation\Response;
 class DemoController extends AbstractController
 {
     // https://docs.alphatab.net/master/assets/files/player.html
+    public function playerAlphaTab( Request $request ): Response
+    {
+        $er             = $this->getDoctrine()->getRepository( 'App\Entity\Tablature' );
+        $oTablature     = $er->find( $request->attributes->get( 'id' ) );
+        
+        return $this->render( 'demo_pages/tablature-player-AlphaTab.html.twig', [
+            'item'      => $oTablature
+        ]);
+    }
+    
     public function playerWorking( Request $request ): Response
     {
         $er             = $this->getDoctrine()->getRepository( 'App\Entity\Tablature' );

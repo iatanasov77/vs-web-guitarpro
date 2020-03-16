@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+    	<title>VS WebGuitarPro DEMO</title>    
+
+		{% block javascript_libs %}{% endblock %}
+
+		{% block stylesheets %}
+			{% include 'demo_pages/partial/styles.html.twig' %}
+		{% endblock %}
+
+	</head>
+	<body>
+        <!-- Toolbar containing the buttons -->
+        <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+            <div id="navbar" class="navbar-collapse collapse">
+              {% include 'demo_pages/partial/navigation.html.twig' %}
+            </div>
+          </div>
+        </nav>
+        
+        {% block body %}{% endblock %}
+    	
+    	{% block javascripts %}{% endblock %}
+    </body>
+</html>
