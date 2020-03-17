@@ -1,7 +1,7 @@
 {% extends 'demo_pages/base.html.twig' %} 
 
 {% block body %}
-	
+    
     <div id="tablatureWrapper">
         <div id="file-info"></div>
         
@@ -13,27 +13,26 @@
         -->
         <div id="alphaTab"
             data-file="{{ path( 'tablature_read', {id: item.id} ) }}"
-            data-display-staveprofile="tab"
-            data-notation-rhythmmode="ShowWithBars"
-            data-player="/assets/AlphaTab/default.sf2"
+            data-player="/assets/AlphaTab_LATEST/default.sf2" 
+            class="alphaTab" 
+            style="position: relative; text-align: left;"
         ></div>
         
-	</div>
+    </div>
 {% endblock %}
 
 {% block javascript_libs %}
-	<!-- jQuery Plugin -->
-	<script src="https://code.jquery.com/jquery-2.2.4.min.js"
-			  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-			  crossorigin="anonymous">
-	</script>
+    <!-- jQuery Plugin -->
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+              integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+              crossorigin="anonymous">
+    </script>
    
-	<!-- Including alphaTab -->
-	<script src="/assets/AlphaTab_LATEST/swfobject.js"></script>
-	<script src="/assets/AlphaTab_LATEST/AlphaTab.js"></script>
+    <!-- Including alphaTab -->
+    <script src="/assets/AlphaTab_LATEST/swfobject.js"></script>
+    <script src="/assets/AlphaTab_LATEST/AlphaTab.js"></script>
 {% endblock %}
 
 {% block javascripts %}
-	{% include 'demo_pages/partial/scripts.html.twig' %}
+    {% include 'demo_pages/partial/scripts-small_letter.html.twig' %}
 {% endblock %}
-    	

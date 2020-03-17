@@ -1,7 +1,12 @@
 {% extends 'demo_pages/base.html.twig' %} 
 
 {% block body %}
-	
+	<p style="margin-top:70px;">
+	   This Demo is made from example here:
+	   <a href="https://docs.alphatab.net/master/assets/files/player.html" target="_blank">
+	       https://docs.alphatab.net/master/assets/files/player.html
+	   </a>
+	</p>
     <div id="tablatureWrapper">
         <div id="file-info"></div>
         
@@ -11,13 +16,14 @@
                            in this sample we scroll 70px up for vertical layouts because the menubar would overlap the tablature otherwise. 
                            the 10px are to have a small horizontal padding. 
         -->
-        <div id="alphaTab"
+        <div id="alphaTab" 
             data-file="{{ path( 'tablature_read', {id: item.id} ) }}"
-            data-display-staveprofile="tab"
-            data-notation-rhythmmode="ShowWithBars"
-            data-player="/assets/AlphaTab/default.sf2"
-        ></div>
+            data-player="/assets/AlphaTab/default.sf2" 
+            class="alphaTab" 
+            style="position: relative; text-align: left;"
+        >
         
+       
 	</div>
 {% endblock %}
 
@@ -29,11 +35,10 @@
 	</script>
    
 	<!-- Including alphaTab -->
-	<script src="/assets/DEMO/swfobject.js"></script>
-	<script src="/assets/DEMO/AlphaTab.js"></script>
+	<script src="/assets/DEMO/files/swfobject.js"></script>
+	<script src="/assets/DEMO/files/AlphaTab.js"></script>
 {% endblock %}
 
 {% block javascripts %}
 	{% include 'demo_pages/partial/scripts.html.twig' %}
 {% endblock %}
-    	

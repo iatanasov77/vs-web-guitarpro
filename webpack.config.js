@@ -25,6 +25,10 @@ Encore
      */
     .addEntry('app', './assets/js/app.js')
     .addEntry('tablature-player', './assets/js/pages/tablature-player.js')
+    
+    .addEntry('app-demo', './assets/js/app-demo.js')
+    .addEntry('tablature-player-demo', './assets/js/pages/tablature-player-demo.js')
+    .addEntry('tablature-player-demo-latest', './assets/js/pages/tablature-player-demo-latest.js')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
@@ -55,19 +59,8 @@ Encore
     // enables Sass/SCSS support
     .enableSassLoader()
 
-    // uncomment if you use TypeScript
-    //.enableTypeScriptLoader()
-
-    // uncomment to get integrity="..." attributes on your script & link tags
-    // requires WebpackEncoreBundle 1.4 or higher
-    //.enableIntegrityHashes(Encore.isProduction())
-
     // uncomment if you're having problems with a jQuery plugin
     .autoProvidejQuery()
-
-    // uncomment if you use API Platform Admin (composer req api-admin)
-    //.enableReactPreset()
-    //.addEntry('admin', './assets/js/admin.js')
 ;
 
 const config = Encore.getWebpackConfig();
