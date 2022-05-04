@@ -1,12 +1,16 @@
 <?php namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Sylius\Component\Resource\Model\ResourceInterface;
+use Doctrine\Common\Collections\Collection;
+
+use App\Entity\UserManagement\User;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="APP_Tablatures")
+ * @ORM\Table(name="WGP_Tablatures")
  */
-class Tablature
+class Tablature implements ResourceInterface
 {
     /**
      * @ORM\Column(name="id", type="integer")
@@ -16,30 +20,30 @@ class Tablature
     private $id;
     
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="tablatures")
-     * @ORM\JoinColumn(name="userId", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="App\Entity\UserManagement\User", inversedBy="tablatures")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
     
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="favorites", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="App\Entity\UserManagement\User", mappedBy="favorites", cascade={"persist"})
      */
     private $favoriteUsers;
     
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(name="artist", type="string", length=255, nullable=false)
      */
     private $artist;
     
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(name="song", type="string", length=255, nullable=false)
      */
     private $song;
     
     /**
-     * @ORM\Column(type="string")
+     * @ORM\OneToOne(targetEntity="App\Entity\TablatureFile", inversedBy="tablature", cascade={"persist", "remove"})
      */
-    private $tablature;
+    private $tablatureFile;
     
     public function getId()
     {
@@ -68,19 +72,19 @@ class Tablature
      *
      * @return Doctrine\Common\Collections\Collection
      */
-    public function getFavoriteUsers()
+    public function getFavoriteUsers(): ?Collection
     {
         return $this->favoriteUsers;
     }
     
-    public function getTablature()
+    public function getTablatureFile()
     {
-        return $this->tablature;
+        return $this->tablatureFile;
     }
     
-    public function setTablature($tablature)
+    public function setTablatureFile($tablatureFile)
     {
-        $this->tablature = $tablature;
+        $this->tablatureFile = $tablatureFile;
         
         return $this;
     }

@@ -1,0 +1,23 @@
+vs_users:
+    resources:
+        users:
+            classes:
+                model: App\Entity\UserManagement\User
+        user_roles:
+            classes:
+                model: App\Entity\UserManagement\UserRole
+        user_info:
+            classes:
+                model: App\Entity\UserManagement\UserInfo
+        avatar_image:
+            classes:
+                model: App\Entity\UserManagement\AvatarImage
+        user_activity:
+            classes:
+                model: App\Entity\UserManagement\UserActivity
+        user_notification:
+            classes:
+                model: App\Entity\UserManagement\UserNotification
+        reset_password_request:
+            classes:
+                model: App\Entity\UserManagement\ResetPasswordRequest

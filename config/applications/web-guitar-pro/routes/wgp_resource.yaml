@@ -1,0 +1,7 @@
+vs_wct_projects:
+    resource: |
+        alias: vs_wgp.tablature
+        #except: ['show']
+        path: /tablatures
+        templates: "Pages/Tablatures"
+    type: sylius.resource

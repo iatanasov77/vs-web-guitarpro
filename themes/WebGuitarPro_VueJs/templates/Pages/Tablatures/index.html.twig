@@ -1,0 +1,41 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{ parent() }} :: Tablatures{% endblock %}
+{% block pageTitle %}<i class="icon_genius"></i> Tablatures{% endblock %}
+
+{% block content %}
+    <div class="row" style="margin-top: 110px">
+        <div id="messages">
+            {% if error is defined %}
+                <div>{{ error.messageKey|trans( error.messageData, 'security' ) }}</div>
+            {% endif %}
+        </div>
+        <div class="col-md-12 col-sm-12 col-12">
+            <div class="card">
+                <h5 class="card-header">Tablatures</h5>
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Artist</th>
+                                <th>Song</th>
+                                <th>Play</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for t in items %}
+                            <tr>
+                                <td>{{ t.artist }}</td>
+                                <td>{{ t.song }}</td>
+                                <td><a href="{{ path( 'vs_wgp_tablature_show', {id: t.id} ) }}" class="btn btn-primary">Play</a></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+{% endblock %}
+

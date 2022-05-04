@@ -1,0 +1,66 @@
+imports:
+    - { resource: services/security.yaml }
+    - { resource: services/controller.yaml }
+    - { resource: services/forms.yaml }
+    - { resource: services/doctrine_extensions.yaml }
+    - { resource: services/menu.yaml }
+    - { resource: services/wgp_tablature.yaml }
+    
+parameters:
+    lang: 'en'
+    locale: 'en_US'
+    languages:
+        en: English
+        bg: Български¸
+
+    vankosoft_host: '%env(HOST)%'    
+    applicationTitle: 'Web Guitar Pro'
+    
+    vs_application.version: !php/const App\WebGuitarProKernel::VERSION
+    vs_application.public_dir: "%kernel.project_dir%/public/web-guitar-pro"
+    
+    vs_users.login_route: 'app_login'
+    vs_users.login_by: 'username'
+    vs_users.default_redirect: 'app_home'
+    vs_users.form_create_account: false
+    
+    # The cookie_lifetime would be set to a relatively high value, 
+    # and the garbage collection gc_maxlifetime would be set to destroy sessions at whatever the desired idle period is.
+    #########################################################################################################################
+    vs_users.gc_maxlifetime: 1800   # 30 minutes
+    vs_users.cookie.domain: '%env(COOKIE_DOMAIN)%'
+    vs_users.cookie.lifetime: 86400 # 24 hours
+    vs_users.api_token.domain: '%env(API_TOKEN_DOMAIN)%'
+    vs_users.api_token.lifetime: 3600
+    
+    # Gaufrette File Systems
+    vs_cms.gaufrette.profile.filesystem: vs_application_profile
+    vs_cms.gaufrette.filemanager.filesystem: vs_application_filemanager
+    # Shared Media Directories
+    vs_cms.filemanager_shared_media_gaufrette.profile: "%kernel.project_dir%/public/shared_media/gaufrette/profile"
+    vs_cms.filemanager_shared_media_gaufrette.filemanager: "%kernel.project_dir%/public/shared_media/gaufrette/filemanager"
+    vs_cms.filemanager_shared_media_artgris: '%kernel.project_dir%/public/shared_media/artgris'
+
+services:
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    App\:
+        resource: '../../../src/*'
+        exclude:
+            - '../../../src/DataFixtures/'
+            - '../../../src/DependencyInjection/'
+            - '../../../src/Entity/'
+            - '../../../src/Form/'
+            - '../../../src/Tests/'
+            - '../../../src/Controller/'
+            - '../../../src/Controller/WebGuitarPro'
+            - '../../../src/Component/TablatureUploader'
+            - '../../../src/WebGuitarProKernel.php'
+        autowire: true
+
+    # add more service definitions when explicit configuration is needed
+    # please note that last definitions always *replace* previous ones
+    
+    

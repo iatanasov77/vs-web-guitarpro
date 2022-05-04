@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}.:: VS WebGuitarPro{% endblock %}</title>
+        {% block stylesheets %}
+        	{{ encore_entry_link_tags( 'app', null, 'WebGuitarPro_VueJs' ) }}
+        {% endblock %}
+    </head>
+    <body>
+        <div class="wrapper">
+            <!-- Page Content  -->
+            <div id="content">
+                {% include 'Layout/top.html.twig' %}
+                
+    		    {% block content %}{% endblock %}
+    		    
+    		    {% include 'Layout/bottom.html.twig' %}
+    		</div>
+    	</div>
+    	
+        {% block widgets %}{% endblock %}
+        {% block svg %}{% endblock %}
+        
+        {% block javascripts %}
+        	{{ encore_entry_script_tags( 'app', null, 'WebGuitarPro_VueJs' ) }}
+        {% endblock %}
+    </body>
+</html>

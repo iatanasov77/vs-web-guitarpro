@@ -1,0 +1,77 @@
+security:
+    # https://symfony.com/doc/current/security/experimental_authenticators.html
+    enable_authenticator_manager: true
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    
+    password_hashers:
+        # use your user class name here
+        App\Entity\UserManagement\User:
+            # Use native password hasher, which auto-selects the best
+            # possible hashing algorithm (starting from Symfony 5.3 this is "bcrypt")
+            algorithm: auto
+            
+     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+        debug_provider:
+            memory: null
+        default_provider:
+            entity:
+                class: App\Entity\UserManagement\User
+                property: username
+        admin_provider:
+            entity:
+                class: App\Entity\UserManagement\User
+                property: username
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            lazy: true
+            #provider: debug_provider
+            provider: default_provider
+            
+            # activate different ways to authenticate
+            # https://symfony.com/doc/current/security.html#firewalls-authentication
+
+            # https://symfony.com/doc/current/security/impersonating_user.html
+            # switch_user: true
+            
+            form_login:
+                enable_csrf: true
+                login_path: vs_application_login
+                check_path: vs_application_login
+                username_parameter: _username
+                password_parameter: _password
+                always_use_default_target_path: false
+                default_target_path:  /
+            logout:
+                path: vs_application_logout
+                target: /login
+                invalidate_session: true
+
+            custom_authenticators:
+                - vs_users.security.login_form_authenticator
+                - vs_users.security.api_key_authenticator
+            entry_point: vs_users.security.login_form_authenticator
+
+    role_hierarchy:
+        ROLE_SUPER_ADMIN: []
+        ROLE_APPLICATION_ADMIN: [ROLE_TEST_VANKOSOFT_APPLICATION_ADMIN]
+        ROLE_TEST_VANKOSOFT_APPLICATION_ADMIN: [ROLE_TEST_VANKOSOFT_APPLICATION_AUTHOR, ROLE_TEST_VANKOSOFT_APPLICATION_USER]
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+        - { path: /_wdt/.*, roles: PUBLIC_ACCESS }
+        - { path: /_profiler/.*, roles: PUBLIC_ACCESS }
+        
+        - { path: ^/login, roles: PUBLIC_ACCESS }
+        - { path: ^/register, roles: PUBLIC_ACCESS }
+        - { path: ^/verify, roles: PUBLIC_ACCESS }
+        - { path: ^/forgot-password, roles: PUBLIC_ACCESS }
+        - { path: ^/forgot-password/reset/, roles: PUBLIC_ACCESS }
+        
+        - { path: ^/, roles: [ROLE_SUPER_ADMIN] }
+

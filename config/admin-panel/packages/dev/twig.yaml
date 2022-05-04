@@ -1,0 +1,3 @@
+twig:
+    globals:
+        formCreateAccount: true

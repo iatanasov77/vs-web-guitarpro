@@ -1,0 +1,53 @@
+security:
+    enable_authenticator_manager: true
+    
+    password_hashers:
+        App\Entity\UserManagement\User:
+            algorithm: auto
+            
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+        default_provider:
+            entity:
+                class: App\Entity\UserManagement\User
+                property: username
+
+    firewalls:
+        main:
+            lazy: true
+            #pattern: ^/(?!admin)
+            provider: default_provider
+            form_login:
+                enable_csrf: true
+                login_path: app_login
+                check_path: app_login
+                username_parameter: _username
+                password_parameter: _password
+                always_use_default_target_path: false
+                default_target_path:  /
+            logout:
+                path: app_logout
+                target: app_login
+                invalidate_session: true
+
+            custom_authenticators:
+                - vs_users.security.login_form_authenticator
+                - vs_users.security.api_key_authenticator
+            entry_point: vs_users.security.login_form_authenticator
+       
+    role_hierarchy:
+        ROLE_SUPER_ADMIN: []
+        ROLE_APPLICATION_ADMIN: [ROLE_TEST_VANKOSOFT_APPLICATION_ADMIN]
+        ROLE_TEST_VANKOSOFT_APPLICATION_ADMIN: [ROLE_TEST_VANKOSOFT_APPLICATION_AUTHOR, ROLE_TEST_VANKOSOFT_APPLICATION_USER]
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+        - { path: /_wdt/.*, roles: PUBLIC_ACCESS }
+        - { path: /_profiler/.*, roles: PUBLIC_ACCESS }
+
+        - { path: ^/login, roles: PUBLIC_ACCESS }
+        
+        #- { path: ^/, roles: ROLE_APPLICATION_ADMIN }
+        - { path: ^/, roles: PUBLIC_ACCESS }
+

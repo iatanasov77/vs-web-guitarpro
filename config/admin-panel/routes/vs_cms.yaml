@@ -1,0 +1,23 @@
+vs_cms_pages:
+    resource: "@VSCmsBundle/Resources/config/routing/pages.yml"
+    prefix: /
+    options:
+        expose: true
+    
+vs_cms_images:
+    resource: "@VSCmsBundle/Resources/config/routing/images.yml"
+    prefix: /
+
+vs_cms_toc:
+    resource: "@VSCmsBundle/Resources/config/routing/toc.yml"
+    prefix: /
+    options:
+        expose: true
+
+vs_cms_filemanager:
+    resource: "@VSCmsBundle/Resources/config/routing/filemanager.yml"
+    prefix: /vs_filemanager
+    
+artgris_filemanager:
+    resource: "@ArtgrisFileManagerBundle/Resources/config/routing.yml"
+    prefix: /artgris_filemanager

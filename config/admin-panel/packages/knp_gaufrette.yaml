@@ -1,0 +1,15 @@
+knp_gaufrette:
+    adapters:
+        vs_application_profile:
+            local:
+                directory: "%vs_cms.filemanager_shared_media_gaufrette.profile%"
+                create: true
+        vs_application_filemanager:
+            local:
+                directory: "%vs_cms.filemanager_shared_media_gaufrette.filemanager%"
+                create: true
+    filesystems:
+        vs_application_profile:
+            adapter: "%vs_cms.gaufrette.profile.filesystem%"
+        vs_application_filemanager:
+            adapter: "%vs_cms.gaufrette.filemanager.filesystem%"

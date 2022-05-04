@@ -1,0 +1,10 @@
+imports:
+    - { resource: '@VSApplicationInstalatorBundle/Resources/config/app/fixtures/application_configuration.yaml' }
+    #- { resource: '@VSApplicationInstalatorBundle/Resources/config/app/fixtures/sample_data.yaml' }
+
+sylius_fixtures:
+    suites:                
+        vankosoft_sampledata_suite:
+            fixtures:
+                test_countries: ~
+

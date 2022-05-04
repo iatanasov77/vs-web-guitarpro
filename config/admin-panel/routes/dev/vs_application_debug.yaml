@@ -1,0 +1,7 @@
+vs_application_debug_session:
+    path: /vs-application-debug/session
+    controller: App\Controller\Application\DebugController:debugSession
+
+vs_application_debug_parameters:
+    path: /vs-application-debug/parameters
+    controller: App\Controller\Application\DebugController:debugParameters

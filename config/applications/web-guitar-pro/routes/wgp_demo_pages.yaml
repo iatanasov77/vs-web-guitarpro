@@ -1,0 +1,4 @@
+demo_pages_alphatab:
+    path: /demo-pages/alphatab
+    controller: App\Controller\WebGuitarPro\DemoPagesController::alphatab
+    

@@ -1,0 +1,19 @@
+twig:
+    default_path: '%kernel.project_dir%/templates'
+
+    globals:
+        applicationIcon: 'build/default/images/superman.svg'
+        applicationTitle: '%applicationTitle%'
+        lang: '%lang%'
+        locale: '%locale%'
+        formCreateAccount: '%vs_users.form_create_account%'
+        webSiteUrl: "http://website.url"
+        installedBundles: '%kernel.bundles%'
+        pageCategoriesTaxonomyCode: '%vs_application.page_categories.taxonomy_code%'
+        
+    form_themes:
+        - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
+
+when@test:
+    twig:
+        strict_variables: true

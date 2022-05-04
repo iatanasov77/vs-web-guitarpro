@@ -1,26 +1,69 @@
 {
-    "devDependencies": {
-        "@fortawesome/fontawesome-free": "^5.12.0",
-        "@symfony/webpack-encore": "^0.28.2",
-        "core-js": "^3.0.0",
-        "node-sass": "^4.13.1",
-        "regenerator-runtime": "^0.13.2",
-        "sass-loader": "^7.0.1",
-        "webpack-notifier": "^1.6.0",
-        "particles": "https://github.com/VincentGarreau/particles.js.git"
-    },
-    "license": "UNLICENSED",
+    "license": "MIT",
     "private": true,
     "scripts": {
-        "dev-server": "./node_modules/@symfony/webpack-encore/bin/encore.js dev-server",
+        "dev-server": "encore dev-server",
         "dev": "./node_modules/@symfony/webpack-encore/bin/encore.js dev",
         "watch": "./node_modules/@symfony/webpack-encore/bin/encore.js dev --watch",
         "build": "./node_modules/@symfony/webpack-encore/bin/encore.js production --progress"
     },
     "dependencies": {
-        "bootstrap": "^4.4.1",
-        "bootstrap-slider": "^10.6.2",
-        "jquery": "^3.5.0",
-        "popper.js": "^1.16.1"
+        "@fortawesome/fontawesome-free": "^5.12.1",
+        "@kanety/jquery-simple-tree-table": "^0.5.0",
+        "@popperjs/core": "^2.10.1",
+        "bootstrap": "^4.3.1",
+        "bootstrap-gtreetable": "https://github.com/iatanasov77/bootstrap-gtreetable.git",
+        "bootstrap-sass": "^3.4.1",
+        "bootstrap4-tagsinput-douglasanpa": "^4.1.2",
+        "ckeditor": "^4.0.0",
+        "lightbox2": "^2.11.3",
+        "highlight.js": "^11.0.1",
+        "glyphicons-only-bootstrap": "^1.0.1",
+        "jquery": "3.4.1",
+        "jquery-easyui": "^1.5.21",
+        "jquery-slimscroll": "^1.3.8",
+        "jquery-ui-dist": "^1.12.1",
+        "jquery.nicescroll": "^3.7.6",
+        "mdb-ui-kit": "^3.6.0",
+        "popper": "^1.0.1",
+        "popper.js": "^1.15.0",
+        
+        "jquery-ui": "^1.13.0",
+        "bazinga-translator": "^5.0.0",
+        "intl-messageformat": "^9.11.3",
+        
+        "vue": "^2.1.0",
+        "vue-clickaway": "^2.1.0",
+        "vue-loader": "^15.9.5",
+        "vue-modals": "^0.5.0",
+        "vue-moment": "^2.0.2",
+        "vue-multiselect": "^2.0.0-beta.10",
+        "vue-resource": "~1.0.3",
+        "vue-router": "^2.1.0",
+        "vue-template-compiler": "^2.1.5",
+        "vue-upload-component": "^2.0.0-beta.5",
+        "vue2-google-maps": "^0.4.3",
+        "vuejs-datepicker": "^0.4.29",
+        "vue-bootstrap-slider": "^2.1.8",
+    
+        "jsdom": "^19.0.0",
+        "util": "^0.12.4",
+        "bootstrap-slider": "^11.0.2",
+        "@coderline/alphatab": "^1.2.2"
+    },
+    "devDependencies": {
+        "@symfony/webpack-encore": "^1.0.0",
+        "core-js": "^3.0.0",
+        "file-loader": "^6.0.0",
+        "node-sass": "^6.0.1",
+        "regenerator-runtime": "^0.13.2",
+        "resolve-url-loader": "2",
+        "sass-loader": "^12.0.0",
+        "webpack-notifier": "^1.6.0"
+    },
+    "resolutions": {
+        "@kanety/jquery-simple-tree-table/jquery": "3.4.1",
+        "jquery-ui/jquery": "3.4.1",
+        "jquery-ui-dist/jquery": "3.4.1"
     }
 }

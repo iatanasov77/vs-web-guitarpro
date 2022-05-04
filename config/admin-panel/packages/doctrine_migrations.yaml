@@ -1,0 +1,22 @@
+doctrine:
+    dbal:
+        # Add which tables to be removed from migrations
+        schema_filter: '/^(?!wbnt_dfgb_|taxon_translation|sylius_taxon|sylius_taxon_translation|sylius_locale|ext_log_entries|subscription_period|payed_service|payed_service_subscription).*$/'
+
+doctrine_migrations:
+    enable_profiler: '%kernel.debug%'
+    
+    migrations_paths:
+        'App\DoctrineMigrations': '%kernel.project_dir%/src/DoctrineMigrations'
+
+    storage:
+        table_storage:
+            table_name: 'VSAPP_Migrations'
+            version_column_name: 'version'
+            version_column_length: 1024
+            executed_at_column_name: 'executed_at'
+
+    services:
+        'Doctrine\Migrations\Version\MigrationFactory': 'SyliusLabs\DoctrineMigrationsExtraBundle\Factory\ContainerAwareVersionFactory'
+        'Doctrine\Migrations\Version\Comparator': 'SyliusLabs\DoctrineMigrationsExtraBundle\Comparator\TopologicalVersionComparator'
+

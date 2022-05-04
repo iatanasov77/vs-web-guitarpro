@@ -1,3 +1,9 @@
 https://demo.alphatab.net/player.html
 
 https://tabs.ultimate-guitar.com/tab/children-of-bodom/roundtrip-to-hell-and-back-guitar-pro-1035843
+
+
+VueJs Example
+===================
+https://github.com/mlhoutel/Tablatures
+http://mlhoutel-tablatures.lh/#/import

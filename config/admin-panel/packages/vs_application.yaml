@@ -1,0 +1,246 @@
+vs_application_instalator:
+    resources:
+        instalation_info:
+            classes:
+                model: App\Entity\Application\InstalationInfo
+vs_application:
+    resources:
+        application:
+            classes:
+                model: App\Entity\Application\Application
+        settings:
+            classes:
+                model: App\Entity\Application\Settings
+        taxonomy:
+            classes:
+                model: App\Entity\Application\Taxonomy
+        taxon:
+            classes:
+                model: App\Entity\Application\Taxon
+            translation:
+                classes:
+                    model: App\Entity\Application\TaxonTranslation
+        taxon_image:
+            classes:
+                model: App\Entity\Application\TaxonImage
+        translation:
+            classes:
+                model: App\Entity\Application\Translation
+        logentry:
+            classes:
+                model: App\Entity\Application\LogEntry
+        locale:
+            classes:
+                model: App\Entity\Application\Locale
+         
+    menu:
+        mainSystemMenu:
+            settings:
+                name: Settings
+                uri: "javascript:;"
+                attributes:
+                    iconClass: icon_genius
+                childs:
+                    settings:
+                        name: Preferences
+                        route: vs_application_settings_index
+            taxonomy:
+                name: Taxonomy
+                uri: "javascript:;"
+                attributes:
+                    iconClass: icon_genius
+                childs:
+                    list:
+                        name: List Taxonomies
+                        route: vs_application_taxonomy_index
+                    create:
+                        name: Create New Taxonomy
+                        route: vs_application_taxonomy_create
+                        display: true
+                    update:
+                        name: Edit Taxonomy
+                        route: vs_application_taxonomy_update
+                        routeParameters:
+                          id: int
+                        display: false
+            user_management:
+                name: User Management
+                uri: "javascript:;"
+                attributes:
+                    iconClass: icon_genius
+                childs:
+                    users_list:
+                        name: Users List
+                        route: vs_users_users_index
+                    user_create:
+                        name: Create User
+                        route: vs_users_users_create
+                    user_update:
+                        name: Update User
+                        route: vs_users_users_update
+                        routeParameters:
+                          id: int
+                        display: false
+                        
+                    user_roles_list:
+                        name: User Roles
+                        route: vs_users_user_roles_index
+                    user_roles_create:
+                        name: Create Role
+                        route: vs_users_user_roles_create
+                    user_roles_update:
+                        name: Update Role
+                        route: vs_users_user_roles_update
+                        routeParameters:
+                          id: int
+                        display: false
+
+#             newsletter:
+#                 name: Newsletter
+#                 uri: "javascript:;"
+#                 attributes:
+#                     iconClass: icon_genius
+#                 childs:
+#                     mailchimp_audiences_list:
+#                         name: List Mailchimp Audiences
+#                         route: vs_users_subscriptions_mailchimp_audiences_index
+#                     mailchimp_audiences_create:
+#                         name: Create New Mailchimp Audience
+#                         route: vs_users_subscriptions_mailchimp_audiences_create
+                        
+        mainCmsMenu:
+            cms:
+                name: Static Pages
+                uri: "javascript:;"
+                attributes:
+                    iconClass: icon_genius
+                childs:
+                    list:
+                        name: List Pages
+                        route: vs_cms_pages_index
+                    create:
+                        name: Create New Page
+                        route: vs_cms_pages_create
+                        display: true
+                    update:
+                        name: Edit Page
+                        route: vs_cms_pages_update
+                        routeParameters:
+                          id: int
+                        display: false
+                        
+                    category_list:
+                        name: Page Categories
+                        route: vs_cms_page_categories_index
+                    category_create:
+                        name: Create New Page Category
+                        route: vs_cms_page_categories_create
+                        display: true
+                    category_update:
+                        name: Edit Page Category
+                        route: vs_cms_page_categories_update
+                        routeParameters:
+                          id: int
+                        display: false
+                        
+            cms_toc:
+                name: Table Of Contents
+                uri: "javascript:;"
+                attributes:
+                    iconClass: icon_genius
+                    breadcrumb_route: vs_cms_document_index
+                childs:
+                    list:
+                        name: Document Lists 
+                        route: vs_cms_document_index
+                    create:
+                        name: Create New Document
+                        route: vs_cms_document_create
+                        display: true
+                    update:
+                        name: Edit Document
+                        route: vs_cms_document_update
+                        routeParameters:
+                          id: int
+                        display: false
+                    category_list:
+                        name: Document Categories
+                        route: vs_cms_document_categories_index
+                    category_create:
+                        name: Create New Document Category
+                        route: vs_cms_document_categories_create
+                        display: true
+                    category_update:
+                        name: Edit Document Category
+                        route: vs_cms_document_categories_update
+                        routeParameters:
+                          id: int
+                        display: false
+            filemanager_vankosoft:
+                name: VankoSoft File Manager
+                uri: "javascript:;"
+                attributes:
+                    iconClass: icon_genius
+                childs:
+                    list_filemanagers:
+                        name: List Filemanagers
+                        route: "vs_cms_file_manager_index"
+                        display: true
+                    create_filemanager:
+                        name: Create New Filemanager
+                        route: "vs_cms_file_manager_create"
+                        display: true
+                    update_filemanager:
+                        name: Edit Filemanager
+                        route: "vs_cms_file_manager_update"
+                        routeParameters:
+                          id: int
+                        display: false
+            
+            filemanager_artgris:
+                name: Artgris File Manager
+                uri: "javascript:;"
+                attributes:
+                    iconClass: icon_genius
+                childs:
+                    browse:
+                        name: Browse Files
+                        route: vs_cms_filemanager_artgris_list
+                        #uri: "/filemanager/?conf=default"
+                    upload:
+                        name: Upload a File
+                        route: vs_cms_filemanager_artgris_upload
+        
+        profileMenu:
+            profile:
+                name: "My Profile"
+                route: vs_users_profile_show
+                attributes:
+                    iconClass: "fas fa-user mr-2"
+            language:
+                name: "Language"
+                uri: "javascript:;"
+                attributes:
+                    iconClass: "fas fa-language mr-2"
+                childs:
+                    language_english:
+                        name: "English (US)"
+                        uri: /set_lang/en_US
+                        
+                    language_bulgarian:
+                        name: "Bulgarian"
+                        uri: /set_lang/bg_BG
+                        
+            logout:
+                name: "Log Out"
+                route: vs_application_logout
+                attributes:
+                    iconClass: "fas fa-power-off mr-2"
+                    divider_prepend: false
+                    divider_append: true
+            documentation:
+                name: "Documentation"
+                uri: "javascript:;"
+                attributes:
+                    iconClass: "fas fa-cog mr-2"
+
