@@ -1,0 +1,27 @@
+parameters:
+##########################################
+#    Disabled Models Example
+##########################################
+#    vs_users.voter.crud_disabled_models:
+#        'App\Entity\Post':
+#            ROLE_TEST_APPLICATION_ADMIN:
+#                - !php/const Vankosoft\UsersBundle\Security\Voter\CrudVoter::LIST
+#                - !php/const Vankosoft\UsersBundle\Security\Voter\CrudVoter::VIEW
+#                - !php/const Vankosoft\UsersBundle\Security\Voter\CrudVoter::CREATE
+#                - !php/const Vankosoft\UsersBundle\Security\Voter\CrudVoter::EDIT
+#                - !php/const Vankosoft\UsersBundle\Security\Voter\CrudVoter::REMOVE
+#
+#
+##########################################
+#    Owner Models Example
+##########################################
+#    vs_users.voter.crud_owner_models:
+#        - 'App\Entity\Post'
+#        - 'App\Entity\Comment'
+#
+#
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true

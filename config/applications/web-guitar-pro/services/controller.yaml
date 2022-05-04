@@ -1,0 +1,31 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    App\Controller\WebGuitarPro\:
+        resource: '../../../../src/Controller/WebGuitarPro'
+        tags: ['controller.service_arguments']
+        autowire: true
+    
+    App\Controller\WebGuitarPro\AuthController:
+        tags: ['controller.service_arguments']
+        autowire: true
+        arguments:
+            - '@vs_application.context.application'
+            - '@twig'
+    
+    App\Controller\WebGuitarPro\DefaultController:
+        tags: ['controller.service_arguments']
+        autowire: true
+        arguments:
+            - '@vs_application.context.application'
+            - '@twig'
+
+    App\Controller\WebGuitarPro\ProfileController:
+        tags: ['controller.service_arguments']
+        autowire: false
+        arguments:
+            - '@vs_users.manager.user'
+            - '@vs_users.factory.avatar_image'
+            - '@vs_cms.profile_uploader'

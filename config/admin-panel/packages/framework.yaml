@@ -1,0 +1,35 @@
+# see https://symfony.com/doc/current/reference/configuration/framework.html
+framework:
+    secret: '%env(APP_SECRET)%'
+    #csrf_protection: true
+    
+    #
+    # Very-Very Usefull to know about this configuration( especially for route methos PUT and DELETE) 
+    # https://symfony.com/doc/current/reference/configuration/framework.html#configuration-framework-http_method_override
+    http_method_override: true
+
+    php_errors:
+        log: true
+
+    # Enables session support. Note that the session will ONLY be started if you read or write from it.
+    # Remove or comment this section to explicitly disable session support.
+    session:
+        save_path: '%vs_application.session_save_path%'
+        handler_id: session.handler.native_file
+        storage_factory_id: session.storage.factory.native
+        
+        cookie_domain: '%vs_users.cookie.domain%'
+        cookie_secure: false
+        cookie_samesite: null
+        
+        # The cookie_lifetime would be set to a relatively high value, 
+        # and the garbage collection gc_maxlifetime would be set to destroy sessions at whatever the desired idle period is.
+        #########################################################################################################################
+        cookie_lifetime: '%vs_users.cookie.lifetime%'
+        gc_maxlifetime: '%vs_users.gc_maxlifetime%'
+        
+when@test:
+    framework:
+        test: true
+        session:
+            storage_factory_id: session.storage.factory.mock_file

@@ -1,75 +1,115 @@
-var Encore = require('@symfony/webpack-encore');
+var Encore = require( '@symfony/webpack-encore' );
 
-// Manually configure the runtime environment if not already configured yet by the "encore" command.
-// It's useful when you use tools that rely on webpack.config.js file.
-if (!Encore.isRuntimeEnvironmentConfigured()) {
-    Encore.configureRuntimeEnvironment(process.env.NODE_ENV || 'dev');
-}
-
+/**
+ *  AdminPanel Default Theme
+ */
 Encore
-    // directory where compiled assets will be stored
-    .setOutputPath('public/assets/build/')
-    // public path used by the web server to access the output path
-    .setPublicPath('/assets/build')
-    // only needed for CDN's or sub-directory deploy
-    //.setManifestKeyPrefix('build/')
+    .setOutputPath( 'public/admin-panel/build/default/' )
+    .setPublicPath( '/build/default/' )
 
-    /*
-     * ENTRY CONFIG
-     *
-     * Add 1 entry for each "page" of your app
-     * (including one that's included on every page - e.g. "app")
-     *
-     * Each entry will result in one JavaScript file (e.g. app.js)
-     * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
-     */
-    .addEntry('app', './assets/js/app.js')
-    .addEntry('tablature-player', './assets/js/pages/tablature-player.js')
-
-    // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
-    .splitEntryChunks()
-
-    // will require an extra script tag for runtime.js
-    // but, you probably want this, unless you're building a single-page app
-    .enableSingleRuntimeChunk()
-
-    /*
-     * FEATURE CONFIG
-     *
-     * Enable & configure other features below. For a full
-     * list of features, see:
-     * https://symfony.com/doc/current/frontend.html#adding-more-features
-     */
-    .cleanupOutputBeforeBuild()
-    .enableBuildNotifications()
-    .enableSourceMaps(!Encore.isProduction())
-    // enables hashed filenames (e.g. app.abc123.css)
-    .enableVersioning(Encore.isProduction())
-
-    // enables @babel/preset-env polyfills
-    .configureBabelPresetEnv((config) => {
-        config.useBuiltIns = 'usage';
-        config.corejs = 3;
-    })
-
-    // enables Sass/SCSS support
-    .enableSassLoader()
-
-    // uncomment if you use TypeScript
-    //.enableTypeScriptLoader()
-
-    // uncomment to get integrity="..." attributes on your script & link tags
-    // requires WebpackEncoreBundle 1.4 or higher
-    //.enableIntegrityHashes(Encore.isProduction())
-
-    // uncomment if you're having problems with a jQuery plugin
+	// FOS CkEditor
+	.copyFiles([
+		{from: './node_modules/bootstrap-sass/assets/fonts/bootstrap', to: 'fonts/bootstrap/[name].[ext]'},
+		
+        {from: './node_modules/ckeditor/', to: 'ckeditor/[path][name].[ext]', pattern: /\.(js|css)$/, includeSubdirectories: false},
+        {from: './node_modules/ckeditor/adapters', to: 'ckeditor/adapters/[path][name].[ext]'},
+        {from: './node_modules/ckeditor/lang', to: 'ckeditor/lang/[path][name].[ext]'},
+        {from: './node_modules/ckeditor/plugins', to: 'ckeditor/plugins/[path][name].[ext]'},
+        {from: './node_modules/ckeditor/skins', to: 'ckeditor/skins/[path][name].[ext]'}
+    ])
+    
+    // CKeditor 4 Extra Plugins
+    .copyFiles([
+        {from: './assets/admin-panel/vendor/ckeditor4_plugins', to: 'ckeditor/plugins/[path][name].[ext]'},
+    ])
+    
+    .copyFiles({
+         from: './assets/admin-panel/images',
+         to: 'images/[path][name].[ext]',
+     })
+    
     .autoProvidejQuery()
-
-    // uncomment if you use API Platform Admin (composer req api-admin)
-    //.enableReactPreset()
-    //.addEntry('admin', './assets/js/admin.js')
+    .enableSassLoader(function(sassOptions) {}, {
+        resolveUrlLoader: true
+    })
+    .configureFilenames({
+        js: '[name].js?[contenthash]',
+        css: '[name].css?[contenthash]',
+        assets: '[name].[ext]?[hash:8]'
+    })
+    .enableSingleRuntimeChunk()
+    .enableVersioning(Encore.isProduction())
+    .enableSourceMaps( !Encore.isProduction() )
+    
+    //////////////////////////////////////////////////////////////////
+    // ASSETS
+    //////////////////////////////////////////////////////////////////
+    .addEntry( 'js/app', './assets/admin-panel/js/app.js' )
+    .addStyleEntry( 'css/global', './assets/admin-panel/css/main.scss' )
+    
+    .addEntry( 'js/settings', './assets/admin-panel/js/pages/settings.js' )
+    .addEntry( 'js/applications', './assets/admin-panel/js/pages/applications.js' )
+    .addEntry( 'js/profile', './assets/admin-panel/js/pages/profile.js' )
+    .addEntry( 'js/taxonomy-vocabolaries', './assets/admin-panel/js/pages/taxonomy-vocabolaries.js' )
+    .addEntry( 'js/taxonomy-vocabolaries-edit', './assets/admin-panel/js/pages/taxonomy-vocabolaries-edit.js' )
+    
+    .addEntry( 'js/pages-categories', './assets/admin-panel/js/pages/pages_categories.js' )
+    .addEntry( 'js/pages-categories-edit', './assets/admin-panel/js/pages/pages_categories_edit.js' )
+    .addEntry( 'js/pages-index', './assets/admin-panel/js/pages/pages-index.js' )
+    .addEntry( 'js/pages-edit', './assets/admin-panel/js/pages/pages-edit.js' )
+    .addEntry( 'js/documents-index', './assets/admin-panel/js/pages/documents-index.js' )
+    .addEntry( 'js/documents-edit', './assets/admin-panel/js/pages/documents-edit.js' )
+    
+    .addEntry( 'js/users-index', './assets/admin-panel/js/pages/users-index.js' )
+    .addEntry( 'js/users-edit', './assets/admin-panel/js/pages/users-edit.js' )
+    .addEntry( 'js/users-roles-index', './assets/admin-panel/js/pages/users-roles-index.js' )
+    .addEntry( 'js/users-roles-edit', './assets/admin-panel/js/pages/users-roles-edit.js' )
+    
+    .addEntry( 'js/filemanager-index', './assets/admin-panel/js/pages/filemanager-index.js' )
+    .addEntry( 'js/filemanager-file-upload', './assets/admin-panel/js/pages/filemanager-file-upload.js' )
 ;
 
-const config = Encore.getWebpackConfig();
+const adminPanelConfig = Encore.getWebpackConfig();
+adminPanelConfig.name = 'adminPanel';
 
-module.exports = config;
+//=================================================================================================
+
+/**
+ *  WebGuitarPro Standard Theme
+ */
+Encore.reset();
+const WebGuitarPro_Standard_Config   = require('./themes/WebGuitarPro_Standard/webpack.config');
+
+//=================================================================================================
+
+/**
+ *  WebGuitarPro VueJs Theme
+ */
+Encore.reset();
+const WebGuitarPro_VueJs_Config   = require('./themes/WebGuitarPro_VueJs/webpack.config');
+
+//=================================================================================================
+
+/**
+ *  WebGuitarPro ReactJs Theme
+ */
+//Encore.reset();
+//const WebGuitarPro_ReactJs_Config   = require('./themes/WebGuitarPro_ReactJs/webpack.config');
+
+//=================================================================================================
+
+/**
+ *  WebGuitarPro AngularJs Theme
+ */
+//Encore.reset();
+//const WebGuitarPro_AngularJs_Config   = require('./themes/WebGuitarPro_AngularJs/webpack.config');
+
+//=================================================================================================
+
+module.exports = [
+    adminPanelConfig,
+    WebGuitarPro_Standard_Config,
+    WebGuitarPro_VueJs_Config,
+    //WebGuitarPro_ReactJs_Config,
+    //WebGuitarPro_AngularJs_Config,
+];

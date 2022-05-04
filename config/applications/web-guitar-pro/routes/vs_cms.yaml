@@ -1,0 +1,12 @@
+vs_cms_pages:
+    resource: "@VSCmsBundle/Resources/config/routing/pages.yml"
+    prefix: /
+    
+vs_cms_images:
+    resource: "@VSCmsBundle/Resources/config/routing/images.yml"
+    prefix: /
+
+# Needed Of Pages Created With CKEditor
+artgris_filemanager:
+    resource: "@ArtgrisFileManagerBundle/Resources/config/routing.yml"
+    prefix: /artgris_filemanager

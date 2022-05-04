@@ -1,0 +1,17 @@
+parameters:
+    # If you have different path for menu configuration set it here
+    #vs_application.menu.config_file: "%kernel.project_dir%/config/admin-panel/packages/vs_application.yaml"
+    
+    # If You create Any Custom Menue, add it to menus array to can use for breadcrumbs
+    #vs_application.main_menus: ['profileMenu', 'mainSystemMenu', 'mainCmsMenu']
+
+services:
+    # Custom Menus
+    ######################################################
+#    app.main_menu_custom:
+#        autowire: false
+#        class: Knp\Menu\MenuItem
+#        factory: ["@vs_app.menu_builder", mainMenu]
+#        arguments: ["@knp_menu.factory", 'mainCustomMenu']
+#        tags:
+#            - { name: knp_menu.menu, alias: mainCustom }

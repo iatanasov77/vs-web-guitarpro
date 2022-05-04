@@ -1,0 +1,39 @@
+# See dos how to configure the bundle: https://symfony.com/doc/current/bundles/LiipImagineBundle/basic-usage.html
+liip_imagine:
+    # valid drivers options include "gd" or "gmagick" or "imagick"
+    driver: "gd"
+    
+    loaders:
+        default:
+            filesystem:
+                data_root:
+                    - "%kernel.project_dir%/public/shared_media/gaufrette/profile"
+                    - "%kernel.project_dir%/public/shared_media/gaufrette/filemanager"
+                    - "%kernel.project_dir%/public/shared_media/artgris"
+    
+    resolvers:
+        default:
+            web_path:
+                web_root: "%kernel.project_dir%/public/admin-panel"
+                cache_prefix: "media/cache"
+
+    filter_sets:
+        cache: ~
+        
+        profile_form_thumb:
+            quality: 75
+            filters:
+                thumbnail: { size: [120, 90], mode: outbound }
+                background: { size: [124, 94], position: center, color: '#ffffff' }
+        
+        users_crud_index_thumb:
+            quality: 75
+            filters:
+                thumbnail: { size: [50, 50], mode: outbound }
+                background: { size: [50, 50], position: center, color: '#ffffff' }
+                
+        file_manager_files_thumb:
+            quality: 75
+            filters:
+                thumbnail: { size: [50, 50], mode: outbound }
+                background: { size: [50, 50], position: center, color: '#ffffff' }

@@ -1,0 +1,23 @@
+vs_cms:
+    resources:
+        pages:
+            classes:
+                model: App\Entity\Cms\Page
+        page_categories:
+            classes:
+                model: App\Entity\Cms\PageCategory
+        document_categories:
+            classes:
+                model: App\Entity\Cms\DocumentCategory
+        document:
+            classes:
+                model: App\Entity\Cms\Document
+        toc_page:
+            classes:
+                model: App\Entity\Cms\TocPage
+        file_manager:
+            classes:
+                model: App\Entity\Cms\FileManager
+        file_manager_file:
+            classes:
+                model: App\Entity\Cms\FileManagerFile

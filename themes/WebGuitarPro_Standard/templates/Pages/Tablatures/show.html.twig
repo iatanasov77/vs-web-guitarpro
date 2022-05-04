@@ -1,0 +1,57 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{ parent() }} :: Tablatures{% endblock %}
+{% block pageTitle %}<i class="icon_genius"></i> Tablatures{% endblock %}
+
+{% block content %}
+    <div class="row" style="margin-top: 110px">
+        <!-- Sidebar  -->
+        {% include 'Partial/tablature-sidebar.html.twig' %}
+    
+        <div id="messages">
+            {% if error %}
+                <div>{{ error.messageKey|trans( error.messageData, 'security' ) }}</div>
+            {% endif %}
+        </div>
+        <div id="tablatureWrapper">
+            <div id="song-details">
+                <h1 class="artist"></h2>
+                <h2 class="title"></h1>
+                <h2 class="subTitle"></h2>
+                <h3 class="album"></h3>
+            </div>
+            <div id="alphaTab"
+                data-file="{{ path( 'tablature_read', {id: item.id} ) }}"
+                data-tracks="0"
+                data-display-staveprofile="scoretab"
+                data-notation-rhythmmode="ShowWithBars"
+                data-player-enableplayer="1"
+                data-player-soundFont="/build/web-guitar-pro-standard/soundfont/sonivox.sf2"
+            ></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block widgets %}
+    <div class="progress widget-progress" id="soundFontProgressMenuItem">
+        <div class="progress-bar" id="soundFontProgress" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+            0%
+        </div>
+    </div>
+{% endblock %}
+
+{% block svg %}
+    {% include 'Partial/tablature-player-svg.html.twig' %}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    {{ encore_entry_link_tags( 'tablature-player', null, 'WebGuitarPro_Standard' ) }}
+{% endblock %}  
+
+{% block javascripts %}
+    {{ parent() }}
+    
+    {{ encore_entry_script_tags( 'tablature-player', null, 'WebGuitarPro_Standard' ) }}
+{% endblock %}

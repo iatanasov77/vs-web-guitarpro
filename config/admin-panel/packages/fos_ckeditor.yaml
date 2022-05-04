@@ -1,0 +1,33 @@
+# Read the documentation: https://symfony.com/doc/current/bundles/FOSCKEditorBundle/index.html
+
+twig:
+    form_themes:
+        - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
+
+fos_ck_editor:
+    base_path: "build/default/ckeditor"
+    js_path:   "build/default/ckeditor/ckeditor.js"
+
+    toolbars:
+        configs:
+            document_toolbar: ["@document", "|", "@basicstyles", "|", "@links", "|", "@lists"]
+            devpage_toolbar: [
+                "@document", "|", "@justify", "|", "@lists", "|", "@dev_tools", "|", "@links", "/", 
+                "@basicstyles", "|", "@styles"
+            ]
+            example_toolbar: [ [ "Source" ], "/", [ "Anchor" ], "/", [ "Maximize" ] ]
+            
+        items:
+            basicstyles: ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript']
+            styles: ['Styles','Format','Font','FontSize']
+            justify: ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock']
+            document: ['Source', 'Save', 'NewPage']
+            lists: ['NumberedList', 'BulletedList']
+            links: ['Link', 'Unlink','Image', 'lightbox']
+            dev_tools: [ 'CodeSnippet', 'Indent', 'Outdent' ]
+            
+    plugins:
+        codesnippet:
+            path:     "/build/default/ckeditor/plugins/codesnippet/" # with trailing slash
+            filename: "plugin.js"
+

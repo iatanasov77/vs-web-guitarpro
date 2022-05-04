@@ -1,0 +1,23 @@
+parameters:
+    vs_wgp.tablatures_directory: "%kernel.project_dir%/public/shared_media/gaufrette/tablatures"
+
+services:
+    _defaults:
+        #autowire: true
+        #autoconfigure: true
+        public: true
+
+    vs_wgp.tablature_uploader.filesystem:
+        class: Gaufrette\Filesystem
+        arguments: ['vs_wgp_tablatures']
+        factory: ['@knp_gaufrette.filesystem_map', 'get']
+        
+    vs_wgp.tablature_file_path_generator:
+        class: App\Component\TablatureUploader\FilePathGenerator
+        
+    vs_wgp.tablature_uploader:
+        class: App\Component\TablatureUploader\TablatureUploader
+        arguments:
+            - '@vs_wgp.tablature_uploader.filesystem'
+            - '@vs_wgp.tablature_file_path_generator'
+

@@ -1,0 +1,14 @@
+parameters:
+    vs_application.menu.config_file: "%kernel.project_dir%/config/applications/web-guitar-pro/packages/vs_application.yaml"
+    vs_application.main_menus: ['mainApplicationMenu']
+
+services:
+    # Custom Menus
+    ######################################################
+    application.main_menu:
+        autowire: false
+        class: Knp\Menu\MenuItem
+        factory: ["@vs_app.menu_builder", mainMenu]
+        arguments: ["@knp_menu.factory", 'mainApplicationMenu']
+        tags:
+            - { name: knp_menu.menu, alias: mainApplication }

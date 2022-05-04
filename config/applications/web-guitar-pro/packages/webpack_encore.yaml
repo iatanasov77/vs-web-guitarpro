@@ -1,0 +1,22 @@
+framework:
+    assets:
+        packages:
+            default:
+                json_manifest_path: '%kernel.project_dir%/public/web-guitar-pro/build/default/manifest.json'
+            web-guitar-pro-standard:
+                json_manifest_path: '%kernel.project_dir%/public/shared_assets/build/web-guitar-pro-standard/manifest.json'
+            web-guitar-pro-vuejs:
+                json_manifest_path: '%kernel.project_dir%/public/shared_assets/build/web-guitar-pro-vuejs/manifest.json'
+            web-guitar-pro-reactjs:
+                json_manifest_path: '%kernel.project_dir%/public/shared_assets/build/web-guitar-pro-reactjs/manifest.json'
+            web-guitar-pro-angularjs:
+                json_manifest_path: '%kernel.project_dir%/public/shared_assets/build/web-guitar-pro-angularjs/manifest.json'
+webpack_encore:
+    output_path: '%kernel.project_dir%/public/web-guitar-pro/build/default'
+    builds:
+        defaultConfig: '%kernel.project_dir%/public/web-guitar-pro/build/default'
+        
+        WebGuitarPro_Standard: '%kernel.project_dir%/public/shared_assets/build/web-guitar-pro-standard'
+        WebGuitarPro_VueJs: '%kernel.project_dir%/public/shared_assets/build/web-guitar-pro-vuejs'
+        WebGuitarPro_ReactJs: '%kernel.project_dir%/public/shared_assets/build/web-guitar-pro-reactjs'
+        WebGuitarPro_AngularJs: '%kernel.project_dir%/public/shared_assets/build/web-guitar-pro-angularjs'

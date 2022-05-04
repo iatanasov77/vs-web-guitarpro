@@ -1,0 +1,97 @@
+<div id="player-controls">
+    <nav id="sidebar" class="sidebar active">
+        <div class="player-controls">
+        	<div id="btnPlayPause" class="player-controls__item" @click="playPause">
+        		<svg class="icon">
+            		<use xlink:href="#icon-pause-litle" v-if="playerState==1"></use>
+                	<use xlink:href="#icon-play-litle" v-else></use>
+              	</svg>
+			</div>
+			
+			<div id="btnStop" class="player-controls__item" @click="stop">
+        		<svg class="icon">
+            		<use xlink:href="#icon-stop"></use>
+              	</svg>
+			</div>
+			
+            <div class="player-controls__item">
+              	<svg class="icon dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+                	<use xlink:href="#icon-guitar"></use>
+              	</svg>
+                <div class="dropdown-menu">
+                	<div id="trackList" class="dropdown-menu-background scrollable-menu-side"></div>
+                </div>
+            </div>
+            
+            <div class="player-controls__item -speed" @click="speed">
+              	<svg class="icon dropdown-toggle player-button" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+                	<use xlink:href="#speed-selector"></use>
+              	</svg>
+                <div class="dropdown-menu">
+                	<div id="speedSelector" class="dropdown-menu-background">
+                		<ul>
+            				<li v-for="s in speeds" :class="{active:s.id == selectedSpeed}"
+            					@click="selectedSpeed = s.id"
+            					@click.prevent="speed()"
+            					:data-value=s.value
+            					:data-text=s.text
+            				>${ s.text }</li>
+            			</ul>
+                	</div>
+                </div>
+            </div>
+            
+            <!-- Loop Button -->
+            <div id="btnLooping" class="player-controls__item" @click="looping">
+            	<svg class="icon">
+            		<use xlink:href="#icon-looping"></use>
+                </svg>
+            </div>
+            
+            <!-- Metronome Button -->
+            <div id="btnMetronome" class="player-controls__item" @click="metronome">
+            	<div class="icon icon-metronome"></div>
+            </div>
+            
+            <!--  
+            <div id="btnCountIn" class="player-controls__item" @click="countIn">
+            	<svg class="icon">
+            		<use xlink:href="#icon-countin"></use>
+                </svg>
+            </div>
+            -->
+            
+            <!-- Print Button -->
+            <div class="player-controls__item" @click="print">
+            	<svg class="icon">
+            		<use xlink:href="#icon-print"></use>
+                </svg>
+            </div>
+            
+        {% if app.user %}
+        	<!-- Add to Favorites Button -->
+            <div id="add-favorite-url" class="player-controls__item -favorite" data-url="{{ path( 'tablature_favorite', {'id': item.id} ) }}" @click="favorite">
+                <svg class="icon">
+                	<use xlink:href="#icon-heart-o"></use>
+                </svg>
+            </div>
+        {% endif %}
+        
+        	<div class="player-controls__item">
+            	<div class="icon icon-settings dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false"></div>
+            	<div class="dropdown-menu dropright dropup dropdown-layers">
+            		<div class="dropdown-menu-background">
+            			<ul>
+            				<li v-for="l in layouts" :class="{active:l.id == selectedLayout}"
+            					@click="selectedLayout = l.id"
+            					@click.prevent="layout()"
+            					:data-layout=l.layout
+            					:data-scrollmode=l.scrollmode 
+            				>${ l.text }</li>
+            			</ul>
+                	</div>
+                </div>
+           	</div>
+        </div>
+    </nav>
+</div>

@@ -1,0 +1,7 @@
+tablature_read:
+    path: /tablatures-ext/{id}/read
+    controller: App\Controller\WebGuitarPro\TablatureExtController::read
+
+tablature_favorite:
+    path: /tablatures-ext/{id}/add-favorite
+    controller: App\Controller\WebGuitarPro\FavoritesController::addFavorite
