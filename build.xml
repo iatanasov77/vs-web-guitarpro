@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="VankoSoft.Org" default="build">
+    <resolvepath propertyName="root_path" file="./" />
+    
+    <target name="install-production" depends="setup-backend-production,setup-frontend-production"></target>
+    <target name="install-staging" depends="setup-backend-staging,setup-frontend-staging"></target>
+  
+    <target name="setup-frontend-production">
+        <exec command="yarn install" returnProperty="yarn_install_output" />
+        <exec command="yarn run build" returnProperty="yarn_run_output" />
+    </target>
+    
+    <target name="setup-frontend-staging">
+        <exec command="yarn install" returnProperty="yarn_install_output" />
+        <exec command="yarn run dev" returnProperty="yarn_run_output" />
+    </target>
+
+    <target name="setup-backend-production">
+        <if>
+		    <available file="${root_path}/vendor" type="dir" />
+		    <then>
+                <exec command="/usr/local/bin/composer update --no-dev --no-interaction --prefer-dist" returnProperty="vendors_output" />
+            </then>
+            <else>
+                <exec command="/usr/local/bin/composer install --no-dev --no-interaction --prefer-dist" returnProperty="vendors_output" />
+ 			</else>
+        </if>
+    </target>
+    
+    <target name="setup-backend-staging">
+        <if>
+            <available file="${root_path}/vendor" type="dir" />
+            <then>
+                <exec command="/usr/local/bin/composer update --no-interaction --prefer-dist" returnProperty="vendors_output" />
+            </then>
+            <else>
+                <exec command="/usr/local/bin/composer install --no-interaction --prefer-dist" returnProperty="vendors_output" />
+            </else>
+        </if>
+    </target>
+
+    <target name="run-tests">
+        <exec command="phpunit -c app" checkreturn="true" />
+    </target>
+</project>

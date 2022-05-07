@@ -1,0 +1,96 @@
+; log file (defaults to config file with .log extension)
+log = deploy_staging.log
+
+; directory for temporary files (defaults to system's temporary directory)
+tempDir = /tmp/deploy_staging
+
+; enable colored highlights? (defaults to autodetect)
+;colors = yes
+
+[production] ; Optional section (there may be more than one section).
+; remote FTP server
+; you can use ftps://, sftp://, file:// or phpsec:// protocols (sftp requires SSH2 extension; phpsec uses phpseclib library)
+;
+; Error: PHP extension SSH2 is not loaded. in phar:///usr/local/bin/ftpdeploy/src/Deployment/SshServer.php:57
+;remote = sftp://164.138.221.242:1022/opt/VankosoftProjects/VankoSoft.Org/production/
+remote = "${url}"
+
+; do not like to specify user & password in 'remote'? Use these options:
+user = "${user}"
+password = "${password}"
+
+; FTP passive mode
+passiveMode = yes
+
+; local path (optional)
+local = .
+
+; run in test-mode? (can be enabled by option -t or --test)
+test = no
+
+; files and directories to ignore
+ignore = "
+	.git*
+    README.md
+    LICENSE
+    VERSION
+    CHANGELOG.md
+    
+    Jenkinsfile
+    /ftp_deploy.ini
+    /ftp_deploy.ini.production
+    /ftp_deploy.ini.staging
+    /.env.production
+    /.env.staging
+
+    build.xml
+    composer.lock
+    symfony.lock
+    package.json
+    webpack.config.js
+    yarn.lock
+    yarn-error.log
+    /node_modules
+    /assets
+    
+    /docs
+    /templates/base.html.twig
+    /src/Kernel.php
+    /config/packages
+    /config/routes
+    /config/bundles.php
+    /config/preload.php
+    /config/routes.yaml
+    /config/services.yaml
+"
+
+; explicit list of files and directories to include (by default includes all files and directories)
+include = "
+    /bin
+    /bin/*
+    /config
+    /config/*
+    /public
+    /public/*
+    /src
+    /src/*
+    /templates
+    /templates/*
+    /themes
+    /themes/*
+    /translations
+    /translations/*
+    /vendor
+    /vendor/*
+    /.env
+    /composer.json
+    /themes/DeveloperBlog/composer.json
+    /themes/DeveloperWebsite/composer.json
+"
+
+; is allowed to delete remote files? (defaults to yes)
+allowDelete = yes
+
+; file which contains hashes of all uploaded files (defaults to .htdeployment)
+deploymentFile = .deployment
+

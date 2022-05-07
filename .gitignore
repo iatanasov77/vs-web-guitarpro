@@ -52,8 +52,14 @@ yarn-error.log
 /public/media/cache/
 ###< liip/imagine-bundle ###
 
-###> VankosoftApplication Files ###
 
+###> Jenkins Deploy Files ###
+/.env
+/ftp_deploy.ini
+###< Jenkins Deploy Files ###
+
+###> VankosoftApplication Files ###
+/[all
 /config/*
 /VSAPP_VERSION
 
@@ -62,6 +68,8 @@ yarn-error.log
 /public/admin-panel/bundles/
 /public/admin-panel/media/
 /public/shared_assets/build/
+/public/shared_media/gaufrette/filemanager/
+/public/shared_media/gaufrette/profile/
 
 # Except for the applications configs:
 !/config/admin-panel
@@ -71,5 +79,6 @@ yarn-error.log
 /public/test-vankosoft-application/build/
 /public/test-vankosoft-application/bundles/
 /public/test-vankosoft-application/media/
+/public/shared_media/gaufrette/tablatures/
 
 ###< VankosoftApplication Files ###
