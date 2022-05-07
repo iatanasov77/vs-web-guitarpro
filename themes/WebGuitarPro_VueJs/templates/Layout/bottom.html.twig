@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="site-support">
             <a href="http://vankosoft.org" class="float-right">
-                Supported by: VankoSoft.Org &copy2022
+                Supported by: VankoSoft.Org &copy{% if "now"|date("Y") > 2022 %}2022 - {% endif %}{{ "now"|date("Y") }}
             </a>
         </div>
     </div>

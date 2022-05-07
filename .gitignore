@@ -52,8 +52,13 @@ yarn-error.log
 /public/media/cache/
 ###< liip/imagine-bundle ###
 
-###> VankosoftApplication Files ###
 
+###> Jenkins Deploy Files ###
+/.env
+/ftp_deploy.ini
+###< Jenkins Deploy Files ###
+
+###> VankosoftApplication Files ###
 /config/*
 /VSAPP_VERSION
 
