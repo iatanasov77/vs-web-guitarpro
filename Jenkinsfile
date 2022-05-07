@@ -99,9 +99,16 @@ node ( label: 'php-host' ) {
         writeFile file: 'ftp_deploy.ini',
                 text: vankosoftJob.renderTemplate( CONFIG_TEMPLATE, ['url': APP_FTP_URL, 'user': APP_FTP_USER, 'password': APP_FTP_PASSWORD] )
                 
+        switch( BUILD_ENVIRONMENT ) {
+            case 'staging':
+                APP_HOST    = 'guitarpro-staging.vankosoft.org'
+                break;
+            default:
+                APP_HOST    = 'guitarpro.vankosoft.org'
+        }
         CONFIG_TEMPLATE = readFile( ".env.${BUILD_ENVIRONMENT}" )
         writeFile file: '.env',
-                text: vankosoftJob.renderTemplate( CONFIG_TEMPLATE, ['database_url': APP_DATABASE_URL] )
+                text: vankosoftJob.renderTemplate( CONFIG_TEMPLATE, ['database_url': APP_DATABASE_URL, 'app_host': APP_HOST] )
     }
     
     stage( 'Before Deploy (Create Backup on Hosting, Set Maintenance Mode etc.)' ) {
