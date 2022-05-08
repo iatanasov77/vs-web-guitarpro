@@ -14,10 +14,11 @@ $( function()
 			data : data
 		}).done( function( response ) {
 			$( "#server-results" ).html( response );
+			document.location = document.location;
 		}).fail( function() {
-			  alert( 'fail' );
+			  alert( 'LOGIN ERROR !!!' );
 		}).always( function() {
-			alert( 'always' );
+			//alert( 'always' );
 		});
 	});
 });

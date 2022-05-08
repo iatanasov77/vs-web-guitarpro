@@ -32,8 +32,8 @@ test = no
 ignore = "
 	.git*
     README.md
-    LICENSE
-    VERSION
+    /LICENSE
+    /VERSION
     CHANGELOG.md
     
     Jenkinsfile

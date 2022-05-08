@@ -1,3 +1,10 @@
+1.1.1	|	Release date: **08.05.2022**
+============================================
+* Bug-Fixes:
+  - Fix Ftp Deploy Configs.
+  - Fix Application Login.
+
+
 1.1.0	|	Release date: **07.05.2022**
 ============================================
 * New Features:
