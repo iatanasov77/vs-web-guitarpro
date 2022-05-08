@@ -6,7 +6,7 @@
 {% block content %}
     <div class="row" style="margin-top: 110px">
         <div id="messages">
-            {% if error is defined %}
+            {% if error %}
                 <div>{{ error.messageKey|trans( error.messageData, 'security' ) }}</div>
             {% endif %}
         </div>

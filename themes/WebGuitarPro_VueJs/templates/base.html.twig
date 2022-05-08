@@ -15,7 +15,9 @@
                 
     		    {% block content %}{% endblock %}
     		    
-    		    {% include 'Layout/bottom.html.twig' %}
+    		    {% block copyright %}
+    		          {% include 'Layout/bottom.html.twig' %}
+    		    {% endblock %}
     		</div>
     	</div>
     	
