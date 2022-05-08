@@ -160,6 +160,10 @@ ENDSSH
                             ${PHP_BIN} -d memory_limit=-1 bin/web-guitar-pro cache:clear
                             
                             #${PHP_BIN} -d memory_limit=-1 bin/console vankosoft:maintenance --unset-maintenance
+                            
+                            #SETUP APPLICATION PERMISSIONS
+                            chmod -R 0777 ${REMOTE_DIR}
+                            
                             exit \$migrationCode
 ENDSSH
                     """
@@ -176,6 +180,9 @@ ENDSSH
                             
                             ${PHP_BIN} -d memory_limit=-1 bin/console cache:clear
                             ${PHP_BIN} -d memory_limit=-1 bin/web-guitar-pro cache:clear
+                            
+                            #SETUP APPLICATION PERMISSIONS
+                            chmod -R 0777 ${REMOTE_DIR}
                             
                             exit \$migrationCode
 ENDSSH
