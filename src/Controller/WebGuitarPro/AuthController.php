@@ -58,11 +58,11 @@ class AuthController extends AbstractController
     
     protected function getTemplate(): string
     {
-        $template   = 'web-guitar-pro/pages/login.html.twig';
+        $template   = 'web-guitar-pro/Pages/login.html.twig';
         
         $appSettings    = $this->applicationContext->getApplication()->getSettings();
         if ( ! $appSettings->isEmpty() && $appSettings[0]->getTheme() ) {
-            $template   = 'pages/login.html.twig';
+            $template   = 'Pages/login.html.twig';
         }
         
         return $template;

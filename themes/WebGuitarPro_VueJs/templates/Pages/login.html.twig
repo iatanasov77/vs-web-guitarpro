@@ -1,0 +1,17 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{ parent() }} :: Application Login{% endblock %}
+{% block pageTitle %}<i class="icon_genius"></i> Application Login{% endblock %}
+
+{% block content %}
+    <div class="row" style="margin-top: 110px">
+        <div id="messages">
+            {% if error is defined %}
+                <div>{{ error.messageKey|trans( error.messageData, 'security' ) }}</div>
+            {% endif %}
+        </div>
+        <div class="col-md-12 col-sm-12 col-12">
+            {% include 'Partial/login-form.html.twig' %}
+        </div>
+    </div>
+{% endblock %}
