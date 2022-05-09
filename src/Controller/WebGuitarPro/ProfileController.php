@@ -61,7 +61,7 @@ class ProfileController extends AbstractController
         $oUser          = $this->getUser();
         $form           = $this->createForm( ProfileFormType::class, $oUser, [
             'data'      => $oUser,
-            'action'    => $this->generateUrl( 'wct_user_profile_show' ),
+            'action'    => $this->generateUrl( 'wgp_user_profile_show' ),
             'method'    => 'POST',
         ]);
         
@@ -141,7 +141,7 @@ class ProfileController extends AbstractController
     {
         $changePasswordForm = $this->createForm( ChangePasswordFormType::class, $oUser, [
             'data'      => $oUser,
-            'action'    => $this->generateUrl( 'wct_user_profile_change_password' ),
+            'action'    => $this->generateUrl( 'wgp_user_profile_change_password' ),
             'method'    => 'POST',
         ]);
         

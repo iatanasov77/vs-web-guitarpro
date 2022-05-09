@@ -45,6 +45,8 @@ Encore
      */
     .addEntry('app', './themes/WebGuitarPro_VueJs/assets/app.js')
     .addEntry('tablature-player', './themes/WebGuitarPro_VueJs/assets/js/Player/index.js')
+    
+    .addEntry('authentication', './themes/WebGuitarPro_VueJs/assets/js/pages/authentication.js')
 ;
 
 const config = Encore.getWebpackConfig();
