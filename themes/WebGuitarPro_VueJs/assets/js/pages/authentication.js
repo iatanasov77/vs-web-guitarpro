@@ -7,7 +7,7 @@ VsLoadTranslations(['VSApplicationBundle']);
 
 $( function()
 {
-    $( '#btnGeneratePassword' ).on( 'click', function ( e )
+    $( '#btnGeneratePasswordRegisterForm' ).on( 'click', function ( e )
     {
         $.ajax({
             type: 'GET',
@@ -17,8 +17,8 @@ $( function()
                 if ( data['status'] == 'ok' ) {
                     var password    = data['data']['passwords'][0];
                     
-                    $( '#change_password_form_password_first' ).val( password );
-                    $( '#change_password_form_password_second' ).val( password );
+                    $( '#registration_form_plain_password_first' ).val( password );
+                    $( '#registration_form_plain_password_second' ).val( password );
                     
                     var dialog  = VsDisplayPassword( password );
                 } else {
