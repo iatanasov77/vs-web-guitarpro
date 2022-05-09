@@ -1,0 +1,4 @@
+Start Mailcatcher as User vagrant
+---------------------------------
+$ mailcatcher --ip 10.3.3.2
+
