@@ -7,3 +7,7 @@
     text-align: center;
 }
 
+.custom-control-label a {
+    color: #007bff;
+}
+

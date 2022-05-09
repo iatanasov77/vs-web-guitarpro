@@ -52,12 +52,16 @@ class RegisterController extends AbstractController
         UserManager $userManager,
         RepositoryInterface $usersRepository,
         RepositoryInterface $userRolesRepository,
-        MailerInterface $mailer
+        MailerInterface $mailer,
+        
+        RepositoryInterface $pagesRepository
     ) {
         $this->userManager          = $userManager;
         $this->usersRepository      = $usersRepository;
         $this->userRolesRepository  = $userRolesRepository;
         $this->mailer               = $mailer;
+        
+        $this->pagesRepository      = $pagesRepository;
     }
 
     public function setTokenGenerator( VerifyEmailTokenGenerator $tokenGenerator ) : void
@@ -72,6 +76,10 @@ class RegisterController extends AbstractController
     
     public function index( Request $request  ) : Response
     {
+        if ( $this->getUser() ) {
+            return $this->redirectToRoute( 'app_home' );
+        }
+        
         $form       = $this->createForm( RegistrationForm::class, new User(), [
             'action'    => $this->generateUrl( 'wgp_user_registration_form' ),
         ]);
@@ -87,7 +95,7 @@ class RegisterController extends AbstractController
             );
             
             // Set Role: ROLE_WEB_CONTENT_THIEF_ADMIN
-            $user->addRole( $this->userRolesRepository->findByTaxonCode( 'role-web-content-thief-admin' ) );
+            $user->addRole( $this->userRolesRepository->findByTaxonCode( 'role-web-guitar-pro' ) );
             $user->setPreferedLocale( $request->getLocale() );
             $user->setVerified( false );
             $user->setEnabled( false );
@@ -99,8 +107,10 @@ class RegisterController extends AbstractController
         }
         
         return $this->render( 'Pages/Register/register.html.twig', [
-            'errors' => $form->getErrors( true, false ),
-            'form'  => $form->createView(),
+            'errors'            => $form->getErrors( true, false ),
+            'form'              => $form->createView(),
+            'termsPageTitle'    => $this->pagesRepository->findBySlug( 'terms-and-conditions' )->getTitle(),
+            'termsPageContent'  => $this->pagesRepository->findBySlug( 'terms-and-conditions' )->getText(),
         ]);
     }
     

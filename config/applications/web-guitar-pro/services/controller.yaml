@@ -38,6 +38,7 @@ services:
             - '@vs_users.repository.users'
             - '@vs_users.repository.user_roles'
             - '@mailer'
+            - '@vs_cms.repository.pages'
         calls:
             - setTokenGenerator: ['@?symfonycasts.verify_email.token_generator']
             - setVerifyEmailHelper: ['@?symfonycasts.verify_email.helper']

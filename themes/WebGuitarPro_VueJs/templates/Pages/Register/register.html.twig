@@ -44,13 +44,21 @@
                     </div>
                     <div class="form-group">
                         <label class="custom-control custom-checkbox">
-                            <input class="custom-control-input" type="checkbox"><span class="custom-control-label">By creating an account, you agree the <a href="#">terms and conditions</a></span>
+                            <input class="custom-control-input" type="checkbox" />
+                            <span class="custom-control-label">
+                                By creating an account, you agree the 
+                                <a href="javascript:void(0);" data-toggle="modal" data-target="#terms-and-conditions-modal">terms and conditions</a>
+                            </span>
                         </label>
                     </div>
                 {{ form_end(form, {'render_rest': false}) }}
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block widgets %}    
+    {% include 'Modal/terms_and_conditions.html.twig' %}
 {% endblock %}
 
 {% block stylesheets %}
