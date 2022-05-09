@@ -1,6 +1,5 @@
 <?php namespace App\Controller\WebGuitarPro;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
@@ -10,7 +9,7 @@ use Vankosoft\ApplicationBundle\Component\Context\ApplicationContextInterface;
 use App\Entity\Tablature;
 use App\Form\TablatureForm;
 
-class DefaultController extends AbstractController
+class DefaultController extends Controller
 {
     /** @var ApplicationContextInterface */
     private $applicationContext;
@@ -27,12 +26,11 @@ class DefaultController extends AbstractController
     }
     
     public function index( Request $request ): Response
-    {
+    {//var_dump( $this->getParameter( 'vs_users.registration_form' ) ); die;
         $er = $this->getDoctrine()->getRepository( 'App\Entity\Tablature' );
-        $tabForm    = $this->createForm( TablatureForm::class, new Tablature() );
         
         $params = [
-            'tabForm'   => $tabForm->createView(),
+            'tabForm'   => $this->getTabForm()->createView(),
             'tabs'      => $er->findAll()
         ];
         return new Response( $this->templatingEngine->render( $this->getTemplate(), $params ) );

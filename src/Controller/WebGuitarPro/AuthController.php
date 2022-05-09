@@ -1,13 +1,12 @@
 <?php namespace App\Controller\WebGuitarPro;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Twig\Environment;
 
 use Vankosoft\ApplicationBundle\Component\Context\ApplicationContextInterface;
 
-class AuthController extends AbstractController
+class AuthController extends Controller
 {
     /** @var ApplicationContextInterface */
     private $applicationContext;
@@ -29,10 +28,11 @@ class AuthController extends AbstractController
             $this->getUser() && 
             (
                 $this->getUser()->getApplications()->contains( $this->applicationContext->getApplication() ) ||
-                $this->isGranted( 'ROLE_APPLICATION_ADMIN', $this->getUser() )
+                $this->isGranted( 'ROLE_APPLICATION_ADMIN', $this->getUser() ) ||
+                $this->isGranted( 'ROLE_WEB_GUITAR_PRO_ADMIN', $this->getUser() )
             )
         ) {
-            return $this->redirectToRoute( 'app_home' );
+            return $this->redirectToRoute( $this->getParameter( 'vs_users.default_redirect' ) );
         }
         
         // get the login error if there is one
@@ -45,6 +45,7 @@ class AuthController extends AbstractController
         $tplVars = array(
             'last_username' => $lastUsername,
             'error'         => $error,
+            'tabForm'       => $this->getTabForm()->createView(),
         );
         
         return new Response( $this->templatingEngine->render( $this->getTemplate(), $tplVars ) );

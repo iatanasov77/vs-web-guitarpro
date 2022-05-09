@@ -21,6 +21,7 @@ parameters:
     
     vs_users.login_route: 'app_login'
     vs_users.login_by: 'username'
+    vs_users.registration_form: 'App\Form\RegistrationForm'
     vs_users.default_redirect: 'app_home'
     vs_users.form_create_account: false
     
@@ -32,6 +33,7 @@ parameters:
     vs_users.cookie.lifetime: 86400 # 24 hours
     vs_users.api_token.domain: '%env(API_TOKEN_DOMAIN)%'
     vs_users.api_token.lifetime: 3600
+    vs_users.register_role: 'role-web-guitar-pro'
     
     # Gaufrette File Systems
     vs_cms.gaufrette.profile.filesystem: vs_application_profile
