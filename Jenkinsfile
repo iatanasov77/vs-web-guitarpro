@@ -8,18 +8,18 @@ node ( label: 'php-host' ) {
     def REMOTE_DIR
     
     final GIT_REPO_URL      = 'https://github.com/iatanasov77/vs-web-guitarpro.git'
-    final APP_FTP_URL       = 'ftp://164.138.221.242/web/project/production/'
     final PHP_BIN           = '/usr/bin/php74'
     
     def GIT_REPO_WITH_CRED;
     def APP_MYSQL_USER;
     def APP_MYSQL_PASSWORD;
     def APP_MYSQL_DATABASE;
+    def APP_DATABASE_URL;
     
     def CONFIG_TEMPLATE;
     def APP_FTP_USER;
     def APP_FTP_PASSWORD;
-    def APP_DATABASE_URL;
+    def APP_FTP_URL;
     
     stage( 'Configure Environement' ) {
     
@@ -34,7 +34,6 @@ node ( label: 'php-host' ) {
         
         switch( BUILD_ENVIRONMENT ) {
             case 'production':
-                REMOTE_DIR  = '/opt/VankosoftProjects/WebGuitarPro/production'
                 DB_BACKUP   = false
                 
                 def tags    = vankosoftJob.getGitTags( GIT_REPO_WITH_CRED )
@@ -45,7 +44,6 @@ node ( label: 'php-host' ) {
                 break;
                 
             default:
-                REMOTE_DIR      = '/opt/VankosoftProjects/WebGuitarPro/staging'
                 DB_BACKUP       = false
                 
                 def branches    = vankosoftJob.getGitBranches( GIT_REPO_WITH_CRED )
@@ -68,6 +66,8 @@ node ( label: 'php-host' ) {
             //Using in Template Rendering
             APP_FTP_USER        = "$USERNAME"
             APP_FTP_PASSWORD    = "$PASSWORD"
+            APP_FTP_URL         = "ftp://164.138.221.242/web/project/$BUILD_ENVIRONMENT/"
+            REMOTE_DIR          = "/opt/VankosoftProjects/WebGuitarPro/$BUILD_ENVIRONMENT"
         }
     }
     
