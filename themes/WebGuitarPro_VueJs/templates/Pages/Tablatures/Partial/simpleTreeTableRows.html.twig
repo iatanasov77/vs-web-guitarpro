@@ -1,0 +1,28 @@
+<tr data-node-id="{{ item.id }}" {% if parentId %}data-node-pid="{{ parentId }}"{% endif %}>
+    <td>{{ item.name }}</td>
+    <td>
+    {% if isTab %}
+    	<a href="{{ path( 'vs_wgp_tablature_show', {id: item.id} ) }}" class="btn btn-primary">Play</a>
+    {% else %}
+    {#
+        <a href="{{ path('vs_cms_page_categories_update', {'id': item.id}) }}">
+            {{ 'vs_cms.template.page_categories_index_button_edit' | trans( {},'VSCmsBundle' ) }}
+        </a>
+    #}
+    {% endif %}
+    </td>
+</tr>
+
+{% if item.children is defined %}
+    {% for child in item.children %}
+    	{% include 'Pages/Tablatures/Partial/simpleTreeTableRows.html.twig' with {'parentId': item.id, 'item': child, 'isTab': 0} %}
+    {% endfor %}
+{% endif %}
+
+{% if item.tablatures is defined %}
+    {% for tab in item.tablatures %}
+        {% if tab.user == app.user %}
+            {% include 'Pages/Tablatures/Partial/simpleTreeTableRows.html.twig' with {'parentId': item.id, 'item': tab, 'isTab': 1} %}
+        {% endif %}
+    {% endfor %}
+{% endif %}

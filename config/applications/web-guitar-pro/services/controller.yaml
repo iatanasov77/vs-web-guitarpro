@@ -7,7 +7,7 @@ services:
         resource: '../../../../src/Controller/WebGuitarPro'
         tags: ['controller.service_arguments']
         autowire: true
-    
+        
     App\Controller\WebGuitarPro\AuthController:
         tags: ['controller.service_arguments']
         autowire: true
@@ -21,6 +21,8 @@ services:
         arguments:
             - '@vs_application.context.application'
             - '@twig'
+            - '@vs_application.repository.taxonomy'
+            - '%vs_wgp.tablature-categories.taxonomy_code%'
 
     App\Controller\WebGuitarPro\ProfileController:
         tags: ['controller.service_arguments']
@@ -30,3 +32,13 @@ services:
             - '@vs_users.factory.avatar_image'
             - '@vs_cms.profile_uploader'
 
+    App\Controller\WebGuitarPro\TablatureExtController:
+        tags: ['controller.service_arguments']
+        autowire: false
+        arguments:
+            - '@vs_application.repository.taxonomy'
+            - '@vs_application.repository.taxon'
+            - '@vs_wgp.repository.tablature'
+            - '%vs_wgp.tablatures_directory%'
+        calls:
+            - [ setContainer, [ '@service_container' ] ]

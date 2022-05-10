@@ -43,9 +43,10 @@ class AuthController extends Controller
         $lastUsername = $authenticationUtils->getLastUsername();
         
         $tplVars = array(
-            'last_username' => $lastUsername,
-            'error'         => $error,
-            'tabForm'       => $this->getTabForm()->createView(),
+            'last_username'     => $lastUsername,
+            'error'             => $error,
+            'tabForm'           => $this->getTabForm()->createView(),
+            'tabCategoryForm'   => $this->getTabCategoryForm()->createView(),
         );
         
         return new Response( $this->templatingEngine->render( $this->getTemplate(), $tplVars ) );

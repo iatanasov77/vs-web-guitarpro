@@ -1,5 +1,7 @@
 {% extends "base.html.twig" %}
 
+{% import "@VSApplication/Macros/alerts.html.twig" as alerts %}
+
 {% block title %}{{ parent() }} :: Tablatures{% endblock %}
 {% block pageTitle %}<i class="icon_genius"></i> Tablatures{% endblock %}
 
@@ -13,26 +15,24 @@
         <div class="card">
             <h5 class="card-header">Tablatures</h5>
             <div class="card-body">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>Artist</th>
-                            <th>Song</th>
-                            <th>Play</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {% for t in tabs %}
-                        <tr>
-                            <td>{{ t.artist }}</td>
-                            <td>{{ t.song }}</td>
-                            <td><a href="{{ path( 'vs_wgp_tablature_show', {id: t.id} ) }}" class="btn btn-primary">Play</a></td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
+                {% if items|length > 0 %}
+                    {% include 'Pages/Tablatures/Partial/simpleTreeTable.html.twig' %}
+                {% else %}
+                    {{ alerts.info('sylius.ui.there_are_no_mappers_to_display'|trans) }}
+                {% endif %}
             </div>
         </div>
     </div>
 {% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    
+    {{ encore_entry_link_tags( 'tablatures', null, 'WebGuitarPro_VueJs' ) }}
+{% endblock %}  
+
+{% block javascripts %}
+    {{ parent() }}
+    
+    {{ encore_entry_script_tags( 'tablatures', null, 'WebGuitarPro_VueJs' ) }}
+{% endblock %}

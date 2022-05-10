@@ -3,4 +3,17 @@ services:
         autowire: true
         autoconfigure: true
 
-    
+    vs_wgp.resources.tablature_category.form:
+        class: App\Form\TablatureCategoryForm
+        tags:
+            - { name: form.type }
+        arguments:
+            - '%vs_wgp.model.tablature_category.class%'
+            - '@request_stack'
+    vs_wgp.resources.tablature.form:
+        class: App\Form\TablatureForm
+        tags:
+            - { name: form.type }
+        arguments:
+            - '%vs_wgp.model.tablature.class%'
+

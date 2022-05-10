@@ -42,6 +42,8 @@ parameters:
     vs_cms.filemanager_shared_media_gaufrette.profile: "%kernel.project_dir%/public/shared_media/gaufrette/profile"
     vs_cms.filemanager_shared_media_gaufrette.filemanager: "%kernel.project_dir%/public/shared_media/gaufrette/filemanager"
     vs_cms.filemanager_shared_media_artgris: '%kernel.project_dir%/public/shared_media/artgris'
+    
+    vs_wgp.tablature-categories.taxonomy_code: tablature-categories
 
 services:
     _defaults:

@@ -1,0 +1,12 @@
+vs_wgp:
+    template:
+        edit: Edit
+        delete: Delete
+        category: Category
+        
+    form:
+        locale: Language
+        name: Name
+        category: Category
+        category_placeholder: '-- Choose a Category --'
+

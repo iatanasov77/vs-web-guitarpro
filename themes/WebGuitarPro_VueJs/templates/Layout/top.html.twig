@@ -22,38 +22,42 @@
             {% endif %}
             
             {% if app.user %}
-                <li class="nav-item dropdown btn-group">
-                    <a class="nav-link dropdown-toggle" id="btnMyTabs" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Tabs</a>
-                    <div class="dropdown-menu dropdown-menu-right scrollable-menu" aria-labelledby="btnMyTabs">
-                        <!-- My tabs list -->
-                        <div class="sm-main-nav" >
-                            {% for tab in app.user.tablatures %}
-                                <a class="dropdown-item" href="{{ path( 'vs_wgp_tablature_show', {'id': tab.id} ) }}">{{ tab.artist }} - {{ tab.song }}</a><hr>
-                            {% endfor %}
-                        </div>
-                    </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path( 'vs_wgp_tablature_index' ) }}">My Tablatures</a>
                 </li>
                 
-                <li class="nav-item dropdown btn-group">
-                    <a class="nav-link dropdown-toggle" id="btnFavorites" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Favorites</a>
-                    <div class="dropdown-menu dropdown-menu-right scrollable-menu" aria-labelledby="btnFavorites">
-                        <!-- Favorite tabs list -->
-                        <div class="sm-main-nav" >
-                            {% for tab in app.user.favorites %}
-                                <a class="dropdown-item" href="{{ path( 'tablature_player', {'id': tab.id} ) }}">{{ tab.artist }} - {{ tab.song }}</a><hr>
-                            {% endfor %}
+                {% if app.user.favorites|length > 0 %}
+                    <li class="nav-item dropdown btn-group">
+                        <a class="nav-link dropdown-toggle" id="btnFavorites" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Favorites</a>
+                        <div class="dropdown-menu dropdown-menu-right scrollable-menu" aria-labelledby="btnFavorites">
+                            <!-- Favorite tabs list -->
+                            <div class="sm-main-nav" >
+                                {% for tab in app.user.favorites %}
+                                    <a class="dropdown-item" href="{{ path( 'tablature_player', {'id': tab.id} ) }}">{{ tab.artist }} - {{ tab.song }}</a><hr>
+                                {% endfor %}
+                            </div>
                         </div>
+                    </li>
+                {% endif %}
+                
+                <!--  Create Tablature Category  -->
+                <li class="nav-item dropdown btn-group">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Create Tablature Category</a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        {% include 'Partial/tablature-category-form.html.twig' %}
                     </div>
                 </li>
+                <!--/  Create Tablature Category  -->
                 
-                <!--  Submit Tab  -->
+                <!--  Submit Tablature  -->
                 <li class="nav-item dropdown btn-group">
-                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Submit Tab</a>
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Submit Tablature</a>
                     <div class="dropdown-menu dropdown-menu-right">
                         {% include 'Partial/tablature-form.html.twig' %}
                     </div>
                 </li>
-                <!--/  Submit Tab  -->
+                <!--/  Submit Tablature  -->
+                
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path( 'app_logout' ) }}">Logout</a>
                 </li>

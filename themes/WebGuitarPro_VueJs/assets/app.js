@@ -20,3 +20,7 @@ import 'bootstrap';
 
 import './css/topbar.css';
 import './js/login.js';
+
+require( 'jquery-easyui/css/easyui.css' );
+require( 'jquery-easyui/js/jquery.easyui.min.js' );
+// Need copy of: jquery-easyui/images/*

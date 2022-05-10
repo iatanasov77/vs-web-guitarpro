@@ -22,6 +22,12 @@ class TablatureCategory implements ResourceInterface
     private $id;
     
     /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\UserManagement\User", inversedBy="tablatureCategories")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
+    
+    /**
      * @var TablatureCategory
      *
      * @ORM\ManyToOne(targetEntity="App\Entity\TablatureCategory", inversedBy="children", cascade={"all"})
@@ -62,6 +68,18 @@ class TablatureCategory implements ResourceInterface
     public function getId()
     {
         return $this->id;
+    }
+    
+    public function getUser()
+    {
+        return $this->user;
+    }
+    
+    public function setUser($user)
+    {
+        $this->user = $user;
+        
+        return $this;
     }
     
     /**

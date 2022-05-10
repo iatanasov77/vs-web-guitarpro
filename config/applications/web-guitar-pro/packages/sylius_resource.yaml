@@ -4,6 +4,15 @@ sylius_resource:
         #locale_provider: sylius.translation.locale_provider.contextual
         #available_locales_provider: sylius.translation.locales_provider
     resources:
+        vs_wgp.tablature_category:
+            driver: doctrine/orm
+            classes:
+                model:      App\Entity\TablatureCategory
+                interface:  Sylius\Component\Resource\Model\ResourceInterface
+                repository: Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository
+                controller: App\Controller\WebGuitarPro\TablatureCategoryController
+                form:       App\Form\TablatureCategoryForm
+                
         vs_wgp.tablature:
             driver: doctrine/orm
             classes:

@@ -174,4 +174,9 @@ class Tablature implements ResourceInterface
         
         return $this;
     }
+    
+    public function getName()
+    {
+        return $this->artist . ' - ' . $this->song;
+    }
 }
