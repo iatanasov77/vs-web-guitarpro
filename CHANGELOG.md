@@ -1,3 +1,18 @@
+1.2.0	|	Release date: **10.05.2022**
+============================================
+* New Features:
+  - Improve Template Layout.
+  - Add SQL Dump for Data. 
+  - Modified Jenkinsfile.
+  - Begin Authentication Functionalities.
+  - Add Password Generator in Registration Form.
+  - Add MAILER_DSN for dev environement to Using MailCatcher.
+  - Add Terms and Conditions Page in the Registration Form.
+  - Add User Registration and Forgot Password Functionality.
+  - Categorising Tablatures.
+  - Display Categorised Tablatures.
+
+
 1.1.2	|	Release date: **08.05.2022**
 ============================================
 * Bug-Fixes:
