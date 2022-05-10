@@ -1,6 +1,6 @@
 <?php namespace App\Form;
 
-use Symfony\Component\Form\AbstractType;
+use Vankosoft\ApplicationBundle\Form\AbstractForm;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -9,12 +9,25 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
 
-use App\Entity\Tablature;
 
-class TablatureForm extends AbstractType
+
+
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
+
+
+
+use App\Entity\Tablature;
+use App\Entity\TablatureCategory;
+
+class TablatureForm extends AbstractForm
 {
     public function buildForm( FormBuilderInterface $builder, array $options )
     {
+        parent::buildForm( $builder, $options );
+        
         $builder
             ->add( '_currentUrl', HiddenType::class, ['mapped' => false] )
             
@@ -36,15 +49,47 @@ class TablatureForm extends AbstractType
                     ])
                 ],
             ])
-            ->add( 'btnSave', SubmitType::class, ['label' => 'Save'] )
+            
+            
+            /*
+            ->add( 'category_taxon', ChoiceType::class, [
+                'label'                 => 'vs_cms.form.page.categories',
+                'translation_domain'    => 'VSCmsBundle',
+                'multiple'              => true,
+                'required'              => false,
+                'mapped'                => false,
+                'placeholder'           => 'vs_cms.form.page.categories_placeholder',
+            ])
+            */
+            ->add( 'category_taxon', EntityType::class, [
+                'label'                 => 'vs_cms.form.page.categories',
+                'translation_domain'    => 'VSCmsBundle',
+                'multiple'              => true,
+                'required'              => false,
+                'mapped'                => false,
+                'placeholder'           => 'vs_cms.form.page.categories_placeholder',
+                
+                'class'                 => TablatureCategory::class,
+                'choice_label'          => 'name',
+            ])
+            
+            
+
         ;
     }
     
-    public function configureOptions( OptionsResolver $resolver )
+    public function configureOptions( OptionsResolver $resolver ): void
     {
+        parent::configureOptions( $resolver );
+        
         $resolver->setDefaults([
             'data_class'        => Tablature::class,
             'csrf_protection'   => false,
         ]);
+    }
+    
+    public function getName()
+    {
+        return 'vs_wgp.tablature';
     }
 }

@@ -1,6 +1,5 @@
 <?php namespace App\Controller\WebGuitarPro;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\File\File;
@@ -15,7 +14,7 @@ use Vankosoft\UsersBundle\Model\UserInfoInterface;
 use Vankosoft\UsersBundle\Security\UserManager;
 use App\Entity\UsersSubscriptions\PayedService;
 
-class ProfileController extends AbstractController
+class ProfileController extends Controller
 {
     /** @var UserManager */
     private UserManager $userManager;
@@ -61,7 +60,7 @@ class ProfileController extends AbstractController
         $oUser          = $this->getUser();
         $form           = $this->createForm( ProfileFormType::class, $oUser, [
             'data'      => $oUser,
-            'action'    => $this->generateUrl( 'wct_user_profile_show' ),
+            'action'    => $this->generateUrl( 'wgp_user_profile_show' ),
             'method'    => 'POST',
         ]);
         
@@ -141,7 +140,7 @@ class ProfileController extends AbstractController
     {
         $changePasswordForm = $this->createForm( ChangePasswordFormType::class, $oUser, [
             'data'      => $oUser,
-            'action'    => $this->generateUrl( 'wct_user_profile_change_password' ),
+            'action'    => $this->generateUrl( 'wgp_user_profile_change_password' ),
             'method'    => 'POST',
         ]);
         

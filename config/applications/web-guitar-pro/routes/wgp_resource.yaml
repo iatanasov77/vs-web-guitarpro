@@ -1,7 +1,16 @@
-vs_wct_projects:
+vs_wgp_tablatures:
     resource: |
         alias: vs_wgp.tablature
         #except: ['show']
         path: /tablatures
         templates: "Pages/Tablatures"
     type: sylius.resource
+    
+vs_wgp_tablature_categories:
+    resource: |
+        alias: vs_wgp.tablature_category
+        except: ['show']
+        path: /tablature-categories
+        templates: "Pages/TablatureCategories"
+    type: sylius.resource
+

@@ -7,12 +7,13 @@ use Vankosoft\ApplicationBundle\Controller\AbstractCrudController;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Doctrine\Common\Collections\ArrayCollection;
 
-use App\Form\TablatureForm;
 use App\Entity\Tablature;
 
 class TablatureController extends AbstractCrudController
 {
+    use GlobalFormsTrait;
     
     public function showAction( Request $request ): Response
     {
@@ -20,21 +21,28 @@ class TablatureController extends AbstractCrudController
         $oTablature     = $er->find( $request->attributes->get( 'id' ) );
 
         return $this->render( 'Pages/Tablatures/show.html.twig', [
-            'tabForm'   => $this->_tabForm( new Tablature() )->createView(),
-            'item'      => $oTablature,
-            'error'     => false,
+            'tabForm'                   => $this->getTabForm()->createView(),
+            'tabCategoryForm'           => $this->getTabCategoryForm()->createView(),
+            'item'                      => $oTablature,
+            'error'                     => false,
+            'tabCategoriesTaxonomyId'   => $this->getTabCategoriesTaxonomy()->getId(),
         ]);
     }
     
     protected function customData( Request $request, $entity = NULL ): array
     {
         return [
-            'tabForm'   => $this->_tabForm( new Tablature() )->createView(),
+            'tabForm'                   => $this->getTabForm()->createView(),
+            'tabCategoryForm'           => $this->getTabCategoryForm()->createView(),
+            'tabCategoriesTaxonomyId'   => $this->getTabCategoriesTaxonomy()->getId(),
+            'userCategories'            => $this->get( 'vs_wgp.repository.tablature_category' )->findBy( ['user' => $this->getUser()] ),
         ];
     }
     
     protected function prepareEntity( &$entity, &$form, Request $request )
     {
+        $this->easyuiPost( $entity, $request->request->get( 'tablature_form' ) );
+        
         $entity->setUser( $this->getUser() );
         
         $tabFile    = $form['tablature']->getData();
@@ -43,9 +51,27 @@ class TablatureController extends AbstractCrudController
         }
     }
     
-    protected function _tabForm( $entity )
+    private function easyuiPost( Tablature &$entity, $formPost )
     {
-        return $this->createForm( TablatureForm::class, $entity );
+        $categories = new ArrayCollection();
+        $repo       = $this->get( 'vs_wgp.repository.tablature_category' );
+        
+        if ( isset( $formPost['category_taxon'] ) ) {
+            
+            foreach ( $formPost['category_taxon'] as $taxonId ) {
+                $category       = $repo->findOneBy( ['taxon' => $taxonId] );
+                if ( $category ) {
+                    $categories[]   = $category;
+                    $entity->addCategory( $category );
+                }
+            }
+            
+            foreach ( $entity->getCategories() as $cat ) {
+                if ( ! $categories->contains( $cat ) ) {
+                    $entity->removeCategory( $cat );
+                }
+            }
+        }
     }
     
     private function createTablature( Tablature &$tablature, File $file ): void
@@ -62,5 +88,14 @@ class TablatureController extends AbstractCrudController
         if ( ! $tablature->getTablatureFile() ) {
             $tablature->setTablatureFile( $tablatureFile );
         }
+    }
+    
+    private function getTabCategoriesTaxonomy()
+    {
+        $taxonomy   = $this->get( 'vs_application.repository.taxonomy' )->findByCode(
+            $this->getParameter( 'vs_wgp.tablature-categories.taxonomy_code' )
+        );
+        
+        return $taxonomy;
     }
 }

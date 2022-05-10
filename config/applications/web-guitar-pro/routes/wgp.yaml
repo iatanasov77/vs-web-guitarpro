@@ -1,6 +1,10 @@
 tablature_read:
     path: /tablatures-ext/{id}/read
     controller: App\Controller\WebGuitarPro\TablatureExtController::read
+    
+vs_wgp_tablature_categories_tree_combo_with_selected:
+    path: /tablatures-ext/easyui-{categoriesTaxonomyId}-{tabId}
+    controller: App\Controller\WebGuitarPro\TablatureExtController::easyuiComboTreeWithSelectedSource
 
 tablature_favorite:
     path: /tablatures-ext/{id}/add-favorite

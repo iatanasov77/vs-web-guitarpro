@@ -1,7 +1,9 @@
 <?php namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Sylius\Component\Resource\Model\ResourceInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
 use App\Entity\UserManagement\User;
@@ -13,6 +15,8 @@ use App\Entity\UserManagement\User;
 class Tablature implements ResourceInterface
 {
     /**
+     * @var integer
+     * 
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
@@ -41,9 +45,29 @@ class Tablature implements ResourceInterface
     private $song;
     
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\TablatureFile", inversedBy="tablature", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=TablatureFile::class, inversedBy="tablature", cascade={"persist", "remove"})
      */
     private $tablatureFile;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity=TablatureCategory::class, inversedBy="tablatures")
+     * @ORM\JoinTable(name="WGP_Tablatures_Categories",
+     *      joinColumns={@ORM\JoinColumn(name="tablature_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="category_id", referencedColumnName="id")}
+     * )
+     */
+    private $categories;
+    
+    /**
+     * @Gedmo\Slug(fields={"artist", "song", "id"})
+     * @ORM\Column(name="slug", type="string", length=255, nullable=false, unique=true)
+     */
+    private $slug;
+    
+    public function __construct()
+    {
+        $this->categories = new ArrayCollection();
+    }
     
     public function getId()
     {
@@ -111,5 +135,48 @@ class Tablature implements ResourceInterface
         $this->song = $song;
         
         return $this;
+    }
+    
+    /**
+     * @return Collection|TablatureCategory[]
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
+    
+    public function addCategory( TablatureCategory $category ): self
+    {
+        if ( ! $this->categories->contains( $category ) ) {
+            $this->categories[] = $category;
+        }
+        
+        return $this;
+    }
+    
+    public function removeCategory( TablatureCategory $category ): self
+    {
+        if ( $this->categories->contains( $category ) ) {
+            $this->categories->removeElement( $category );
+        }
+        
+        return $this;
+    }
+    
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+    
+    public function setSlug($slug): self
+    {
+        $this->slug = $slug;
+        
+        return $this;
+    }
+    
+    public function getName()
+    {
+        return $this->artist . ' - ' . $this->song;
     }
 }

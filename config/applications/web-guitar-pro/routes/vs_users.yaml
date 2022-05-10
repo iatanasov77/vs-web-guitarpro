@@ -1,3 +1,7 @@
+vs_user_authentication:
+    resource: "@VSUsersBundle/Resources/config/routing/authentication.yml"
+    prefix:   /
+
 app_login:
     path: /login
     controller: App\Controller\WebGuitarPro\AuthController::login

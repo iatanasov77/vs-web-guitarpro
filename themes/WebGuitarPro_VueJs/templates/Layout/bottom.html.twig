@@ -1,9 +1,11 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-bottom copyright-bar">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-bottom">
     <div class="container-fluid">
         <div class="site-support">
-            <a href="http://vankosoft.org" class="float-right">
-                Supported by: VankoSoft.Org &copy{% if "now"|date("Y") > 2022 %}2022 - {% endif %}{{ "now"|date("Y") }}
-            </a>
+            <div class="float-right">
+                Supported by:  
+                <a href="http://vankosoft.org">VankoSoft.Org</a>
+                &copy{% if "now"|date("Y") > 2022 %}2022 - {% endif %}{{ "now"|date("Y") }}
+            </div>
         </div>
     </div>
 </nav>
