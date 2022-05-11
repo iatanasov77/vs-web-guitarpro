@@ -3,7 +3,7 @@
         <svg class="icon dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
             <use xlink:href="#icon-layout"></use>
         </svg>
-        <div class="dropdown-menu dropright dropup dropdown-layers">
+        <div class="dropdown-menu dropdown-menu-right dropright dropup dropdown-layers">
             <div class="dropdown-menu-background">
                 <div style="font-weight:bold; padding-left: 10px;">Layout</div>
                 <ul>

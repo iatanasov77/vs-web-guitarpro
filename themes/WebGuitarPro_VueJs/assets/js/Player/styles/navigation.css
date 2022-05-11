@@ -138,8 +138,7 @@ span {
     margin-right: 10px;
 }
 
-#sidebar ul li.active>a,
-a[aria-expanded="true"] {
+#sidebar ul li.active>a {
     color: #fff;
     background: #6d7fcc;
 }
@@ -247,6 +246,10 @@ a.article:hover {
   	-webkit-transform: rotate(135deg);
 }
 
+.container-fluid .dropdown-menu::before {
+    border: 0 !important;
+}
+
 .scrollable-menu {
     height: auto;
     max-height: 200px;
@@ -258,3 +261,67 @@ a.article:hover {
     max-height: 385px;
     overflow-x: hidden;
 }
+
+.dropdown-menu-background {
+    background-color: #f8f9fa !important;
+}
+
+.dropdown-menu-right {
+    right: auto;
+    left: 50px;
+    top: 0;
+    background-color: inherit;
+}
+
+
+
+/*
+ * Bootstrap Slider Override Styles
+ */
+.slider-track {
+	height: 0 !important;
+}
+
+.slider-handle {
+    top: 4px !important;
+    background-color: #000000 !important;
+    background-image: none !important;
+}
+
+.slider .tooltip.in {
+    padding: 0;
+    border-width: 0;
+    display: inline;
+    top: 15px;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 8px !important;
+  border-radius: 5px;  
+  background: #d3d3d3;
+  outline: none;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%; 
+  background: #04AA6D;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #04AA6D;
+  cursor: pointer;
+}
+
+

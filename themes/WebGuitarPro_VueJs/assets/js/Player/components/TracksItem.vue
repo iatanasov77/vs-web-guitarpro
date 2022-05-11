@@ -7,7 +7,7 @@
         <svg class="icon dropdown-toggle" data-bs-toggle="dropdown" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
             <use xlink:href="#icon-guitar"></use>
         </svg>
-        <div class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+        <div class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dLabel">
             <div id="trackList" class="dropdown-menu-background scrollable-menu-side">
                 <div class="track" v-for="(track, index) in this.$parent.player.score.tracks" :data-track="index">
                 
