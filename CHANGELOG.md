@@ -1,3 +1,13 @@
+1.2.1	|	Release date: **11.05.2022**
+============================================
+* New Features:
+  - Using Tablature Slug in Urls.
+  - Made Tablatures Timestampable.
+  - On Home Page Display Latest 10 Tablatures.
+* Bug-Fixes:
+  - Fix Recursive Table Tree.
+
+
 1.2.0	|	Release date: **10.05.2022**
 ============================================
 * New Features:
