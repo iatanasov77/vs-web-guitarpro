@@ -6,6 +6,8 @@
         'value': path( app.request.attributes.get( '_route' ), app.request.attributes.get( '_route_params' ) )} )
     }}
     
+    <div class="form-group">{{ form_row( tabForm.enabled ) }}</div>
+    
     <div class="form-group">
         {{ form_label( tabForm.category_taxon, null, {
             'label_attr': {'class': 'col-form-label'}

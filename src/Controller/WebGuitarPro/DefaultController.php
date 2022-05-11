@@ -42,7 +42,9 @@ class DefaultController extends Controller
             'tabForm'                   => $this->getTabForm()->createView(),
             'tabCategoryForm'           => $this->getTabCategoryForm()->createView(),
             'tabCategoriesTaxonomyId'   => $this->tabCategoriesTaxonomy->getId(),
-            'tabs'                      => $er->findBy( [], [ 'updatedAt' => 'DESC' ], 10 ),
+            
+            // About enabled field - $enabled (public)
+            'tabs'                      => $er->findBy( ['enabled' => true], [ 'updatedAt' => 'DESC' ], 10 ),
         ];
         return new Response( $this->templatingEngine->render( $this->getTemplate(), $params ) );
     }

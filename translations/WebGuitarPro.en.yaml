@@ -5,6 +5,7 @@ vs_wgp:
         category: Category
         
     form:
+        public: To Be Public
         locale: Language
         name: Name
         category: Category
