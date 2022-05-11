@@ -13,7 +13,7 @@
             {% endif %}
         </div>
         <div id="tablatureWrapper">
-            <div id="song-details">
+            <div id="song-details" data-user={% if app.user %}{{ app.user.id }}{% else %}0{% endif %}>
                 <h1 class="artist"></h1>
                 <h2 class="title"></h2>
                 <h3 class="album"></h3>
