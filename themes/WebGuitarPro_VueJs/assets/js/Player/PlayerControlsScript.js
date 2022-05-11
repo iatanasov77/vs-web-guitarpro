@@ -75,8 +75,9 @@ export default {
         
         favorite() {
             $.get( $( '#add-favorite-url' ).data( 'url' ), function( data ) {
-                alert('READY');
-                //document.location.reload();
+                //alert('This Tab is Added To Favorite List !!!');
+                console.log( 'This Tab is Added To Favorite List !!!' );
+                document.location.reload();
             });
         },
         

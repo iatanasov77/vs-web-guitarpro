@@ -3,7 +3,7 @@
         <svg class="icon dropdown-toggle player-button" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
             <use xlink:href="#speed-selector"></use>
         </svg>
-        <div class="dropdown-menu">
+        <div class="dropdown-menu dropdown-menu-right">
             <div id="speedSelector" class="dropdown-menu-background">
                 <ul>
                     <li class="active"

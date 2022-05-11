@@ -29,11 +29,13 @@
                 {% if app.user.favorites|length > 0 %}
                     <li class="nav-item dropdown btn-group">
                         <a class="nav-link dropdown-toggle" id="btnFavorites" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Favorites</a>
-                        <div class="dropdown-menu dropdown-menu-right scrollable-menu" aria-labelledby="btnFavorites">
+                        <div class="dropdown-menu dropdown-menu-right scrollable-menu favoriteList" aria-labelledby="btnFavorites">
                             <!-- Favorite tabs list -->
                             <div class="sm-main-nav" >
                                 {% for tab in app.user.favorites %}
-                                    <a class="dropdown-item" href="{{ path( 'tablature_player', {'id': tab.id} ) }}">{{ tab.artist }} - {{ tab.song }}</a><hr>
+                                    <a class="dropdown-item" href="{{ path( 'vs_wgp_tablature_show', {'id': tab.id} ) }}">
+                                        {{ tab.artist ~ ' - ' ~ tab.song | u.truncate( 40, '...' ) }}
+                                    </a><hr>
                                 {% endfor %}
                             </div>
                         </div>

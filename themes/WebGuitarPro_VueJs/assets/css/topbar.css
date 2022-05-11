@@ -13,9 +13,10 @@
     text-align: left;
     list-style: none;
     background-clip: padding-box !important;
-    
+    /*
     width: 280px !important;
-    /*height: 400px !important;*/
+    height: 400px !important;
+    */
 }
 
 #navbarSupportedContent .dropdown-menu-right {
@@ -45,5 +46,9 @@ a, a:hover, a:focus {
 
 #formLogin a {
     color: #007bff;
+}
+
+.dropdown-menu.favoriteList {
+    width: 350px !important;
 }
    
