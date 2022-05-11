@@ -15,9 +15,10 @@ class TablatureController extends AbstractCrudController
 {
     use GlobalFormsTrait;
     
-    public function showAction( $id, Request $request ): Response
+    public function showAction( Request $request ): Response
     {
-        $er             = $this->getDoctrine()->getRepository( 'App\Entity\Tablature' );
+        $er = $this->getDoctrine()->getRepository( 'App\Entity\Tablature' );
+        $id = $request->attributes->get( 'id' );
         if ( is_numeric( $id ) ) {
             $oTablature     = $er->find( $id );
         } else {
