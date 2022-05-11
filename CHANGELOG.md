@@ -1,3 +1,10 @@
+1.3.2	|	Release date: **11.05.2022**
+============================================
+* New Features:
+  - Improve Player Footer Copyright Bar.
+  - Add an Application Favicon.
+
+
 1.3.1	|	Release date: **11.05.2022**
 ============================================
 * Bug-Fixes:
