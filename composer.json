@@ -22,7 +22,9 @@
         "symfony/notifier": "5.4.*",
         "symfony/runtime": "5.4.*",
         
-        "vankosoft/application": "1.8.*"
+        "vankosoft/application": "1.8.*",
+        
+        "twig/string-extra": "^3.3"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5",
