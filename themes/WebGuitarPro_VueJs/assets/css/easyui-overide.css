@@ -4,6 +4,10 @@
     background-color: #fff !important;
 }
 
+.textbox.combo, .textbox-invalid.combo {
+    width: 100% !important;
+}
+
 .validatebox-invalid {
     background-color: #fff !important;
 }

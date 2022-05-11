@@ -48,6 +48,7 @@ Encore
     
     .addEntry('authentication', './themes/WebGuitarPro_VueJs/assets/js/pages/authentication.js')
     .addEntry('tablatures', './themes/WebGuitarPro_VueJs/assets/js/pages/tablatures.js')
+    .addEntry('tablature-edit', './themes/WebGuitarPro_VueJs/assets/js/pages/tablature-edit.js')
 ;
 
 const config = Encore.getWebpackConfig();

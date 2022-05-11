@@ -6,6 +6,7 @@ use Sylius\Component\Resource\Model\ResourceInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Sylius\Component\Resource\Model\ToggleableTrait;
 
 use App\Entity\UserManagement\User;
 
@@ -16,6 +17,7 @@ use App\Entity\UserManagement\User;
 class Tablature implements ResourceInterface
 {
     use TimestampableEntity;
+    use ToggleableTrait;    // About enabled field - $enabled (public)
     
     /**
      * @var integer
@@ -66,6 +68,13 @@ class Tablature implements ResourceInterface
      * @ORM\Column(name="slug", type="string", length=255, nullable=false, unique=true)
      */
     private $slug;
+    
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="public", type="boolean", options={"default":"1"})
+     */
+    protected $enabled = true;
     
     public function __construct()
     {
