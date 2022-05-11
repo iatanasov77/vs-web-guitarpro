@@ -1,3 +1,12 @@
+1.3.0	|	Release date: **11.05.2022**
+============================================
+* Bug-Fixes and Improvements:
+  - Styling Player Controlls.
+  - Fix Add to Favorite Function.
+  - Improve TopBar.
+  - In Player Hide Add to Favorites Button When User is Not Logged In.
+
+
 1.2.3	|	Release date: **11.05.2022**
 ============================================
 * Bug-Fixes:
