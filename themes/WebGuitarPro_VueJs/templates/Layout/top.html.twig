@@ -33,7 +33,7 @@
                             <!-- Favorite tabs list -->
                             <div class="sm-main-nav" >
                                 {% for tab in app.user.favorites %}
-                                    <a class="dropdown-item" href="{{ path( 'tablature_player', {'id': tab.id} ) }}">{{ tab.artist }} - {{ tab.song }}</a><hr>
+                                    <a class="dropdown-item" href="{{ path( 'vs_wgp_tablature_show', {'id': tab.id} ) }}">{{ tab.artist }} - {{ tab.song }}</a><hr>
                                 {% endfor %}
                             </div>
                         </div>

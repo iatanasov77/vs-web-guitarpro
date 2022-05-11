@@ -8,5 +8,5 @@ $( function()
 {
     require( './player-controls.js' );
     
-    $( '#add-favorite-url' ).attr( 'data-url', 'VVVVVVVVVVVVVVVVVVVVVVVVV' );
+    $( '#add-favorite-url' ).attr( 'data-url', $( '#alphaTab' ).attr( 'data-add-favorite-url' ) );
 });

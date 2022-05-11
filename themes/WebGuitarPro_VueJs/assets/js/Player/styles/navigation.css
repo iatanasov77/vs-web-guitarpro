@@ -248,6 +248,11 @@ a.article:hover {
 
 .container-fluid .dropdown-menu::before {
     border: 0 !important;
+    top: inherit;
+}
+
+.sm-main-nav hr {
+	margin: 0;
 }
 
 .scrollable-menu {
