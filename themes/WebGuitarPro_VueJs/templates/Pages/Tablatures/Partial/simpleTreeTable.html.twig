@@ -18,28 +18,4 @@
         {% include 'Pages/Tablatures/Partial/simpleTreeTableRowsUncategorized.html.twig' %}
     </tbody>
 </table>
-
-
-{# OLD TABLE
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th>Artist</th>
-            <th>Song</th>
-            <th>Play</th>
-        </tr>
-    </thead>
-    <tbody>
-{% for t in items %}
-    {% if t.user == app.user %}
-        <tr>
-            <td>{{ t.artist }}</td>
-            <td>{{ t.song }}</td>
-            <td><a href="{{ path( 'vs_wgp_tablature_show', {id: t.id} ) }}" class="btn btn-primary">Play</a></td>
-        </tr>
-    {% endif %}
-{% endfor %}
-    </tbody>
-</table>
-#}
                 

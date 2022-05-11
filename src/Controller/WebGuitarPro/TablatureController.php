@@ -15,10 +15,14 @@ class TablatureController extends AbstractCrudController
 {
     use GlobalFormsTrait;
     
-    public function showAction( Request $request ): Response
+    public function showAction( $id, Request $request ): Response
     {
         $er             = $this->getDoctrine()->getRepository( 'App\Entity\Tablature' );
-        $oTablature     = $er->find( $request->attributes->get( 'id' ) );
+        if ( is_numeric( $id ) ) {
+            $oTablature     = $er->find( $id );
+        } else {
+            $oTablature     = $er->findOneBy( ['slug' => $id] );
+        }
 
         return $this->render( 'Pages/Tablatures/show.html.twig', [
             'tabForm'                   => $this->getTabForm()->createView(),
