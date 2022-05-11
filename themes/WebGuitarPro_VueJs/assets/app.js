@@ -18,8 +18,8 @@ import 'popper.js/dist/popper.js';
 var util = require( 'util' ); // https://www.npmjs.com/package/util
 import 'bootstrap';
 
-import './css/topbar.css';
 import './js/login.js';
+import './js/topbar.js';
 
 require( 'jquery-easyui/css/easyui.css' );
 require( 'jquery-easyui/js/jquery.easyui.min.js' );
