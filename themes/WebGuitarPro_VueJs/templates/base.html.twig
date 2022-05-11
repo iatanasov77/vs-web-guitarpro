@@ -3,6 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}.:: VS WebGuitarPro{% endblock %}</title>
+        <link rel="icon" type="image/png" href="{{ asset( 'build/web-guitar-pro-vuejs/images/logo.png' ) }}" />
+        
         {% block stylesheets %}
         	{{ encore_entry_link_tags( 'app', null, 'WebGuitarPro_VueJs' ) }}
         {% endblock %}
