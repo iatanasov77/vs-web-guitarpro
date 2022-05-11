@@ -1,3 +1,9 @@
+1.3.1	|	Release date: **11.05.2022**
+============================================
+* Bug-Fixes:
+  - Fix Using of Twig Filter.
+
+
 1.3.0	|	Release date: **11.05.2022**
 ============================================
 * Bug-Fixes and Improvements:
