@@ -5,16 +5,37 @@
     
     <td>{{ item.name }}</td>
     <td>
-    {% if isTab %}
-        {% if ( item.slug|length ) %}{% set tabId = item.slug %}{% else %}{% set tabId = item.id %}{% endif %}
-    	<a href="{{ path( 'vs_wgp_tablature_show', {id: tabId} ) }}" class="btn btn-primary">Play</a>
-    {% else %}
-    {#
-        <a href="{{ path('vs_cms_page_categories_update', {'id': item.id}) }}">
-            {{ 'vs_cms.template.page_categories_index_button_edit' | trans( {},'VSCmsBundle' ) }}
-        </a>
-    #}
-    {% endif %}
+        <div class="btn-group">
+        {% if isTab %}
+            {% if ( item.slug|length ) %}{% set tabId = item.slug %}{% else %}{% set tabId = item.id %}{% endif %}
+            <a  class="btn btn-primary mr-2"
+                href="{{ path( 'vs_wgp_tablature_show', {id: tabId} ) }}"
+            >
+                <i class="fas fa-play"></i> {# Play #}
+            </a>
+            
+            <a class="btn btn-primary mr-2"
+                href="{{ path('vs_wgp_tablature_update', {'id': item.id}) }}"
+                title="{{ 'vs_cms.template.button_edit' | trans( {},'VSCmsBundle' ) }}"
+            >
+                <i class="fas fa-edit"></i>
+            </a>
+            <a class="btn btn-danger btnDelete mr-2"
+                href="{{ path('vs_wgp_tablature_delete', {'id': item.id}) }}"
+                data-csrfToken="{{ csrf_token( item.id ) }}"
+                title="{{ 'vs_cms.template.button_delete' | trans( {},'VSCmsBundle' ) }}"
+            >
+                <i class="fas fa-window-close"></i>
+            </a>
+        	
+        {% else %}
+        {#
+            <a href="{{ path('vs_cms_page_categories_update', {'id': item.id}) }}">
+                {{ 'vs_cms.template.page_categories_index_button_edit' | trans( {},'VSCmsBundle' ) }}
+            </a>
+        #}
+        {% endif %}
+        </div>
     </td>
 </tr>
 {% if item.children is defined %}
