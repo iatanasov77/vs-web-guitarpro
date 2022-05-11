@@ -5,6 +5,8 @@ vs_wgp_tablatures:
         path: /tablatures
         templates: "Pages/Tablatures"
     type: sylius.resource
+    options:
+        expose: true
     
 vs_wgp_tablature_categories:
     resource: |
@@ -13,4 +15,6 @@ vs_wgp_tablature_categories:
         path: /tablature-categories
         templates: "Pages/TablatureCategories"
     type: sylius.resource
+    options:
+        expose: true
 

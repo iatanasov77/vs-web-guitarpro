@@ -1,6 +1,6 @@
 {% import "@VSApplication/Macros/tree.html.twig" as vs_tree %}
 
-{{ form_start( tabCategoryForm, {'action': path( 'vs_wgp_tablature_category_create' ), 'method': 'POST', 'attr': {'class': 'px-4 py-3'}} ) }}
+{{ form_start( tabCategoryForm, {'action': path( 'vs_wgp_tablature_category_create' ), 'method': 'POST', 'attr': { 'id': "formTablatureCategory", 'class': 'px-4 py-3'}} ) }}
     
     {{ form_widget( tabCategoryForm._currentUrl, {
         'value': path( app.request.attributes.get( '_route' ), app.request.attributes.get( '_route_params' ) )} )
