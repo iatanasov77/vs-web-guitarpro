@@ -1,3 +1,9 @@
+1.2.3	|	Release date: **11.05.2022**
+============================================
+* Bug-Fixes:
+  - Fix Redirect When Create Tablature Category.
+
+
 1.2.2	|	Release date: **11.05.2022**
 ============================================
 * New Features:
