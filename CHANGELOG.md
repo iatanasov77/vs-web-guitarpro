@@ -1,3 +1,10 @@
+1.2.2	|	Release date: **11.05.2022**
+============================================
+* New Features:
+  - Add Tablature Edit Form.
+  - Made Tablatures Can Be Un-Public.
+
+
 1.2.1	|	Release date: **11.05.2022**
 ============================================
 * New Features:
