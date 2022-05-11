@@ -7,4 +7,6 @@ require( './alphatab.js' );
 $( function()
 {
     require( './player-controls.js' );
+    
+    $( '#add-favorite-url' ).attr( 'data-url', 'VVVVVVVVVVVVVVVVVVVVVVVVV' );
 });
