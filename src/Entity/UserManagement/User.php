@@ -2,6 +2,8 @@
 
 use Doctrine\ORM\Mapping as ORM;
 use Vankosoft\UsersBundle\Model\User as BaseUser;
+use Vankosoft\UsersSubscriptionsBundle\Model\Interfaces\SubscribedUserInterface;
+use Vankosoft\UsersSubscriptionsBundle\Model\Traits\SubscribedUserTrait;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -12,8 +14,10 @@ use App\Entity\Tablature;
  * @ORM\Entity
  * @ORM\Table(name="VSUM_Users")
  */
-class User extends BaseUser
+class User extends BaseUser implements SubscribedUserInterface
 {
+    use SubscribedUserTrait;
+    
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Tablature", mappedBy="user")
      */

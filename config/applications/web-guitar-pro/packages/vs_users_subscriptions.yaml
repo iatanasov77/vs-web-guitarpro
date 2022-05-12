@@ -1,0 +1,18 @@
+vs_users_subscriptions:
+    #mailchimp_api_key: '%env(MAILCHIMP_API_KEY)%'
+    mailchimp_api_key: 'NOT_DEFINED'
+    
+    resources:
+        payed_service_category:
+            classes:
+                model: App\Entity\UsersSubscriptions\PayedServiceCategory
+        payed_service:
+            classes:
+                model: App\Entity\UsersSubscriptions\PayedService
+        payed_service_subscription_period:
+            classes:
+                model: App\Entity\UsersSubscriptions\PayedServiceSubscriptionPeriod
+        payed_service_subscriptions:
+            classes:
+                model: App\Entity\UsersSubscriptions\PayedServiceSubscription
+
