@@ -6,7 +6,9 @@ use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Sylius\Component\Resource\Factory\FactoryInterface;
+use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
+use Vankosoft\ApplicationBundle\Model\Interfaces\TaxonomyInterface;
 use Vankosoft\CmsBundle\Component\Uploader\FileUploaderInterface;
 use Vankosoft\UsersBundle\Form\ProfileFormType;
 use Vankosoft\UsersBundle\Form\ChangePasswordFormType;
@@ -25,14 +27,21 @@ class ProfileController extends Controller
     /** @var FileUploaderInterface */
     private FileUploaderInterface $imageUploader;
     
+    /** @var TaxonomyInterface */
+    private $tabCategoriesTaxonomy;
+    
     public function __construct(
         UserManager $userManager,
         FactoryInterface $avatarImageFactory,
-        FileUploaderInterface $imageUploader
+        FileUploaderInterface $imageUploader,
+        EntityRepository $taxonomyRepository,
+        string $tabCategoriesTaxonomyCosde
     ) {
-        $this->userManager          = $userManager;
-        $this->avatarImageFactory   = $avatarImageFactory;
-        $this->imageUploader        = $imageUploader;
+        $this->userManager              = $userManager;
+        $this->avatarImageFactory       = $avatarImageFactory;
+        $this->imageUploader            = $imageUploader;
+        
+        $this->tabCategoriesTaxonomy    = $taxonomyRepository->findByCode( $tabCategoriesTaxonomyCosde );
     }
     
     public function profilePictureAction( Request $request ): Response
@@ -56,6 +65,10 @@ class ProfileController extends Controller
     
     public function indexAction( Request $request ) : Response
     {
+        if ( ! $this->getUser() ) {
+            return $this->redirectToRoute( 'app_home' );
+        }
+        
         $em             = $this->getDoctrine()->getManager();
         $oUser          = $this->getUser();
         $form           = $this->createForm( ProfileFormType::class, $oUser, [
@@ -102,6 +115,10 @@ class ProfileController extends Controller
             'otherForms'        => $otherForms,
             'paidServices'      => $paidServices,
             'paymentMethods'    => $paymentMethods,
+            
+            'tabForm'                   => $this->getTabForm()->createView(),
+            'tabCategoryForm'           => $this->getTabCategoryForm()->createView(),
+            'tabCategoriesTaxonomyId'   => $this->tabCategoriesTaxonomy->getId(),
         ]);
     }
     

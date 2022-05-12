@@ -31,6 +31,8 @@ services:
             - '@vs_users.manager.user'
             - '@vs_users.factory.avatar_image'
             - '@vs_cms.profile_uploader'
+            - '@vs_application.repository.taxonomy'
+            - '%vs_wgp.tablature-categories.taxonomy_code%'
 
     App\Controller\WebGuitarPro\TablatureExtController:
         tags: ['controller.service_arguments']
@@ -42,3 +44,4 @@ services:
             - '%vs_wgp.tablatures_directory%'
         calls:
             - [ setContainer, [ '@service_container' ] ]
+        

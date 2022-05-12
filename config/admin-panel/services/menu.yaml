@@ -4,6 +4,7 @@ parameters:
     
     # If You create Any Custom Menue, add it to menus array to can use for breadcrumbs
     #vs_application.main_menus: ['profileMenu', 'mainSystemMenu', 'mainCmsMenu']
+    vs_application.main_menus: ['profileMenu', 'mainSystemMenu', 'mainCmsMenu', 'mainUsersSubscriptionsMenu', 'mainPaymentMenu']
 
 services:
     # Custom Menus

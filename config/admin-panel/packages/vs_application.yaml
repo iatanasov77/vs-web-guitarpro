@@ -211,6 +211,56 @@ vs_application:
                         name: Upload a File
                         route: vs_cms_filemanager_artgris_upload
         
+        mainUsersSubscriptionsMenu:
+            paid_services:
+                name: Paid Services
+                uri: "javascript:;"
+                attributes:
+                    iconClass: icon_genius
+                childs:
+                    paid_services_category_index:
+                        name: Categories
+                        route: vs_users_subscriptions_payed_service_category_index
+                    paid_services_category_create:
+                        name: Create a Category
+                        route: vs_users_subscriptions_payed_service_category_create
+                    paid_services_category_update:
+                        name: Edit a Category
+                        route: vs_users_subscriptions_payed_service_category_update
+                        routeParameters:
+                          id: int
+                        display: false
+                    paid_services_index:
+                        name: Paid Services
+                        route: vs_users_subscriptions_payed_service_index
+                    paid_services_create:
+                        name: Create a Paid Service
+                        route: vs_users_subscriptions_payed_service_create
+                    paid_services_update:
+                        name: Edit a Paid Service
+                        route: vs_users_subscriptions_payed_service_update
+                        routeParameters:
+                          id: int
+                        display: false
+        
+        
+        mainPaymentMenu:
+            gateway_config:
+                name: Gateway Config
+                uri: "javascript:;"
+                attributes:
+                    iconClass: icon_genius
+                childs:
+                    gateways_index:
+                        name: Gateways
+                        route: vs_payment_gateways_index
+                    gateways_config:
+                        name: Config
+                        route: vs_payment_gateways_config
+                        routeParameters:
+                          gatewayName: string
+                        display: false
+        
         profileMenu:
             profile:
                 name: "My Profile"
