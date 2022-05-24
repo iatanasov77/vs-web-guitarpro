@@ -1,0 +1,40 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: true
+
+    App\Controller\WebGuitarPro\Checkout\:
+        resource: '../../../../src/Controller/WebGuitarPro/Checkout'
+        tags: ['controller.service_arguments']
+        autowire: true
+
+    # PAYMENT CONTROLLER
+    ##############################
+    App\Controller\WebGuitarPro\Checkout\PaymentController:
+        tags: ['controller.service_arguments']
+        autowire: false
+        arguments:
+            - '@vs_payment_payment'
+            - '@vs_payment.factory.order'
+            - '@vs_payment.factory.order_item'
+            - '@vs_payment.repository.order'
+            - '@vs_users_subscriptions.repository.payed_service_subscription_period'
+            - '@vs_application.repository.taxonomy'
+            - '%vs_wgp.tablature-categories.taxonomy_code%'
+        calls:
+            - [ setContainer, [ '@service_container' ] ]
+
+    # STRIPE CHECKOUT
+    ##############################
+    App\Controller\WebGuitarPro\Checkout\StripeCheckoutController:
+        arguments:
+            - '@vs_payment.repository.order'
+            - '@payum'
+            - '%vs_payment.model.payment.class%'
+            - '@vs_application.repository.taxonomy'
+            - '%vs_wgp.tablature-categories.taxonomy_code%'
+        calls:
+            - [ setContainer, [ '@service_container' ] ]
+            
+            

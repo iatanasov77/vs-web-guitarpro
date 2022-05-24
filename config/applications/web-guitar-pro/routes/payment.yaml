@@ -1,0 +1,11 @@
+app_show_credit_card_form:
+    path: /vs_payment/credit-card/{formAction}
+    controller: App\Controller\WebGuitarPro\Checkout\PaymentController::showCreditCardFormAction
+    defaults:
+        formAction: ''
+    options:
+        expose: true
+
+app_stripe_checkout_done:
+   path: /vs_payment/stripe-checkout/done
+   controller: App\Controller\WebGuitarPro\Checkout\StripeCheckoutController::doneAction
