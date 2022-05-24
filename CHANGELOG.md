@@ -1,3 +1,17 @@
+1.4.0	|	Release date: **24.05.2022**
+============================================
+* New Features:
+  - Create Top Menue Profile Dropdown and add Add UsersSubscriptions and Payment Bundles.
+  - Application User Profile Page is Done
+  - Upgrade VsPaymentBundle
+  - Add Check For Tablature Upload Limit.
+* Bug-Fixes:
+  - Fix some Topbar css.
+  - Override some Payment Controller Actions.
+  - Fix StripeCheckoutController.
+  - Fix Doctrine Configuration
+
+
 1.3.2	|	Release date: **11.05.2022**
 ============================================
 * New Features:
