@@ -49,6 +49,11 @@ Encore
     .addEntry('authentication', './themes/WebGuitarPro_VueJs/assets/js/pages/authentication.js')
     .addEntry('tablatures', './themes/WebGuitarPro_VueJs/assets/js/pages/tablatures.js')
     .addEntry('tablature-edit', './themes/WebGuitarPro_VueJs/assets/js/pages/tablature-edit.js')
+    
+    .addEntry( 'js/filemanager-file-upload', './themes/WebGuitarPro_VueJs/assets/js/pages/filemanager-file-upload.js' )
+    .addEntry( 'js/profile', './themes/WebGuitarPro_VueJs/assets/js/pages/profile.js' )
+    
+    .addEntry( 'paymentForm', './themes/WebGuitarPro_VueJs/assets/js/Stripe/paymentForm.js' )
 ;
 
 const config = Encore.getWebpackConfig();

@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Doctrine\Common\Collections\ArrayCollection;
+use Vankosoft\UsersSubscriptionsBundle\Component\PayedService\SubscriptionPeriod;
 
 use App\Entity\Tablature;
 
@@ -46,6 +47,10 @@ class TablatureController extends AbstractCrudController
     
     protected function prepareEntity( &$entity, &$form, Request $request )
     {
+        if ( ! $this->checkTablatureLimit() ) {
+            $this->redirectToRoute( 'wgp_upoad_tablatures_limited' );
+        }
+        
         $this->easyuiPost( $entity, $request->request->get( 'tablature_form' ) );
         
         $entity->setUser( $this->getUser() );
@@ -102,5 +107,35 @@ class TablatureController extends AbstractCrudController
         );
         
         return $taxonomy;
+    }
+    
+    /**
+     * TRUE for NoLimit, FALSE For Limited
+     * 
+     * @return boolean
+     */
+    private function checkTablatureLimit()
+    {
+        $tablatureLimit = -1;
+        $paid           = true;
+        if ( $this->getUser()->getUsername() != 'admin' ) {
+            $tablatureLimit = $this->getParameter( 'vs_wgp.unpaid_tablature_storage' );
+            
+            $lastPayment    = $this->get( 'vs_users.repository.users' )->getPaidForWhat( $this->getUser() );
+            switch ( $lastPayment['period'] ) {
+                case SubscriptionPeriod::SUBSCRIPTION_PERIOD_YEAR:
+                    $paid   = ( ( new \DateTime( $lastPayment['date'] ) )->add( new \DateInterval( 'P1Y' ) ) ) > ( new \DateTime() );
+ 
+                    break;
+                case SubscriptionPeriod::SUBSCRIPTION_PERIOD_MONTH:
+                    $paid   = ( ( new \DateTime( $lastPayment['date'] ) )->add( new \DateInterval( 'P1M' ) ) ) > ( new \DateTime() );
+                    
+                    break;
+                default:
+                    $paid   = false;
+            }
+        }
+        
+        return ( $tablatureLimit < 0 || $paid ) || ( $this->getUser()->getTablatures()->count() < $tablatureLimit );
     }
 }

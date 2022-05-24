@@ -15,3 +15,6 @@ parameters:
     vs_cms.form.toc_page.ckeditor_extraPlugins: 'liststyle, font, justify, codesnippet, lightbox'
     vs_cms.form.toc_page.ckeditor_removeButtons: ''
 
+    # GatewayConfig Form Options
+    ##########################################################
+    vs_payment.gateway_factories: ['offline', 'paypal_rest', 'paypal_express_checkout', 'paypal_pro_checkout', 'stripe_checkout', 'stripe_js']

@@ -6,6 +6,21 @@
             </a>
         </div>
         
+    {% if app.user and app_environment == 'dev' %}
+        <div class="collapse navbar-collapse" id="navbarPaidServices">
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link btnPayment"
+                        href="javascript:void(0);"
+                        data-url="{{ path( 'vs_payment_add_to_card', {'payableObjectId': 1} ) }}"
+                    >
+                        You can Pay for Unlimited Tablatures Store
+                    </a>
+                </li>
+            </ul>
+        </div>
+    {% endif %}
+        
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="nav navbar-nav ml-auto">
             
@@ -60,9 +75,29 @@
                 </li>
                 <!--/  Submit Tablature  -->
                 
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path( 'app_logout' ) }}">Logout</a>
+                <!--  User Profile  -->
+                <li class="nav-item dropdown btn-group">
+                    <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profile</a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <div class="sm-main-nav" >
+                            <a class="dropdown-item" href="{{ path( 'wgp_user_profile_show' ) }}">
+                                <i class="fas fa-user mr-2"></i>My Profile
+                            </a>
+                            <a class="dropdown-item" href="javascript:;">
+                                <i class="fas fa-language mr-2"></i>Language
+                            </a>
+                            <a class="dropdown-item" href="javascript:;">
+                                <i class="fas fa-cog mr-2"></i>Documentation
+                            </a>
+                            <hr>
+                            <a class="dropdown-item" href="{{ path( 'app_logout' ) }}">
+                                <i class="fas fa-power-off mr-2"></i>Logout
+                            </a>
+                        </div>
+                    </div>
                 </li>
+                <!--/ User Profile  -->
+                
             {% else %}
                 <!--  User Login  -->
                 <li class="nav-item dropdown btn-group">

@@ -1,5 +1,6 @@
 <?php namespace App\Controller\WebGuitarPro;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
@@ -8,11 +9,10 @@ use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 use Vankosoft\ApplicationBundle\Component\Context\ApplicationContextInterface;
 use Vankosoft\ApplicationBundle\Model\Interfaces\TaxonomyInterface;
 
-use App\Entity\Tablature;
-use App\Form\TablatureForm;
-
-class DefaultController extends Controller
+class DefaultController extends AbstractController
 {
+    use GlobalFormsTrait;
+    
     /** @var ApplicationContextInterface */
     private $applicationContext;
     
@@ -36,6 +36,8 @@ class DefaultController extends Controller
     
     public function index( Request $request ): Response
     {
+        //$this->get( 'session' )->remove( 'vs_payment_basket_id' );
+        
         $er         = $this->getDoctrine()->getRepository( 'App\Entity\Tablature' );
         
         $params = [

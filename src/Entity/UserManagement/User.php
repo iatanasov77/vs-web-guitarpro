@@ -2,6 +2,10 @@
 
 use Doctrine\ORM\Mapping as ORM;
 use Vankosoft\UsersBundle\Model\User as BaseUser;
+use Vankosoft\UsersSubscriptionsBundle\Model\Interfaces\SubscribedUserInterface;
+use Vankosoft\UsersSubscriptionsBundle\Model\Traits\SubscribedUserTrait;
+use Vankosoft\PaymentBundle\Model\Interfaces\PaymentsUserInterface;
+use Vankosoft\PaymentBundle\Model\Traits\PaymentsUserTrait;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -12,8 +16,11 @@ use App\Entity\Tablature;
  * @ORM\Entity
  * @ORM\Table(name="VSUM_Users")
  */
-class User extends BaseUser
+class User extends BaseUser implements SubscribedUserInterface, PaymentsUserInterface
 {
+    use SubscribedUserTrait;
+    use PaymentsUserTrait;
+    
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Tablature", mappedBy="user")
      */
@@ -30,8 +37,11 @@ class User extends BaseUser
     
     public function __construct()
     {
-        $this->tablatures   = new ArrayCollection();
-        $this->favorites    = new ArrayCollection();
+        $this->subscriptions    = new ArrayCollection();
+        $this->orders           = new ArrayCollection();
+        
+        $this->tablatures       = new ArrayCollection();
+        $this->favorites        = new ArrayCollection();
         
         parent::__construct();
     }

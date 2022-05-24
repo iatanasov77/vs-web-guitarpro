@@ -1,0 +1,7 @@
+# PAYUM ROUTES
+###################
+wgp_vs_payment_payment:
+    resource: "@VSPaymentBundle/Resources/config/routing/payment.yaml"
+wgp_vs_payment_checkout:
+    resource: "@VSPaymentBundle/Resources/config/routing/checkout.yaml"
+

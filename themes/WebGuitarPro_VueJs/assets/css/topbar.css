@@ -27,6 +27,7 @@
 #navbarSupportedContent .dropdown-menu::before {
     left: inherit !important;
     background-color: inherit !important;
+    top: auto;
 }
 
 nav.copyright-bar {

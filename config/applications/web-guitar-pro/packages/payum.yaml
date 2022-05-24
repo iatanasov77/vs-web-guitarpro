@@ -1,0 +1,60 @@
+payum:
+    storages:
+        Payum\Core\Model\Payment:
+            filesystem:
+                storage_dir: '%kernel.project_dir%/var/payum/payments'
+                id_property: number
+                
+        Payum\Core\Model\ArrayObject:
+            filesystem:
+                storage_dir: '%kernel.project_dir%/var/payum/payments'
+                id_property: number
+                
+        Payum\Paypal\Rest\Model\PaymentDetails:
+            filesystem:
+                storage_dir: '%kernel.project_dir%/var/payum/payments'
+                id_property: idStorage
+                
+        ArrayObject:
+            filesystem:
+                storage_dir: '%kernel.project_dir%/var/payum/payments'
+
+
+    security:
+        token_storage:
+            Payum\Core\Model\Token:
+                filesystem:
+                    storage_dir: '%kernel.project_dir%/var/payum/gateways'
+                    id_property: hash
+            
+    gateways:
+        offline:
+            factory: offline
+            
+        # Sandbox account: sb-wqxm3403839@business.example.com
+        paypalRest:
+            factory: paypal_rest
+            
+            # Your PayPal REST API cliend ID.
+            client_id: 'ARn-1kRVAW23BEB0RAeZ5O3pt8jblMs-J75ijDIpLwpG8httmIjnxB-rvKhjqTdG-FHSfeVDFLUUBjWz'
+            # Your PayPal REST API client secret.
+            client_secret: 'ECF4KlmFaeIHsgjKGN9Ql2Sbvc3DCDwIeEprbXT3pgFEdsOEk0tajI0Nu9U_HlC89UHXmNuILDx6zTg5'
+            
+            # Point to the directory where your skd_config.ini is located.
+            #config_path: '%kernel.project_dir%/var/payum/sdk/sdk_config.ini'
+            config:
+                mode: sandbox
+                acct1.ClientId: 'ARn-1kRVAW23BEB0RAeZ5O3pt8jblMs-J75ijDIpLwpG8httmIjnxB-rvKhjqTdG-FHSfeVDFLUUBjWz'
+                acct1.ClientSecret: 'ECF4KlmFaeIHsgjKGN9Ql2Sbvc3DCDwIeEprbXT3pgFEdsOEk0tajI0Nu9U_HlC89UHXmNuILDx6zTg5'
+
+            sandbox: true
+            
+            
+        
+        paypal_express_checkout:
+            factory: paypal_express_checkout
+            username:  'sb-f26bg507886_api1.business.example.com'
+            password:  '338RG83GSWR3PQ95'
+            signature: 'A636qyVK0FbCmxpNQ7wrZ78TEeNgAP0jUy0sFAQ5qajtYzr5YmqtpKif'
+            sandbox: true
+            

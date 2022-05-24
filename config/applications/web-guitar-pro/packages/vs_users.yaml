@@ -3,6 +3,7 @@ vs_users:
         users:
             classes:
                 model: App\Entity\UserManagement\User
+                repository: App\Repository\UserRepository
         user_roles:
             classes:
                 model: App\Entity\UserManagement\UserRole

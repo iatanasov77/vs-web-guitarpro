@@ -23,7 +23,10 @@
     		</div>
     	</div>
     	
-        {% block widgets %}{% endblock %}
+        {% block widgets %}
+            {% include 'Modal/payment.html.twig' %}
+        {% endblock %}
+        
         {% block svg %}{% endblock %}
         
         {% block javascripts %}
