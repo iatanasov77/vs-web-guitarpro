@@ -7,16 +7,16 @@
     <div class="padding">
     	<div class="row">
     		<div class="col-sm-6">
-    		{#
-    			{% include '@VSPayment/Pages/CreditCard/Partial/credit_card_form.html.twig' with {
-    			     'formAction': path( 'wgp_paypal_prepare' ),
-    			     'formMethod': 'POST'
-    			 } %}
-    	    #}
-    			 {% include '@VSPayment/Pages/CreditCard/Partial/credit_card_form.html.twig' with {
-                     'formAction': '',
-                     'formMethod': 'POST'
-                 } %}
+                {% if paymentMethod.gateway.factoryName == 'stripe_checkout' or paymentMethod.gateway.factoryName == 'stripe_js' %}
+                    {% set captureKey = paymentMethod.gateway.config.publishable_key %}
+                {% else %}
+                    {% set captureKey = '' %}
+                {% endif %}
+                
+                {% include '@VSPayment/Pages/CreditCard/Partial/credit_card_form.html.twig' with {
+                    'formAction': '',
+                    'formMethod': 'POST'
+                } %}
     		</div>
     	</div>
     </div>
@@ -26,5 +26,11 @@
     {{ parent() }}
     
     {% include '@VSPayment/Pages/CreditCard/Partial/credit_card_css.html.twig' %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
     
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    {{ encore_entry_script_tags( 'paymentForm', null, 'WebGuitarPro_VueJs' ) }}
 {% endblock %}

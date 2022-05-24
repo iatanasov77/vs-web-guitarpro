@@ -2,8 +2,65 @@ require( '../css/topbar.css' );
 
 import { VsPath } from './includes/fos_js_routes.js';
 
+function showPaymentMethodsForm()
+{
+    var url = VsPath( 'vs_payment_show_payment_methods_form' ) + 
+              '?payment_description=' + encodeURI( 'Payment for Unlimited Tablatures Store' );
+    
+    $.ajax({
+        type: "GET",
+        url: url,
+        success: function( response )
+        {
+            $( '#paymentMethods' ).html( response );
+            $( '#payment-modal' ).modal( 'toggle' );
+            
+            $( ".radio-payment-method:first" ).prop( "checked", true );
+        },
+        error: function()
+        {
+            alert( "SYSTEM ERROR!!!" );
+        }
+    });
+}
+
 $( function()
 {
+    $( '#btnPayment' ).on( 'click', function()
+    {
+        $.ajax({
+            type: "GET",
+            url: $( this ).attr( 'data-url' ),
+            success: function( response )
+            {
+                showPaymentMethodsForm();
+            },
+            error: function()
+            {
+                alert( "SYSTEM ERROR!!!" );
+            }
+        });
+    });
+    
+    $( '#btnPaymentPay' ).on( 'click', function( e )
+    {
+        var form    = $( '#vs_payment_payment_form' );
+        $.ajax({
+            type: form.attr( 'method' ),
+            url: form.attr( 'action' ),
+            data: form.serialize(),
+            success: function( response )
+            {
+                //alert( response.data.paymentPrepareUrl );
+                document.location   = VsPath( response.data.paymentPrepareUrl );
+            },
+            error: function()
+            {
+                alert( "SYSTEM ERROR!!!" );
+            }
+        });
+    });
+    
     $( '#formTablatureCategory' ).on( 'submit', function( e )
     {
         e.preventDefault();

@@ -39,6 +39,8 @@ class DefaultController extends AbstractController
     
     public function index( Request $request ): Response
     {
+        //$this->get( 'session' )->remove( 'vs_payment_basket_id' );
+        
         $er         = $this->getDoctrine()->getRepository( 'App\Entity\Tablature' );
         
         $params = [

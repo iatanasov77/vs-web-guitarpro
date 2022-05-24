@@ -52,6 +52,8 @@ Encore
     
     .addEntry( 'js/filemanager-file-upload', './themes/WebGuitarPro_VueJs/assets/js/pages/filemanager-file-upload.js' )
     .addEntry( 'js/profile', './themes/WebGuitarPro_VueJs/assets/js/pages/profile.js' )
+    
+    .addEntry( 'paymentForm', './themes/WebGuitarPro_VueJs/assets/js/Stripe/paymentForm.js' )
 ;
 
 const config = Encore.getWebpackConfig();

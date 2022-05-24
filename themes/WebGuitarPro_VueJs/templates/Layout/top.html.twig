@@ -6,30 +6,16 @@
             </a>
         </div>
         
-    {% if app_environment == 'dev' %}
+    {% if app.user and app_environment == 'dev' %}
         <div class="collapse navbar-collapse" id="navbarPaidServices">
             <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path( 'wgp_show_credit_card_form', {'paidServiceId': 1} ) }}">Show Credit Card Form</a>
-                </li>
-                
-                
-                <li class="nav-item dropdown btn-group">
-                    <a class="nav-link dropdown-toggle" id="btnFavorites" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link" id="btnPayment"
+                        href="javascript:void(0);"
+                        data-url="{{ path( 'vs_payment_add_to_card', {'payableObjectId': 1} ) }}"
+                    >
                         You can Pay for Unlimited Tablatures Store
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right scrollable-menu favoriteList" aria-labelledby="btnFavorites">
-                        <!-- Favorite tabs list -->
-                        <div class="sm-main-nav" >
-                            <a class="dropdown-item" href="{{ path( 'wgp_show_credit_card_form', {'paidServiceId': 1} ) }}">Show Credit Card Form</a><hr>
-                            
-                            <a class="dropdown-item" href="{{ path( 'wgp_paypal_rest_cc_prepare' ) }}">PayPal Rest - Credit Card</a><hr>
-                            
-                            <a class="dropdown-item" href="{{ path( 'wgp_paypal_rest_gs_prepare' ) }}">PayPal Rest - Get Started</a><hr>
-                            
-                            <a class="dropdown-item" href="{{ path( 'wgp_paypal_express_checkout_prepare' ) }}">PayPal Express Checkout</a><hr>
-                        </div>
-                    </div>
                 </li>
             </ul>
         </div>
