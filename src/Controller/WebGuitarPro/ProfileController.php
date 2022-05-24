@@ -1,5 +1,6 @@
 <?php namespace App\Controller\WebGuitarPro;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\File\File;
@@ -16,8 +17,10 @@ use Vankosoft\UsersBundle\Model\UserInfoInterface;
 use Vankosoft\UsersBundle\Security\UserManager;
 use App\Entity\UsersSubscriptions\PayedService;
 
-class ProfileController extends Controller
+class ProfileController extends AbstractController
 {
+    use GlobalFormsTrait;
+    
     /** @var UserManager */
     private UserManager $userManager;
     

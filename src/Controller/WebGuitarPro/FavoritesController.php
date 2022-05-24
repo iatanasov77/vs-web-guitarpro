@@ -1,11 +1,14 @@
 <?php namespace App\Controller\WebGuitarPro;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-class FavoritesController extends Controller
+class FavoritesController extends AbstractController
 {
+    use GlobalFormsTrait;
+    
     public function addFavorite( $id, Request $request ): Response
     {
         $em             = $this->getDoctrine()->getManager();

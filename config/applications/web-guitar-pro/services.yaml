@@ -5,6 +5,7 @@ imports:
     - { resource: services/doctrine_extensions.yaml }
     - { resource: services/menu.yaml }
     - { resource: services/wgp_tablature.yaml }
+    - { resource: services/payment.yaml }
     
 parameters:
     lang: 'en'

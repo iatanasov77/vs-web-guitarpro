@@ -1,5 +1,6 @@
 <?php namespace App\Controller\WebGuitarPro;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -10,8 +11,9 @@ use Vankosoft\ApplicationBundle\Repository\TaxonomyRepository;
 use Vankosoft\ApplicationBundle\Repository\TaxonRepository;
 use Vankosoft\ApplicationBundle\Controller\TaxonomyTreeDataTrait;
 
-class TablatureExtController extends Controller
+class TablatureExtController extends AbstractController
 {
+    use GlobalFormsTrait;
     use TaxonomyTreeDataTrait;
     
     /** @var EntityRepository */

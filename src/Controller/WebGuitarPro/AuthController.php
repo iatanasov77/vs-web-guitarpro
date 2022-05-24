@@ -1,13 +1,16 @@
 <?php namespace App\Controller\WebGuitarPro;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Twig\Environment;
 
 use Vankosoft\ApplicationBundle\Component\Context\ApplicationContextInterface;
 
-class AuthController extends Controller
+class AuthController extends AbstractController
 {
+    use GlobalFormsTrait;
+    
     /** @var ApplicationContextInterface */
     private $applicationContext;
     

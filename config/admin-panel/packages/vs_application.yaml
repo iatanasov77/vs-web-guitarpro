@@ -254,11 +254,32 @@ vs_application:
                     gateways_index:
                         name: Gateways
                         route: vs_payment_gateways_index
+                    gateways_create:
+                        name: Create New Gateway
+                        route: vs_payment_gateways_config
                     gateways_config:
-                        name: Config
+                        name: Edit a Gateway
                         route: vs_payment_gateways_config
                         routeParameters:
                           gatewayName: string
+                        display: false
+            payment_methods:
+                name: Payment Methods
+                uri: "javascript:;"
+                attributes:
+                    iconClass: icon_genius
+                childs:
+                    gateways_index:
+                        name: Payment Methods
+                        route: vs_payment_methods_index
+                    gateways_create:
+                        name: Create New Payment Method
+                        route: vs_payment_methods_config
+                    gateways_config:
+                        name: Edit a Payment Method
+                        route: vs_payment_methods_config
+                        routeParameters:
+                          id: int
                         display: false
         
         profileMenu:

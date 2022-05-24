@@ -1,0 +1,30 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{ parent() }} :: Credit Card{% endblock %}
+{% block pageTitle %}<i class="fa fa-user-md"></i> Credit Card{% endblock %}
+
+{% block content %}
+    <div class="padding">
+    	<div class="row">
+    		<div class="col-sm-6">
+    		{#
+    			{% include '@VSPayment/Pages/CreditCard/Partial/credit_card_form.html.twig' with {
+    			     'formAction': path( 'wgp_paypal_prepare' ),
+    			     'formMethod': 'POST'
+    			 } %}
+    	    #}
+    			 {% include '@VSPayment/Pages/CreditCard/Partial/credit_card_form.html.twig' with {
+                     'formAction': '',
+                     'formMethod': 'POST'
+                 } %}
+    		</div>
+    	</div>
+    </div>
+{% endblock content %}
+
+{% block stylesheets %} 
+    {{ parent() }}
+    
+    {% include '@VSPayment/Pages/CreditCard/Partial/credit_card_css.html.twig' %}
+    
+{% endblock %}

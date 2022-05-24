@@ -1,5 +1,6 @@
 <?php namespace App\Controller\WebGuitarPro;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
@@ -11,8 +12,10 @@ use Vankosoft\ApplicationBundle\Model\Interfaces\TaxonomyInterface;
 use App\Entity\Tablature;
 use App\Form\TablatureForm;
 
-class DefaultController extends Controller
+class DefaultController extends AbstractController
 {
+    use GlobalFormsTrait;
+    
     /** @var ApplicationContextInterface */
     private $applicationContext;
     

@@ -8,7 +8,8 @@ $( function()
             	factory: $(this).val()
             },
             success: function ( data ) {
-                $( '#gatewayConfigOptions' ).html( data );
+                $( '#gatewayConfigOptions' ).html( data.gatewayConfig );
+                $( '#gatewaySandboxConfigOptions' ).html( data.sandboxConfig );
             }, 
             error: function( XMLHttpRequest, textStatus, errorThrown ) {
             	alert( 'FATAL ERROR!!!' );
