@@ -2,6 +2,6 @@
     {{ form_widget(form.paymentDescription, {'value': paymentDescription}) }}
     
     <div class="form-group">
-        {{ form_row(form.paymentMethod, {'attr': {'class': 'form-control'}}) }}
+        {{ form_row(form.paymentMethod, {'choice_attr': {'class': 'form-control'}}) }}
     </div>
 {{ form_end(form, {'render_rest': false}) }}
