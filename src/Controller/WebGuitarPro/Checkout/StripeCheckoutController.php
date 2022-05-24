@@ -48,8 +48,10 @@ class StripeCheckoutController extends BaseStripeCheckoutController
         
         if ( $status->isCaptured() || $status->isAuthorized() || $status->isPending() ) {
             // success
-            $payment->getOrder()->setStatus( Order::STATUS_ORDER );
+            $payment->getOrder()->setStatus( Order::STATUS_PAID_ORDER );
             $storage->update( $payment );
+            $this->get( 'session' )->remove( 'vs_payment_basket_id' );
+            
             return $this->render( '@VSPayment/Pages/Checkout/done.html.twig', [
                 'paymentStatus' => $status,
                 
@@ -60,6 +62,10 @@ class StripeCheckoutController extends BaseStripeCheckoutController
         }
         
         if ( $status->isFailed() || $status->isCanceled() ) {
+            $payment->getOrder()->setStatus( Order::STATUS_FAILED_ORDER );
+            $storage->update( $payment );
+            $this->get( 'session' )->remove( 'vs_payment_basket_id' );
+            
             throw new HttpException( 400, $this->getErrorMessage( $status->getModel() ) );
         }
     }

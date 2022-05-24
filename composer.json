@@ -24,8 +24,8 @@
         
         "vankosoft/application": "1.8.*",
         
-        "vankosoft/users-subscriptions-bundle": "dev-develop",
-        "vankosoft/payment-bundle": "dev-develop"
+        "vankosoft/users-subscriptions-bundle": "2.2.*",
+        "vankosoft/payment-bundle": "1.0.*"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5",
