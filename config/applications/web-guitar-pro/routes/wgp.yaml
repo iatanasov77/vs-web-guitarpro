@@ -9,3 +9,7 @@ vs_wgp_tablature_categories_tree_combo_with_selected:
 tablature_favorite:
     path: /tablatures-ext/{id}/add-favorite
     controller: App\Controller\WebGuitarPro\FavoritesController::addFavorite
+
+wgp_upoad_tablatures_limited:
+    path: /error/upoad-tablatures-limited
+    controller: App\Controller\WebGuitarPro\ErrorController::uploadTablaturesLimited

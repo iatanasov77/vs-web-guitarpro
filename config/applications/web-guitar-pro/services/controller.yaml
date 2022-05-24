@@ -45,5 +45,13 @@ services:
         calls:
             - [ setContainer, [ '@service_container' ] ]
         
+    App\Controller\WebGuitarPro\ErrorController:
+        tags: ['controller.service_arguments']
+        autowire: false
+        arguments:
+            - '@vs_application.repository.taxonomy'
+            - '%vs_wgp.tablature-categories.taxonomy_code%'
+        calls:
+            - [ setContainer, [ '@service_container' ] ]
 
 

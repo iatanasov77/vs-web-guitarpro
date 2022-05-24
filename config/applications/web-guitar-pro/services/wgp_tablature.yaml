@@ -1,6 +1,7 @@
 parameters:
     vs_wgp.tablatures_directory: "%kernel.project_dir%/public/shared_media/gaufrette/tablatures"
-
+    vs_wgp.unpaid_tablature_storage: 10
+    
 services:
     _defaults:
         #autowire: true

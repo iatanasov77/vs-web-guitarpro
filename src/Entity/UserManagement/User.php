@@ -38,7 +38,7 @@ class User extends BaseUser implements SubscribedUserInterface, PaymentsUserInte
     public function __construct()
     {
         $this->subscriptions    = new ArrayCollection();
-        $this->payments         = new ArrayCollection();
+        $this->orders           = new ArrayCollection();
         
         $this->tablatures       = new ArrayCollection();
         $this->favorites        = new ArrayCollection();

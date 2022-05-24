@@ -26,7 +26,7 @@ function showPaymentMethodsForm()
 
 $( function()
 {
-    $( '#btnPayment' ).on( 'click', function()
+    $( '.btnPayment' ).on( 'click', function()
     {
         $.ajax({
             type: "GET",

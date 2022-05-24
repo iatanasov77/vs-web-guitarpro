@@ -9,9 +9,6 @@ use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 use Vankosoft\ApplicationBundle\Component\Context\ApplicationContextInterface;
 use Vankosoft\ApplicationBundle\Model\Interfaces\TaxonomyInterface;
 
-use App\Entity\Tablature;
-use App\Form\TablatureForm;
-
 class DefaultController extends AbstractController
 {
     use GlobalFormsTrait;
