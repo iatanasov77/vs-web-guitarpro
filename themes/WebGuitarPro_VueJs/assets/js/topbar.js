@@ -15,7 +15,7 @@ function showPaymentMethodsForm()
             $( '#paymentMethods' ).html( response );
             $( '#payment-modal' ).modal( 'toggle' );
             
-            $( ".radio-payment-method:first" ).prop( "checked", true );
+            $( "input[name='payment_form[paymentMethod]']:first" ).prop( "checked", true );
         },
         error: function()
         {

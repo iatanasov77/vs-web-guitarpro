@@ -41,6 +41,8 @@ parameters:
     vs_cms.filemanager_shared_media_gaufrette.filemanager: "%kernel.project_dir%/public/shared_media/gaufrette/filemanager"
     vs_cms.filemanager_shared_media_artgris: '%kernel.project_dir%/public/shared_media/artgris'
 
+    vs_application.taxon_repository_throw_exception: false
+    
 services:
     # default configuration for services in *this* file
     _defaults:
