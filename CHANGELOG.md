@@ -1,3 +1,10 @@
+1.4.1	|	Release date: **04.06.2022**
+============================================
+* New Features:
+  - Payment Methods Form - Set First Checked.
+  - Add Service Parameter for Throwing Exceptions in TaxonRepository.
+
+
 1.4.0	|	Release date: **24.05.2022**
 ============================================
 * New Features:
