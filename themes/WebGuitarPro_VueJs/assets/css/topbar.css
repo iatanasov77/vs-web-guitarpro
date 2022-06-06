@@ -53,4 +53,7 @@ a, a:hover, a:focus {
 .dropdown-menu.favoriteList {
     width: 350px !important;
 }
-   
+
+.dropdown-login-form {
+	width: 300px;
+}
