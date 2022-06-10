@@ -21,6 +21,7 @@ class TablatureCategoryController extends AbstractCrudController
             'tabForm'           => $this->getTabForm()->createView(),
             'tabCategoryForm'   => $this->getTabCategoryForm()->createView(),
             'taxonomyId'        => $taxonomy->getId(),
+            'locales'           => $this->getDoctrine()->getRepository( 'App\Entity\Application\Locale' )->findAll(),
         ];
     }
     

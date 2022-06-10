@@ -38,12 +38,12 @@ class DefaultController extends AbstractController
     {
         //$this->get( 'session' )->remove( 'vs_payment_basket_id' );
         
-        $er         = $this->getDoctrine()->getRepository( 'App\Entity\Tablature' );
-        
+        $er     = $this->getDoctrine()->getRepository( 'App\Entity\Tablature' );        
         $params = [
             'tabForm'                   => $this->getTabForm()->createView(),
             'tabCategoryForm'           => $this->getTabCategoryForm()->createView(),
             'tabCategoriesTaxonomyId'   => $this->tabCategoriesTaxonomy->getId(),
+            'locales'                   => $this->getDoctrine()->getRepository( 'App\Entity\Application\Locale' )->findAll(),
             
             // About enabled field - $enabled (public)
             'tabs'                      => $er->findBy( ['enabled' => true], [ 'updatedAt' => 'DESC' ], 10 ),

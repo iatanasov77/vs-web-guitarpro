@@ -12,7 +12,7 @@ parameters:
     locale: 'en_US'
     languages:
         en: English
-        bg: Български¸
+        bg: Български
 
     vankosoft_host: '%env(HOST)%'    
     applicationTitle: 'Web Guitar Pro'
@@ -62,6 +62,7 @@ services:
             - '../../../src/Form/'
             - '../../../src/Tests/'
             - '../../../src/Controller/'
+            - '../../../src/Controller/Application'
             - '../../../src/Controller/WebGuitarPro'
             - '../../../src/Component/TablatureUploader'
             - '../../../src/WebGuitarProKernel.php'

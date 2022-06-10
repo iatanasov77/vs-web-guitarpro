@@ -1,4 +1,5 @@
 require( '../css/topbar.css' );
+require( './includes/submenu.js' );
 
 import { VsPath } from './includes/fos_js_routes.js';
 

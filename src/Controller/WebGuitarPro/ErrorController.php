@@ -25,6 +25,7 @@ class ErrorController extends AbstractController
             'tabForm'                   => $this->getTabForm()->createView(),
             'tabCategoryForm'           => $this->getTabCategoryForm()->createView(),
             'tabCategoriesTaxonomyId'   => $this->tabCategoriesTaxonomy->getId(),
+            'locales'                   => $this->getDoctrine()->getRepository( 'App\Entity\Application\Locale' )->findAll(),
         ]);
     }
 }

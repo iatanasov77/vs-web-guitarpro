@@ -1,7 +1,7 @@
 {% extends "base.html.twig" %}
 
-{% block title %}{{ parent() }} :: Latest Tablatures{% endblock %}
-{% block pageTitle %}<i class="icon_genius"></i> Latest Tablatures{% endblock %}
+{% block title %}{{ parent() }} :: {{ 'vs_wgp.template.latest_tablatures' | trans( {},'WebGuitarPro' ) }}{% endblock %}
+{% block pageTitle %}<i class="icon_genius"></i> {{ 'vs_wgp.template.latest_tablatures' | trans( {},'WebGuitarPro' ) }}{% endblock %}
 
 {% block content %}
     <div class="tablatures-container" style="margin-top: 110px">
@@ -11,14 +11,14 @@
             {% endif %}
         </div>
         <div class="card">
-            <h5 class="card-header">Tablatures</h5>
+            <h5 class="card-header">{{ 'vs_wgp.template.tablatures' | trans( {},'WebGuitarPro' ) }}</h5>
             <div class="card-body">
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>Artist</th>
-                            <th>Song</th>
-                            <th>Play</th>
+                            <th>{{ 'vs_wgp.template.artist' | trans( {},'WebGuitarPro' ) }}</th>
+                            <th>{{ 'vs_wgp.template.song' | trans( {},'WebGuitarPro' ) }}</th>
+                            <th>{{ 'vs_wgp.template.play' | trans( {},'WebGuitarPro' ) }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -28,7 +28,9 @@
                             <td>{{ t.song }}</td>
                             <td>
                                 {% if ( t.slug|length ) %}{% set tabId = t.slug %}{% else %}{% set tabId = t.id %}{% endif %}
-                                <a href="{{ path( 'vs_wgp_tablature_show', {id: tabId} ) }}" class="btn btn-primary">Play</a>
+                                <a href="{{ path( 'vs_wgp_tablature_show', {id: tabId} ) }}" class="btn btn-primary">
+                                    {{ 'vs_wgp.template.play' | trans( {},'WebGuitarPro' ) }}
+                                </a>
                             </td>
                         </tr>
                     {% endfor %}
