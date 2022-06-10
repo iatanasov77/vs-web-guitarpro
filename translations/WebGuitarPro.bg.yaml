@@ -1,0 +1,43 @@
+vs_wgp:
+    template:
+        menu:
+            login: Вход
+            my_tablatures: Моите Таблатури
+            favorites: Предпочитани
+            create_tablature_category: Създай Категория
+            create_tablature: Добави Таблатура
+            profile: Профил
+            my_profile: Моят Профил
+            language: Език
+            documentation: Документация
+            logout: Изход
+            
+        edit: Редактиране
+        delete: Изтриване
+        category: Категория
+        latest_tablatures: Най-нови Таблатури
+        tablatures: Таблатури
+        artist: Изпълнител
+        song: Песен
+        play: Пусни
+        uncategorized: Некатегоризирани
+            
+    form:
+        public: Публичен
+        locale: Език
+        name: Име
+        category: Категория
+        category_placeholder: '-- Избери Категория --'
+        
+        login:
+            email: Имейл Адрес
+            password: Парола
+            login: Вход
+            register: Регистрация
+            forgot_password: Забравена парола
+            
+        tablature:
+            artist: Артист
+            song: Песен
+            tablature: Таблатура
+

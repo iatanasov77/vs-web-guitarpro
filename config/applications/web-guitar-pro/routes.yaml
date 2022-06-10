@@ -8,5 +8,5 @@ admin_panel:
 
 app_set_lang:
     path: /set_lang/{lang}
-    controller: App\Controller\Aplication\DefaultController::setLanguage
+    controller: App\Controller\Application\DefaultController::setLanguage
     

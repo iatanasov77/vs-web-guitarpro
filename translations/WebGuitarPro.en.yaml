@@ -1,8 +1,26 @@
 vs_wgp:
     template:
+        menu:
+            login: Login
+            my_tablatures: My Tablatures
+            favorites: Favorites
+            create_tablature_category: Create Category
+            create_tablature: Submit Tablature
+            profile: Profile
+            my_profile: My Profile
+            language: Language
+            documentation: Documentation
+            logout: Logout
+            
         edit: Edit
         delete: Delete
         category: Category
+        latest_tablatures: Latest Tablatures
+        tablatures: Tablatures
+        artist: Artist
+        song: Song
+        play: Play
+        uncategorized: Uncategorized
         
     form:
         public: To Be Public
@@ -11,3 +29,14 @@ vs_wgp:
         category: Category
         category_placeholder: '-- Choose a Category --'
 
+        login:
+            email: Email address
+            password: Password
+            login: Login
+            register: Register
+            forgot_password: Forgot Password
+            
+        tablature:
+            artist: Artist
+            song: Song
+            tablature: Tablature

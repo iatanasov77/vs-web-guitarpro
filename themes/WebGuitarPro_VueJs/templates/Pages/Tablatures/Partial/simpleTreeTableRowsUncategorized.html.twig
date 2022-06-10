@@ -1,10 +1,12 @@
-<tr data-node-id="-1">
-    <td>Uncategorized</td>
+<tr data-node-id="-1" id="uncategorized-tablatures">
+    <td>{{ 'vs_wgp.template.uncategorized' | trans( {},'WebGuitarPro' ) }}</td>
     <td></td>
 </tr>
+<script>var uncategorizedTablatures=0;</script>
 
 {% for item in items %}
     {% if ( item.categories|length == 0 ) and item.user == app.user %}
+         <script>uncategorizedTablatures++;</script>
         {% include 'Pages/Tablatures/Partial/simpleTreeTableRows.html.twig' with {'parentId': -1, 'item': item, 'isTab': 1} %}
     {% endif %}
 {% endfor %}

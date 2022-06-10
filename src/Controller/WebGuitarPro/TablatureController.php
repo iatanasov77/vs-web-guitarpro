@@ -32,6 +32,7 @@ class TablatureController extends AbstractCrudController
             'item'                      => $oTablature,
             'error'                     => false,
             'tabCategoriesTaxonomyId'   => $this->getTabCategoriesTaxonomy()->getId(),
+            'locales'                   => $this->getDoctrine()->getRepository( 'App\Entity\Application\Locale' )->findAll(),
         ]);
     }
     
@@ -42,6 +43,7 @@ class TablatureController extends AbstractCrudController
             'tabCategoryForm'           => $this->getTabCategoryForm()->createView(),
             'tabCategoriesTaxonomyId'   => $this->getTabCategoriesTaxonomy()->getId(),
             'userCategories'            => $this->get( 'vs_wgp.repository.tablature_category' )->findBy( ['user' => $this->getUser()] ),
+            'locales'                   => $this->getDoctrine()->getRepository( 'App\Entity\Application\Locale' )->findAll(),
         ];
     }
     

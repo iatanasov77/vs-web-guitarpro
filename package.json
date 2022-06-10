@@ -50,7 +50,9 @@
         "jsdom": "^19.0.0",
         "util": "^0.12.4",
         "bootstrap-slider": "^11.0.2",
-        "@coderline/alphatab": "^1.2.2"
+        "@coderline/alphatab": "^1.2.2",
+        
+        "bootstrap-submenu": "^3.0.1"
     },
     "devDependencies": {
         "@symfony/webpack-encore": "^1.0.0",

@@ -24,18 +24,28 @@ class TablatureForm extends AbstractForm
             ->add( '_currentUrl', HiddenType::class, ['mapped' => false] )
             
             ->add( 'enabled', CheckboxType::class, [
+                'required'              => false,
+                
                 'label'                 => 'vs_wgp.form.public',
                 'translation_domain'    => 'WebGuitarPro',
-                'required'              => false,
             ])
             
-            ->add( 'artist', TextType::class, ['label' => 'Artist'] )
-            ->add( 'song', TextType::class, ['label' => 'Song'] )
+            ->add( 'artist', TextType::class, [
+                'label'                 => 'vs_wgp.form.tablature.artist',
+                'translation_domain'    => 'WebGuitarPro',
+            ])
+            ->add( 'song', TextType::class, [
+                'label'                 => 'vs_wgp.form.tablature.song',
+                'translation_domain'    => 'WebGuitarPro',
+            ])
             
             ->add( 'tablature', FileType::class, [
-                'label' => 'Tablature',
                 'mapped' => false,
                 'required' => true,
+                
+                'label'                 => 'vs_wgp.form.tablature.tablature',
+                'translation_domain'    => 'WebGuitarPro',
+                
                 'constraints' => [
                     new File([
                         'maxSize' => '1024k',

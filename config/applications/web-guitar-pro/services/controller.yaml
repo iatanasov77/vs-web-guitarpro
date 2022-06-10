@@ -3,6 +3,11 @@ services:
         autowire: true
         autoconfigure: true
 
+    App\Controller\Application\:
+        resource: '../../../../src/Controller/Application'
+        tags: ['controller.service_arguments']
+        autowire: true
+        
     App\Controller\WebGuitarPro\:
         resource: '../../../../src/Controller/WebGuitarPro'
         tags: ['controller.service_arguments']
