@@ -46,11 +46,12 @@ class AuthController extends AbstractController
         $lastUsername = $authenticationUtils->getLastUsername();
         
         $tplVars = [
-            'locales'           => $this->getDoctrine()->getRepository( 'App\Entity\Application\Locale' )->findAll(),
-            'last_username'     => $lastUsername,
-            'error'             => $error,
-            'tabForm'           => $this->getTabForm()->createView(),
-            'tabCategoryForm'   => $this->getTabCategoryForm()->createView(),
+            'locales'                       => $this->getDoctrine()->getRepository( 'App\Entity\Application\Locale' )->findAll(),
+            'last_username'                 => $lastUsername,
+            'error'                         => $error,
+            'tabForm'                       => $this->getTabForm()->createView(),
+            'tabCategoryForm'               => $this->getTabCategoryForm()->createView(),
+            'paidTablatureStoreServices'    => $this->getDoctrine()->getRepository( 'App\Entity\UsersSubscriptions\PayedService' )->findAll(),
         ];
         
         return new Response( $this->templatingEngine->render( $this->getTemplate(), $tplVars ) );

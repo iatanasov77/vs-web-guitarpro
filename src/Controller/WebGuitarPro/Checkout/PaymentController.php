@@ -48,12 +48,14 @@ class PaymentController extends BasePaymentController
         $form   = $this->getCreditCardForm( base64_decode( $formAction ) );
         
         return $this->render( '@VSPayment/Pages/CreditCard/credit_card.html.twig', [
-            'form'          => $form->createView(),
-            'paymentMethod' => $card->getPaymentMethod(),
+            'form'                          => $form->createView(),
+            'paymentMethod'                 => $card->getPaymentMethod(),
             
-            'tabForm'                   => $this->getTabForm()->createView(),
-            'tabCategoryForm'           => $this->getTabCategoryForm()->createView(),
-            'tabCategoriesTaxonomyId'   => $this->tabCategoriesTaxonomy->getId(),
+            'tabForm'                       => $this->getTabForm()->createView(),
+            'tabCategoryForm'               => $this->getTabCategoryForm()->createView(),
+            'tabCategoriesTaxonomyId'       => $this->tabCategoriesTaxonomy->getId(),
+            
+            'paidTablatureStoreServices'    => $this->getDoctrine()->getRepository( 'App\Entity\UsersSubscriptions\PayedService' )->findAll(),
         ]);
     }
 }

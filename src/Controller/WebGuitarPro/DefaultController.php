@@ -40,13 +40,14 @@ class DefaultController extends AbstractController
         
         $er     = $this->getDoctrine()->getRepository( 'App\Entity\Tablature' );        
         $params = [
-            'tabForm'                   => $this->getTabForm()->createView(),
-            'tabCategoryForm'           => $this->getTabCategoryForm()->createView(),
-            'tabCategoriesTaxonomyId'   => $this->tabCategoriesTaxonomy->getId(),
-            'locales'                   => $this->getDoctrine()->getRepository( 'App\Entity\Application\Locale' )->findAll(),
+            'tabForm'                       => $this->getTabForm()->createView(),
+            'tabCategoryForm'               => $this->getTabCategoryForm()->createView(),
+            'tabCategoriesTaxonomyId'       => $this->tabCategoriesTaxonomy->getId(),
+            'locales'                       => $this->getDoctrine()->getRepository( 'App\Entity\Application\Locale' )->findAll(),
+            'paidTablatureStoreServices'    => $this->getDoctrine()->getRepository( 'App\Entity\UsersSubscriptions\PayedService' )->findAll(),
             
             // About enabled field - $enabled (public)
-            'tabs'                      => $er->findBy( ['enabled' => true], [ 'updatedAt' => 'DESC' ], 10 ),
+            'tabs'                          => $er->findBy( ['enabled' => true], [ 'updatedAt' => 'DESC' ], 10 ),
         ];
         return new Response( $this->templatingEngine->render( $this->getTemplate(), $params ) );
     }

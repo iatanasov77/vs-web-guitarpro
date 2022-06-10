@@ -55,9 +55,11 @@ class StripeCheckoutController extends BaseStripeCheckoutController
             return $this->render( '@VSPayment/Pages/Checkout/done.html.twig', [
                 'paymentStatus' => $status,
                 
-                'tabForm'                   => $this->getTabForm()->createView(),
-                'tabCategoryForm'           => $this->getTabCategoryForm()->createView(),
-                'tabCategoriesTaxonomyId'   => $this->tabCategoriesTaxonomy->getId(),
+                'tabForm'                       => $this->getTabForm()->createView(),
+                'tabCategoryForm'               => $this->getTabCategoryForm()->createView(),
+                'tabCategoriesTaxonomyId'       => $this->tabCategoriesTaxonomy->getId(),
+                
+                'paidTablatureStoreServices'    => $this->getDoctrine()->getRepository( 'App\Entity\UsersSubscriptions\PayedService' )->findAll(),
             ]);
         }
         

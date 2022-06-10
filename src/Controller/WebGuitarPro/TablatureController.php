@@ -27,23 +27,25 @@ class TablatureController extends AbstractCrudController
         }
 
         return $this->render( 'Pages/Tablatures/show.html.twig', [
-            'tabForm'                   => $this->getTabForm()->createView(),
-            'tabCategoryForm'           => $this->getTabCategoryForm()->createView(),
-            'item'                      => $oTablature,
-            'error'                     => false,
-            'tabCategoriesTaxonomyId'   => $this->getTabCategoriesTaxonomy()->getId(),
-            'locales'                   => $this->getDoctrine()->getRepository( 'App\Entity\Application\Locale' )->findAll(),
+            'tabForm'                       => $this->getTabForm()->createView(),
+            'tabCategoryForm'               => $this->getTabCategoryForm()->createView(),
+            'item'                          => $oTablature,
+            'error'                         => false,
+            'tabCategoriesTaxonomyId'       => $this->getTabCategoriesTaxonomy()->getId(),
+            'locales'                       => $this->getDoctrine()->getRepository( 'App\Entity\Application\Locale' )->findAll(),
+            'paidTablatureStoreServices'    => $this->get( 'vs_users_subscriptions.repository.payed_service' )->findAll(),
         ]);
     }
     
     protected function customData( Request $request, $entity = NULL ): array
     {
         return [
-            'tabForm'                   => $this->getTabForm()->createView(),
-            'tabCategoryForm'           => $this->getTabCategoryForm()->createView(),
-            'tabCategoriesTaxonomyId'   => $this->getTabCategoriesTaxonomy()->getId(),
-            'userCategories'            => $this->get( 'vs_wgp.repository.tablature_category' )->findBy( ['user' => $this->getUser()] ),
-            'locales'                   => $this->getDoctrine()->getRepository( 'App\Entity\Application\Locale' )->findAll(),
+            'tabForm'                       => $this->getTabForm()->createView(),
+            'tabCategoryForm'               => $this->getTabCategoryForm()->createView(),
+            'tabCategoriesTaxonomyId'       => $this->getTabCategoriesTaxonomy()->getId(),
+            'userCategories'                => $this->get( 'vs_wgp.repository.tablature_category' )->findBy( ['user' => $this->getUser()] ),
+            'locales'                       => $this->getDoctrine()->getRepository( 'App\Entity\Application\Locale' )->findAll(),
+            'paidTablatureStoreServices'    => $this->get( 'vs_users_subscriptions.repository.payed_service' )->findAll(),
         ];
     }
     

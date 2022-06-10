@@ -12,6 +12,8 @@ vs_wgp:
             documentation: Documentation
             logout: Logout
             
+            extend_your_tablatures_store: Extend Your Tablatures Store
+            
         edit: Edit
         delete: Delete
         category: Category
