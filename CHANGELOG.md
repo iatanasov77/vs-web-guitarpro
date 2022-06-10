@@ -1,3 +1,13 @@
+1.4.2	|	Release date: **10.06.2022**
+============================================
+* New Features and Improvements:
+  - Improve Styling of Login Form
+  - Translate Forms and Templates.
+  - Improve Profile Submenu.
+  - Add Assets Package Dependencies into VueJs Theme.
+  - Hide Uncategorized Category If Empty.
+
+
 1.4.1	|	Release date: **04.06.2022**
 ============================================
 * New Features:
