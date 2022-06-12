@@ -24,11 +24,15 @@ class UserRepository extends UsersRepository
                                 
         
         $result         = $qb->getQuery()->getResult();
-        $lastPayment    = [
-            'date'      => $result[0]['maxDate'],
-            'period'    => $result[0]['objPeriod'],
-            'objectId'  => $result[0]['objId'],
-        ];
+        if ( is_array( $result ) && isset( $result[0] ) ) {
+            $lastPayment    = [
+                'date'      => $result[0]['maxDate'],
+                'period'    => $result[0]['objPeriod'],
+                'objectId'  => $result[0]['objId'],
+            ];
+        } else {
+            $lastPayment    = [];
+        }
         
         return $lastPayment;
     }
