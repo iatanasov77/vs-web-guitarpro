@@ -27,11 +27,11 @@ class PaymentController extends BasePaymentController
         EntityRepository $payableObjectsRepository,
         
         EntityRepository $taxonomyRepository,
-        string $tabCategoriesTaxonomyCosde
+        string $tabCategoriesTaxonomyCode
     ) {
         parent::__construct( $vsPayment, $ordersFactory, $orderItemsFactory, $ordersRepository, $payableObjectsRepository );
         
-        $this->tabCategoriesTaxonomy    = $taxonomyRepository->findByCode( $tabCategoriesTaxonomyCosde );
+        $this->tabCategoriesTaxonomy    = $taxonomyRepository->findByCode( $tabCategoriesTaxonomyCode );
     }
     
     public function showCreditCardFormAction( $formAction, Request $request ): Response
@@ -55,7 +55,8 @@ class PaymentController extends BasePaymentController
             'tabCategoryForm'               => $this->getTabCategoryForm()->createView(),
             'tabCategoriesTaxonomyId'       => $this->tabCategoriesTaxonomy->getId(),
             
-            'paidTablatureStoreServices'    => $this->getDoctrine()->getRepository( 'App\Entity\UsersSubscriptions\PayedService' )->findAll(),
+            'locales'                       => $this->getDoctrine()->getRepository( 'App\Entity\Application\Locale' )->findAll(),
+            'paidTablatureStoreServices'    => $this->getDoctrine()->getRepository( 'App\Entity\UsersSubscriptions\PayedServiceSubscriptionPeriod' )->findAll(),
         ]);
     }
 }

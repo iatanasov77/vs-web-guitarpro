@@ -22,7 +22,7 @@ class TablatureCategoryController extends AbstractCrudController
             'tabCategoryForm'               => $this->getTabCategoryForm()->createView(),
             'taxonomyId'                    => $taxonomy->getId(),
             'locales'                       => $this->getDoctrine()->getRepository( 'App\Entity\Application\Locale' )->findAll(),
-            'paidTablatureStoreServices'    => $this->get( 'vs_users_subscriptions.repository.payed_service' )->findAll(),
+            'paidTablatureStoreServices'    => $this->getDoctrine()->getRepository( 'App\Entity\UsersSubscriptions\PayedServiceSubscriptionPeriod' )->findAll(),
         ];
     }
     

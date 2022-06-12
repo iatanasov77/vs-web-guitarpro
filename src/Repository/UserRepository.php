@@ -9,9 +9,14 @@ class UserRepository extends UsersRepository
     {
         $entityManager  = $this->getEntityManager();
         $qb             = $entityManager->createQueryBuilder( 'ord' )
-                                ->select(['MAX(ord.createdAt) AS maxDate', 'obj.subscriptionPeriod AS objPeriod'])
+                                ->select([
+                                    'MAX(ord.createdAt) AS maxDate',
+                                    'obj.subscriptionPeriod AS objPeriod',
+                                    'obj.id AS objId',
+                                ])
                                 ->from( 'App\Entity\Payment\Order', 'ord' )
                                 ->groupBy( 'obj.subscriptionPeriod' )
+                                ->groupBy( 'obj.id' )
                                 ->leftJoin( 'ord.items', 'itm' )
                                 ->leftJoin( 'itm.object', 'obj' )
                                 ->andWhere( 'ord.user = :user' )->setParameter( 'user', $user )
@@ -22,6 +27,7 @@ class UserRepository extends UsersRepository
         $lastPayment    = [
             'date'      => $result[0]['maxDate'],
             'period'    => $result[0]['objPeriod'],
+            'objectId'  => $result[0]['objId'],
         ];
         
         return $lastPayment;

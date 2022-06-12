@@ -24,7 +24,7 @@
                                 href="javascript:void(0);"
                                 data-url="{{ path( 'vs_payment_add_to_card', {'payableObjectId': paidService.id} ) }}"
                             >
-                                {{ paidService.title }}
+                                {{ paidService.title }} ( {{ paidService.price }} {{ paidService.currencyCode }} / {{ paidService.subscriptionPeriod }} )
                             </a><hr>
                         {% endfor %}
                         </div>

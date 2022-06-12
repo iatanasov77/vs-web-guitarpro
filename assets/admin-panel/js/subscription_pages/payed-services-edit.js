@@ -6,4 +6,9 @@ $( function ()
         btnRemoveSelector: ".btnRemoveField",
         btnAddSelector:    ".btnAddField"
     });
+    
+    $( '.AttributesContainer' ).duplicateFields({
+        btnRemoveSelector: ".btnRemoveField",
+        btnAddSelector:    ".btnAddField"
+    });
 });
