@@ -4,6 +4,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
+use Sylius\Component\Resource\Factory\Factory;
 
 use Payum\Core\Payum;
 use Payum\Core\Request\GetHumanStatus;
@@ -26,11 +27,13 @@ class StripeCheckoutController extends BaseStripeCheckoutController
         EntityRepository $ordersRepository,
         Payum $payum,
         string $paymentClass,
+        EntityRepository $subscriptionRepository,
+        Factory $subscriptionFactory,
         
         EntityRepository $taxonomyRepository,
         string $tabCategoriesTaxonomyCosde
     ) {
-        parent::__construct( $ordersRepository, $payum, $paymentClass );
+        parent::__construct( $ordersRepository, $payum, $paymentClass, $subscriptionRepository, $subscriptionFactory );
         
         $this->tabCategoriesTaxonomy    = $taxonomyRepository->findByCode( $tabCategoriesTaxonomyCosde );
     }
@@ -52,12 +55,17 @@ class StripeCheckoutController extends BaseStripeCheckoutController
             $storage->update( $payment );
             $this->get( 'session' )->remove( 'vs_payment_basket_id' );
             
+            $this->setSubscription( $payment->getOrder() );
+            
             return $this->render( '@VSPayment/Pages/Checkout/done.html.twig', [
                 'paymentStatus' => $status,
                 
-                'tabForm'                   => $this->getTabForm()->createView(),
-                'tabCategoryForm'           => $this->getTabCategoryForm()->createView(),
-                'tabCategoriesTaxonomyId'   => $this->tabCategoriesTaxonomy->getId(),
+                'tabForm'                       => $this->getTabForm()->createView(),
+                'tabCategoryForm'               => $this->getTabCategoryForm()->createView(),
+                'tabCategoriesTaxonomyId'       => $this->tabCategoriesTaxonomy->getId(),
+                
+                'locales'                       => $this->getDoctrine()->getRepository( 'App\Entity\Application\Locale' )->findAll(),
+                'paidTablatureStoreServices'    => $this->getDoctrine()->getRepository( 'App\Entity\UsersSubscriptions\PayedServiceSubscriptionPeriod' )->findAll(),
             ]);
         }
         

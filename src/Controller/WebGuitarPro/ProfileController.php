@@ -15,11 +15,16 @@ use Vankosoft\UsersBundle\Form\ProfileFormType;
 use Vankosoft\UsersBundle\Form\ChangePasswordFormType;
 use Vankosoft\UsersBundle\Model\UserInfoInterface;
 use Vankosoft\UsersBundle\Security\UserManager;
+
+use App\Entity\UserManagement\User;
 use App\Entity\UsersSubscriptions\PayedService;
 
 class ProfileController extends AbstractController
 {
     use GlobalFormsTrait;
+    
+    const EXTENSION_PAYMENT             = 'VSPaymentBundle';
+    const EXTENSION_USERSUBSCRIPTIONS   = 'VSUsersSubscriptionsBundle';
     
     /** @var UserManager */
     private UserManager $userManager;
@@ -71,20 +76,45 @@ class ProfileController extends AbstractController
         if ( ! $this->getUser() ) {
             return $this->redirectToRoute( 'app_home' );
         }
-        
-        $em             = $this->getDoctrine()->getManager();
+
         $oUser          = $this->getUser();
         $form           = $this->createForm( ProfileFormType::class, $oUser, [
             'data'      => $oUser,
-            'action'    => $this->generateUrl( 'wgp_user_profile_show' ),
+            'action'    => $this->generateUrl( 'wgp_user_profile_handle' ),
             'method'    => 'POST',
         ]);
         
         $otherForms     = $this->forms( $request, $oUser );
         
-        $paidServicesRepo   = $this->getDoctrine()->getRepository( PayedService::class );
-        $paidServices       = $paidServicesRepo->findAll();
-        $paymentMethods     = [];
+        return $this->render( 'Pages/Profile/show.html.twig', [
+            'errors'                    => $form->getErrors( true, false ),
+            'form'                      => $form->createView(),
+            'user'                      => $oUser,
+            'otherForms'                => $otherForms,
+            
+            'hasPaymentExtension'       => $this->hasExtension( self::EXTENSION_PAYMENT ),
+            'hasSubscriptionsExtension' => $this->hasExtension( self::EXTENSION_USERSUBSCRIPTIONS ),
+            'newsletterSubscriptions'   => $this->getNewsletterSubscriptions(),
+            'paidSubscriptions'         => $this->getPaidSubscriptions(),
+            
+            
+            'tabForm'                       => $this->getTabForm()->createView(),
+            'tabCategoryForm'               => $this->getTabCategoryForm()->createView(),
+            'tabCategoriesTaxonomyId'       => $this->tabCategoriesTaxonomy->getId(),
+            'locales'                       => $this->getDoctrine()->getRepository( 'App\Entity\Application\Locale' )->findAll(),
+            'paidTablatureStoreServices'    => $this->getDoctrine()->getRepository( 'App\Entity\UsersSubscriptions\PayedServiceSubscriptionPeriod' )->findAll(),
+        ]);
+    }
+    
+    public function handleProfileAction( Request $request ) : Response
+    {
+        $em     = $this->getDoctrine()->getManager();
+        $oUser  = $this->getUser();
+        $form   = $this->createForm( ProfileFormType::class, $oUser, [
+            'data'      => $oUser,
+            'action'    => $this->generateUrl( 'wgp_user_profile_handle' ),
+            'method'    => 'POST',
+        ]);
         
         $form->handleRequest( $request );
         if ( $form->isSubmitted() ) {
@@ -110,20 +140,6 @@ class ProfileController extends AbstractController
             
             return $this->redirectToRoute( 'vs_users_profile_show' );
         }
-        
-        return $this->render( 'Pages/Profile/show.html.twig', [
-            'errors'            => $form->getErrors( true, false ),
-            'form'              => $form->createView(),
-            'user'              => $oUser,
-            'otherForms'        => $otherForms,
-            'paidServices'      => $paidServices,
-            'paymentMethods'    => $paymentMethods,
-            
-            'tabForm'                   => $this->getTabForm()->createView(),
-            'tabCategoryForm'           => $this->getTabCategoryForm()->createView(),
-            'tabCategoriesTaxonomyId'   => $this->tabCategoriesTaxonomy->getId(),
-            'locales'                   => $this->getDoctrine()->getRepository( 'App\Entity\Application\Locale' )->findAll(),
-        ]);
     }
     
     public function changePasswordAction( Request $request ) : Response
@@ -170,7 +186,7 @@ class ProfileController extends AbstractController
         ];
     }
     
-    private function createAvatar( UserInfoInterface &$userInfo, File $file ): void
+    protected function createAvatar( UserInfoInterface &$userInfo, File $file ): void
     {
         $avatarImage    = $userInfo->getAvatar() ?: $this->avatarImageFactory->createNew();
         $uploadedFile   = new UploadedFile( $file->getRealPath(), $file->getBasename() );
@@ -182,5 +198,35 @@ class ProfileController extends AbstractController
         if ( ! $userInfo->getAvatar() ) {
             $userInfo->setAvatar( $avatarImage );
         }
+    }
+    
+    protected function hasExtension( $extension ): bool
+    {
+        return \array_key_exists( $extension, $this->getParameter( 'kernel.bundles' ) );
+    }
+    
+    protected function getNewsletterSubscriptions()
+    {
+        $subscriptions  = [];
+        if ( $this->hasExtension ( self::EXTENSION_USERSUBSCRIPTIONS ) ) {
+            try {
+                //$subscriptions  = $this->getUser()->getSubscriptions( User::SUBSCRIPTION_TYPE_NEWSLETTER );
+                $subscriptions  = [];
+            } catch( \Doctrine\DBAL\Exception\TableNotFoundException $e ) {
+                $subscriptions  = [];
+            }
+        }
+        
+        return $subscriptions;
+    }
+    
+    protected function getPaidSubscriptions()
+    {
+        $subscriptions  = [];
+        if ( $this->hasExtension ( self::EXTENSION_PAYMENT ) ) {
+            $subscriptions  = $this->getUser()->getSubscriptions( User::SUBSCRIPTION_TYPE_PAID );
+        }
+        
+        return $subscriptions;
     }
 }

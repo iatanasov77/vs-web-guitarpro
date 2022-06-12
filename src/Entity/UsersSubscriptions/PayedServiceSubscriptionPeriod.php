@@ -21,4 +21,14 @@ class PayedServiceSubscriptionPeriod extends PayedServiceSubscriptionPeriodBase 
         
         parent::__construct();
     }
+    
+    public function getSubscriptionCode(): ?string
+    {
+        return $this->getPayedService()->getSubscriptionCode();
+    }
+    
+    public function getSubscriptionPriority(): ?int
+    {
+        return $this->getPayedService()->getSubscriptionPriority();
+    }
 }

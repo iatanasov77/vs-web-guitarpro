@@ -1,3 +1,10 @@
+1.5.0	|	Release date: **12.06.2022**
+============================================
+* New Features:
+  - Improve Paid Tablatures Store Interface.
+  - Many Many Updates About Payments and Subscriptions.
+
+
 1.4.2	|	Release date: **10.06.2022**
 ============================================
 * New Features and Improvements:

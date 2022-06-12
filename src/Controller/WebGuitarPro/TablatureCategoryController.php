@@ -18,10 +18,11 @@ class TablatureCategoryController extends AbstractCrudController
         );
         
         return [
-            'tabForm'           => $this->getTabForm()->createView(),
-            'tabCategoryForm'   => $this->getTabCategoryForm()->createView(),
-            'taxonomyId'        => $taxonomy->getId(),
-            'locales'           => $this->getDoctrine()->getRepository( 'App\Entity\Application\Locale' )->findAll(),
+            'tabForm'                       => $this->getTabForm()->createView(),
+            'tabCategoryForm'               => $this->getTabCategoryForm()->createView(),
+            'taxonomyId'                    => $taxonomy->getId(),
+            'locales'                       => $this->getDoctrine()->getRepository( 'App\Entity\Application\Locale' )->findAll(),
+            'paidTablatureStoreServices'    => $this->getDoctrine()->getRepository( 'App\Entity\UsersSubscriptions\PayedServiceSubscriptionPeriod' )->findAll(),
         ];
     }
     

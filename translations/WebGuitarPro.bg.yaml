@@ -12,6 +12,8 @@ vs_wgp:
             documentation: Документация
             logout: Изход
             
+            extend_your_tablatures_store: Увеличете Вашият Таблатури Склад
+            
         edit: Редактиране
         delete: Изтриване
         category: Категория

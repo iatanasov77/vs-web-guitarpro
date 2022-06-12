@@ -32,6 +32,8 @@ services:
             - '@vs_payment.repository.order'
             - '@payum'
             - '%vs_payment.model.payment.class%'
+            - '@vs_users_subscriptions.repository.payed_service_subscriptions'
+            - '@vs_users_subscriptions.factory.payed_service_subscriptions'
             - '@vs_application.repository.taxonomy'
             - '%vs_wgp.tablature-categories.taxonomy_code%'
         calls:

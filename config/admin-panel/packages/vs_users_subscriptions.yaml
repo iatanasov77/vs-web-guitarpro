@@ -15,4 +15,7 @@ vs_users_subscriptions:
         payed_service_subscriptions:
             classes:
                 model: App\Entity\UsersSubscriptions\PayedServiceSubscription
+        payed_service_attribute:
+            classes:
+                model: App\Entity\UsersSubscriptions\PayedServiceAttribute
 
