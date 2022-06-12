@@ -124,29 +124,31 @@ class TablatureController extends AbstractCrudController
     {
         $tablatureLimit = -1;
         $paid           = true;
-        if ( $this->getUser()->getUsername() == 'admin' ) {
+        if ( $this->getUser()->getUsername() != 'admin' ) {
             $tablatureLimit = $this->getParameter( 'vs_wgp.unpaid_tablature_storage' );
             
             $lastPayment    = $this->get( 'vs_users.repository.users' )->getPaidForWhat( $this->getUser() );
-            $paidService    = $this->get( 'vs_users_subscriptions.repository.payed_service_subscription_period' )
-                                    ->find( $lastPayment['objectId'] )
-                                    ->getPayedService();
-            
-            switch ( $lastPayment['period'] ) {
-                case SubscriptionPeriod::SUBSCRIPTION_PERIOD_YEAR:
-                    $paid   = ( ( new \DateTime( $lastPayment['date'] ) )->add( new \DateInterval( 'P1Y' ) ) ) > ( new \DateTime() );
-                    if ( $paid ) {
-                        $tablatureLimit = (int)$paidService->getAttribute( 'tablature_storage' )->getValue();
-                    }
-                    break;
-                case SubscriptionPeriod::SUBSCRIPTION_PERIOD_MONTH:
-                    $paid   = ( ( new \DateTime( $lastPayment['date'] ) )->add( new \DateInterval( 'P1M' ) ) ) > ( new \DateTime() );
-                    if ( $paid ) {
-                        $tablatureLimit = (int)$paidService->getAttribute( 'tablature_storage' )->getValue();
-                    }
-                    break;
-                default:
-                    $paid   = false;
+            if ( ! empty( $lastPayment ) ) {
+                $paidService    = $this->get( 'vs_users_subscriptions.repository.payed_service_subscription_period' )
+                                        ->find( $lastPayment['objectId'] )
+                                        ->getPayedService();
+                
+                switch ( $lastPayment['period'] ) {
+                    case SubscriptionPeriod::SUBSCRIPTION_PERIOD_YEAR:
+                        $paid   = ( ( new \DateTime( $lastPayment['date'] ) )->add( new \DateInterval( 'P1Y' ) ) ) > ( new \DateTime() );
+                        if ( $paid ) {
+                            $tablatureLimit = (int)$paidService->getAttribute( 'tablature_storage' )->getValue();
+                        }
+                        break;
+                    case SubscriptionPeriod::SUBSCRIPTION_PERIOD_MONTH:
+                        $paid   = ( ( new \DateTime( $lastPayment['date'] ) )->add( new \DateInterval( 'P1M' ) ) ) > ( new \DateTime() );
+                        if ( $paid ) {
+                            $tablatureLimit = (int)$paidService->getAttribute( 'tablature_storage' )->getValue();
+                        }
+                        break;
+                    default:
+                        $paid   = false;
+                }
             }
         }
         
