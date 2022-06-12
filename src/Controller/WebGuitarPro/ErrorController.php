@@ -27,6 +27,8 @@ class ErrorController extends AbstractController
             'tabCategoriesTaxonomyId'       => $this->tabCategoriesTaxonomy->getId(),
             'locales'                       => $this->getDoctrine()->getRepository( 'App\Entity\Application\Locale' )->findAll(),
             'paidTablatureStoreServices'    => $this->getDoctrine()->getRepository( 'App\Entity\UsersSubscriptions\PayedServiceSubscriptionPeriod' )->findAll(),
+            
+            'tablatureUploadLimited'        => ! $this->checkTablatureLimit(),
         ]);
     }
 }
