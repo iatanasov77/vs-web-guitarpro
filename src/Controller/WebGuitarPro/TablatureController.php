@@ -33,6 +33,8 @@ class TablatureController extends AbstractCrudController
             'tabCategoriesTaxonomyId'       => $this->getTabCategoriesTaxonomy()->getId(),
             'locales'                       => $this->getDoctrine()->getRepository( 'App\Entity\Application\Locale' )->findAll(),
             'paidTablatureStoreServices'    => $this->get( 'vs_users_subscriptions.repository.payed_service_subscription_period' )->findAll(),
+            
+            'tablatureUploadLimited'        => ! $this->checkTablatureLimit(),
         ]);
     }
     

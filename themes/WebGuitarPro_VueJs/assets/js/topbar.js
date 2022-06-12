@@ -78,7 +78,7 @@ $( function()
             document.location = VsPath( 'vs_wgp_tablature_index' )
             //document.location = document.location;
         }).fail( function() {
-              alert( 'LOGIN ERROR !!!' );
+              alert( 'CREATE CATEGORY ERROR !!!' );
         }).always( function() {
             //alert( 'always' );
         });

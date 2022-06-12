@@ -26,11 +26,10 @@ trait GlobalFormsTrait
      */
     protected function checkTablatureLimit()
     {
-        $tablatureLimit = -1;
-        $paid           = true;
-        if ( $this->getUser()->getUsername() != 'admin' ) {
-            $tablatureLimit = $this->getParameter( 'vs_wgp.unpaid_tablature_storage' );
-            
+        $tablatureLimit = $this->getParameter( 'vs_wgp.unpaid_tablature_storage' );
+        $paid           = false;
+        
+        if ( $this->getUser() && $this->getUser()->getUsername() != 'admin' ) {
             $lastPayment    = $this->getDoctrine()
                                     ->getRepository( 'App\Entity\UserManagement\User' )
                                     ->getPaidForWhat( $this->getUser() );
@@ -57,8 +56,10 @@ trait GlobalFormsTrait
                         $paid   = false;
                 }
             }
+            
+            return ( $tablatureLimit < 0 || $paid ) || ( $this->getUser()->getTablatures()->count() < $tablatureLimit );
         }
         
-        return ( $tablatureLimit < 0 || $paid ) || ( $this->getUser()->getTablatures()->count() < $tablatureLimit );
+        return ( $this->getUser() && $this->getUser()->getUsername() == 'admin' ) ? true : false;
     }
 }
