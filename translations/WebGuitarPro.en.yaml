@@ -14,6 +14,10 @@ vs_wgp:
             
             extend_your_tablatures_store: Extend Your Tablatures Store
             
+        alerts:
+            tablature_upload_limited_error: Tablature Upload Limitted!
+            tablature_upload_limited_content: You can make a payment to extend you tablature store.
+            
         edit: Edit
         delete: Delete
         category: Category

@@ -14,6 +14,10 @@ vs_wgp:
             
             extend_your_tablatures_store: Увеличете Вашият Таблатури Склад
             
+        alerts:
+            tablature_upload_limited_error: Ъплоадването на Таблатури е ограничено!
+            tablature_upload_limited_content: Можете да заплатите за да разширите вашият склад за Таблатури.
+
         edit: Редактиране
         delete: Изтриване
         category: Категория

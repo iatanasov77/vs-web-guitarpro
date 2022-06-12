@@ -52,6 +52,8 @@ class AuthController extends AbstractController
             'tabForm'                       => $this->getTabForm()->createView(),
             'tabCategoryForm'               => $this->getTabCategoryForm()->createView(),
             'paidTablatureStoreServices'    => $this->getDoctrine()->getRepository( 'App\Entity\UsersSubscriptions\PayedServiceSubscriptionPeriod' )->findAll(),
+            
+            'tablatureUploadLimited'        => ! $this->checkTablatureLimit(),
         ];
         
         return new Response( $this->templatingEngine->render( $this->getTemplate(), $tplVars ) );

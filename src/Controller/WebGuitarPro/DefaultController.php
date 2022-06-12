@@ -48,6 +48,8 @@ class DefaultController extends AbstractController
             
             // About enabled field - $enabled (public)
             'tabs'                          => $er->findBy( ['enabled' => true], [ 'updatedAt' => 'DESC' ], 10 ),
+            
+            'tablatureUploadLimited'        => ! $this->checkTablatureLimit(),
         ];
         return new Response( $this->templatingEngine->render( $this->getTemplate(), $params ) );
     }

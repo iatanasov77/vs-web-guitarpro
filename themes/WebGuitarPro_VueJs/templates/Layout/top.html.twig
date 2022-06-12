@@ -91,7 +91,14 @@
                         {{ 'vs_wgp.template.menu.create_tablature' | trans( {},'WebGuitarPro' ) }}
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        {% include 'Partial/tablature-form.html.twig' %}
+                        {% if tablatureUploadLimited %}
+                            <div class="alert alert-danger px-4 py-3" role="alert">
+                                <h4 class="alert-heading">{{ 'vs_wgp.template.alerts.tablature_upload_limited_error' | trans( {},'WebGuitarPro' ) }}</h4>
+                                <p>{{ 'vs_wgp.template.alerts.tablature_upload_limited_content' | trans( {},'WebGuitarPro' ) }}</p>
+                            </div>
+                        {% else %}
+                            {% include 'Partial/tablature-form.html.twig' %}
+                        {% endif %}
                     </div>
                 </li>
                 <!--/  Submit Tablature  -->

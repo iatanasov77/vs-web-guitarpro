@@ -1,3 +1,9 @@
+1.5.2	|	Release date: **12.06.2022**
+============================================
+* New Features:
+  - Disbale Tablature Upload Form If Store is Limited.
+
+
 1.5.1	|	Release date: **12.06.2022**
 ============================================
 * Bug-Fixes:

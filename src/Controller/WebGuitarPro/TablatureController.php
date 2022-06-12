@@ -8,7 +8,6 @@ use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Doctrine\Common\Collections\ArrayCollection;
-use Vankosoft\UsersSubscriptionsBundle\Component\PayedService\SubscriptionPeriod;
 
 use App\Entity\Tablature;
 
@@ -39,8 +38,6 @@ class TablatureController extends AbstractCrudController
     
     protected function customData( Request $request, $entity = NULL ): array
     {
-        $this->checkTablatureLimit();
-        
         return [
             'tabForm'                       => $this->getTabForm()->createView(),
             'tabCategoryForm'               => $this->getTabCategoryForm()->createView(),
@@ -48,6 +45,8 @@ class TablatureController extends AbstractCrudController
             'userCategories'                => $this->get( 'vs_wgp.repository.tablature_category' )->findBy( ['user' => $this->getUser()] ),
             'locales'                       => $this->getDoctrine()->getRepository( 'App\Entity\Application\Locale' )->findAll(),
             'paidTablatureStoreServices'    => $this->get( 'vs_users_subscriptions.repository.payed_service_subscription_period' )->findAll(),
+            
+            'tablatureUploadLimited'        => ! $this->checkTablatureLimit(),
         ];
     }
     
@@ -113,45 +112,5 @@ class TablatureController extends AbstractCrudController
         );
         
         return $taxonomy;
-    }
-    
-    /**
-     * TRUE for NoLimit, FALSE For Limited
-     * 
-     * @return boolean
-     */
-    private function checkTablatureLimit()
-    {
-        $tablatureLimit = -1;
-        $paid           = true;
-        if ( $this->getUser()->getUsername() != 'admin' ) {
-            $tablatureLimit = $this->getParameter( 'vs_wgp.unpaid_tablature_storage' );
-            
-            $lastPayment    = $this->get( 'vs_users.repository.users' )->getPaidForWhat( $this->getUser() );
-            if ( ! empty( $lastPayment ) ) {
-                $paidService    = $this->get( 'vs_users_subscriptions.repository.payed_service_subscription_period' )
-                                        ->find( $lastPayment['objectId'] )
-                                        ->getPayedService();
-                
-                switch ( $lastPayment['period'] ) {
-                    case SubscriptionPeriod::SUBSCRIPTION_PERIOD_YEAR:
-                        $paid   = ( ( new \DateTime( $lastPayment['date'] ) )->add( new \DateInterval( 'P1Y' ) ) ) > ( new \DateTime() );
-                        if ( $paid ) {
-                            $tablatureLimit = (int)$paidService->getAttribute( 'tablature_storage' )->getValue();
-                        }
-                        break;
-                    case SubscriptionPeriod::SUBSCRIPTION_PERIOD_MONTH:
-                        $paid   = ( ( new \DateTime( $lastPayment['date'] ) )->add( new \DateInterval( 'P1M' ) ) ) > ( new \DateTime() );
-                        if ( $paid ) {
-                            $tablatureLimit = (int)$paidService->getAttribute( 'tablature_storage' )->getValue();
-                        }
-                        break;
-                    default:
-                        $paid   = false;
-                }
-            }
-        }
-        
-        return ( $tablatureLimit < 0 || $paid ) || ( $this->getUser()->getTablatures()->count() < $tablatureLimit );
     }
 }
