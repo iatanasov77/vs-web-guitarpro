@@ -1,3 +1,9 @@
+1.5.3	|	Release date: **12.06.2022**
+============================================
+* Bug-Fixes:
+  - Some Fixes of checkTablatureLimit()
+
+
 1.5.2	|	Release date: **12.06.2022**
 ============================================
 * New Features:
