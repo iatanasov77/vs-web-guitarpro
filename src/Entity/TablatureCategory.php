@@ -51,8 +51,8 @@ class TablatureCategory implements ResourceInterface
     /**
      * @var TaxonInterface
      *
-     * @ORM\OneToOne(targetEntity="App\Entity\Application\Taxon", cascade={"all"}, orphanRemoval=true)
-     * @ORM\JoinColumn(name="taxon_id", referencedColumnName="id", nullable=false)
+     * @ORM\OneToOne(targetEntity="App\Entity\Application\Taxon", cascade={"all"})
+     * @ORM\JoinColumn(name="taxon_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
      */
     private $taxon;
     
