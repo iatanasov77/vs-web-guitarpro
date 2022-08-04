@@ -148,7 +148,16 @@
                         {{ 'vs_wgp.template.menu.documentation' | trans( {},'WebGuitarPro' ) }}
                     </a>
                 </li>
-                            
+                <!--/  Documentation  -->
+                
+                <!--  Registration  -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path( 'vs_users_register_form' ) }}">
+                        {{ 'vs_wgp.form.login.register' | trans( {},'WebGuitarPro' ) }}
+                    </a>
+                </li>
+                <!--/  Registration  -->
+                
                 <!--  User Login  -->
                 <li class="nav-item dropdown btn-group">
                     <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

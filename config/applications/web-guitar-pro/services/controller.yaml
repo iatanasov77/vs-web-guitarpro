@@ -66,3 +66,30 @@ services:
             - '@vs_application.repository.taxonomy'
             - '%vs_wgp.tablature-categories.taxonomy_code%'
 
+    App\Controller\WebGuitarPro\RegisterController:
+        public: true
+        autowire: true
+        tags: ['controller.service_arguments']
+        arguments:
+            - '@vs_users.manager.user'
+            - '@vs_users.repository.users'
+            - '@vs_users.factory.users'
+            - '@vs_users.repository.user_roles'
+            - '@mailer'
+            - '@vs_cms.repository.pages'
+            - {
+                registrationForm: '%vs_users.registration_form%',
+                registerRole: '%vs_users.register_role%',
+                defaultRedirect: '%vs_users.default_redirect%',
+                mailerUser: '%vs_application.mailer_user%',
+            }
+            
+            
+            - '@vs_application.repository.taxonomy'
+            - '%vs_wgp.tablature-categories.taxonomy_code%'
+            
+        calls:
+            - setTokenGenerator: ['@?symfonycasts.verify_email.token_generator']
+            - setVerifyEmailHelper: ['@?symfonycasts.verify_email.helper']
+
+
