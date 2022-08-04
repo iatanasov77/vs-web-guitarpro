@@ -4,6 +4,7 @@ vs_wgp:
             login: Вход
             my_tablatures: Моите Таблатури
             favorites: Предпочитани
+            my_favorites: Предпочитани
             create_tablature_category: Създай Категория
             create_tablature: Добави Таблатура
             profile: Профил
@@ -31,7 +32,8 @@ vs_wgp:
         uncategorized: Некатегоризирани
         my_tablatures: Моите Таблатури
         owner: Притежател
-            
+        my_favorites: Предпочитани
+        
     form:
         public: Публичен
         locale: Език

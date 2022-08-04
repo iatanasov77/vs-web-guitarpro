@@ -49,36 +49,24 @@
                 </li>
             {% endif %}
             
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path( 'app_home' ) }}">
+                    {{ 'vs_wgp.template.menu.latest_tablatures' | trans( {},'WebGuitarPro' ) }}
+                </a>
+            </li>
+            
             {% if app.user %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path( 'app_home' ) }}">
-                        {{ 'vs_wgp.template.menu.latest_tablatures' | trans( {},'WebGuitarPro' ) }}
-                    </a>
-                </li>
-                
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path( 'vs_wgp_tablature_index' ) }}">
                         {{ 'vs_wgp.template.menu.my_tablatures' | trans( {},'WebGuitarPro' ) }}
                     </a>
                 </li>
                 
-                {% if app.user.favorites|length > 0 %}
-                    <li class="nav-item dropdown btn-group">
-                        <a class="nav-link dropdown-toggle" id="btnFavorites" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ 'vs_wgp.template.menu.favorites' | trans( {},'WebGuitarPro' ) }}
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right scrollable-menu favoriteList" aria-labelledby="btnFavorites">
-                            <!-- Favorite tabs list -->
-                            <div class="sm-main-nav" >
-                                {% for tab in app.user.favorites %}
-                                    <a class="dropdown-item" href="{{ path( 'vs_wgp_tablature_show', {'id': tab.id} ) }}">
-                                        {{ tab.artist ~ ' - ' ~ tab.song | u.truncate( 40, '...' ) }}
-                                    </a><hr>
-                                {% endfor %}
-                            </div>
-                        </div>
-                    </li>
-                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path( 'tablature_favorite_index' ) }}">
+                        {{ 'vs_wgp.template.menu.my_favorites' | trans( {},'WebGuitarPro' ) }}
+                    </a>
+                </li>
                 
                 <!--  Create Tablature Category  -->
                 <li class="nav-item dropdown btn-group">

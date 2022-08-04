@@ -4,6 +4,7 @@ vs_wgp:
             login: Login
             my_tablatures: My Tablatures
             favorites: Favorites
+            my_favorites: My Favorites
             create_tablature_category: Create Category
             create_tablature: Submit Tablature
             profile: Profile
@@ -31,7 +32,7 @@ vs_wgp:
         uncategorized: Uncategorized
         my_tablatures: My Tablatures
         owner: Owner
-        
+        my_favorites: My Favorites
     form:
         public: To Be Public
         locale: Language

@@ -59,4 +59,10 @@ services:
         calls:
             - [ setContainer, [ '@service_container' ] ]
 
+    App\Controller\WebGuitarPro\FavoritesController:
+        tags: ['controller.service_arguments']
+        autowire: true
+        arguments:
+            - '@vs_application.repository.taxonomy'
+            - '%vs_wgp.tablature-categories.taxonomy_code%'
 
