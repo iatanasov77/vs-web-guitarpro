@@ -24,7 +24,9 @@
     	</div>
     	
         {% block widgets %}
-            {% include 'Modal/payment.html.twig' %}
+            <div id="modals">
+                {% include 'Modal/payment.html.twig' %}
+            </div>  
         {% endblock %}
         
         {% block svg %}{% endblock %}

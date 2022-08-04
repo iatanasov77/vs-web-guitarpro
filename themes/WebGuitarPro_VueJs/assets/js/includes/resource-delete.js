@@ -6,7 +6,7 @@ require( 'jquery-ui-dist/jquery-ui.theme.css' );
 import { VsTranslator, VsLoadTranslations } from '../includes/bazinga_js_translations.js';
 VsLoadTranslations(['VSApplicationBundle']);
 
-var onResourceDeleteOk      = function() {
+export function onResourceDeleteOk() {
 
     $.ajax({
         type: 'POST',
@@ -21,12 +21,10 @@ var onResourceDeleteOk      = function() {
     {
         alert( 'ERROR !!!' );
     });
-    
+   
 }
 
-
-
-var onResourceDeleteCancel  = function() {
+export function onResourceDeleteCancel() {
     $( '#deleteForm' ).attr( 'action', '' );
     $( '#resource_delete__token' ).val( '' );
     
@@ -50,18 +48,14 @@ export function VsFormDlete( onOk, onCancel )
 }
 
 
-/*
- * I'm not sure if this should work. This is an old implementation
- */
 $( function()
 {
-	$( ".btnDelete" ).on( "click", function ( e ) 
-	{
-	    e.preventDefault();
-
-	    $( '#deleteForm' ).attr( 'action', $( this ).attr( 'href' ) );
-	    $( '#resource_delete__token' ).val( $( this ).attr( 'data-csrftoken' ) );
-	    
-	    var dialog  = VsFormDlete( onResourceDeleteOk, onResourceDeleteCancel );
-	});
+    $( '#modals' ).append("\
+        <div style='display: none;'>\
+            <form id='deleteForm' method='POST'>\
+                <input type='hidden' name='_method' value='DELETE'>\
+                <input type='hidden' id='resource_delete__token' name='_csrf_token' value=''>\
+            </form>\
+        </div>\
+    ");
 });

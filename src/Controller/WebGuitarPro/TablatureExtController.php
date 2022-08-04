@@ -24,7 +24,8 @@ class TablatureExtController extends AbstractController
     
     public function __construct(
         TaxonomyRepository $taxonomyRepository,
-        TaxonRepository $taxonRepository,
+        //TaxonRepository $taxonRepository,
+        EntityRepository $taxonRepository,
         EntityRepository $tabsRepository,
         string $tabsDirectory
     ) {

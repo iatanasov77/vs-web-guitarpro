@@ -1,6 +1,7 @@
 <?php namespace App\Controller\WebGuitarPro;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Vankosoft\ApplicationBundle\Controller\AbstractCrudController;
 use Vankosoft\ApplicationBundle\Controller\TaxonomyHelperTrait;
 
@@ -21,8 +22,11 @@ class TablatureCategoryController extends AbstractCrudController
             'tabForm'                       => $this->getTabForm()->createView(),
             'tabCategoryForm'               => $this->getTabCategoryForm()->createView(),
             'taxonomyId'                    => $taxonomy->getId(),
+            'tabCategoriesTaxonomyId'       => $taxonomy->getId(),
             'locales'                       => $this->getDoctrine()->getRepository( 'App\Entity\Application\Locale' )->findAll(),
             'paidTablatureStoreServices'    => $this->getDoctrine()->getRepository( 'App\Entity\UsersSubscriptions\PayedServiceSubscriptionPeriod' )->findAll(),
+            
+            'tablatureUploadLimited'        => ! $this->checkTablatureLimit(),
         ];
     }
     
