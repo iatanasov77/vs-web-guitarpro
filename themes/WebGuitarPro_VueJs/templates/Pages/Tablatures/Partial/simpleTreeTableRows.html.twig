@@ -1,4 +1,4 @@
-<tr 
+<tr class="{{ rowClass }}"
     data-node-id="{% if isTab %}tab-{{ item.id }}{% else %}{{ item.id }}{% endif %}" 
     {% if parentId %}data-node-pid="{{ parentId }}"{% endif %}
 >
@@ -52,7 +52,8 @@
 {% if item.children is defined %}
     {% for child in item.children %}
         {% if child.user == app.user %}
-    	   {% include 'Pages/Tablatures/Partial/simpleTreeTableRows.html.twig' with {'parentId': item.id, 'item': child, 'isTab': 0} %}
+            {% set rowClass = ( rowClass == 'simpleTreeTable_Row_Even' ) ? 'simpleTreeTable_Row_Odd' : 'simpleTreeTable_Row_Even' %}
+            {% include 'Pages/Tablatures/Partial/simpleTreeTableRows.html.twig' with {'parentId': item.id, 'item': child, 'isTab': 0, 'rowClass': rowClass} %}
     	{% endif %}
     {% endfor %}
 {% endif %}
@@ -61,9 +62,8 @@
 {% if item.tablatures is defined %}
     {% for tab in item.tablatures %}
         {% if tab.user == app.user %}
-        {# #}
+            {% set rowClass = ( rowClass == 'simpleTreeTable_Row_Even' ) ? 'simpleTreeTable_Row_Odd' : 'simpleTreeTable_Row_Even' %}
             {% include 'Pages/Tablatures/Partial/simpleTreeTableRows.html.twig' with {'parentId': item.id, 'item': tab, 'isTab': 1} %}
-        
         {% endif %}
     {% endfor %}
 {% endif %}
