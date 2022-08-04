@@ -1,3 +1,9 @@
+1.5.4	|	Release date: **04.08.2022**
+============================================
+* New Features, Improvements and Fixes:
+  - Add Categories Edit and Delete and Many Other Fixes.
+
+
 1.5.3	|	Release date: **12.06.2022**
 ============================================
 * Bug-Fixes:
