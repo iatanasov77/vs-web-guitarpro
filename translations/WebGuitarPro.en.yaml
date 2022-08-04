@@ -14,6 +14,8 @@ vs_wgp:
             
             extend_your_tablatures_store: Extend Your Tablatures Store
             
+            latest_tablatures: Latest Tablatures
+            
         alerts:
             tablature_upload_limited_error: Tablature Upload Limitted!
             tablature_upload_limited_content: You can make a payment to extend you tablature store.
@@ -27,6 +29,8 @@ vs_wgp:
         song: Song
         play: Play
         uncategorized: Uncategorized
+        my_tablatures: My Tablatures
+        owner: Owner
         
     form:
         public: To Be Public
