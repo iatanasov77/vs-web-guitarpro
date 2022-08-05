@@ -9,4 +9,8 @@ app_login:
 app_logout:
     path: /logout
     controller: App\Controller\WebGuitarPro\AuthController::logout
+    
+vs_users_register_form:
+    path:     /register
+    controller: App\Controller\WebGuitarPro\RegisterController::index
 

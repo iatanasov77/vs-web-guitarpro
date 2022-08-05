@@ -2,8 +2,8 @@
 
 {% import "@VSApplication/Macros/alerts.html.twig" as alerts %}
 
-{% block title %}{{ parent() }} :: {{ 'vs_wgp.template.tablatures' | trans( {},'WebGuitarPro' ) }}{% endblock %}
-{% block pageTitle %}<i class="icon_genius"></i> {{ 'vs_wgp.template.tablatures' | trans( {},'WebGuitarPro' ) }}{% endblock %}
+{% block title %}{{ parent() }} :: {{ 'vs_wgp.template.my_tablatures' | trans( {},'WebGuitarPro' ) }}{% endblock %}
+{% block pageTitle %}<i class="icon_genius"></i> {{ 'vs_wgp.template.my_tablatures' | trans( {},'WebGuitarPro' ) }}{% endblock %}
 
 {% block content %}
     <div class="tablatures-container" style="margin-top: 110px">
@@ -13,7 +13,7 @@
             {% endif %}
         </div>
         <div class="card">
-            <h5 class="card-header">{{ 'vs_wgp.template.tablatures' | trans( {},'WebGuitarPro' ) }}</h5>
+            <h5 class="card-header">{{ 'vs_wgp.template.my_tablatures' | trans( {},'WebGuitarPro' ) }}</h5>
             <div class="card-body">
                 {% if items|length > 0 %}
                     {% include 'Pages/Tablatures/Partial/simpleTreeTable.html.twig' %}

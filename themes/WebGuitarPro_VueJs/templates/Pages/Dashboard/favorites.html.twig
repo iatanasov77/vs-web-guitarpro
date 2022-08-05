@@ -1,7 +1,7 @@
 {% extends "base.html.twig" %}
 
-{% block title %}{{ parent() }} :: {{ 'vs_wgp.template.latest_tablatures' | trans( {},'WebGuitarPro' ) }}{% endblock %}
-{% block pageTitle %}<i class="icon_genius"></i> {{ 'vs_wgp.template.latest_tablatures' | trans( {},'WebGuitarPro' ) }}{% endblock %}
+{% block title %}{{ parent() }} :: {{ 'vs_wgp.template.my_favorites' | trans( {},'WebGuitarPro' ) }}{% endblock %}
+{% block pageTitle %}<i class="icon_genius"></i> {{ 'vs_wgp.template.my_favorites' | trans( {},'WebGuitarPro' ) }}{% endblock %}
 
 {% block content %}
     <div class="tablatures-container" style="margin-top: 110px">
@@ -11,7 +11,7 @@
             {% endif %}
         </div>
         <div class="card">
-            <h5 class="card-header">{{ 'vs_wgp.template.latest_tablatures' | trans( {},'WebGuitarPro' ) }}</h5>
+            <h5 class="card-header">{{ 'vs_wgp.template.my_favorites' | trans( {},'WebGuitarPro' ) }}</h5>
             <div class="card-body">
                 <table class="table table-hover">
                     <thead>
@@ -23,7 +23,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    {% for t in tabs %}
+                    {% for t in app.user.favorites %}
                         <tr>
                             <td>{{ t.artist }}</td>
                             <td>{{ t.song }}</td>

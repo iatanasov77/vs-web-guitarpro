@@ -1,12 +1,16 @@
 <?php namespace App\Controller\WebGuitarPro;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Vankosoft\UsersBundle\Controller\RegisterController as BaseRegisterController;
+
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Mailer\MailerInterface;
+use Sylius\Component\Resource\Repository\RepositoryInterface;
+use Sylius\Component\Resource\Factory\Factory;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
+use Vankosoft\UsersBundle\Security\UserManager;
 
-class FavoritesController extends AbstractController
+class RegisterController extends BaseRegisterController
 {
     use GlobalFormsTrait;
     
@@ -14,14 +18,32 @@ class FavoritesController extends AbstractController
     private $tabCategoriesTaxonomy;
     
     public function __construct(
+        UserManager $userManager,
+        RepositoryInterface $usersRepository,
+        Factory $usersFactory,
+        RepositoryInterface $userRolesRepository,
+        MailerInterface $mailer,
+        RepositoryInterface $pagesRepository,
+        array $parameters,
+        
         EntityRepository $taxonomyRepository,
         string $tabCategoriesTaxonomyCode
     ) {
+        parent::__construct( $userManager, $usersRepository, $usersFactory, $userRolesRepository, $mailer, $pagesRepository, $parameters );
+
         $this->tabCategoriesTaxonomy    = $taxonomyRepository->findByCode( $tabCategoriesTaxonomyCode );
     }
     
-    public function index( Request $request ): Response
+    public function index( Request $request, MailerInterface $mailer ): Response
     {
+        if ( $this->getUser() ) {
+            return $this->redirectToRoute( $this->params['defaultRedirect'] );
+        }
+        
+        if ( $request->isMethod( 'post' ) ) {
+            return parent::index( $request, $mailer );
+        }
+        
         $params = [
             'tabForm'                       => $this->getTabForm()->createView(),
             'tabCategoryForm'               => $this->getTabCategoryForm()->createView(),
@@ -31,22 +53,7 @@ class FavoritesController extends AbstractController
             
             'tablatureUploadLimited'        => ! $this->checkTablatureLimit(),
         ];
-        
-        return $this->render( 'Pages/Dashboard/favorites.html.twig', $params );
-    }
-    
-    public function addFavorite( $id, Request $request ): Response
-    {
-        $em             = $this->getDoctrine()->getManager();
-        $er             = $this->getDoctrine()->getRepository( 'App\Entity\Tablature' );
-        
-        $oTablature     = $er->find( $request->attributes->get( 'id' ) );
-        $oUser          = $this->getUser();
-        
-        $oUser->addFavorite( $oTablature );
-        $em->persist( $oUser );
-        $em->flush();
-        
-        return new JsonResponse( 'Success' );
+
+        return $this->render( '@VSUsers/Register/register.html.twig', array_merge( $params, $this->templateParams( $this->getForm() ) ) );
     }
 }

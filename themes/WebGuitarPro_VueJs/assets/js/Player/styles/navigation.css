@@ -329,4 +329,12 @@ a.article:hover {
   cursor: pointer;
 }
 
+.player-menu-right{
+    border: 0px !important;
+    top: -15px !important;
+}
+
+.player-menu-right::before {
+    z-index: -15 !important;
+}
 

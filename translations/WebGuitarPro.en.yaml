@@ -4,6 +4,7 @@ vs_wgp:
             login: Login
             my_tablatures: My Tablatures
             favorites: Favorites
+            my_favorites: My Favorites
             create_tablature_category: Create Category
             create_tablature: Submit Tablature
             profile: Profile
@@ -13,6 +14,8 @@ vs_wgp:
             logout: Logout
             
             extend_your_tablatures_store: Extend Your Tablatures Store
+            
+            latest_tablatures: Latest Tablatures
             
         alerts:
             tablature_upload_limited_error: Tablature Upload Limitted!
@@ -27,7 +30,9 @@ vs_wgp:
         song: Song
         play: Play
         uncategorized: Uncategorized
-        
+        my_tablatures: My Tablatures
+        owner: Owner
+        my_favorites: My Favorites
     form:
         public: To Be Public
         locale: Language
