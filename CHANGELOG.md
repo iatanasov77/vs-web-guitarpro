@@ -1,3 +1,16 @@
+1.5.5	|	Release date: **05.08.2022**
+============================================
+* New Features:
+  - Add My Favorites Page.
+* Bug-Fixes, Refactoring and Improvements:
+  - Alternating Rows in My Tablature Page.
+  - Update Tablatures Templates.
+  - Fix Register Form View.
+  - Refactoring Alphatab Initialization.
+  - Refactoring Player Controls.
+  - Player Controls Styling and Improvements.
+
+
 1.5.4	|	Release date: **04.08.2022**
 ============================================
 * New Features, Improvements and Fixes:
