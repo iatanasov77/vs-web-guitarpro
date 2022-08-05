@@ -7,28 +7,30 @@
         <svg class="icon dropdown-toggle" data-bs-toggle="dropdown" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
             <use xlink:href="#icon-guitar"></use>
         </svg>
-        <div class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dLabel">
+        <div class="dropdown-menu dropdown-menu-right player-menu-right" role="menu" aria-labelledby="dLabel">
             <div id="trackList" class="dropdown-menu-background scrollable-menu-side">
                 <div class="track" v-for="(track, index) in this.$parent.player.score.tracks" :data-track="index">
                 
                     <!-- Track Item Start -->
-                    <div class="title" v-on:click.stop="onClickTrackTitle( track.index, $event )">
+                    <div class="title mb-3" v-on:click.stop="onClickTrackTitle( track.index, $event )">
                         <i class="fa fa-eye-slash showHide"></i>{{ track.name }}
                     </div>
                     <div class="btn-group btn-group-xs">
                         <div class="form-check">
-                            <input type="checkbox"
-                                :class="'track-solo-mute-' + track.index"
+                            <input type="radio" :name="'track-solo-mute-' + track.index"
+                                data-waschecked="false"
+                                class="mr-2"
                                 :id="'solo-' + track.index"
-                                v-on:click="onClickTrackSolo( track.index, $event )"
+                                v-on:click="onClickTrackSoloMute( 'solo', track.index, $event )"
                             />
                             <label class="form-check-label" :for="'solo-' + track.index">Solo</label>
                         </div>&nbsp;&nbsp;
                         <div class="form-check">
-                            <input type="checkbox"
-                                :class="'track-solo-mute-' + track.index"
+                            <input type="radio" :name="'track-solo-mute-' + track.index"
+                                data-waschecked="false"
+                                class="mr-2"
                                 :id="'mute-' + track.index"
-                                v-on:click="onClickTrackMute( track.index, $event )"
+                                v-on:click="onClickTrackSoloMute( 'mute', track.index, $event )"
                             />
                             <label class="form-check-label" :for="'mute-' + track.index">Mute</label>
                         </div>
@@ -79,44 +81,51 @@ export default {
             this.$parent.player.renderTracks( [track] );
             
             this.resetElements();
-            $( event.target ).find( '.showHide' ).removeClass( 'fa-eye-slash' ).addClass( 'fa-eye' );
+            if ( $( event.target ).html().length ) {
+                var showElement = $( event.target ).find( '.showHide' );
+            } else {
+                //var showElement = $( event.target ).parent().find( '.showHide' );
+                var showElement = $( event.target ).parent();
+            } 
+            showElement.removeClass( 'fa-eye-slash' ).addClass( 'fa-eye' );
         },
         
-        onClickTrackSolo: function( trackIndex, event ) {
-            $( '.track-solo-mute-' + trackIndex ).not( $( event.target ) ).prop( "checked", false );
-            var trackSoloState  = $( event.target ).prop( "checked" );
+        onClickTrackSoloMute: function( action, trackIndex, event )
+        {
+            var previousState   = Boolean( $( event.target ).data( 'waschecked' ) );
+            $( event.target ).data( 'waschecked', ! previousState );
+            $( event.target ).prop( "checked", ! previousState );
+    
+            this.soloTracks = this.soloTracks.filter( el => el.index !== trackIndex );
+            this.muteTracks = this.muteTracks.filter( el => el.index !== trackIndex );
             
-            const obj       = { key: trackIndex, value: this.$parent.player.score.tracks[trackIndex] };
-            this.soloTracks = this.soloTracks.filter( el => el.key !== trackIndex );
-            this.muteTracks = this.muteTracks.filter( el => el.key !== trackIndex );
-            if ( trackSoloState ) {
-                this.soloTracks.push( obj );
+            if ( action == 'solo' ) {
+                if ( $( event.target ).prop( "checked" ) ) {
+                    this.soloTracks.push( this.$parent.player.score.tracks[trackIndex] );
+                } else {
+                    this.$parent.player.changeTrackSolo( [this.$parent.player.score.tracks[trackIndex]], false );
+                }
+                
+                this.$parent.player.changeTrackSolo( this.soloTracks, true );
+                this.$parent.player.changeTrackMute( this.soloTracks, false );
+            } else if ( action == 'mute' ) {
+                if ( $( event.target ).prop( "checked" ) ) {
+                    this.muteTracks.push( this.$parent.player.score.tracks[trackIndex] );
+                } else {
+                    this.$parent.player.changeTrackMute( [this.$parent.player.score.tracks[trackIndex]], false );
+                }
+                
+                this.$parent.player.changeTrackMute( this.muteTracks, true );
+                this.$parent.player.changeTrackSolo( this.muteTracks, false );
             }
-            
-            const pluck = ( arr, key ) => arr.map( i => i[key] );
-            this.$parent.player.changeTrackSolo( pluck( this.soloTracks, 'value' ), true );
-            this.$parent.player.changeTrackMute( pluck( this.soloTracks, 'value' ), false );
-        },
-        
-        onClickTrackMute: function( trackIndex, event ) {
-            $( '.track-solo-mute-' + trackIndex ).not( $( event.target ) ).prop( "checked", false );
-            var trackMuteState  = $( event.target ).prop( "checked" );
-            
-            const obj       = { key: trackIndex, value: this.$parent.player.score.tracks[trackIndex] };
-            this.soloTracks = this.soloTracks.filter( el => el.key !== trackIndex );
-            this.muteTracks = this.muteTracks.filter( el => el.key !== trackIndex );
-            if ( trackMuteState ) {
-                this.muteTracks.push( obj );
-            }
-            
-            const pluck = ( arr, key ) => arr.map( i => i[key] );
-            this.$parent.player.changeTrackMute( pluck( this.muteTracks, 'value' ), true );
-            this.$parent.player.changeTrackSolo( pluck( this.muteTracks, 'value' ), false );
         },
         
         onChangeTrackVolume: function( trackIndex, volumeValue ) {
             //alert( 'Track Index: ' + trackIndex + '<br>Volume Value: ' + volumeValue );
-            this.$parent.player.changeTrackVolume( [ this.tracks[trackIndex] ], volumeValue );
+            this.$parent.player.changeTrackVolume(
+                [ this.tracks[trackIndex] ],
+                volumeValue / this.$parent.player.score.tracks[trackIndex].playbackInfo.volume
+            );
         },
     },
     
