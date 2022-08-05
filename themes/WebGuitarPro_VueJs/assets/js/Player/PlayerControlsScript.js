@@ -102,13 +102,16 @@ export default {
             this.scoreLoaded = true;
         },
     },
+    
+    
     created() {
+    
         this.user   = $( '#song-details' ).attr( 'data-user' );
         this.player = api;
 
-        /**
-         * Alphatab Event Handling
-         */
+        /////////////////////////////
+        // Alphatab Event Handling
+        /////////////////////////////
         this.player.soundFontLoad.on( (e) => {
             console.log( 'soundFont was loaded!', e.loaded );
             this.onSoundFontLoaded( e.loaded, e.total );
@@ -125,13 +128,15 @@ export default {
             this.onScoreLoaded( score );
         });
         
-        /**
-         * This event is fired when all required data for playback is loaded and ready. The player is ready for playback when 
-         * all background workers are started, the audio output is initialized, a soundfont is loaded, and a song was loaded into the player as midi file.
-         */
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // This event is fired when all required data for playback is loaded and ready. The player is ready for playback when 
+        // all background workers are started, the audio output is initialized, a soundfont is loaded, and a song was loaded into the player as midi file.
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         this.player.playerReady.on( () => {
             console.log( 'Player Ready !!!' );
             //alert( 'Player Ready !!!' );
         });
+        
     },
 }
