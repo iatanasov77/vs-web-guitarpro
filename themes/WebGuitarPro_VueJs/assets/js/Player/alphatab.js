@@ -6,6 +6,12 @@ const element       = $( "#alphaTab" ).get( 0 );
 const songDetails   = document.querySelector( '#song-details' );
 
 var api             = new alphaTab.AlphaTabApi( element, {
+
+    core: {
+        logLevel: 'debug',
+        engine: 'html5',
+        tracks: 0
+    },
     display: {
         layoutMode: 'page',
         staveProfile: 'scoretab'
@@ -23,7 +29,13 @@ var api             = new alphaTab.AlphaTabApi( element, {
             scoreCopyright: false
         }
     },
-    logging: 'error',
+    player: {
+        enablePlayer: true,
+        enableUserInteraction: true,
+        enableCursor: true,
+        soundFont: '/build/web-guitar-pro-vuejs/soundfont/sonivox.sf2'
+    },
+    logging: 'debug',
 });
 api.scoreLoaded.on( score => {
     songDetails.querySelector( '.artist' ).innerText    = score.artist;
