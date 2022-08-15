@@ -13,6 +13,8 @@ Encore
         resolveUrlLoader: true
     })
     
+    .enableReactPreset()
+    
     /**
      * Add Entries
      */
@@ -35,9 +37,24 @@ Encore
          to: 'images/[path][name].[ext]',
      })
 
+
+    /*
+     * ENTRY CONFIG
+     *
+     * Each entry will result in one JavaScript file (e.g. app.js)
+     * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
+     */
+    .addEntry('app', './themes/WebGuitarPro_ReactJs/assets/app.js')
+    .addEntry('tablature-player', './themes/WebGuitarPro_ReactJs/assets/js/Player/index.js')
     
-    .addEntry('app', './themes/WebGuitarPro_ReactJs/assets/js/app.js')
-    .addEntry('tablature-player', './themes/WebGuitarPro_ReactJs/assets/js/pages/tablature-player.js')
+    .addEntry('authentication', './themes/WebGuitarPro_ReactJs/assets/js/pages/authentication.js')
+    .addEntry('tablatures', './themes/WebGuitarPro_ReactJs/assets/js/pages/tablatures.js')
+    .addEntry('tablature-edit', './themes/WebGuitarPro_ReactJs/assets/js/pages/tablature-edit.js')
+    
+    .addEntry( 'js/filemanager-file-upload', './themes/WebGuitarPro_ReactJs/assets/js/pages/filemanager-file-upload.js' )
+    .addEntry( 'js/profile', './themes/WebGuitarPro_ReactJs/assets/js/pages/profile.js' )
+    
+    .addEntry( 'paymentForm', './themes/WebGuitarPro_ReactJs/assets/js/Stripe/paymentForm.js' )
 ;
 
 const config = Encore.getWebpackConfig();

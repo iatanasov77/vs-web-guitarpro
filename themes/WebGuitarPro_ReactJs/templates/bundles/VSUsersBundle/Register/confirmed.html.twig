@@ -1,0 +1,13 @@
+{% extends "base.html.twig" %}
+
+{% block content %}  
+    <div class="login-wrap">
+        <h1>WCT Registration</h1>
+        <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
+        {% if targetUrl %}
+            <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
+        {% else %}
+            <p><a href="{{ path('ia_application_home') }}">Go to Home Page</a></p>
+        {% endif %}
+    </div>
+{% endblock content %}

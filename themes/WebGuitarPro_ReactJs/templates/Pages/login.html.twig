@@ -1,0 +1,32 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{ parent() }} :: Application Login{% endblock %}
+{% block pageTitle %}<i class="icon_genius"></i> Application Login{% endblock %}
+
+{% block content %}
+    <div class="tablatures-container" style="margin-top: 110px">
+        <div class="card card-registration-form">
+            <div class="card-header text-center">
+                <h3 class="mb-1">Login Form</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div id="messages">
+                        {% if error %}
+                            <div>{{ error.messageKey|trans( error.messageData, 'security' ) }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-12">
+                        {% include 'Partial/login-form.html.twig' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    {{ encore_entry_link_tags( 'authentication', null, 'WebGuitarPro_VueJs' ) }}
+{% endblock %} 
