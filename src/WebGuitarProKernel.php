@@ -9,7 +9,7 @@ use Vankosoft\ApplicationBundle\Component\Application\Kernel as BaseKernel;
 
 class WebGuitarProKernel extends BaseKernel
 {
-    const VERSION   = '1.8.1';
+    const VERSION   = '1.9.0';
     const APP_ID    = 'web-guitar-pro';
     
     /**
