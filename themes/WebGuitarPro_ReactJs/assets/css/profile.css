@@ -1,0 +1,13 @@
+.card-profile-form .row {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.card-profile-form {
+    margin-right: 50px;
+    margin-left: 50px;
+}
+
+.panel-header, .panel-body {
+	border-color: #ffffff !important;
+}

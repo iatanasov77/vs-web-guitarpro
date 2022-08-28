@@ -14,7 +14,7 @@ parameters:
     languages:
         en: English
         bg: Български¸
-    applicationTitle: 'SuperAdmin Panel'
+    applicationTitle: 'WebGuitarPro Admin Panel'
     
     vs_application.version: !php/const App\AdminPanelKernel::VERSION
     vs_application.public_dir: "%kernel.project_dir%/public/admin-panel"

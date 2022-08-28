@@ -1,0 +1,49 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{ parent() }} :: Error Page{% endblock %}
+{% block pageTitle %}<i class="fa fa-user-md"></i> Error Page{% endblock %}
+
+{% block content %}
+    <div class="padding">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Tablatures Upload is Limited</strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                You can Pay for Unlimited Tablatures Store 
+                                <a class="btnPayment"
+                                    href="javascript:void(0);"
+                                    data-url="{{ path( 'vs_payment_add_to_card', {'payableObjectId': 1} ) }}"
+                                >
+                                    From Here
+                                </a> .
+                            </div>
+                         </div>
+                     </div>
+                     <div class="card-footer"></div>
+                 </div>         
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    {% include '@VSPayment/Pages/CreditCard/Partial/credit_card_css.html.twig' %}
+    
+    <style>
+        a {
+            color: #007bff !important;
+        }
+        a:hover {
+            color: #007bff !important;
+            text-decoration: underline !important;
+        }
+    </style>
+{% endblock %}
+

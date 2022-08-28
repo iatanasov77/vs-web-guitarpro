@@ -1,0 +1,13 @@
+.card-registration-form {
+	width: 700px;
+    margin: auto;
+}
+
+.card-registration-form .card-header {
+    text-align: center;
+}
+
+.custom-control-label a {
+    color: #007bff;
+}
+

@@ -99,8 +99,8 @@ const WebGuitarPro_VueJs_Config   = require('./themes/WebGuitarPro_VueJs/webpack
 /**
  *  WebGuitarPro ReactJs Theme
  */
-//Encore.reset();
-//const WebGuitarPro_ReactJs_Config   = require('./themes/WebGuitarPro_ReactJs/webpack.config');
+Encore.reset();
+const WebGuitarPro_ReactJs_Config   = require('./themes/WebGuitarPro_ReactJs/webpack.config');
 
 //=================================================================================================
 
@@ -114,8 +114,8 @@ const WebGuitarPro_VueJs_Config   = require('./themes/WebGuitarPro_VueJs/webpack
 
 module.exports = [
     adminPanelConfig,
-    WebGuitarPro_Standard_Config,
+    //WebGuitarPro_Standard_Config,
     WebGuitarPro_VueJs_Config,
-    //WebGuitarPro_ReactJs_Config,
+    WebGuitarPro_ReactJs_Config,
     //WebGuitarPro_AngularJs_Config,
 ];
