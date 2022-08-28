@@ -14,6 +14,9 @@ parameters:
     languages:
         en: English
         bg: Български¸
+    language_flags:
+        en: us
+        bg: bg
     applicationTitle: 'WebGuitarPro Admin Panel'
     
     vs_application.version: !php/const App\AdminPanelKernel::VERSION
