@@ -1,3 +1,12 @@
+1.6.0	|	Release date: **28.08.2022**
+============================================
+* New Features and Improvements:
+  - Configure Pagerfanra for Admin Panel.
+  - ReactJs Theme is Done.
+  - Change AdminPanel Title.
+  - Update to VankosoftApplication Library to 1.9
+
+
 1.5.5	|	Release date: **05.08.2022**
 ============================================
 * New Features:
