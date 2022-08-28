@@ -22,7 +22,7 @@
         "symfony/notifier": "5.4.*",
         "symfony/runtime": "5.4.*",
         
-        "vankosoft/application": "1.8.*",
+        "vankosoft/application": "1.9.*",
         
         "vankosoft/users-subscriptions-bundle": "2.3.*",
         "vankosoft/payment-bundle": "2.0.*"
