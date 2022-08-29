@@ -212,32 +212,45 @@ vs_application:
                         route: vs_cms_filemanager_artgris_upload
         
         mainUsersSubscriptionsMenu:
+            newsletter:
+                name: vs_application.menu.newsletter
+                uri: "javascript:;"
+                attributes:
+                    iconClass: icon_genius
+                childs:
+                    mailchimp_audiences_list:
+                        name: vs_application.menu.list_mailchimp_audiences
+                        route: vs_users_subscriptions_mailchimp_audiences_index
+                    mailchimp_audiences_create:
+                        name: vs_application.menu.create_new_mailchimp_audience
+                        route: vs_users_subscriptions_mailchimp_audiences_create
+            
             paid_services:
-                name: Paid Services
+                name: vs_application.menu.paid_services
                 uri: "javascript:;"
                 attributes:
                     iconClass: icon_genius
                 childs:
                     paid_services_category_index:
-                        name: Categories
+                        name: vs_application.menu.categories
                         route: vs_users_subscriptions_payed_service_category_index
                     paid_services_category_create:
-                        name: Create a Category
+                        name: vs_application.menu.create_a_category
                         route: vs_users_subscriptions_payed_service_category_create
                     paid_services_category_update:
-                        name: Edit a Category
+                        name: vs_application.menu.edit_a_category
                         route: vs_users_subscriptions_payed_service_category_update
                         routeParameters:
                           id: int
                         display: false
                     paid_services_index:
-                        name: Paid Services
+                        name: vs_application.menu.paid_services
                         route: vs_users_subscriptions_payed_service_index
                     paid_services_create:
-                        name: Create a Paid Service
+                        name: vs_application.menu.create_a_paid_service
                         route: vs_users_subscriptions_payed_service_create
                     paid_services_update:
-                        name: Edit a Paid Service
+                        name: vs_application.menu.edit_a_paid_service
                         route: vs_users_subscriptions_payed_service_update
                         routeParameters:
                           id: int
@@ -246,37 +259,37 @@ vs_application:
         
         mainPaymentMenu:
             gateway_config:
-                name: Gateway Config
+                name: vs_application.menu.gateway_config
                 uri: "javascript:;"
                 attributes:
                     iconClass: icon_genius
                 childs:
                     gateways_index:
-                        name: Gateways
+                        name: vs_application.menu.gateways
                         route: vs_payment_gateways_index
                     gateways_create:
-                        name: Create New Gateway
+                        name: vs_application.menu.create_new_gateway
                         route: vs_payment_gateways_config
                     gateways_config:
-                        name: Edit a Gateway
+                        name: vs_application.menu.edit_a_gateway
                         route: vs_payment_gateways_config
                         routeParameters:
                           gatewayName: string
                         display: false
             payment_methods:
-                name: Payment Methods
+                name: vs_application.menu.payment_methods
                 uri: "javascript:;"
                 attributes:
                     iconClass: icon_genius
                 childs:
                     gateways_index:
-                        name: Payment Methods
+                        name: vs_application.menu.payment_methods
                         route: vs_payment_methods_index
                     gateways_create:
-                        name: Create New Payment Method
+                        name: vs_application.menu.create_new_payment_method
                         route: vs_payment_methods_config
                     gateways_config:
-                        name: Edit a Payment Method
+                        name: vs_application.menu.edit_a_payment_method
                         route: vs_payment_methods_config
                         routeParameters:
                           id: int
@@ -284,24 +297,34 @@ vs_application:
         
         profileMenu:
             profile:
-                name: "My Profile"
+                name: vs_application.menu.my_profile
                 route: vs_users_profile_show
                 attributes:
                     iconClass: "fas fa-user mr-2"
-            language:
-                name: "Language"
+                    
+            documentation:
+                name: vs_application.menu.documentation
                 uri: "javascript:;"
                 attributes:
-                    iconClass: "fas fa-language mr-2"
-                childs:
-                    language_english:
-                        name: "English (US)"
-                        uri: /set_lang/en_US
+                    iconClass: "fas fa-cog mr-2"
+            
+#            language:
+#                name: "Language"
+#                uri: "javascript:;"
+#                attributes:
+#                    iconClass: "fas fa-language mr-2"
+#                childs:
+#                    language_english:
+#                        name: "English (US)"
+#                        uri: /set_lang/en_US
+#                        
+#                    language_bulgarian:
+#                        name: "Bulgarian"
+#                        uri: /set_lang/bg_BG
                         
-                    language_bulgarian:
-                        name: "Bulgarian"
-                        uri: /set_lang/bg_BG
-                        
+            divider_1:
+                isDivider: true
+            
             logout:
                 name: "Log Out"
                 route: vs_application_logout
@@ -309,9 +332,4 @@ vs_application:
                     iconClass: "fas fa-power-off mr-2"
                     divider_prepend: false
                     divider_append: true
-            documentation:
-                name: "Documentation"
-                uri: "javascript:;"
-                attributes:
-                    iconClass: "fas fa-cog mr-2"
 
