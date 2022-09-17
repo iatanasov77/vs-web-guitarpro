@@ -11,6 +11,8 @@ twig:
         installedBundles: '%kernel.bundles%'
         pageCategoriesTaxonomyCode: '%vs_application.page_categories.taxonomy_code%'
         
+        languageFlags: '%language_flags%'
+        
     form_themes:
         - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
 

@@ -1,4 +1,12 @@
 home:
     path: /
     controller: App\Controller\AdminPanel\DefaultController::index
+    
+app_set_lang:
+    path: /set_lang/{lang}
+    controller: App\Controller\AdminPanel\DefaultController::setLanguage
+    
+app_set_locale:
+    path: /set_locale/{locale}
+    controller: App\Controller\AdminPanel\DefaultController::setLocale
 

@@ -36,208 +36,208 @@ vs_application:
     menu:
         mainSystemMenu:
             settings:
-                name: Settings
+                name: vs_application.menu.settings
                 uri: "javascript:;"
                 attributes:
                     iconClass: icon_genius
                 childs:
                     settings:
-                        name: Preferences
+                        name: vs_application.menu.preferences
                         route: vs_application_settings_index
             taxonomy:
-                name: Taxonomy
+                name: vs_application.menu.taxonomy
                 uri: "javascript:;"
                 attributes:
                     iconClass: icon_genius
                 childs:
                     list:
-                        name: List Taxonomies
+                        name: vs_application.menu.list_taxonomies
                         route: vs_application_taxonomy_index
                     create:
-                        name: Create New Taxonomy
+                        name: vs_application.menu.create_new_taxonomy
                         route: vs_application_taxonomy_create
                         display: true
                     update:
-                        name: Edit Taxonomy
+                        name: vs_application.menu.edit_taxonomy
                         route: vs_application_taxonomy_update
                         routeParameters:
                           id: int
                         display: false
             user_management:
-                name: User Management
+                name: vs_application.menu.user_management
                 uri: "javascript:;"
                 attributes:
                     iconClass: icon_genius
                 childs:
                     users_list:
-                        name: Users List
+                        name: vs_application.menu.users_list
                         route: vs_users_users_index
                     user_create:
-                        name: Create User
+                        name: vs_application.menu.create_user
                         route: vs_users_users_create
                     user_update:
-                        name: Update User
+                        name: vs_application.menu.update_user
                         route: vs_users_users_update
                         routeParameters:
                           id: int
                         display: false
                         
                     user_roles_list:
-                        name: User Roles
+                        name: vs_application.menu.user_roles
                         route: vs_users_user_roles_index
                     user_roles_create:
-                        name: Create Role
+                        name: vs_application.menu.create_role
                         route: vs_users_user_roles_create
                     user_roles_update:
-                        name: Update Role
+                        name: vs_application.menu.update_role
                         route: vs_users_user_roles_update
                         routeParameters:
                           id: int
                         display: false
-
-#             newsletter:
-#                 name: Newsletter
-#                 uri: "javascript:;"
-#                 attributes:
-#                     iconClass: icon_genius
-#                 childs:
-#                     mailchimp_audiences_list:
-#                         name: List Mailchimp Audiences
-#                         route: vs_users_subscriptions_mailchimp_audiences_index
-#                     mailchimp_audiences_create:
-#                         name: Create New Mailchimp Audience
-#                         route: vs_users_subscriptions_mailchimp_audiences_create
                         
         mainCmsMenu:
             cms:
-                name: Static Pages
+                name: vs_application.menu.static_pages
                 uri: "javascript:;"
                 attributes:
                     iconClass: icon_genius
                 childs:
                     list:
-                        name: List Pages
+                        name: vs_application.menu.list_pages
                         route: vs_cms_pages_index
                     create:
-                        name: Create New Page
+                        name: vs_application.menu.create_new_page
                         route: vs_cms_pages_create
                         display: true
                     update:
-                        name: Edit Page
+                        name: vs_application.menu.edit_page
                         route: vs_cms_pages_update
                         routeParameters:
                           id: int
                         display: false
                         
                     category_list:
-                        name: Page Categories
+                        name: vs_application.menu.page_categories
                         route: vs_cms_page_categories_index
                     category_create:
-                        name: Create New Page Category
+                        name: vs_application.menu.create_new_page_category
                         route: vs_cms_page_categories_create
                         display: true
                     category_update:
-                        name: Edit Page Category
+                        name: vs_application.menu.edit_page_category
                         route: vs_cms_page_categories_update
                         routeParameters:
                           id: int
                         display: false
                         
             cms_toc:
-                name: Table Of Contents
+                name: vs_application.menu.table_of_contents
                 uri: "javascript:;"
                 attributes:
                     iconClass: icon_genius
                     breadcrumb_route: vs_cms_document_index
                 childs:
                     list:
-                        name: Document Lists 
+                        name: vs_application.menu.document_lists
                         route: vs_cms_document_index
                     create:
-                        name: Create New Document
+                        name: vs_application.menu.create_new_document
                         route: vs_cms_document_create
                         display: true
                     update:
-                        name: Edit Document
+                        name: vs_application.menu.edit_document
                         route: vs_cms_document_update
                         routeParameters:
                           id: int
                         display: false
                     category_list:
-                        name: Document Categories
+                        name: vs_application.menu.document_categories
                         route: vs_cms_document_categories_index
                     category_create:
-                        name: Create New Document Category
+                        name: vs_application.menu.create_new_document_category
                         route: vs_cms_document_categories_create
                         display: true
                     category_update:
-                        name: Edit Document Category
+                        name: vs_application.menu.edit_document_category
                         route: vs_cms_document_categories_update
                         routeParameters:
                           id: int
                         display: false
             filemanager_vankosoft:
-                name: VankoSoft File Manager
+                name: vs_application.menu.vankoSoft_file_manager
                 uri: "javascript:;"
                 attributes:
                     iconClass: icon_genius
                 childs:
                     list_filemanagers:
-                        name: List Filemanagers
+                        name: vs_application.menu.list_filemanagers
                         route: "vs_cms_file_manager_index"
                         display: true
                     create_filemanager:
-                        name: Create New Filemanager
+                        name: vs_application.menu.create_new_filemanager
                         route: "vs_cms_file_manager_create"
                         display: true
                     update_filemanager:
-                        name: Edit Filemanager
+                        name: vs_application.menu.edit_filemanager
                         route: "vs_cms_file_manager_update"
                         routeParameters:
                           id: int
                         display: false
             
             filemanager_artgris:
-                name: Artgris File Manager
+                name: vs_application.menu.artgris_file_manager
                 uri: "javascript:;"
                 attributes:
                     iconClass: icon_genius
                 childs:
                     browse:
-                        name: Browse Files
+                        name: vs_application.menu.browse_files
                         route: vs_cms_filemanager_artgris_list
                         #uri: "/filemanager/?conf=default"
                     upload:
-                        name: Upload a File
+                        name: vs_application.menu.upload_a_file
                         route: vs_cms_filemanager_artgris_upload
         
         mainUsersSubscriptionsMenu:
+            newsletter:
+                name: vs_application.menu.newsletter
+                uri: "javascript:;"
+                attributes:
+                    iconClass: icon_genius
+                childs:
+                    mailchimp_audiences_list:
+                        name: vs_application.menu.list_mailchimp_audiences
+                        route: vs_users_subscriptions_mailchimp_audiences_index
+                    mailchimp_audiences_create:
+                        name: vs_application.menu.create_new_mailchimp_audience
+                        route: vs_users_subscriptions_mailchimp_audiences_create
+            
             paid_services:
-                name: Paid Services
+                name: vs_application.menu.paid_services
                 uri: "javascript:;"
                 attributes:
                     iconClass: icon_genius
                 childs:
                     paid_services_category_index:
-                        name: Categories
+                        name: vs_application.menu.categories
                         route: vs_users_subscriptions_payed_service_category_index
                     paid_services_category_create:
-                        name: Create a Category
+                        name: vs_application.menu.create_a_category
                         route: vs_users_subscriptions_payed_service_category_create
                     paid_services_category_update:
-                        name: Edit a Category
+                        name: vs_application.menu.edit_a_category
                         route: vs_users_subscriptions_payed_service_category_update
                         routeParameters:
                           id: int
                         display: false
                     paid_services_index:
-                        name: Paid Services
+                        name: vs_application.menu.paid_services
                         route: vs_users_subscriptions_payed_service_index
                     paid_services_create:
-                        name: Create a Paid Service
+                        name: vs_application.menu.create_a_paid_service
                         route: vs_users_subscriptions_payed_service_create
                     paid_services_update:
-                        name: Edit a Paid Service
+                        name: vs_application.menu.edit_a_paid_service
                         route: vs_users_subscriptions_payed_service_update
                         routeParameters:
                           id: int
@@ -246,37 +246,37 @@ vs_application:
         
         mainPaymentMenu:
             gateway_config:
-                name: Gateway Config
+                name: vs_application.menu.gateway_config
                 uri: "javascript:;"
                 attributes:
                     iconClass: icon_genius
                 childs:
                     gateways_index:
-                        name: Gateways
+                        name: vs_application.menu.gateways
                         route: vs_payment_gateways_index
                     gateways_create:
-                        name: Create New Gateway
+                        name: vs_application.menu.create_new_gateway
                         route: vs_payment_gateways_config
                     gateways_config:
-                        name: Edit a Gateway
+                        name: vs_application.menu.edit_a_gateway
                         route: vs_payment_gateways_config
                         routeParameters:
                           gatewayName: string
                         display: false
             payment_methods:
-                name: Payment Methods
+                name: vs_application.menu.payment_methods
                 uri: "javascript:;"
                 attributes:
                     iconClass: icon_genius
                 childs:
                     gateways_index:
-                        name: Payment Methods
+                        name: vs_application.menu.payment_methods
                         route: vs_payment_methods_index
                     gateways_create:
-                        name: Create New Payment Method
+                        name: vs_application.menu.create_new_payment_method
                         route: vs_payment_methods_config
                     gateways_config:
-                        name: Edit a Payment Method
+                        name: vs_application.menu.edit_a_payment_method
                         route: vs_payment_methods_config
                         routeParameters:
                           id: int
@@ -284,34 +284,39 @@ vs_application:
         
         profileMenu:
             profile:
-                name: "My Profile"
+                name: vs_application.menu.my_profile
                 route: vs_users_profile_show
                 attributes:
                     iconClass: "fas fa-user mr-2"
-            language:
-                name: "Language"
+                    
+            documentation:
+                name: vs_application.menu.documentation
                 uri: "javascript:;"
                 attributes:
-                    iconClass: "fas fa-language mr-2"
-                childs:
-                    language_english:
-                        name: "English (US)"
-                        uri: /set_lang/en_US
+                    iconClass: "fas fa-cog mr-2"
+            
+#            language:
+#                name: "Language"
+#                uri: "javascript:;"
+#                attributes:
+#                    iconClass: "fas fa-language mr-2"
+#                childs:
+#                    language_english:
+#                        name: "English (US)"
+#                        uri: /set_lang/en_US
+#                        
+#                    language_bulgarian:
+#                        name: "Bulgarian"
+#                        uri: /set_lang/bg_BG
                         
-                    language_bulgarian:
-                        name: "Bulgarian"
-                        uri: /set_lang/bg_BG
-                        
+            divider_1:
+                isDivider: true
+            
             logout:
-                name: "Log Out"
+                name: vs_application.menu.logout
                 route: vs_application_logout
                 attributes:
                     iconClass: "fas fa-power-off mr-2"
                     divider_prepend: false
                     divider_append: true
-            documentation:
-                name: "Documentation"
-                uri: "javascript:;"
-                attributes:
-                    iconClass: "fas fa-cog mr-2"
 
