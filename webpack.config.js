@@ -81,14 +81,6 @@ adminPanelConfig.name = 'adminPanel';
 //=================================================================================================
 
 /**
- *  WebGuitarPro Standard Theme
- */
-Encore.reset();
-const WebGuitarPro_Standard_Config   = require('./themes/WebGuitarPro_Standard/webpack.config');
-
-//=================================================================================================
-
-/**
  *  WebGuitarPro VueJs Theme
  */
 Encore.reset();
@@ -114,7 +106,6 @@ const WebGuitarPro_ReactJs_Config   = require('./themes/WebGuitarPro_ReactJs/web
 
 module.exports = [
     adminPanelConfig,
-    //WebGuitarPro_Standard_Config,
     WebGuitarPro_VueJs_Config,
     WebGuitarPro_ReactJs_Config,
     //WebGuitarPro_AngularJs_Config,
