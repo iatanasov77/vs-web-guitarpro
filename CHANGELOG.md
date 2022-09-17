@@ -1,3 +1,15 @@
+1.6.1	|	Release date: **17.09.2022**
+============================================
+* New Features:
+  - Update Application Kernel VankosoftApplication Version.
+  - Translate AdminPanel Menu.
+  - Update VankoSoft Extensions to Newest Versions.
+  - Add Admin Panel Translations.
+* Bug-Fixes:
+  - Fix All Issues in AdminPanel About VankosftApplication Library 1.9
+  - Fix ReactJs Theme.
+
+
 1.6.0	|	Release date: **28.08.2022**
 ============================================
 * New Features and Improvements:
