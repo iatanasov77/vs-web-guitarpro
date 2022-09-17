@@ -8,19 +8,19 @@ import SongPositionItem from './components/SongPositionItem';
 export default {
     name: 'PlayerControls',
     components: {
-        TracksItem,
-        SpeedItem,
-        LayoutItem,
-        PrintItem,
-        InformationItem,
-        SongPositionItem,
+        'tracks-item': TracksItem,
+        'speed-item': SpeedItem,
+        'layout-item': LayoutItem,
+        'print-item': PrintItem,
+        'information-item': InformationItem,
+        'song-position-item': SongPositionItem,
     },
     data() {
         return {
             user: null,
             
             player: null,
-            scoreLoaded: false,
+            PlayerScoreLoaded: false,
             playerState: null,
             loopingState: null,
             metronomeVolume: null,
@@ -95,12 +95,6 @@ export default {
         onPlayerStateChanged: function( state, stopped ) {
             this.playerState = state;
         },
-        
-        onScoreLoaded: function( score ) {
-            console.log( 'Score Loaded !!!' );
-            //console.log( this.player.score.tracks );
-            this.scoreLoaded = true;
-        },
     },
     
     
@@ -122,12 +116,11 @@ export default {
         });
 
         this.player.scoreLoaded.on( (score) => {
-            //console.log( 'Score was loaded!', score );
+            console.log( 'Score was loaded!', score );
             //console.log( score.tracks );
             
-            this.onScoreLoaded( score );
+            this.PlayerScoreLoaded = true;
         });
-        
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // This event is fired when all required data for playback is loaded and ready. The player is ready for playback when 
@@ -137,6 +130,5 @@ export default {
             console.log( 'Player Ready !!!' );
             //alert( 'Player Ready !!!' );
         });
-        
     },
 }
