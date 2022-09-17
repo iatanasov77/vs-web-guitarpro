@@ -127,9 +127,7 @@ const TracksItem = ( {player} ) => {
                 { trackVolumes.length > 0 &&
                     <ReactBootstrapSlider isLoggedIn={false}
                         value={ trackVolumes[track.index] }
-                        
                         change={ event => onChangeTrackVolume( track.index, event ) }
-                        
                         
                         step={1}
                         min={0}

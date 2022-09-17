@@ -63,13 +63,13 @@
 {# #}
 {% block stylesheets %} 
     {{ parent() }}
-    {{ encore_entry_link_tags( 'js/profile', null, 'WebGuitarPro_VueJs' ) }}
+    {{ encore_entry_link_tags( 'js/profile', null, 'WebGuitarPro_ReactJs' ) }}
 {% endblock %}
 
 {% block javascripts %}
 	{{ parent() }}
 	
-    {{ encore_entry_script_tags( 'js/profile', null, 'WebGuitarPro_VueJs' ) }}
-    {{ encore_entry_script_tags( 'js/filemanager-file-upload', null, 'WebGuitarPro_VueJs' ) }}
+    {{ encore_entry_script_tags( 'js/profile', null, 'WebGuitarPro_ReactJs' ) }}
+    {{ encore_entry_script_tags( 'js/filemanager-file-upload', null, 'WebGuitarPro_ReactJs' ) }}
 {% endblock %}
 

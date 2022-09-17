@@ -8,8 +8,9 @@ import SpeedItem from './components/SpeedItem';
 import TracksItem from './components/TracksItem';
 
 const PlayerControls = ( {player, logged} ) => {
-    const [playerState, setPlayerState]     = useState( null );
-    const [loopingState, setLoopingState]   = useState( null );
+    const [playerScoreLoaded, setPlayerScoreLoaded] = useState( false );
+    const [playerState, setPlayerState]             = useState( null );
+    const [loopingState, setLoopingState]           = useState( null );
     
     let metronomeVolume = null;
     let countInVolume   = null;
@@ -17,6 +18,10 @@ const PlayerControls = ( {player, logged} ) => {
     useEffect(() => {
         player.playerStateChanged.on( ( args ) => {
             setPlayerState( args.state );
+        });
+        
+        player.scoreLoaded.on( score => {
+            setPlayerScoreLoaded( true );
         });
     }, []);
         
@@ -116,7 +121,9 @@ const PlayerControls = ( {player, logged} ) => {
                 </div>
                 
                 {/* Tracks Button */}
-                <TracksItem player={player} />
+                { ( playerScoreLoaded ) ? (
+                    <TracksItem player={player} />
+                ) : '' }
                 
                 {/* Speed Button */}
                 <SpeedItem player={player} />

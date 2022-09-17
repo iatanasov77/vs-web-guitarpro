@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+const alphaTab  = require( "@coderline/alphatab" );
 
 const LayoutItem = ( {player} ) => {
 

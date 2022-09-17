@@ -57,6 +57,6 @@ Encore
 ;
 
 const config = Encore.getWebpackConfig();
-config.name = 'WebGuitarPro';
+config.name = 'WebGuitarPro_VueJs';
 
 module.exports = config;

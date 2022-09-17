@@ -33,15 +33,16 @@ var api             = new alphaTab.AlphaTabApi( element, {
         enablePlayer: true,
         enableUserInteraction: true,
         enableCursor: true,
-        soundFont: '/build/web-guitar-pro-vuejs/soundfont/sonivox.sf2'
+        soundFont: '/build/web-guitar-pro-reactjs/soundfont/sonivox.sf2'
     },
     logging: 'debug',
 });
+
 api.scoreLoaded.on( score => {
     songDetails.querySelector( '.artist' ).innerText    = score.artist;
     songDetails.querySelector( '.title' ).innerText     = score.title;
     songDetails.querySelector( '.album' ).innerText     = score.album;
-    
-})
+});
+
 window.api = global.api = api;
 
