@@ -416,3 +416,22 @@ body {
     border: 1px solid #eaeaea;
     box-shadow: 0 0.5rem 1.2rem;
 }
+
+div#speedSelector ul {
+    margin-top: 1rem;
+}
+
+div#speedSelector ul li:hover,
+div#layoutSelector ul li:hover {
+    background-color: #eaeaea;
+}
+
+div#speedSelector ul li.active,
+div#layoutSelector ul li.active {
+    color: #00ff;
+}
+
+.playerTrackHover {
+    background-color: #eaeaea !important;
+}
+

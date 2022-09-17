@@ -88,13 +88,13 @@ const LayoutItem = ( {player} ) => {
 
 
     const layoutsList = layouts.map( ( layout, index ) => (
-        <li key={index} className="{ if ( layout.id == selectedLayout.id ) { 'active' } }"
+        <li key={index} className={`${layout.id == selectedLayout.id ? "active" : ""}`}
             onClick={ event => setLayout( layout, event ) }
         >{ layout.text }</li>
     ));
     
     const staveprofilesList = staveprofiles.map( ( staveprofile, index ) => (
-        <li key={index} className="{ if ( staveprofile == selectedStaveprofile ) { 'active' } }"
+        <li key={index} className={`${staveprofile.staveprofile == selectedStaveprofile.staveprofile ? "active" : ""}`}
             onClick={ event => setStaveprofile( staveprofile, event ) }
         >{ staveprofile.text }</li>
     ));
@@ -105,7 +105,7 @@ const LayoutItem = ( {player} ) => {
                 <use xlinkHref="#icon-layout"></use>
             </svg>
             <div className="dropdown-menu dropdown-menu-right dropright dropup dropdown-layers player-menu-right">
-                <div className="dropdown-menu-background">
+                <div id="layoutSelector" className="dropdown-menu-background">
                 
                     <div style={{fontWeight: "bold", paddingLeft: "10px"}}>Layout</div>
                     <ul>{ layoutsList }</ul>
