@@ -33,3 +33,7 @@ wgp_share_tablature_easyui_targetUsersData:
 wgp_share_tablature_handle_form:
     path: /my-shares/handle-form
     controller: App\Controller\WebGuitarPro\ShareTablatureController::handleFormAction
+
+wgp_share_tablature_shared_to_me:
+    path: /shared-to-me
+    controller: App\Controller\WebGuitarPro\SharedTablaturesController::index

@@ -12,10 +12,10 @@ vs_wgp:
             language: Език
             documentation: Документация
             logout: Изход
-            
             extend_your_tablatures_store: Увеличете Вашият Таблатури Склад
-            
             latest_tablatures: Най-нови Таблатури
+            
+            shared_to_me: Споделени с Мен
             
         alerts:
             tablature_upload_limited_error: Ъплоадването на Таблатури е ограничено!

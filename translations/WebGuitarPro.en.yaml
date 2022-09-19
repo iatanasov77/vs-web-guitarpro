@@ -12,10 +12,10 @@ vs_wgp:
             language: Language
             documentation: Documentation
             logout: Logout
-            
             extend_your_tablatures_store: Extend Your Tablatures Store
-            
             latest_tablatures: Latest Tablatures
+            
+            shared_to_me: Shared to Me
             
         alerts:
             tablature_upload_limited_error: Tablature Upload Limitted!
