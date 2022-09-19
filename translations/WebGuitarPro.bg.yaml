@@ -34,6 +34,9 @@ vs_wgp:
         owner: Притежател
         my_favorites: Предпочитани
         
+        button_share: Сподели
+        modal_share_title: Споделяне на Таблатури
+        
     form:
         public: Публичен
         locale: Език
@@ -53,3 +56,8 @@ vs_wgp:
             song: Песен
             tablature: Таблатура
 
+        share_tablature:
+            name: Име на Споделяне
+            name_placeholder: Въведи Име на Споделяне
+            target_users: Сподели с Потребители
+            target_users_placeholder: '-- Избери Потребители --'

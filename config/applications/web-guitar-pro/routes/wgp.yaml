@@ -17,3 +17,19 @@ tablature_favorite:
 wgp_upoad_tablatures_limited:
     path: /error/upoad-tablatures-limited
     controller: App\Controller\WebGuitarPro\ErrorController::uploadTablaturesLimited
+
+wgp_share_tablature_get_form:
+    path: /my-shares/get-form/{tabId}
+    controller: App\Controller\WebGuitarPro\ShareTablatureController::getFormAction
+
+wgp_share_tablature_jqueryui_availableShares:
+    path: /my-shares/jqueryui-available-shares
+    controller: App\Controller\WebGuitarPro\ShareTablatureController::jqueryuiAvailableShares
+
+wgp_share_tablature_easyui_targetUsersData:
+    path: /my-shares/easyui-target-users-data
+    controller: App\Controller\WebGuitarPro\ShareTablatureController::easyuiTargetUsersData
+
+wgp_share_tablature_handle_form:
+    path: /my-shares/handle-form
+    controller: App\Controller\WebGuitarPro\ShareTablatureController::handleFormAction

@@ -11,6 +11,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
 use App\Entity\Tablature;
+use App\Entity\TablatureShareUserTrait;
 
 /**
  * @ORM\Entity
@@ -20,6 +21,7 @@ class User extends BaseUser implements SubscribedUserInterface, PaymentsUserInte
 {
     use SubscribedUserTrait;
     use PaymentsUserTrait;
+    use TablatureShareUserTrait;
     
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Tablature", mappedBy="user")
@@ -42,6 +44,9 @@ class User extends BaseUser implements SubscribedUserInterface, PaymentsUserInte
         
         $this->tablatures       = new ArrayCollection();
         $this->favorites        = new ArrayCollection();
+        
+        $this->myShares         = new ArrayCollection();
+        $this->targetedShares   = new ArrayCollection();
         
         parent::__construct();
     }
