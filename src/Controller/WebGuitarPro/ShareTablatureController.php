@@ -51,7 +51,7 @@ class ShareTablatureController extends AbstractController
         
         $availableShares    = [];
         foreach ( $shares as $share ) {
-            $availableShares[$share->geId()]  = $share->getName();
+            $availableShares[$share->getId()]  = $share->getName();
         }
         
         return new  JsonResponse( $availableShares );
