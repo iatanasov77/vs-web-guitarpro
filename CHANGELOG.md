@@ -1,3 +1,14 @@
+1.6.2	|	Release date: **19.09.2022**
+============================================
+* New Features and Improvements:
+  - AdminPanel Manu Current Item.
+  - Remove Theme WebGuitarPro_Standard
+  - Litle Refactoring of Theme WebGuitarPro_VueJs.
+  - Improve Player Controls Menu.
+  - Add Oportunity User To Can Share Non-Public Tablatures With Other Users.
+  - Display Shared to Me Tablatures.
+
+
 1.6.1	|	Release date: **17.09.2022**
 ============================================
 * New Features:
