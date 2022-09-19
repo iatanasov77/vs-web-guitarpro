@@ -91,5 +91,19 @@ services:
         calls:
             - setTokenGenerator: ['@?symfonycasts.verify_email.token_generator']
             - setVerifyEmailHelper: ['@?symfonycasts.verify_email.helper']
+            
+    App\Controller\WebGuitarPro\ShareTablatureController:
+        public: true
+        autowire: true
+        tags: ['controller.service_arguments']
+        arguments:
+            - '@vs_users.repository.users'
+            - '@vs_wgp.repository.tablature'
+            - '@doctrine'
 
-
+    App\Controller\WebGuitarPro\SharedTablaturesController:
+        tags: ['controller.service_arguments']
+        autowire: true
+        arguments:
+            - '@vs_application.repository.taxonomy'
+            - '%vs_wgp.tablature-categories.taxonomy_code%'

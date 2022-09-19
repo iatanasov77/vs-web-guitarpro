@@ -9,4 +9,16 @@ $( function()
     require( './player-controls.js' );
     
     $( '#add-favorite-url' ).attr( 'data-url', $( '#alphaTab' ).attr( 'data-add-favorite-url' ) );
+    
+    $( '#player-controls' ).on( 'mouseover', '.trackTitle',
+        function() {
+            $( this ).parent().addClass( "playerTrackHover" );
+        }
+    );
+    
+    $( '#player-controls' ).on( 'mouseleave', '.trackTitle',
+        function() {
+            $( this ).parent().removeClass( "playerTrackHover" );
+        }
+    );
 });

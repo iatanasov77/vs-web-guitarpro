@@ -12,10 +12,10 @@ vs_wgp:
             language: Език
             documentation: Документация
             logout: Изход
-            
             extend_your_tablatures_store: Увеличете Вашият Таблатури Склад
-            
             latest_tablatures: Най-нови Таблатури
+            
+            shared_to_me: Споделени с Мен
             
         alerts:
             tablature_upload_limited_error: Ъплоадването на Таблатури е ограничено!
@@ -33,6 +33,9 @@ vs_wgp:
         my_tablatures: Моите Таблатури
         owner: Притежател
         my_favorites: Предпочитани
+        
+        button_share: Сподели
+        modal_share_title: Споделяне на Таблатури
         
     form:
         public: Публичен
@@ -53,3 +56,8 @@ vs_wgp:
             song: Песен
             tablature: Таблатура
 
+        share_tablature:
+            name: Име на Споделяне
+            name_placeholder: Въведи Име на Споделяне
+            target_users: Сподели с Потребители
+            target_users_placeholder: '-- Избери Потребители --'

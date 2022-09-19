@@ -25,6 +25,12 @@
     </div>
 {% endblock %}
 
+{% block widgets %}
+    {{ parent() }}
+    
+    {% include 'Modal/tablature_share.html.twig' %}
+{% endblock %}
+
 {% block stylesheets %}
     {{ parent() }}
     
@@ -33,7 +39,6 @@
 
 {% block javascripts %}
     {{ parent() }}
-{#    #}
+    
     {{ encore_entry_script_tags( 'tablatures', null, 'WebGuitarPro_ReactJs' ) }}
-
 {% endblock %}

@@ -97,7 +97,7 @@ const TracksItem = ( {player} ) => {
     // Track Elements
     const trackElements = player.score.tracks.map( ( track, index ) => (
         <div key={index} className="track" data-track="index">
-            <div className="title" onClick={ event => onClickTrackTitle( track.index, event ) }>
+            <div className="title trackTitle" onClick={ event => onClickTrackTitle( track.index, event ) }>
                 <i className="fa fa-eye-slash mr-2 showHide"></i>
                 { track.name }
             </div>

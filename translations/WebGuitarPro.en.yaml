@@ -12,10 +12,10 @@ vs_wgp:
             language: Language
             documentation: Documentation
             logout: Logout
-            
             extend_your_tablatures_store: Extend Your Tablatures Store
-            
             latest_tablatures: Latest Tablatures
+            
+            shared_to_me: Shared to Me
             
         alerts:
             tablature_upload_limited_error: Tablature Upload Limitted!
@@ -33,6 +33,9 @@ vs_wgp:
         my_tablatures: My Tablatures
         owner: Owner
         my_favorites: My Favorites
+        
+        button_share: Share
+        modal_share_title: Share Tablature
     form:
         public: To Be Public
         locale: Language
@@ -51,3 +54,9 @@ vs_wgp:
             artist: Artist
             song: Song
             tablature: Tablature
+            
+        share_tablature:
+            name: Share Name
+            name_placeholder: Write a Share Name
+            target_users: Share with Users
+            target_users_placeholder: '-- Select Target Users --'

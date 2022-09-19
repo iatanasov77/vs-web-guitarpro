@@ -39,16 +39,16 @@
             </div>
             
             <!-- Tracks Button -->
-            <tracks-item v-if="this.scoreLoaded" v-bind:tracks="this.player.score.tracks"></tracks-item>
+            <tracks-item v-if="this.PlayerScoreLoaded" v-bind:tracks="this.player.score.tracks"></tracks-item>
             
             <!-- Speed Button -->
             <speed-item></speed-item>
              
             <!-- Layout Button -->
-            <layout-item v-if="this.scoreLoaded"></layout-item>
+            <layout-item v-if="this.PlayerScoreLoaded"></layout-item>
             
             <!-- Print Button -->
-            <print-item v-if="this.scoreLoaded"></print-item>
+            <print-item v-if="this.PlayerScoreLoaded"></print-item>
             
             <!-- Add to Favorites Button -->
             <div v-if="this.user != 0" id="add-favorite-url" class="player-controls__item favorite" data-url="url_add_to_favorite" @click="favorite">
@@ -58,7 +58,7 @@
             </div>
             
             <!-- Tablature Information Button -->
-            <information-item v-if="this.scoreLoaded"></information-item>
+            <information-item v-if="this.PlayerScoreLoaded"></information-item>
             
         </div>
     </nav>

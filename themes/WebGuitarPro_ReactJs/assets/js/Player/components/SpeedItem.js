@@ -20,11 +20,15 @@ const SpeedItem = ( {player} ) => {
         player.playbackSpeed = speed.value;
         $( '#speed-selector-value' ).text( speed.text );
         
+        $( event.target ).closest( 'ul' ).find( 'li' ).removeClass( 'active' );
+        $( event.target ).addClass( 'active' );
         $( event.target ).closest( ".dropdown-menu" ).toggleClass( 'show' );
     }
         
     const speedElements = speeds.map( ( speed, index ) => (
-        <li key={index} className="active" onClick={ event => setSpeed( speed, event ) }>{ speed.text }</li>
+        <li key={index} className={`${player.playbackSpeed == speed.value ? "active" : ""}`} onClick={ event => setSpeed( speed, event ) }>
+            { speed.text }
+        </li>
     ));
     
     return (
