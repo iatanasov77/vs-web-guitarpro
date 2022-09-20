@@ -37,3 +37,8 @@ wgp_share_tablature_handle_form:
 wgp_share_tablature_shared_to_me:
     path: /shared-to-me
     controller: App\Controller\WebGuitarPro\SharedTablaturesController::index
+
+wgp_share_tablature_my_shares:
+    path: /my-shares
+    controller: App\Controller\WebGuitarPro\SharedTablaturesController::myShares
+

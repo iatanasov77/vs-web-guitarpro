@@ -1,0 +1,52 @@
+{% extends "base.html.twig" %}
+
+{% import "@VSApplication/Macros/alerts.html.twig" as alerts %}
+
+{% block title %}{{ parent() }} :: {{ 'vs_wgp.template.menu.my_shares' | trans( {},'WebGuitarPro' ) }}{% endblock %}
+{% block pageTitle %}<i class="icon_genius"></i> {{ 'vs_wgp.template.menu.my_shares' | trans( {},'WebGuitarPro' ) }}{% endblock %}
+
+{% block content %}
+    <div class="tablatures-container" style="margin-top: 110px">
+        <div class="card">
+            <h5 class="card-header">{{ 'vs_wgp.template.menu.my_shares' | trans( {},'WebGuitarPro' ) }}</h5>
+            <div class="card-body">
+                {% if app.user.myShares|length > 0 %}
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>{{ 'vs_wgp.template.share_name' | trans( {},'WebGuitarPro' ) }}</th>
+                                <th>{{ 'vs_wgp.template.actions' | trans( {},'WebGuitarPro' ) }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for share in app.user.myShares %}
+                            <tr>
+                                <td>{{ share.name }}</td>
+                                <td>
+                                {#
+                                    <a class="btn btn-primary mr-2"
+                                        href="{{ path('vs_wgp_tablature_update', {'id': item.id}) }}"
+                                        title="{{ 'vs_cms.template.button_edit' | trans( {},'VSCmsBundle' ) }}"
+                                    >
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <a class="btn btn-danger btnDeleteTablature mr-2"
+                                        href="{{ path('vs_wgp_tablature_delete', {'id': item.id}) }}"
+                                        data-csrfToken="{{ csrf_token( item.id ) }}"
+                                        title="{{ 'vs_cms.template.button_delete' | trans( {},'VSCmsBundle' ) }}"
+                                    >
+                                        <i class="fas fa-window-close"></i>
+                                    </a>
+                                #}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    {{ alerts.info('sylius.ui.there_are_no_mappers_to_display'|trans) }}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

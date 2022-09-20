@@ -33,4 +33,19 @@ class SharedTablaturesController extends AbstractController
         
         return $this->render( 'Pages/SharedTablatures/index.html.twig', $params );
     }
+    
+    public function myShares( Request $request ): Response
+    {
+        $params = [
+            'tabForm'                       => $this->getTabForm()->createView(),
+            'tabCategoryForm'               => $this->getTabCategoryForm()->createView(),
+            'tabCategoriesTaxonomyId'       => $this->tabCategoriesTaxonomy->getId(),
+            'locales'                       => $this->getDoctrine()->getRepository( 'App\Entity\Application\Locale' )->findAll(),
+            'paidTablatureStoreServices'    => $this->getDoctrine()->getRepository( 'App\Entity\UsersSubscriptions\PayedServiceSubscriptionPeriod' )->findAll(),
+            
+            'tablatureUploadLimited'        => ! $this->checkTablatureLimit(),
+        ];
+        
+        return $this->render( 'Pages/SharedTablatures/my_shares.html.twig', $params );
+    }
 }

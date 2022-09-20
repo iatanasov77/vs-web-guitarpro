@@ -16,6 +16,7 @@ vs_wgp:
             latest_tablatures: Най-нови Таблатури
             
             shared_to_me: Споделени с Мен
+            my_shares: Мои Спеделяния
             
         alerts:
             tablature_upload_limited_error: Ъплоадването на Таблатури е ограничено!
@@ -37,6 +38,8 @@ vs_wgp:
         button_share: Сподели
         modal_share_title: Споделяне на Таблатури
         
+        share_name: Име на Споделяне
+        actions: Действия
     form:
         public: Публичен
         locale: Език

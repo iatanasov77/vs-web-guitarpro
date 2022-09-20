@@ -16,6 +16,7 @@ vs_wgp:
             latest_tablatures: Latest Tablatures
             
             shared_to_me: Shared to Me
+            my_shares: My Shares
             
         alerts:
             tablature_upload_limited_error: Tablature Upload Limitted!
@@ -36,6 +37,9 @@ vs_wgp:
         
         button_share: Share
         modal_share_title: Share Tablature
+        
+        share_name: Share Name
+        actions: Actions
     form:
         public: To Be Public
         locale: Language
