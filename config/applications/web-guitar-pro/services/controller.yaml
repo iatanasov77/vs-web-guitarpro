@@ -107,3 +107,6 @@ services:
         arguments:
             - '@vs_application.repository.taxonomy'
             - '%vs_wgp.tablature-categories.taxonomy_code%'
+            - '@doctrine'
+            - '@vs_wgp.repository.tablature_category'
+            - '@vs_wgp.repository.tablature'

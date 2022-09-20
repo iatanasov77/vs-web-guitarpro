@@ -57,6 +57,7 @@ Encore
     .addEntry( 'paymentForm', './themes/WebGuitarPro_ReactJs/assets/js/Stripe/paymentForm.js' )
     
     .addEntry( 'shared-tablatures', './themes/WebGuitarPro_ReactJs/assets/js/pages/shared-tablatures.js' )
+    .addEntry( 'my-shares', './themes/WebGuitarPro_ReactJs/assets/js/pages/my-shares.js' )
 ;
 
 const config = Encore.getWebpackConfig();

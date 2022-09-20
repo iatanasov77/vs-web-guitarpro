@@ -23,13 +23,14 @@
                             <tr>
                                 <td>{{ share.name }}</td>
                                 <td>
-                                {#
-                                    <a class="btn btn-primary mr-2"
-                                        href="{{ path('vs_wgp_tablature_update', {'id': item.id}) }}"
+                                    <a class="btn btn-primary mr-2 btnEditShare"
+                                        href="{{ path('wgp_share_tablature_my_shares_get_edit_share_form', {'shareId': share.id}) }}"
                                         title="{{ 'vs_cms.template.button_edit' | trans( {},'VSCmsBundle' ) }}"
+                                        data-shareName="{{ share.name }}"
                                     >
                                         <i class="fas fa-edit"></i>
                                     </a>
+                                {#
                                     <a class="btn btn-danger btnDeleteTablature mr-2"
                                         href="{{ path('vs_wgp_tablature_delete', {'id': item.id}) }}"
                                         data-csrfToken="{{ csrf_token( item.id ) }}"
@@ -49,4 +50,22 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block widgets %}
+    {{ parent() }}
+    
+    {% include 'Modal/edit_share.html.twig' %}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    {{ encore_entry_link_tags( 'my-shares', null, 'WebGuitarPro_ReactJs' ) }}
+{% endblock %}  
+
+{% block javascripts %}
+    {{ parent() }}
+    
+    {{ encore_entry_script_tags( 'my-shares', null, 'WebGuitarPro_ReactJs' ) }}
 {% endblock %}

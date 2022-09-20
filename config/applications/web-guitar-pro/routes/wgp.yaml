@@ -42,3 +42,15 @@ wgp_share_tablature_my_shares:
     path: /my-shares
     controller: App\Controller\WebGuitarPro\SharedTablaturesController::myShares
 
+wgp_share_tablature_my_shares_get_edit_share_form:
+    path: /my-shares/get-edit-share-form/{shareId}
+    controller: App\Controller\WebGuitarPro\SharedTablaturesController::getEditShareFormAction
+
+wgp_share_tablature_my_shares_handle_edit_share_form:
+    path: /my-shares/handle-edit-share-form
+    controller: App\Controller\WebGuitarPro\SharedTablaturesController::handleEditShareFormAction
+    
+wgp_share_tablature_easyui_tablaturesData:
+    path: /my-shares/easyui-tablatures-data
+    controller: App\Controller\WebGuitarPro\SharedTablaturesController::easyuiTablaturesData
+

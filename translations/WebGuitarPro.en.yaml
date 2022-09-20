@@ -37,6 +37,7 @@ vs_wgp:
         
         button_share: Share
         modal_share_title: Share Tablature
+        modal_edit_share_title: Edit Share
         
         share_name: Share Name
         actions: Actions
@@ -64,3 +65,5 @@ vs_wgp:
             name_placeholder: Write a Share Name
             target_users: Share with Users
             target_users_placeholder: '-- Select Target Users --'
+            shared_tablatures: Shared Tablatures
+            shared_tablatures_placeholder: '-- Select Shared Tablatures --'

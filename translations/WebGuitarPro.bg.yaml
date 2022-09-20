@@ -37,6 +37,7 @@ vs_wgp:
         
         button_share: Сподели
         modal_share_title: Споделяне на Таблатури
+        modal_edit_share_title: Редакция на Споделяне
         
         share_name: Име на Споделяне
         actions: Действия
@@ -64,3 +65,5 @@ vs_wgp:
             name_placeholder: Въведи Име на Споделяне
             target_users: Сподели с Потребители
             target_users_placeholder: '-- Избери Потребители --'
+            shared_tablatures: Споделени Таблатури
+            shared_tablatures_placeholder: '-- Избери Споделени Таблатури --'
