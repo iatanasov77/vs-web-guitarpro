@@ -1,3 +1,16 @@
+1.6.3	|	Release date: **21.09.2022**
+============================================
+* New Features:
+  - Create My Shares Page.
+  - Add Editing Own Shares.
+  - Add Deleting Shares.
+  - Redirect to Access Denied Page if the User has Not Rights to View a Tablature.
+* Bug-Fixes:
+  - Fix Tablature Share Name Autocomplete.
+  - Fix Remove of Tablature.
+  - Fix Conflicted JqueryUi and JqueryEasyUi on Tablatures Index Page.
+
+
 1.6.2	|	Release date: **19.09.2022**
 ============================================
 * New Features and Improvements:
