@@ -54,3 +54,6 @@ wgp_share_tablature_easyui_tablaturesData:
     path: /my-shares/easyui-tablatures-data
     controller: App\Controller\WebGuitarPro\SharedTablaturesController::easyuiTablaturesData
 
+wgp_share_tablature_my_shares_delete_share:
+    path: /my-shares/delete-share/{shareId}
+    controller: App\Controller\WebGuitarPro\SharedTablaturesController::deleteShare

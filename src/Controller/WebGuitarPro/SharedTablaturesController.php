@@ -104,7 +104,7 @@ class SharedTablaturesController extends AbstractController
         ]);
     }
     
-    public function easyuiTablaturesData()
+    public function easyuiTablaturesData(): Response
     {
         $tabCategories      = $this->tablatureCategoriesRepository->findBy( ['user' =>$this->getUser()] );
         $userTabs           = $this->tablaturesRepository->findBy( ['user' =>$this->getUser()] );
@@ -145,6 +145,24 @@ class SharedTablaturesController extends AbstractController
         }
         
         return new JsonResponse( $easyuiTablatures );
+    }
+    
+    public function deleteShare( $shareId, Request $request ): Response
+    {
+        $oShare = $this->doctrine->getRepository( TablatureShare::class )->find( $shareId );
+        if ( $oShare->getOwner() !== $this->getUser() ) {
+            throw new \Exception( 'You have not rights to delete this Share !!!' );
+        }
+        
+        $em     = $this->doctrine->getManager();
+        
+        $em->remove( $oShare );
+        $em->flush();
+        
+        //$this->redirect( $request->headers->get( 'referer' ) );
+        return new JsonResponse([
+            'status'   => Status::STATUS_OK
+        ]);
     }
     
     private function getForm( ?TablatureShare $oShare = null ): FormInterface

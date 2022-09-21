@@ -58,4 +58,25 @@ $( function()
             </form>\
         </div>\
     ");
+    
+    $( ".btnDeleteResource" ).on( "click", function ( e ) 
+    {
+        e.preventDefault();
+
+        $( '#deleteForm' ).attr( 'action', $( this ).attr( 'href' ) );
+        $( '#resource_delete__token' ).val( $( this ).attr( 'data-csrftoken' ) );
+        
+        var dialog  = VsFormDlete( onResourceDeleteOk, onResourceDeleteCancel );
+    });
+    
+    $( ".btnDeleteNonResource" ).on( "click", function ( e ) 
+    {
+        e.preventDefault();
+
+        var deleteUrl   = $( this ).attr( 'href' );
+        var dialog  = VsFormDlete(
+            function() { $.get( deleteUrl, function() { document.location.reload(); } ); },
+            function() { $( this ).dialog( "close" ); }
+        );
+    });
 });

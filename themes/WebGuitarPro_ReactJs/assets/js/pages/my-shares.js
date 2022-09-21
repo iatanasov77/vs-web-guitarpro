@@ -5,6 +5,9 @@ require( 'jquery-easyui/js/jquery.easyui.min.js' );
 import { VsTranslator, VsLoadTranslations } from '../includes/bazinga_js_translations.js';
 VsLoadTranslations(['WebGuitarPro']);
 
+//import { VsFormDlete } from '../includes/resource-delete.js';
+require( '../includes/resource-delete.js' );
+
 $( function()
 {
     $( '.btnEditShare' ).on( 'click', function( e )
@@ -77,4 +80,6 @@ $( function()
         });
         
     });
+    
+    
 });
