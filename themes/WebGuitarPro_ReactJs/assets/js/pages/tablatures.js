@@ -7,8 +7,6 @@ require( 'jquery-easyui/js/jquery.easyui.min.js' );
 import { VsTranslator, VsLoadTranslations } from '../includes/bazinga_js_translations.js';
 VsLoadTranslations(['WebGuitarPro']);
 
-require( '../includes/resource-delete.js' );
-
 $( function()
 {
     if ( uncategorizedTablatures <= 0 ) {

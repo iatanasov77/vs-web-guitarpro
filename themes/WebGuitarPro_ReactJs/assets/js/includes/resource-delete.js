@@ -47,6 +47,13 @@ export function VsFormDlete( onOk, onCancel )
     return $( translatedDialog ).dialog( { buttons: myButtons } );
 }
 
+export function deleteResource()
+{
+    $( '#deleteForm' ).attr( 'action', $( this ).attr( 'href' ) );
+    $( '#resource_delete__token' ).val( $( this ).attr( 'data-csrftoken' ) );
+    
+    var dialog  = VsFormDlete( onResourceDeleteOk, onResourceDeleteCancel );
+}
 
 $( function()
 {
