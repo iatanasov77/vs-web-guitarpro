@@ -28,6 +28,10 @@ class TablatureController extends AbstractCrudController
         } else {
             $oTablature     = $er->findOneBy( ['slug' => $id] );
         }
+        
+        if ( ! $this->checkHasAccess( $oTablature ) ) {
+            return $this->redirectToRoute( 'wgp_access_denied' );
+        }
 
         return $this->render( 'Pages/Tablatures/show.html.twig', [
             'tabForm'                       => $this->getTabForm()->createView(),

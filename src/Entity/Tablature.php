@@ -191,4 +191,9 @@ class Tablature implements ResourceInterface
     {
         return $this->artist . ' - ' . $this->song;
     }
+    
+    public function isPublic(): bool
+    {
+        return $this->enabled;
+    }
 }

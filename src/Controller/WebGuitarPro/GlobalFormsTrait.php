@@ -62,4 +62,22 @@ trait GlobalFormsTrait
         
         return ( $this->getUser() && $this->getUser()->getUsername() == 'admin' ) ? true : false;
     }
+    
+    protected function checkHasAccess( Tablature $tablature ): bool
+    {
+        $hasAccess  = $tablature->isPublic() || $tablature->getUser() == $this->getUser();
+        if ( $hasAccess ) {
+            return  true;
+        }
+        
+        if ( $this->getUser() ) {
+            foreach ( $this->getUser()->getTargetedShares() as $share ) {
+                if ( $share->getTablatures()->contains( $tablature ) ) {
+                    return true;
+                }
+            }
+        }
+        
+        return false;
+    }
 }
