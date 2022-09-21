@@ -50,7 +50,7 @@ class Tablature implements ResourceInterface
     private $song;
     
     /**
-     * @ORM\OneToOne(targetEntity=TablatureFile::class, inversedBy="tablature", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=TablatureFile::class, mappedBy="owner", cascade={"persist", "remove"})
      */
     private $tablatureFile;
     
@@ -190,5 +190,10 @@ class Tablature implements ResourceInterface
     public function getName()
     {
         return $this->artist . ' - ' . $this->song;
+    }
+    
+    public function isPublic(): bool
+    {
+        return $this->enabled;
     }
 }

@@ -23,3 +23,7 @@
 .combo-arrow {
     background-color: #ffffff !important;
 }
+
+form#formEditShare > * .textbox-text {
+    width: 100% !important;
+}

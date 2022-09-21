@@ -31,4 +31,17 @@ class ErrorController extends AbstractController
             'tablatureUploadLimited'        => ! $this->checkTablatureLimit(),
         ]);
     }
+    
+    public function accessDenied( Request $request ): Response
+    {
+        return $this->render( 'Pages/Error/access-denied.html.twig', [
+            'tabForm'                       => $this->getTabForm()->createView(),
+            'tabCategoryForm'               => $this->getTabCategoryForm()->createView(),
+            'tabCategoriesTaxonomyId'       => $this->tabCategoriesTaxonomy->getId(),
+            'locales'                       => $this->getDoctrine()->getRepository( 'App\Entity\Application\Locale' )->findAll(),
+            'paidTablatureStoreServices'    => $this->getDoctrine()->getRepository( 'App\Entity\UsersSubscriptions\PayedServiceSubscriptionPeriod' )->findAll(),
+            
+            'tablatureUploadLimited'        => ! $this->checkTablatureLimit(),
+        ]);
+    }
 }

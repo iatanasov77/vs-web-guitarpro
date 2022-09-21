@@ -7,8 +7,6 @@ require( 'jquery-easyui/js/jquery.easyui.min.js' );
 import { VsTranslator, VsLoadTranslations } from '../includes/bazinga_js_translations.js';
 VsLoadTranslations(['WebGuitarPro']);
 
-import { VsFormDlete, onResourceDeleteOk, onResourceDeleteCancel } from '../includes/resource-delete.js';
-
 $( function()
 {
     if ( uncategorizedTablatures <= 0 ) {
@@ -17,28 +15,6 @@ $( function()
     
     $( '#tblTablatures' ).simpleTreeTable({
         opened: [0]
-    });
-    
-
-    $( ".btnDeleteTablature" ).on( "click", function ( e ) 
-    {
-        e.preventDefault();
-
-        $( '#deleteForm' ).attr( 'action', $( this ).attr( 'href' ) );
-        $( '#resource_delete__token' ).val( $( this ).attr( 'data-csrftoken' ) );
-        
-        var dialog  = VsFormDlete( onResourceDeleteOk, onResourceDeleteCancel );
-    });
-    
-    
-    $( ".btnDeleteCategory" ).on( "click", function ( e ) 
-    {
-        e.preventDefault();
-
-        $( '#deleteForm' ).attr( 'action', $( this ).attr( 'href' ) );
-        $( '#resource_delete__token' ).val( $( this ).attr( 'data-csrftoken' ) );
-        
-        var dialog  = VsFormDlete( onResourceDeleteOk, onResourceDeleteCancel );
     });
     
     $( '.btnShareTablature' ).on( 'click', function( e )

@@ -44,6 +44,11 @@ class TablatureExtController extends AbstractController
     {
         $er             = $this->getDoctrine()->getRepository( 'App\Entity\Tablature' );
         $oTablature     = $er->find( $request->attributes->get( 'id' ) );
+        
+        if ( ! $this->checkHasAccess( $oTablature ) ) {
+            return $this->redirectToRoute( 'wgp_access_denied' );
+        }
+        
         $fileTablature  = $this->tabsDirectory . '/' . $oTablature->getTablatureFile()->getPath();
         
         // open the file in a binary mode

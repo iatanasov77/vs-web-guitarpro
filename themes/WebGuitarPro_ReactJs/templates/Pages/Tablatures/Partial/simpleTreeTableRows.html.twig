@@ -26,9 +26,9 @@
             >
                 <i class="fas fa-edit"></i>
             </a>
-            <a class="btn btn-danger btnDeleteTablature mr-2"
+            <a class="btn btn-danger btnDeleteResource mr-2"
                 href="{{ path('vs_wgp_tablature_delete', {'id': item.id}) }}"
-                data-csrfToken="{{ csrf_token( item.id ) }}"
+                data-csrftoken="{{ csrf_token( item.id ) }}"
                 title="{{ 'vs_cms.template.button_delete' | trans( {},'VSCmsBundle' ) }}"
             >
                 <i class="fas fa-window-close"></i>
@@ -43,9 +43,9 @@
                 <i class="fas fa-edit"></i>
             </a>
             
-            <a class="btn btn-danger btnDeleteCategory mr-2"
+            <a class="btn btn-danger btnDeleteResource mr-2"
                 href="{{ path('vs_wgp_tablature_category_delete', {'id': item.id}) }}"
-                data-csrfToken="{{ csrf_token( item.id ) }}"
+                data-csrftoken="{{ csrf_token( item.id ) }}"
                 title="{{ 'vs_cms.template.button_delete' | trans( {},'VSCmsBundle' ) }}"
             >
                 <i class="fas fa-window-close"></i>

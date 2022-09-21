@@ -2,12 +2,16 @@
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Vankosoft\ApplicationBundle\Controller\AbstractCrudController;
 
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Doctrine\Common\Collections\ArrayCollection;
+use Sylius\Component\Resource\ResourceActions;
+use Vankosoft\ApplicationBundle\Component\Status;
 
 use App\Entity\Tablature;
 
@@ -24,6 +28,10 @@ class TablatureController extends AbstractCrudController
         } else {
             $oTablature     = $er->findOneBy( ['slug' => $id] );
         }
+        
+        if ( ! $this->checkHasAccess( $oTablature ) ) {
+            return $this->redirectToRoute( 'wgp_access_denied' );
+        }
 
         return $this->render( 'Pages/Tablatures/show.html.twig', [
             'tabForm'                       => $this->getTabForm()->createView(),
@@ -35,6 +43,23 @@ class TablatureController extends AbstractCrudController
             'paidTablatureStoreServices'    => $this->get( 'vs_users_subscriptions.repository.payed_service_subscription_period' )->findAll(),
             
             'tablatureUploadLimited'        => ! $this->checkTablatureLimit(),
+        ]);
+    }
+    
+    public function deleteAction( Request $request ): Response
+    {
+        $configuration = $this->requestConfigurationFactory->create( $this->metadata, $request );
+        $this->isGrantedOr403( $configuration, ResourceActions::DELETE );
+        
+        $resource   = $this->findOr404( $configuration );
+        $em         = $this->get( 'doctrine' )->getManager();
+        
+        $this->removeTablatureFile( $resource );
+        $em->remove( $resource );
+        $em->flush();
+        
+        return new JsonResponse([
+            'status'   => Status::STATUS_OK
         ]);
     }
     
@@ -114,5 +139,17 @@ class TablatureController extends AbstractCrudController
         );
         
         return $taxonomy;
+    }
+    
+    private function removeTablatureFile( Tablature $tablature )
+    {
+        $em             = $this->get( 'doctrine' )->getManager();
+        $fileTablature  = $this->getParameter( 'vs_wgp.tablatures_directory' ) . '/' . $tablature->getTablatureFile()->getPath();
+        
+        $em->remove( $tablature->getTablatureFile() );
+        $em->flush();
+        
+        $filesystem = new Filesystem();
+        $filesystem->remove( $fileTablature );
     }
 }

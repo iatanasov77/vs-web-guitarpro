@@ -52,12 +52,10 @@ services:
         
     App\Controller\WebGuitarPro\ErrorController:
         tags: ['controller.service_arguments']
-        autowire: false
+        autowire: true
         arguments:
             - '@vs_application.repository.taxonomy'
             - '%vs_wgp.tablature-categories.taxonomy_code%'
-        calls:
-            - [ setContainer, [ '@service_container' ] ]
 
     App\Controller\WebGuitarPro\FavoritesController:
         tags: ['controller.service_arguments']
@@ -107,3 +105,6 @@ services:
         arguments:
             - '@vs_application.repository.taxonomy'
             - '%vs_wgp.tablature-categories.taxonomy_code%'
+            - '@doctrine'
+            - '@vs_wgp.repository.tablature_category'
+            - '@vs_wgp.repository.tablature'

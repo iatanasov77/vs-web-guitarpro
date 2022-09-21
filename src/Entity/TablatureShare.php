@@ -76,7 +76,7 @@ class TablatureShare implements ResourceInterface
         return $this;
     }
     
-    public function getTargetUsers()
+    public function getTargetUsers(): Collection
     {
         return $this->targetUsers;
     }
@@ -106,7 +106,7 @@ class TablatureShare implements ResourceInterface
         return $this;
     }
     
-    public function getTablatures()
+    public function getTablatures(): Collection
     {
         return $this->tablatures;
     }
