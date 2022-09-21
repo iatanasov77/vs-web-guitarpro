@@ -1,0 +1,4 @@
+parameters:
+    vs_application.supress_pdo_exception: true
+
+

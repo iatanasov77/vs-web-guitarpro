@@ -16,24 +16,17 @@ class TablatureFile extends File
     protected $owner;
     
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Tablature", mappedBy="tablatureFile", cascade={"persist", "remove"})
-     */
-    protected $tablature;
-    
-    /**
      * @ORM\Column(name="original_name", type="string", length=255, nullable=false, options={"comment": "The Original Name of the File."})
      */
     protected $originalName;
     
     public function getTablature()
     {
-        //return $this-tablature;
         return $this->owner;
     }
     
     public function setTablature( Tablature $tablature ): self
     {
-        $this->tablature  = $tablature;
         $this->setOwner( $tablature);
         
         return $this;
