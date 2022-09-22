@@ -25,3 +25,13 @@ require( 'jquery-easyui/css/easyui.css' );
 require( 'jquery-easyui/js/jquery.easyui.min.js' );
 // Need copy of: jquery-easyui/images/*
 
+
+// Showing the Selected Filename in File Inputs
+$( '.custom-file-input' ).on( 'change', function( event )
+{
+    var inputFile   = event.currentTarget;
+    $( inputFile ).parent()
+        .find( '.custom-file-label' )
+        .html( inputFile.files[0].name );
+});
+    

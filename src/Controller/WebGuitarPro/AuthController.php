@@ -27,16 +27,8 @@ class AuthController extends AbstractController
     
     public function login( AuthenticationUtils $authenticationUtils ): Response
     {
-        if ( 
-            $this->getUser() && 
-            (
-                $this->getUser()->getApplications()->contains( $this->applicationContext->getApplication() ) ||
-                $this->isGranted( 'ROLE_APPLICATION_ADMIN', $this->getUser() ) ||
-                $this->isGranted( 'ROLE_WEB_GUITAR_PRO_ADMIN', $this->getUser() )
-            )
-        ) {
-            return $this->redirectToRoute( $this->getParameter( 'vs_users.default_redirect' ) );
-        }
+        // NOT NEED LOGIN FORM, REDIRECT TO DEFAULT PATH
+        return $this->redirectToRoute( $this->getParameter( 'vs_users.default_redirect' ) );
         
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
