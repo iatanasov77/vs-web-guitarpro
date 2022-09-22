@@ -5,10 +5,13 @@ use Vankosoft\UsersBundle\Controller\RegisterController as BaseRegisterControlle
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
+use Doctrine\Persistence\ManagerRegistry;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Sylius\Component\Resource\Factory\Factory;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 use Vankosoft\UsersBundle\Security\UserManager;
+use Vankosoft\UsersBundle\Security\AnotherLoginFormAuthenticator;
 
 class RegisterController extends BaseRegisterController
 {
@@ -18,18 +21,21 @@ class RegisterController extends BaseRegisterController
     private $tabCategoriesTaxonomy;
     
     public function __construct(
+        ManagerRegistry $doctrine,
         UserManager $userManager,
         RepositoryInterface $usersRepository,
         Factory $usersFactory,
         RepositoryInterface $userRolesRepository,
         MailerInterface $mailer,
         RepositoryInterface $pagesRepository,
+        GuardAuthenticatorHandler $guardHandler,
+        AnotherLoginFormAuthenticator $authenticator,
         array $parameters,
         
         EntityRepository $taxonomyRepository,
         string $tabCategoriesTaxonomyCode
     ) {
-        parent::__construct( $userManager, $usersRepository, $usersFactory, $userRolesRepository, $mailer, $pagesRepository, $parameters );
+        parent::__construct( $doctrine, $userManager, $usersRepository, $usersFactory, $userRolesRepository, $mailer, $pagesRepository, $guardHandler, $authenticator, $parameters );
 
         $this->tabCategoriesTaxonomy    = $taxonomyRepository->findByCode( $tabCategoriesTaxonomyCode );
     }
@@ -48,8 +54,8 @@ class RegisterController extends BaseRegisterController
             'tabForm'                       => $this->getTabForm()->createView(),
             'tabCategoryForm'               => $this->getTabCategoryForm()->createView(),
             'tabCategoriesTaxonomyId'       => $this->tabCategoriesTaxonomy->getId(),
-            'locales'                       => $this->getDoctrine()->getRepository( 'App\Entity\Application\Locale' )->findAll(),
-            'paidTablatureStoreServices'    => $this->getDoctrine()->getRepository( 'App\Entity\UsersSubscriptions\PayedServiceSubscriptionPeriod' )->findAll(),
+            'locales'                       => $this->doctrine->getRepository( 'App\Entity\Application\Locale' )->findAll(),
+            'paidTablatureStoreServices'    => $this->doctrine->getRepository( 'App\Entity\UsersSubscriptions\PayedServiceSubscriptionPeriod' )->findAll(),
             
             'tablatureUploadLimited'        => ! $this->checkTablatureLimit(),
         ];

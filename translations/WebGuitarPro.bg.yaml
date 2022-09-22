@@ -74,6 +74,11 @@ vs_wgp:
             forgot_password: Забравена парола
             login_page_title: Вход
             
+        register:
+            button_register: Регистрирай Акаунт
+            agreement_text: Чрез създаване на акаунт, вие се съгласявате със
+            terms_and_conditions: правилата и условията
+            
         tablature:
             artist: Артист
             song: Песен
