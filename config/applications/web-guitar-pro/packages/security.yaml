@@ -38,7 +38,6 @@ security:
     role_hierarchy:
         ROLE_SUPER_ADMIN: []
         ROLE_APPLICATION_ADMIN: [ROLE_TEST_VANKOSOFT_APPLICATION_ADMIN, ROLE_WEB_GUITAR_PRO_ADMIN]
-        ROLE_TEST_VANKOSOFT_APPLICATION_ADMIN: [ROLE_TEST_VANKOSOFT_APPLICATION_AUTHOR, ROLE_TEST_VANKOSOFT_APPLICATION_USER]
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
@@ -46,8 +45,10 @@ security:
         - { path: /_wdt/.*, roles: PUBLIC_ACCESS }
         - { path: /_profiler/.*, roles: PUBLIC_ACCESS }
 
+        - { path: ^/$, roles: PUBLIC_ACCESS }
         - { path: ^/login, roles: PUBLIC_ACCESS }
+        - { path: ^/register, roles: PUBLIC_ACCESS }
         
-        #- { path: ^/, roles: ROLE_APPLICATION_ADMIN }
-        - { path: ^/, roles: PUBLIC_ACCESS }
+        - { path: ^/, roles: [ROLE_SUPER_ADMIN, ROLE_APPLICATION_ADMIN] }
+        
 
