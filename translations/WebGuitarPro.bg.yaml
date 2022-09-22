@@ -27,6 +27,7 @@ vs_wgp:
         category: Категория
         latest_tablatures: Най-нови Таблатури
         tablatures: Таблатури
+        tablature_categories: Категории Таблатури
         artist: Изпълнител
         song: Песен
         play: Пусни
@@ -41,12 +42,29 @@ vs_wgp:
         
         share_name: Име на Споделяне
         actions: Действия
+        
+        modal_tab_info:
+            tab_info: Таблатура - Информация
+            album: Албум
+            copyright: Авторско право
+            notices: Рецензия
+            words: Текст
+            music: Музика
+        
+        error_pages:
+            title: Възникна Грешка
+            access_denied_message: 'Нямате Достъп до Това Съдържание !!!'
+            tablature_upload_limited_message: Ъплоада на Таблатури е Ограничен
+            pay_for_unlimited: Можете да Платите за Неограничен Ъплоад на Таблатури
+            from_here: От Тук
+
     form:
         public: Публичен
         locale: Език
         name: Име
         category: Категория
         category_placeholder: '-- Избери Категория --'
+        error_caption: Грешка!
         
         login:
             email: Имейл Адрес
@@ -54,11 +72,16 @@ vs_wgp:
             login: Вход
             register: Регистрация
             forgot_password: Забравена парола
+            login_page_title: Вход
             
         tablature:
             artist: Артист
             song: Песен
             tablature: Таблатура
+            tablature_placeholder: Ъплоадни Таблатура
+            
+        tablature_update:
+            title: Редакция на Таблатура
 
         share_tablature:
             name: Име на Споделяне
@@ -67,3 +90,7 @@ vs_wgp:
             target_users_placeholder: '-- Избери Потребители --'
             shared_tablatures: Споделени Таблатури
             shared_tablatures_placeholder: '-- Избери Споделени Таблатури --'
+            
+        payment_method:
+            select_payment_method: Избери Метод на Плащане
+            button_pay: Плати

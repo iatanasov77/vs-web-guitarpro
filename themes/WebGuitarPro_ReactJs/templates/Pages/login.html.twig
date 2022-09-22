@@ -1,13 +1,13 @@
 {% extends "base.html.twig" %}
 
-{% block title %}{{ parent() }} :: Application Login{% endblock %}
-{% block pageTitle %}<i class="icon_genius"></i> Application Login{% endblock %}
+{% block title %}{{ parent() }} :: {{ 'vs_wgp.form.login.login_page_title' | trans( {},'WebGuitarPro' ) }}{% endblock %}
+{% block pageTitle %}<i class="icon_genius"></i> {{ 'vs_wgp.form.login.login_page_title' | trans( {},'WebGuitarPro' ) }}{% endblock %}
 
 {% block content %}
     <div class="tablatures-container" style="margin-top: 110px">
         <div class="card card-registration-form">
             <div class="card-header text-center">
-                <h3 class="mb-1">Login Form</h3>
+                <h3 class="mb-1">{{ 'vs_wgp.form.login.login' | trans( {},'WebGuitarPro' ) }}</h3>
             </div>
             <div class="card-body">
                 <div class="row">

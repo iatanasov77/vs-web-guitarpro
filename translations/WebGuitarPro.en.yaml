@@ -27,6 +27,7 @@ vs_wgp:
         category: Category
         latest_tablatures: Latest Tablatures
         tablatures: Tablatures
+        tablature_categories: Tablature Categories
         artist: Artist
         song: Song
         play: Play
@@ -41,12 +42,29 @@ vs_wgp:
         
         share_name: Share Name
         actions: Actions
+        
+        modal_tab_info:
+            tab_info: Tablature Info
+            album: Album
+            copyright: Copyright
+            notices: Notices
+            words: Words
+            music: Music
+            
+        error_pages:
+            title: Error Page
+            access_denied_message: 'You Have Not Access To This Content !!!'
+            tablature_upload_limited_message: Tablatures Upload is Limited
+            pay_for_unlimited: You can Pay for Unlimited Tablatures Store
+            from_here: From Here
+        
     form:
         public: To Be Public
         locale: Language
         name: Name
         category: Category
         category_placeholder: '-- Choose a Category --'
+        error_caption: Error!
 
         login:
             email: Email address
@@ -54,11 +72,16 @@ vs_wgp:
             login: Login
             register: Register
             forgot_password: Forgot Password
+            login_page_title: Application Login
             
         tablature:
             artist: Artist
             song: Song
             tablature: Tablature
+            tablature_placeholder: Upload a Tablature File
+            
+        tablature_update:
+            title: Edit Tablature
             
         share_tablature:
             name: Share Name
@@ -67,3 +90,8 @@ vs_wgp:
             target_users_placeholder: '-- Select Target Users --'
             shared_tablatures: Shared Tablatures
             shared_tablatures_placeholder: '-- Select Shared Tablatures --'
+
+        payment_method:
+            select_payment_method: Select Payment Method
+            button_pay: Pay
+

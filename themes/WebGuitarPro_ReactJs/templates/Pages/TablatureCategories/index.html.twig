@@ -1,7 +1,7 @@
 {% extends "base.html.twig" %}
 
-{% block title %}{{ parent() }} :: Tablature Categories{% endblock %}
-{% block pageTitle %}<i class="icon_genius"></i> Tablature Categories{% endblock %}
+{% block title %}{{ parent() }} :: {{ 'vs_wgp.template.tablature_categories' | trans( {},'WebGuitarPro' ) }}{% endblock %}
+{% block pageTitle %}<i class="icon_genius"></i> {{ 'vs_wgp.template.tablature_categories' | trans( {},'WebGuitarPro' ) }}{% endblock %}
 
 {% block content %}
     <div class="tablatures-container" style="margin-top: 110px">
@@ -11,13 +11,13 @@
             {% endif %}
         </div>
         <div class="card">
-            <h5 class="card-header">Tablature Categories</h5>
+            <h5 class="card-header">{{ 'vs_wgp.template.tablature_categories' | trans( {},'WebGuitarPro' ) }}</h5>
             <div class="card-body">
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>Category</th>
-                            <th>Actions</th>
+                            <th>{{ 'vs_wgp.form.category' | trans( {},'WebGuitarPro' ) }}</th>
+                            <th>{{ 'vs_wgp.template.actions' | trans( {},'WebGuitarPro' ) }}</th>
                         </tr>
                     </thead>
                     <tbody>

@@ -2,7 +2,7 @@
     <div class="modal-dialog" role="document" style="max-width: 800px;">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Select Payment Method</h5>
+                <h5 class="modal-title">{{ 'vs_wgp.form.payment_method.select_payment_method' | trans( {},'WebGuitarPro' ) }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -11,8 +11,8 @@
                 <div id="paymentMethods"></div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="btnPaymentPay">Pay</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="btnPaymentPay">{{ 'vs_wgp.form.payment_method.button_pay' | trans( {},'WebGuitarPro' ) }}</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ 'vs_application.form.close' | trans( {},'VSApplicationBundle' ) }}</button>
             </div>
         </div>
     </div>

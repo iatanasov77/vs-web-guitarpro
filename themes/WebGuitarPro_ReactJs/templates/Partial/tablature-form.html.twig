@@ -30,7 +30,13 @@
     
     <div class="form-group">{{ form_row( tabForm.artist ) }}</div>
     <div class="form-group">{{ form_row( tabForm.song ) }}</div>
-    <div class="form-group">{{ form_row( tabForm.tablature, { attr: { 'placeholder': 'Upload a Tablature File' } } ) }}</div>
+    <div class="form-group">
+        {{ form_row( tabForm.tablature, { 
+            attr: { 
+                'placeholder': 'vs_wgp.form.tablature.tablature_placeholder' | trans( {},'WebGuitarPro' )
+            }
+        }) }}
+    </div>
     
     <div class="form-group">{{ form_widget( tabForm.btnSave ) }}</div>
 {{ form_end( tabForm, {'render_rest': false} ) }}
