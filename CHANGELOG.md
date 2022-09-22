@@ -1,3 +1,11 @@
+1.6.4	|	Release date: **22.09.2022**
+============================================
+* New Features and Improvements:
+  - Update Footer Vankosoft Copyright.
+  - Fix and Improve Application Security Configuration.
+  - Show Tablature File Name in Tablature Forms.
+
+
 1.6.3	|	Release date: **21.09.2022**
 ============================================
 * New Features:
