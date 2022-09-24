@@ -38,20 +38,20 @@
             		<div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="details" role="tabpanel" aria-labelledby="details-tab">
                             {# #}
-                            {% include 'Pages/Profile/tab/_profile-edit-form.html.twig' %}
+                            {% include '@VSUsers/Profile/tab/_profile-edit-form.html.twig' %}
                         </div>
                         <div class="tab-pane fade" id="change_password" role="tabpanel" aria-labelledby="change_password-tab">
-                            {% include 'Pages/Profile/tab/_profile-change_password.html.twig' with {'f': otherForms.changePasswordForm.createView} %}
+                            {% include '@VSUsers/Profile/tab/_profile-change_password.html.twig' with {'f': otherForms.changePasswordForm.createView} %}
                         </div>
                         
                     {% if hasSubscriptionsExtension %}
                         <div class="tab-pane fade" id="subscriptions" role="tabpanel" aria-labelledby="subscriptions-tab">
-                            {% include 'Pages/Profile/tab/_profile-subscriptions.html.twig' %}
+                            {% include '@VSUsers/Profile/tab/_profile-subscriptions.html.twig' %}
                         </div>
                     {% endif %}
                         
                         <div class="tab-pane fade" id="activity" role="tabpanel" aria-labelledby="activity-tab">
-                            {% include 'Pages/Profile/tab/_profile-activity.html.twig' %}
+                            {% include '@VSUsers/Profile/tab/_profile-activity.html.twig' %}
                         </div>
                     </div>
                 </div>
@@ -63,13 +63,13 @@
 {# #}
 {% block stylesheets %} 
     {{ parent() }}
-    {{ encore_entry_link_tags( 'js/profile', null, 'WebGuitarPro_VueJs' ) }}
+    {{ encore_entry_link_tags( 'js/profile', null, 'WebGuitarPro_ReactJs' ) }}
 {% endblock %}
 
 {% block javascripts %}
 	{{ parent() }}
 	
-    {{ encore_entry_script_tags( 'js/profile', null, 'WebGuitarPro_VueJs' ) }}
-    {{ encore_entry_script_tags( 'js/filemanager-file-upload', null, 'WebGuitarPro_VueJs' ) }}
+    {{ encore_entry_script_tags( 'js/profile', null, 'WebGuitarPro_ReactJs' ) }}
+    {{ encore_entry_script_tags( 'js/filemanager-file-upload', null, 'WebGuitarPro_ReactJs' ) }}
 {% endblock %}
 
