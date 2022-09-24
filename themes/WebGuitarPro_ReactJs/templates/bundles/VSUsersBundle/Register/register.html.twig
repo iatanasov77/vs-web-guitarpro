@@ -7,8 +7,8 @@
     <div class="tablatures-container" style="margin-top: 110px">
         <div class="card card-registration-form">
             <div class="card-header">
-                <h3 class="mb-1">Registrations Form</h3>
-                <p>Please enter your user information.</p>
+                <h3 class="mb-1">{{ 'vs_users.template.register_header_title' | trans( {},'VSUsersBundle' ) }}</h3>
+                <p>{{ 'vs_users.template.register_header_description' | trans( {},'VSUsersBundle' ) }}</p>
             </div>
             <div class="card-body">
                
@@ -24,30 +24,41 @@
                         </div>
                     {% endif %}
                     
-                    <div class="form-group">               
-                        {{ form_widget(form.username, {'attr': {'class': 'form-control form-control-lg'}}) }}
+                    <div class="form-group">
+                        {{ form_row( form.username ) }}
                     </div>
-                    <div class="form-group">               
-                        {{ form_widget(form.email, {'attr': {'class': 'form-control form-control-lg'}}) }}
+                    <div class="form-group">
+                        {{ form_row( form.email ) }}
                     </div>
-                    <div class="input-group mb-3">               
-                        {{ form_widget(form.plain_password.first, {'attr': {'class': 'form-control form-control-lg'}}) }}
-                        <div class="input-group-append">
-                            <button type="button" class="btn btn-primary" id="btnGeneratePasswordRegisterForm">{{ 'vs_users.form.generate_password' | trans( {},'VSUsersBundle' ) }}</button>
+                    
+                    <div class="form-group">
+                        {{ form_row( form.prefered_locale ) }}
+                    </div>
+                    
+                    <div class="form-group">
+                        {{ form_label( form.plain_password.first, null, {'label_attr': {'class': 'col-form-label'}} ) }}
+                        <div class="input-group mb-3">
+                            {{ form_widget( form.plain_password.first, {'attr': {'class': 'form-control'}} ) }}
+                            <div class="input-group-append">
+                                <button type="button" class="btn btn-primary" id="btnGeneratePasswordRegisterForm">{{ 'vs_users.form.generate_password' | trans( {},'VSUsersBundle' ) }}</button>
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group">               
-                        {{ form_widget(form.plain_password.second, {'attr': {'class': 'form-control form-control-lg'}}) }}
+                    
+                    <div class="form-group">
+                        {{ form_row( form.plain_password.second ) }}
                     </div>
                     <div class="form-group pt-2">
-                        <button class="btn btn-block btn-primary" type="submit">Register My Account</button>
+                        <button class="btn btn-block btn-primary" type="submit">{{ 'vs_wgp.form.register.button_register' | trans( {},'WebGuitarPro' ) }} </button>
                     </div>
                     <div class="form-group">
                         <label class="custom-control custom-checkbox">
                             <input class="custom-control-input" type="checkbox" />
                             <span class="custom-control-label">
-                                By creating an account, you agree the 
-                                <a href="javascript:void(0);" data-toggle="modal" data-target="#terms-and-conditions-modal">terms and conditions</a>
+                                {{ 'vs_wgp.form.register.agreement_text' | trans( {},'WebGuitarPro' ) }} 
+                                <a href="javascript:void(0);" data-toggle="modal" data-target="#terms-and-conditions-modal">
+                                    {{ 'vs_wgp.form.register.terms_and_conditions' | trans( {},'WebGuitarPro' ) }}
+                                </a>
                             </span>
                         </label>
                     </div>

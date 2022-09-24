@@ -1,6 +1,4 @@
-wgp_user_profile_show:
-    path:     /user/profile
-    controller: App\Controller\WebGuitarPro\ProfileController:indexAction
+
 
 wgp_user_profile_handle:
     path:     /user/profile/handle

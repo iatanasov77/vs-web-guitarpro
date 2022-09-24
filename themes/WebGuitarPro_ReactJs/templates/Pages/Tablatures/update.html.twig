@@ -6,14 +6,14 @@
 {% import "@VSApplication/Macros/tree.html.twig" as vs_tree %}
 {% if item.id %}{% set formMethod = 'PUT' %}{% else %}{% set formMethod = 'POST' %}{% endif %}
 
-{% block title %}{{ parent() }} :: Edit Tablature{% endblock %}
-{% block pageTitle %}<i class="icon_genius"></i> Edit Tablature{% endblock %}
+{% block title %}{{ parent() }} :: {{ 'vs_wgp.form.tablature_update.title' | trans( {},'WebGuitarPro' ) }}{% endblock %}
+{% block pageTitle %}<i class="icon_genius"></i> {{ 'vs_wgp.form.tablature_update.title' | trans( {},'WebGuitarPro' ) }}{% endblock %}
 
 {% block content %}
     <div class="tablatures-container" style="margin-top: 110px">
         <div class="card card-tablature-form">
             <div class="card-header">
-                <h3 class="mb-1">Edit Tablature</h3>
+                <h3 class="mb-1">{{ 'vs_wgp.form.tablature_update.title' | trans( {},'WebGuitarPro' ) }}</h3>
                 {#<p>Please enter your user information.</p>#}
             </div>
             <div class="card-body">
@@ -23,7 +23,7 @@
                             <button type="button" class="close close-sm" data-dismiss="alert">
                                 <i class="icon-remove"></i>
                             </button>
-                            <strong>Error!</strong> {{ form_errors(form) }}
+                            <strong>{{ 'vs_wgp.form.error_caption' | trans( {},'WebGuitarPro' ) }}</strong> {{ form_errors(form) }}
                         </div>
                     {% endif %}
                     

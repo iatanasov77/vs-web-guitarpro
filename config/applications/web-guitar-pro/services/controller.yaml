@@ -33,6 +33,8 @@ services:
         tags: ['controller.service_arguments']
         autowire: true
         arguments:
+            - '@doctrine'
+            - '%vs_users.model.users.class%'
             - '@vs_users.manager.user'
             - '@vs_users.factory.avatar_image'
             - '@vs_cms.profile_uploader'
@@ -69,19 +71,21 @@ services:
         autowire: true
         tags: ['controller.service_arguments']
         arguments:
+            - '@doctrine'
             - '@vs_users.manager.user'
             - '@vs_users.repository.users'
             - '@vs_users.factory.users'
             - '@vs_users.repository.user_roles'
             - '@mailer'
             - '@vs_cms.repository.pages'
+            - '@security.authentication.guard_handler'
+            - '@vs_users.security.another_login_form_authenticator'
             - {
                 registrationForm: '%vs_users.registration_form%',
                 registerRole: '%vs_users.register_role%',
                 defaultRedirect: '%vs_users.default_redirect%',
                 mailerUser: '%vs_application.mailer_user%',
             }
-            
             
             - '@vs_application.repository.taxonomy'
             - '%vs_wgp.tablature-categories.taxonomy_code%'
@@ -108,3 +112,24 @@ services:
             - '@doctrine'
             - '@vs_wgp.repository.tablature_category'
             - '@vs_wgp.repository.tablature'
+
+    App\Controller\WebGuitarPro\ForgotPasswordController:
+        public: true
+        autowire: true
+        tags: ['controller.service_arguments']
+        arguments:
+            - '@doctrine'
+            - '@vs_users.repository.reset_password_request'
+            - '@vs_users.repository.users'
+            - '@mailer'
+            - '@vs_users.factory.reset_password_request'
+            - '@vs_users.manager.user'
+            - {
+                defaultRedirect: '%vs_users.default_redirect%',
+                mailerUser: '%vs_application.mailer_user%',
+            }
+            - '@vs_application.repository.taxonomy'
+            - '%vs_wgp.tablature-categories.taxonomy_code%'
+        calls:
+            - setResetPasswordHelper: ['@?symfonycasts.reset_password.helper']
+

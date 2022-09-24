@@ -47,8 +47,12 @@ security:
 
         - { path: ^/$, roles: PUBLIC_ACCESS }
         - { path: ^/login, roles: PUBLIC_ACCESS }
+        - { path: ^/forgot-password, roles: PUBLIC_ACCESS }
         - { path: ^/register, roles: PUBLIC_ACCESS }
+        - { path: ^/verify, roles: PUBLIC_ACCESS }
+        - { path: ^/password-generator/json-get-passwords, roles: PUBLIC_ACCESS }
+        - { path: ^/translations/, roles: PUBLIC_ACCESS }
         
-        - { path: ^/, roles: [ROLE_SUPER_ADMIN, ROLE_APPLICATION_ADMIN] }
+        - { path: ^/, roles: [ROLE_SUPER_ADMIN, ROLE_APPLICATION_ADMIN, ROLE_WEB_GUITAR_PRO_ADMIN] }
         
 

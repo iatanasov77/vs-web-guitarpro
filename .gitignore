@@ -50,6 +50,7 @@ yarn-error.log
 
 ###> liip/imagine-bundle ###
 /public/media/cache/
+/public/web-guitar-pro/media/cache/
 ###< liip/imagine-bundle ###
 
 

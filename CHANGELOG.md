@@ -1,3 +1,13 @@
+1.6.5	|	Release date: **24.09.2022**
+============================================
+* Bug-Fixes and Improvements:
+  - Fully Translate ReactJs Theme Templates.
+  - Fix Registeration.
+  - Refactoring of Application Profile Page.
+  - Move Profile Templates From Pages to Bundles for VueJs Theme.
+  - Add ForgotPassword for Application.
+
+
 1.6.4	|	Release date: **22.09.2022**
 ============================================
 * New Features and Improvements:
