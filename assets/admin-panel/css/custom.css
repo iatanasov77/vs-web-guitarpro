@@ -167,3 +167,15 @@ input[type=file] {
 .profile-data.panel-body {
 	border: 0 !important;
 }
+
+.vsFormButtonsGroup {
+    width: 600px !important;
+}
+
+.notification-dropdown {
+    width: 300px !important;
+}
+
+.custom-file-label.profile-picture {
+	top: 0 !important;
+}

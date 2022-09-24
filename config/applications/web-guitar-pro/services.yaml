@@ -22,7 +22,10 @@ parameters:
     
     vs_users.login_route: 'app_login'
     vs_users.login_by: 'username'
-    vs_users.registration_form: 'App\Form\RegistrationForm'
+    
+    #vs_users.registration_form: 'App\Form\RegistrationForm'
+    vs_users.registration_form: 'Vankosoft\UsersBundle\Form\RegistrationFormType'
+    
     vs_users.default_redirect: 'app_home'
     vs_users.form_create_account: false
     

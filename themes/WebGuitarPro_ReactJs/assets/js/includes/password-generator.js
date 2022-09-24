@@ -24,5 +24,8 @@ export function VsDisplayPassword( password )
         $( this ).dialog( "close" );
     };
     
-    return $( translatedDialog ).dialog( { buttons: myButtons } );
+    return $( translatedDialog ).dialog({
+        buttons: myButtons,
+        width: "auto"  
+    });
 }

@@ -24,20 +24,29 @@
                         </div>
                     {% endif %}
                     
-                    <div class="form-group">               
-                        {{ form_widget(form.username, {'attr': {'class': 'form-control form-control-lg'}}) }}
+                    <div class="form-group">
+                        {{ form_row( form.username ) }}
                     </div>
-                    <div class="form-group">               
-                        {{ form_widget(form.email, {'attr': {'class': 'form-control form-control-lg'}}) }}
+                    <div class="form-group">
+                        {{ form_row( form.email ) }}
                     </div>
-                    <div class="input-group mb-3">               
-                        {{ form_widget(form.plain_password.first, {'attr': {'class': 'form-control form-control-lg'}}) }}
-                        <div class="input-group-append">
-                            <button type="button" class="btn btn-primary" id="btnGeneratePasswordRegisterForm">{{ 'vs_users.form.generate_password' | trans( {},'VSUsersBundle' ) }}</button>
+                    
+                    <div class="form-group">
+                        {{ form_row( form.prefered_locale ) }}
+                    </div>
+                    
+                    <div class="form-group">
+                        {{ form_label( form.plain_password.first, null, {'label_attr': {'class': 'col-form-label'}} ) }}
+                        <div class="input-group mb-3">
+                            {{ form_widget( form.plain_password.first, {'attr': {'class': 'form-control'}} ) }}
+                            <div class="input-group-append">
+                                <button type="button" class="btn btn-primary" id="btnGeneratePasswordRegisterForm">{{ 'vs_users.form.generate_password' | trans( {},'VSUsersBundle' ) }}</button>
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group">               
-                        {{ form_widget(form.plain_password.second, {'attr': {'class': 'form-control form-control-lg'}}) }}
+                    
+                    <div class="form-group">
+                        {{ form_row( form.plain_password.second ) }}
                     </div>
                     <div class="form-group pt-2">
                         <button class="btn btn-block btn-primary" type="submit">{{ 'vs_wgp.form.register.button_register' | trans( {},'WebGuitarPro' ) }} </button>
