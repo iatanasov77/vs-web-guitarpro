@@ -1,8 +1,8 @@
 ; log file (defaults to config file with .log extension)
-log = deploy_production.log
+log = "deploy_${environement}.log"
 
 ; directory for temporary files (defaults to system's temporary directory)
-tempDir = /tmp/deploy_production
+tempDir = "/tmp/deploy_${environement}"
 
 ; enable colored highlights? (defaults to autodetect)
 ;colors = yes
@@ -31,22 +31,20 @@ test = no
 ; files and directories to ignore
 ignore = "
 	.git*
-	README.md
-	/LICENSE
-	/VERSION
-	CHANGELOG.md
-	
-	Jenkinsfile
-	/ftp_deploy.ini
-    /ftp_deploy.ini.production
-    /ftp_deploy.ini.staging
+    README.md
+    /LICENSE
+    /VERSION
+    CHANGELOG.md
+    
+    Jenkinsfile
+    /ftp_deploy.ini
     /.env.production
     /.env.staging
 
-	build.xml
-	composer.lock
-	symfony.lock
-	package.json
+    build.xml
+    composer.lock
+    symfony.lock
+    package.json
     webpack.config.js
     yarn.lock
     yarn-error.log
