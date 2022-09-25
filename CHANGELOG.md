@@ -1,3 +1,9 @@
+1.6.6	|	Release date: **25.09.2022**
+============================================
+* New Features:
+  - Improve Deployment Configs.
+
+
 1.6.5	|	Release date: **24.09.2022**
 ============================================
 * Bug-Fixes and Improvements:
