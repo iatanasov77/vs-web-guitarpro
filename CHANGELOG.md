@@ -1,3 +1,13 @@
+1.7.0	|	Release date: **01.12.2022**
+============================================
+* New Features:
+  - Add Languages SubMenu at Admin Panel Profile Menu.
+  - Allow Deployment of file VERSION.
+  - Update Packages Versions.
+* Bug-Fixes:
+  - Fix AdminPanel menu.js
+
+
 1.6.6	|	Release date: **25.09.2022**
 ============================================
 * New Features:

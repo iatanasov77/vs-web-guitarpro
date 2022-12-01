@@ -33,7 +33,6 @@ ignore = "
 	.git*
     README.md
     /LICENSE
-    /VERSION
     CHANGELOG.md
     
     Jenkinsfile
@@ -84,6 +83,7 @@ include = "
     /composer.json
     /themes/DeveloperBlog/composer.json
     /themes/DeveloperWebsite/composer.json
+    /VERSION
 "
 
 ; is allowed to delete remote files? (defaults to yes)
