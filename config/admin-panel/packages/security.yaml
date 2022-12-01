@@ -53,7 +53,7 @@ security:
 
             custom_authenticators:
                 - vs_users.security.login_form_authenticator
-                - vs_users.security.api_key_authenticator
+                #- vs_users.security.api_key_authenticator
             entry_point: vs_users.security.login_form_authenticator
 
     role_hierarchy:

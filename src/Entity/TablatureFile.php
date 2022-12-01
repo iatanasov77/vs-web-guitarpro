@@ -15,11 +15,6 @@ class TablatureFile extends File
      */
     protected $owner;
     
-    /**
-     * @ORM\Column(name="original_name", type="string", length=255, nullable=false, options={"comment": "The Original Name of the File."})
-     */
-    protected $originalName;
-    
     public function getTablature()
     {
         return $this->owner;
@@ -28,18 +23,6 @@ class TablatureFile extends File
     public function setTablature( Tablature $tablature ): self
     {
         $this->setOwner( $tablature);
-        
-        return $this;
-    }
-    
-    public function getOriginalName(): string
-    {
-        return $this->originalName;
-    }
-    
-    public function setOriginalName( string $originalName ): self
-    {
-        $this->originalName = $originalName;
         
         return $this;
     }
