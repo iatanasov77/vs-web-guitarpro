@@ -24,6 +24,7 @@ services:
         tags: ['controller.service_arguments']
         autowire: true
         arguments:
+            - '@doctrine'
             - '@vs_application.context.application'
             - '@twig'
             - '@vs_application.repository.taxonomy'
@@ -45,6 +46,7 @@ services:
         tags: ['controller.service_arguments']
         autowire: false
         arguments:
+            - '@doctrine'
             - '@vs_application.repository.taxonomy'
             - '@vs_application.repository.taxon'
             - '@vs_wgp.repository.tablature'
@@ -56,6 +58,7 @@ services:
         tags: ['controller.service_arguments']
         autowire: true
         arguments:
+            - '@doctrine'
             - '@vs_application.repository.taxonomy'
             - '%vs_wgp.tablature-categories.taxonomy_code%'
 
@@ -63,6 +66,7 @@ services:
         tags: ['controller.service_arguments']
         autowire: true
         arguments:
+            - '@doctrine'
             - '@vs_application.repository.taxonomy'
             - '%vs_wgp.tablature-categories.taxonomy_code%'
 
@@ -78,7 +82,7 @@ services:
             - '@vs_users.repository.user_roles'
             - '@mailer'
             - '@vs_cms.repository.pages'
-            - '@security.authentication.guard_handler'
+            - '@security.user_authenticator'
             - '@vs_users.security.another_login_form_authenticator'
             - {
                 registrationForm: '%vs_users.registration_form%',

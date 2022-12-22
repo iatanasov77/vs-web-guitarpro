@@ -54,11 +54,8 @@ class User extends BaseUser implements SubscribedUserInterface, PaymentsUserInte
     /**
      * {@inheritDoc}
      */
-    public function getRoles()
+    public function getRoles(): array
     {
-        /* Use RolesArray ( OLD WAY )*/
-        //return $this->getRolesFromArray();
-        
         /* Use RolesCollection */
         return $this->getRolesFromCollection();
     }

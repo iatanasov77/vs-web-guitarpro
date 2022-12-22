@@ -69,7 +69,7 @@ class TablatureController extends AbstractCrudController
             'tabForm'                       => $this->getTabForm()->createView(),
             'tabCategoryForm'               => $this->getTabCategoryForm()->createView(),
             'tabCategoriesTaxonomyId'       => $this->getTabCategoriesTaxonomy()->getId(),
-            'userCategories'                => $this->get( 'vs_wgp.repository.tablature_category' )->findBy( ['user' => $this->getUser()] ),
+            'userCategories'                => $this->get( 'vs_wgp.repository.tablature_category' )->findBy( ['user' => $this->getAppUser()] ),
             'locales'                       => $this->getDoctrine()->getRepository( 'App\Entity\Application\Locale' )->findAll(),
             'paidTablatureStoreServices'    => $this->get( 'vs_users_subscriptions.repository.payed_service_subscription_period' )->findAll(),
             
@@ -85,7 +85,7 @@ class TablatureController extends AbstractCrudController
         
         $this->easyuiPost( $entity, $request->request->get( 'tablature_form' ) );
         
-        $entity->setUser( $this->getUser() );
+        $entity->setUser( $this->getAppUser() );
         
         $tabFile    = $form['tablature']->getData();
         if ( $tabFile ) {

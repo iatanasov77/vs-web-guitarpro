@@ -25,3 +25,8 @@ services:
     _defaults:
         autowire: true
         autoconfigure: true
+        
+    #security.token_storage
+    app.security_helper:
+        class: App\Security\Helper
+        public: true

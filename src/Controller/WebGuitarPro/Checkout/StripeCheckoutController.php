@@ -3,6 +3,7 @@
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use Doctrine\Persistence\ManagerRegistry;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 use Sylius\Component\Resource\Factory\Factory;
 
@@ -24,6 +25,7 @@ class StripeCheckoutController extends BaseStripeCheckoutController
     private $tabCategoriesTaxonomy;
     
     public function __construct(
+        ManagerRegistry $doctrine,
         EntityRepository $ordersRepository,
         Payum $payum,
         string $paymentClass,
@@ -33,7 +35,7 @@ class StripeCheckoutController extends BaseStripeCheckoutController
         EntityRepository $taxonomyRepository,
         string $tabCategoriesTaxonomyCosde
     ) {
-        parent::__construct( $ordersRepository, $payum, $paymentClass, $subscriptionRepository, $subscriptionFactory );
+        parent::__construct( $doctrine, $ordersRepository, $payum, $paymentClass, $subscriptionRepository, $subscriptionFactory );
         
         $this->tabCategoriesTaxonomy    = $taxonomyRepository->findByCode( $tabCategoriesTaxonomyCosde );
     }
@@ -64,8 +66,8 @@ class StripeCheckoutController extends BaseStripeCheckoutController
                 'tabCategoryForm'               => $this->getTabCategoryForm()->createView(),
                 'tabCategoriesTaxonomyId'       => $this->tabCategoriesTaxonomy->getId(),
                 
-                'locales'                       => $this->getDoctrine()->getRepository( 'App\Entity\Application\Locale' )->findAll(),
-                'paidTablatureStoreServices'    => $this->getDoctrine()->getRepository( 'App\Entity\UsersSubscriptions\PayedServiceSubscriptionPeriod' )->findAll(),
+                'locales'                       => $this->doctrine->getRepository( 'App\Entity\Application\Locale' )->findAll(),
+                'paidTablatureStoreServices'    => $this->doctrine->getRepository( 'App\Entity\UsersSubscriptions\PayedServiceSubscriptionPeriod' )->findAll(),
             ]);
         }
         

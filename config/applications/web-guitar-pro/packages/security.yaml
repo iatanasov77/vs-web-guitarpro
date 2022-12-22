@@ -53,6 +53,10 @@ security:
         - { path: ^/password-generator/json-get-passwords, roles: PUBLIC_ACCESS }
         - { path: ^/translations/, roles: PUBLIC_ACCESS }
         
+        - { path: ^/tablatures/, roles: PUBLIC_ACCESS } # Tablature ACCESS SHOULD BE CHECK BY A VOTER
+        - { path: ^/tablatures-ext/, roles: PUBLIC_ACCESS } # Tablature ACCESS SHOULD BE CHECK BY A VOTER
+        - { path: ^/build/, roles: PUBLIC_ACCESS }
+        
         - { path: ^/, roles: [ROLE_SUPER_ADMIN, ROLE_APPLICATION_ADMIN, ROLE_WEB_GUITAR_PRO_ADMIN] }
         
 

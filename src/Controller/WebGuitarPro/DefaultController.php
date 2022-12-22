@@ -3,6 +3,7 @@
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Doctrine\Persistence\ManagerRegistry;
 use Twig\Environment;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
@@ -12,6 +13,9 @@ use Vankosoft\ApplicationBundle\Model\Interfaces\TaxonomyInterface;
 class DefaultController extends AbstractController
 {
     use GlobalFormsTrait;
+    
+    /** @var ManagerRegistry **/
+    private $doctrine;
     
     /** @var ApplicationContextInterface */
     private $applicationContext;
@@ -23,11 +27,13 @@ class DefaultController extends AbstractController
     private $tabCategoriesTaxonomy;
     
     public function __construct(
+        ManagerRegistry $doctrine,
         ApplicationContextInterface $applicationContext,
         Environment $templatingEngine,
         EntityRepository $taxonomyRepository,
         string $tabCategoriesTaxonomyCosde
     ) {
+        $this->doctrine                 = $doctrine;
         $this->applicationContext       = $applicationContext;
         $this->templatingEngine         = $templatingEngine;
         
@@ -38,13 +44,13 @@ class DefaultController extends AbstractController
     {
         //$this->get( 'session' )->remove( 'vs_payment_basket_id' );
         
-        $er     = $this->getDoctrine()->getRepository( 'App\Entity\Tablature' );        
+        $er     = $this->doctrine->getRepository( 'App\Entity\Tablature' );        
         $params = [
             'tabForm'                       => $this->getTabForm()->createView(),
             'tabCategoryForm'               => $this->getTabCategoryForm()->createView(),
             'tabCategoriesTaxonomyId'       => $this->tabCategoriesTaxonomy->getId(),
-            'locales'                       => $this->getDoctrine()->getRepository( 'App\Entity\Application\Locale' )->findAll(),
-            'paidTablatureStoreServices'    => $this->getDoctrine()->getRepository( 'App\Entity\UsersSubscriptions\PayedServiceSubscriptionPeriod' )->findAll(),
+            'locales'                       => $this->doctrine->getRepository( 'App\Entity\Application\Locale' )->findAll(),
+            'paidTablatureStoreServices'    => $this->doctrine->getRepository( 'App\Entity\UsersSubscriptions\PayedServiceSubscriptionPeriod' )->findAll(),
             
             // About enabled field - $enabled (public)
             'tabs'                          => $er->findBy( ['enabled' => true], [ 'updatedAt' => 'DESC' ], 10 ),
