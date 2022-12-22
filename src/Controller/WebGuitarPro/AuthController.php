@@ -3,6 +3,7 @@
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Doctrine\Persistence\ManagerRegistry;
 use Twig\Environment;
 
 use Vankosoft\ApplicationBundle\Component\Context\ApplicationContextInterface;
@@ -17,12 +18,17 @@ class AuthController extends AbstractController
     /** @var Environment */
     private $templatingEngine;
     
+    /** @var ManagerRegistry */
+    private ManagerRegistry $doctrine;
+    
     public function __construct(
         ApplicationContextInterface $applicationContext,
-        Environment $templatingEngine
+        Environment $templatingEngine,
+        ManagerRegistry $doctrine
     ) {
             $this->applicationContext   = $applicationContext;
             $this->templatingEngine     = $templatingEngine;
+            $this->doctrine             = $doctrine;
     }
     
     public function login( AuthenticationUtils $authenticationUtils ): Response
@@ -38,12 +44,12 @@ class AuthController extends AbstractController
         $lastUsername = $authenticationUtils->getLastUsername();
         
         $tplVars = [
-            'locales'                       => $this->getDoctrine()->getRepository( 'App\Entity\Application\Locale' )->findAll(),
+            'locales'                       => $this->doctrine->getRepository( 'App\Entity\Application\Locale' )->findAll(),
             'last_username'                 => $lastUsername,
             'error'                         => $error,
             'tabForm'                       => $this->getTabForm()->createView(),
             'tabCategoryForm'               => $this->getTabCategoryForm()->createView(),
-            'paidTablatureStoreServices'    => $this->getDoctrine()->getRepository( 'App\Entity\UsersSubscriptions\PayedServiceSubscriptionPeriod' )->findAll(),
+            'paidTablatureStoreServices'    => $this->doctrine->getRepository( 'App\Entity\UsersSubscriptions\PayedServiceSubscriptionPeriod' )->findAll(),
             
             'tablatureUploadLimited'        => ! $this->checkTablatureLimit(),
         ];

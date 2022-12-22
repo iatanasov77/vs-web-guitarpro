@@ -5,7 +5,7 @@ use Vankosoft\UsersBundle\Controller\RegisterController as BaseRegisterControlle
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
+use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Sylius\Component\Resource\Factory\Factory;
@@ -28,7 +28,7 @@ class RegisterController extends BaseRegisterController
         RepositoryInterface $userRolesRepository,
         MailerInterface $mailer,
         RepositoryInterface $pagesRepository,
-        GuardAuthenticatorHandler $guardHandler,
+        UserAuthenticatorInterface $guardHandler,
         AnotherLoginFormAuthenticator $authenticator,
         array $parameters,
         

@@ -5,6 +5,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Doctrine\Persistence\ManagerRegistry;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
 use Vankosoft\ApplicationBundle\Repository\TaxonomyRepository;
@@ -23,12 +24,14 @@ class TablatureExtController extends AbstractController
     protected string $tabsDirectory;
     
     public function __construct(
+        ManagerRegistry $doctrine,
         TaxonomyRepository $taxonomyRepository,
         //TaxonRepository $taxonRepository,
         EntityRepository $taxonRepository,
         EntityRepository $tabsRepository,
         string $tabsDirectory
     ) {
+        $this->doctrine             = $doctrine;
         $this->taxonomyRepository   = $taxonomyRepository;
         $this->taxonRepository      = $taxonRepository;
         $this->tabsRepository       = $tabsRepository;
@@ -42,7 +45,7 @@ class TablatureExtController extends AbstractController
      */
     public function read( $id, Request $request ): Response
     {
-        $er             = $this->getDoctrine()->getRepository( 'App\Entity\Tablature' );
+        $er             = $this->doctrine->getRepository( 'App\Entity\Tablature' );
         $oTablature     = $er->find( $request->attributes->get( 'id' ) );
         
         if ( ! $this->checkHasAccess( $oTablature ) ) {

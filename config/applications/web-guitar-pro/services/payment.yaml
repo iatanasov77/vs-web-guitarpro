@@ -15,6 +15,7 @@ services:
         tags: ['controller.service_arguments']
         autowire: false
         arguments:
+            - '@doctrine'
             - '@vs_payment_payment'
             - '@vs_payment.factory.order'
             - '@vs_payment.factory.order_item'
@@ -29,6 +30,7 @@ services:
     ##############################
     App\Controller\WebGuitarPro\Checkout\StripeCheckoutController:
         arguments:
+            - '@doctrine'
             - '@vs_payment.repository.order'
             - '@payum'
             - '%vs_payment.model.payment.class%'

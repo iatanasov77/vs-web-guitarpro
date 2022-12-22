@@ -47,8 +47,8 @@ class SharedTablaturesController extends AbstractController
             'tabForm'                       => $this->getTabForm()->createView(),
             'tabCategoryForm'               => $this->getTabCategoryForm()->createView(),
             'tabCategoriesTaxonomyId'       => $this->tabCategoriesTaxonomy->getId(),
-            'locales'                       => $this->getDoctrine()->getRepository( 'App\Entity\Application\Locale' )->findAll(),
-            'paidTablatureStoreServices'    => $this->getDoctrine()->getRepository( 'App\Entity\UsersSubscriptions\PayedServiceSubscriptionPeriod' )->findAll(),
+            'locales'                       => $this->doctrine->getRepository( 'App\Entity\Application\Locale' )->findAll(),
+            'paidTablatureStoreServices'    => $this->doctrine->getRepository( 'App\Entity\UsersSubscriptions\PayedServiceSubscriptionPeriod' )->findAll(),
             
             'tablatureUploadLimited'        => ! $this->checkTablatureLimit(),
         ];
@@ -62,8 +62,8 @@ class SharedTablaturesController extends AbstractController
             'tabForm'                       => $this->getTabForm()->createView(),
             'tabCategoryForm'               => $this->getTabCategoryForm()->createView(),
             'tabCategoriesTaxonomyId'       => $this->tabCategoriesTaxonomy->getId(),
-            'locales'                       => $this->getDoctrine()->getRepository( 'App\Entity\Application\Locale' )->findAll(),
-            'paidTablatureStoreServices'    => $this->getDoctrine()->getRepository( 'App\Entity\UsersSubscriptions\PayedServiceSubscriptionPeriod' )->findAll(),
+            'locales'                       => $this->doctrine->getRepository( 'App\Entity\Application\Locale' )->findAll(),
+            'paidTablatureStoreServices'    => $this->doctrine->getRepository( 'App\Entity\UsersSubscriptions\PayedServiceSubscriptionPeriod' )->findAll(),
             
             'tablatureUploadLimited'        => ! $this->checkTablatureLimit(),
         ];

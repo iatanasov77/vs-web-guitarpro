@@ -1,5 +1,6 @@
 <?php namespace App\Controller\WebGuitarPro;
 
+use Symfony\Component\Security\Core\User\UserInterface;
 use Vankosoft\UsersSubscriptionsBundle\Component\PayedService\SubscriptionPeriod;
 
 use App\Entity\Tablature;
@@ -26,15 +27,17 @@ trait GlobalFormsTrait
      */
     protected function checkTablatureLimit()
     {
+        //return true;    // Work-Around
+        
         $tablatureLimit = $this->getParameter( 'vs_wgp.unpaid_tablature_storage' );
         $paid           = false;
         
-        if ( $this->getUser() && $this->getUser()->getUsername() != 'admin' ) {
-            $lastPayment    = $this->getDoctrine()
+        if ( $this->getAppUser() && $this->getAppUser()->getUsername() != 'admin' ) {
+            $lastPayment    = $this->doctrine
                                     ->getRepository( 'App\Entity\UserManagement\User' )
-                                    ->getPaidForWhat( $this->getUser() );
+                                    ->getPaidForWhat( $this->getAppUser() );
             if ( ! empty( $lastPayment ) ) {
-                $paidService    = $this->getDoctrine()
+                $paidService    = $this->doctrine
                                         ->getRepository( 'App\Entity\UsersSubscriptions\PayedServiceSubscriptionPeriod' )
                                         ->find( $lastPayment['objectId'] )
                                         ->getPayedService();
@@ -57,21 +60,23 @@ trait GlobalFormsTrait
                 }
             }
             
-            return ( $tablatureLimit < 0 || $paid ) || ( $this->getUser()->getTablatures()->count() < $tablatureLimit );
+            return ( $tablatureLimit < 0 || $paid ) || ( $this->getAppUser()->getTablatures()->count() < $tablatureLimit );
         }
         
-        return ( $this->getUser() && $this->getUser()->getUsername() == 'admin' ) ? true : false;
+        return ( $this->getAppUser() && $this->getAppUser()->getUsername() == 'admin' ) ? true : false;
     }
     
     protected function checkHasAccess( Tablature $tablature ): bool
     {
-        $hasAccess  = $tablature->isPublic() || $tablature->getUser() == $this->getUser();
+        //return true;    // Work-Around
+        
+        $hasAccess  = $tablature->isPublic() || $tablature->getAppUser() == $this->getAppUser();
         if ( $hasAccess ) {
             return  true;
         }
         
-        if ( $this->getUser() ) {
-            foreach ( $this->getUser()->getTargetedShares() as $share ) {
+        if ( $this->getAppUser() ) {
+            foreach ( $this->getAppUser()->getTargetedShares() as $share ) {
                 if ( $share->getTablatures()->contains( $tablature ) ) {
                     return true;
                 }
@@ -79,5 +84,25 @@ trait GlobalFormsTrait
         }
         
         return false;
+    }
+    
+    protected function getAppUser():? UserInterface
+    {
+        if ( $this->container->has( 'app.security_helper' ) ) {
+            $securityHelper = $this->container->get( 'app.security_helper' );
+            
+            if ( null === $token = $securityHelper->getTokenStorage()->getToken() ) {
+                return null;
+            }
+            
+            if ( ! \is_object( $user = $token->getUser() ) ) {
+                // e.g. anonymous authentication
+                return null;
+            }
+        
+            return $user;
+        } else {
+            return $this->getUser();
+        }
     }
 }

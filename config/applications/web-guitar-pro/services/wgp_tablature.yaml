@@ -21,4 +21,7 @@ services:
         arguments:
             - '@vs_wgp.tablature_uploader.filesystem'
             - '@vs_wgp.tablature_file_path_generator'
-
+            
+#    vs_wgp.controller.tablature:
+#        class: App\Controller\WebGuitarPro\TablatureController
+#        tags: ['controller.service_arguments']
