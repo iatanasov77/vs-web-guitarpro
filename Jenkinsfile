@@ -8,7 +8,7 @@ node ( label: 'php-host' ) {
     def DB_BACKUP
     def REMOTE_DIR
     
-    final PHP_BIN               = '/usr/bin/php74'
+    final PHP_BIN               = '/usr/bin/php82'
     
     final GIT_CREDENTIALS_ID    = 'github-iatanasov77';
     final GIT_URI               = 'github.com/iatanasov77/vs-web-guitarpro.git'
