@@ -33,7 +33,7 @@ var api             = new alphaTab.AlphaTabApi( element, {
         enablePlayer: true,
         enableUserInteraction: true,
         enableCursor: true,
-        soundFont: '/build/web-guitar-pro-reactjs/soundfont/sonivox.sf2'
+        soundFont: $( "#alphaTab" ).attr( 'data-base-url' ) + '/build/web-guitar-pro-reactjs/soundfont/sonivox.sf2'
     },
     logging: 'debug',
 });
