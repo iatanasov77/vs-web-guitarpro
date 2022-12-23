@@ -1,3 +1,11 @@
+2.0.1	|	Release date: **23.12.2022**
+============================================
+* Bug-Fixes and Debug Production Deploy:
+  - Upgrade Jenkinsfile
+  - Upgrade JQuery Version.
+  - Debug Phing Build
+
+
 2.0.0	|	Release date: **22.12.2022**
 ============================================
 * New Features:
