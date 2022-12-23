@@ -2,7 +2,8 @@
 <project name="VankoSoft.Org" default="build">
     <resolvepath propertyName="root_path" file="./" />
     
-    <target name="install-production" depends="setup-backend-production,setup-frontend-production"></target>
+    <!-- <target name="install-production" depends="setup-backend-production,setup-frontend-production"></target> -->
+    <target name="install-production" depends="setup-backend-production,setup-frontend-staging"></target>
     <target name="install-staging" depends="setup-backend-staging,setup-frontend-staging"></target>
   
     <target name="setup-frontend-production">
