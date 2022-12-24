@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale|slice(0, 2) }}">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}.:: VS WebGuitarPro{% endblock %}</title>
+        <link rel="icon" type="image/png" href="{{ asset( 'build/web-guitar-pro-reactjs/images/logo.png' ) }}" />
+        
+        {% block stylesheets %}
+        	{{ encore_entry_link_tags( 'app', null, 'WebGuitarPro_AngularJs' ) }}
+        {% endblock %}
+    </head>
+    <body>
+        <div class="wrapper">
+            <!-- Page Content  -->
+            <div id="content">
+                {% include 'Layout/top.html.twig' %}
+                
+    		    {% block content %}{% endblock %}
+    		    
+    		    {% block copyright %}
+    		          {% include 'Layout/bottom.html.twig' %}
+    		    {% endblock %}
+    		</div>
+    	</div>
+    	
+        {% block widgets %}
+            <div id="modals">
+                {% include 'Modal/payment.html.twig' %}
+            </div>  
+        {% endblock %}
+        
+        {% block svg %}{% endblock %}
+        
+        {% block javascripts %}
+        	{{ encore_entry_script_tags( 'app', null, 'WebGuitarPro_AngularJs' ) }}
+        {% endblock %}
+    </body>
+</html>

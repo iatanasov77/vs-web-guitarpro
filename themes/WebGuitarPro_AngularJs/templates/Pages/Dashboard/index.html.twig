@@ -1,0 +1,47 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{ parent() }} :: {{ 'vs_wgp.template.latest_tablatures' | trans( {},'WebGuitarPro' ) }}{% endblock %}
+{% block pageTitle %}<i class="icon_genius"></i> {{ 'vs_wgp.template.latest_tablatures' | trans( {},'WebGuitarPro' ) }}{% endblock %}
+
+{% block content %}
+    <div class="tablatures-container" style="margin-top: 110px">
+        <div id="messages">
+            {% if error is defined %}
+                <div>{{ error.messageKey|trans( error.messageData, 'security' ) }}</div>
+            {% endif %}
+        </div>
+        <div class="card">
+            <h5 class="card-header">{{ 'vs_wgp.template.latest_tablatures' | trans( {},'WebGuitarPro' ) }}</h5>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>{{ 'vs_wgp.template.artist' | trans( {},'WebGuitarPro' ) }}</th>
+                            <th>{{ 'vs_wgp.template.song' | trans( {},'WebGuitarPro' ) }}</th>
+                            <th>{{ 'vs_wgp.template.owner' | trans( {},'WebGuitarPro' ) }}</th>
+                            <th>{{ 'vs_wgp.template.play' | trans( {},'WebGuitarPro' ) }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for t in tabs %}
+                        <tr>
+                            <td>{{ t.artist }}</td>
+                            <td>{{ t.song }}</td>
+                            <td>{{ t.user.info.fullName }}</td>
+                            <td>
+                                {% if ( t.slug|length ) %}{% set tabId = t.slug %}{% else %}{% set tabId = t.id %}{% endif %}
+                                <a  class="btn btn-primary mr-2"
+                                    href="{{ path( 'vs_wgp_tablature_show', {id: tabId} ) }}"
+                                >
+                                    <i class="fas fa-play"></i> {# Play #}
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

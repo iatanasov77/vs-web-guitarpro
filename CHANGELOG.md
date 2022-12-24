@@ -1,3 +1,10 @@
+2.0.2	|	Release date: **24.12.2022**
+============================================
+* New Features:
+  - Use Absolute URL For Alphatab Required Files.
+  - Create Angular Theme.
+
+
 2.0.1	|	Release date: **23.12.2022**
 ============================================
 * Bug-Fixes and Debug Production Deploy:

@@ -1,0 +1,20 @@
+<div class="player-controls__item">
+    <svg class="icon dropdown-toggle player-button"
+        data-toggle="dropdown"
+        data-display="static"
+        aria-haspopup="true"
+        aria-expanded="false"
+    >
+        <use xlink:href="#speed-selector"></use>
+    </svg>
+    <div class="dropdown-menu dropdown-menu-right player-menu-right">
+        <div id="speedSelector" class="dropdown-menu-background">
+            <ul>
+                <li *ngFor="let speed of speeds"
+                    [ngClass]="speed.value == selectedSpeed.value ? 'active' : ''"
+                    (click)="speedHandler( speed, $event )"
+                >{{ speed.text }}</li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,69 @@
+{% extends "base.html.twig" %}
+
+{% import "@VSApplication/Macros/alerts.html.twig" as alerts %}
+
+{% block title %}{{ parent() }} :: {{ 'vs_wgp.template.menu.my_shares' | trans( {},'WebGuitarPro' ) }}{% endblock %}
+{% block pageTitle %}<i class="icon_genius"></i> {{ 'vs_wgp.template.menu.my_shares' | trans( {},'WebGuitarPro' ) }}{% endblock %}
+
+{% block content %}
+    <div class="tablatures-container" style="margin-top: 110px">
+        <div class="card">
+            <h5 class="card-header">{{ 'vs_wgp.template.menu.my_shares' | trans( {},'WebGuitarPro' ) }}</h5>
+            <div class="card-body">
+                {% if app.user and app.user.myShares|length > 0 %}
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>{{ 'vs_wgp.template.share_name' | trans( {},'WebGuitarPro' ) }}</th>
+                                <th>{{ 'vs_wgp.template.actions' | trans( {},'WebGuitarPro' ) }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for share in app.user.myShares %}
+                            <tr>
+                                <td>{{ share.name }}</td>
+                                <td>
+                                    <a class="btn btn-primary mr-2 btnEditShare"
+                                        href="{{ path('wgp_share_tablature_my_shares_get_edit_share_form', {'shareId': share.id}) }}"
+                                        title="{{ 'vs_cms.template.button_edit' | trans( {},'VSCmsBundle' ) }}"
+                                        data-shareName="{{ share.name }}"
+                                    >
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                
+                                    <a class="btn btn-danger mr-2 btnDeleteNonResource"
+                                        href="{{ path('wgp_share_tablature_my_shares_delete_share', {'shareId': share.id}) }}"
+                                        title="{{ 'vs_cms.template.button_delete' | trans( {},'VSCmsBundle' ) }}"
+                                    >
+                                        <i class="fas fa-window-close"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    {{ alerts.info('sylius.ui.there_are_no_mappers_to_display'|trans) }}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block widgets %}
+    {{ parent() }}
+    
+    {% include 'Modal/edit_share.html.twig' %}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    {{ encore_entry_link_tags( 'my-shares', null, 'WebGuitarPro_AngularJs' ) }}
+{% endblock %}  
+
+{% block javascripts %}
+    {{ parent() }}
+    
+    {{ encore_entry_script_tags( 'my-shares', null, 'WebGuitarPro_AngularJs' ) }}
+{% endblock %}

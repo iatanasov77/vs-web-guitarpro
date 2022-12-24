@@ -43,6 +43,7 @@ class TablatureController extends AbstractCrudController
             'paidTablatureStoreServices'    => $this->get( 'vs_users_subscriptions.repository.payed_service_subscription_period' )->findAll(),
             
             'tablatureUploadLimited'        => ! $this->checkTablatureLimit(),
+            'baseUrl'                       => $this->getParameter( 'vankosoft_host' ),
         ]);
     }
     

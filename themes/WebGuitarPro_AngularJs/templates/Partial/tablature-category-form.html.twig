@@ -1,0 +1,33 @@
+{% import "@VSApplication/Macros/tree.html.twig" as vs_tree %}
+
+{{ form_start( tabCategoryForm, {'action': path( 'vs_wgp_tablature_category_create' ), 'method': 'POST', 'attr': { 'id': "formTablatureCategory", 'class': 'px-4 py-3'}} ) }}
+    
+    {{ form_widget( tabCategoryForm._currentUrl, {
+        'value': path( app.request.attributes.get( '_route' ), app.request.attributes.get( '_route_params' ) )} )
+    }}
+    
+    
+    <div class="form-group">
+        {{ form_label( tabCategoryForm.parent, null, {
+            'label_attr': {'class': 'col-form-label'}
+            }) 
+        }}
+
+        {# Documentation: https://www.jeasyui.com/documentation/combotree.php #}
+        {% if item is defined and item.id %}{% set itemId = item.id %}{% else %}{% set itemId = 0 %}{% endif %}
+        {% set comboDataSourceUrl  = url('vs_wgp_tablature_categories_tree_combo_with_selected', {'categoriesTaxonomyId': tabCategoriesTaxonomyId, 'tabId': itemId}) %}
+        {% set comboTreePlaceholder = tabCategoryForm.parent.vars.label | trans( {},'VSCmsBundle' ) %}
+        {{ vs_tree.easyuiCombobox( tabCategoryForm.parent, comboDataSourceUrl, itemId,
+            {
+                'required': 'false',
+                'multiple': 'false',
+                'checkbox': 'false',
+                'placeholder': comboTreePlaceholder
+            }
+        ) }}
+    </div>
+    
+    <div class="form-group">{{ form_row( tabCategoryForm.name ) }}</div>
+    
+    <div class="form-group">{{ form_widget( tabCategoryForm.btnSave ) }}</div>
+{{ form_end( tabCategoryForm, {'render_rest': false} ) }}

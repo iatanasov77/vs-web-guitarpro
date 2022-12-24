@@ -99,8 +99,8 @@ const WebGuitarPro_ReactJs_Config   = require('./themes/WebGuitarPro_ReactJs/web
 /**
  *  WebGuitarPro AngularJs Theme
  */
-//Encore.reset();
-//const WebGuitarPro_AngularJs_Config   = require('./themes/WebGuitarPro_AngularJs/webpack.config');
+Encore.reset();
+const WebGuitarPro_AngularJs_Config   = require('./themes/WebGuitarPro_AngularJs/webpack.config');
 
 //=================================================================================================
 
