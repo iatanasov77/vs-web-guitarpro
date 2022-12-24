@@ -1,0 +1,197 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container-fluid">
+        <div class="sidebar-header">
+            <a href="{{ path( 'app_home' ) }}">
+                <img src="{{ asset( 'build/web-guitar-pro-reactjs/images/logo.png' ) }}" width="50" height="50" />
+            </a>
+        </div>
+        
+    {% if app.user and app_environment == 'dev' %}
+        <div class="collapse navbar-collapse" id="navbarPaidServices">
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item dropdown btn-group">
+                    <a class="nav-link dropdown-toggle"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                        href="javascript:void(0);"
+                    >
+                        {{ 'vs_wgp.template.menu.extend_your_tablatures_store' | trans( {},'WebGuitarPro' ) }}
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right scrollable-menu" aria-labelledby="btnDemoPages">
+                        <!-- Paid Services list -->
+                        <div class="sm-main-nav" >
+                        {% for paidService in paidTablatureStoreServices %}
+                            <a class="dropdown-item btnPayment"
+                                href="javascript:void(0);"
+                                data-url="{{ path( 'vs_payment_add_to_card', {'payableObjectId': paidService.id} ) }}"
+                            >
+                                {{ paidService.title }} ( {{ paidService.price }} {{ paidService.currencyCode }} / {{ paidService.subscriptionPeriod }} )
+                            </a><hr>
+                        {% endfor %}
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    {% endif %}
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav navbar-nav ml-auto">
+            
+            {% if app_environment == 'dev' %}
+                <li class="nav-item dropdown btn-group">
+                    <a class="nav-link dropdown-toggle" id="btnDemoPages" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Demo Pages</a>
+                    <div class="dropdown-menu dropdown-menu-right scrollable-menu" aria-labelledby="btnDemoPages">
+                        <!-- Demo Pages list -->
+                        <div class="sm-main-nav" >
+                            <a class="dropdown-item" href="{{ path( 'demo_pages_alphatab' ) }}">Alphatab Demo</a><hr>
+                        </div>
+                    </div>
+                </li>
+            {% endif %}
+            
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path( 'app_home' ) }}">
+                    {{ 'vs_wgp.template.menu.latest_tablatures' | trans( {},'WebGuitarPro' ) }}
+                </a>
+            </li>
+            
+            {% if app.user %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path( 'vs_wgp_tablature_index' ) }}">
+                        {{ 'vs_wgp.template.menu.my_tablatures' | trans( {},'WebGuitarPro' ) }}
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path( 'tablature_favorite_index' ) }}">
+                        {{ 'vs_wgp.template.menu.my_favorites' | trans( {},'WebGuitarPro' ) }}
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path( 'wgp_share_tablature_my_shares' ) }}">
+                        {{ 'vs_wgp.template.menu.my_shares' | trans( {},'WebGuitarPro' ) }}
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path( 'wgp_share_tablature_shared_to_me' ) }}">
+                        {{ 'vs_wgp.template.menu.shared_to_me' | trans( {},'WebGuitarPro' ) }}
+                    </a>
+                </li>
+                
+                <!--  Create Tablature Category  -->
+                <li class="nav-item dropdown btn-group">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ 'vs_wgp.template.menu.create_tablature_category' | trans( {},'WebGuitarPro' ) }}
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        {% include 'Partial/tablature-category-form.html.twig' %}
+                    </div>
+                </li>
+                <!--/  Create Tablature Category  -->
+                
+                <!--  Submit Tablature  -->
+                <li class="nav-item dropdown btn-group">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ 'vs_wgp.template.menu.create_tablature' | trans( {},'WebGuitarPro' ) }}
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        {% if tablatureUploadLimited %}
+                            <div class="alert alert-danger px-4 py-3" role="alert">
+                                <h4 class="alert-heading">{{ 'vs_wgp.template.alerts.tablature_upload_limited_error' | trans( {},'WebGuitarPro' ) }}</h4>
+                                <p>{{ 'vs_wgp.template.alerts.tablature_upload_limited_content' | trans( {},'WebGuitarPro' ) }}</p>
+                            </div>
+                        {% else %}
+                            {% include 'Partial/tablature-form.html.twig' %}
+                        {% endif %}
+                    </div>
+                </li>
+                <!--/  Submit Tablature  -->
+                
+                <!--  User Profile  -->
+                <li class="nav-item dropdown btn-group">
+                    <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ 'vs_wgp.template.menu.profile' | trans( {},'WebGuitarPro' ) }}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <div class="sm-main-nav" >
+                            <li>
+                                <a class="dropdown-item" href="{{ path( 'vs_users_profile_show' ) }}">
+                                    <i class="fas fa-user mr-2"></i>{{ 'vs_wgp.template.menu.my_profile' | trans( {},'WebGuitarPro' ) }}
+                                </a>
+                            </li>
+                            <li class="dropdown-submenu dropleft dropdown keepopen language-submenu">
+                                <a class="dropdown-item dropdown-toggle keepopen language-submenu" data-toggle="dropdown">
+                                    <i class="fas fa-language mr-2"></i>{{ 'vs_wgp.template.menu.language' | trans( {},'WebGuitarPro' ) }}
+                                </a>
+                                
+                                <ul class="submenu dropdown-menu">
+                                    {% for locale in locales %}
+                                        <li>
+                                            <a class="dropdown-item" href="{{ path('app_set_lang', {'lang': locale.code | slice( 0, 2 ) }) }}">
+                                                <i class="flag flag-{{ locale.code | slice( 3, 2 ) | lower }}"></i>
+                                                {{ locale.name }}
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="javascript:;">
+                                    <i class="fas fa-cog mr-2"></i>{{ 'vs_wgp.template.menu.documentation' | trans( {},'WebGuitarPro' ) }}
+                                </a>
+                                <hr>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{{ path( 'app_logout' ) }}">
+                                    <i class="fas fa-power-off mr-2"></i>{{ 'vs_wgp.template.menu.logout' | trans( {},'WebGuitarPro' ) }}
+                                </a>
+                            </li>
+                        </div>
+                    </ul>
+                </li>
+                <!--/ User Profile  -->
+                
+            {% else %}
+                <!--  Documentation  -->
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:;">
+                        {{ 'vs_wgp.template.menu.documentation' | trans( {},'WebGuitarPro' ) }}
+                    </a>
+                </li>
+                <!--/  Documentation  -->
+                
+                <!--  Registration  -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path( 'vs_users_register_form' ) }}">
+                        {{ 'vs_wgp.form.login.register' | trans( {},'WebGuitarPro' ) }}
+                    </a>
+                </li>
+                <!--/  Registration  -->
+                
+                <!--  User Login  -->
+                <li class="nav-item dropdown btn-group">
+                    <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ 'vs_wgp.template.menu.login' | trans( {},'WebGuitarPro' ) }}
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-login-form">
+                        {% include 'Partial/login-form.html.twig' %}
+                    </div>
+                </li>
+                <!--/ User Login  -->
+                
+                <li class="nav-item ml-2">&nbsp;</li>
+                <li class="nav-item ml-2">&nbsp;</li>
+                {% for locale in locales %}
+                    <li class="nav-item pt-2">
+                        <a href="{{ path('app_set_lang', {'lang': locale.code}) }}">
+                            <i class="flag flag-{{ locale.code | slice( 3, 2 ) | lower }}"></i>
+                        </a>
+                    </li>
+                {% endfor %}
+            {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>

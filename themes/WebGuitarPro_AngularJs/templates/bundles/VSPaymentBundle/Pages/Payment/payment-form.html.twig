@@ -1,0 +1,7 @@
+{{ form_start(form, { 'action': path( 'vs_payment_handle_payment_methods_form' ), 'attr': {'class': 'form-horizontal', 'id': 'vs_payment_payment_form'} }) }}
+    {{ form_widget(form.paymentDescription, {'value': paymentDescription}) }}
+    
+    <div class="form-group">
+        {{ form_row(form.paymentMethod, {'choice_attr': {'class': 'form-control'}}) }}
+    </div>
+{{ form_end(form, {'render_rest': false}) }}

@@ -1,0 +1,6 @@
+/* Used to display country flags but it has many other css and js things */
+@import '../../../../node_modules/mdb-ui-kit/src/scss/free/_flag.scss';
+
+@import "~bootstrap/scss/bootstrap";
+@import "./easyui-overide.css";
+@import "./app.css";
