@@ -6,6 +6,12 @@
 /config/secrets/prod/prod.decrypt.private.php
 /vendor/
 /node_modules/
+/[all
+/symfony.lock
+/migrations/
+/public/index.php
+/src/Kernel.php
+/templates/base.html.twig
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###
@@ -40,7 +46,7 @@
 /assets/styles/
 /assets/app.js
 /assets/bootstrap.js
-/assests/controllers.json
+/assets/controllers.json
 /node_modules/
 /public/build/
 /public/bundles/
