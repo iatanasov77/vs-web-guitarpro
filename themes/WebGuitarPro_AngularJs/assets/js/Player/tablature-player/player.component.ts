@@ -14,7 +14,8 @@ declare global {
 @Component({
     selector: 'app-player',
     templateUrl: './player.component.html',
-    styleUrls: ['./player.component.scss']
+    styleUrls: []
+    //styleUrls: ['./player.component.scss']
 })
 export class PlayerComponent implements OnInit, OnDestroy
 {

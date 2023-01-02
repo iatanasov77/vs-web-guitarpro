@@ -6,7 +6,8 @@ declare var $: any;
 @Component({
     selector: 'metronome-button-item',
     templateUrl: './metronome-button-item.component.html',
-    styleUrls: ['../player-controls.component.scss']
+    styleUrls: []
+    //styleUrls: ['../player-controls.component.scss']
 })
 export class MetronomeButtonItemComponent implements OnInit
 {

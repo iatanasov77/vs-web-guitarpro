@@ -4,7 +4,8 @@ import { AlphaTabApi } from '@coderline/alphatab';
 @Component({
     selector: 'song-position-item',
     templateUrl: './song-position-item.component.html',
-    styleUrls: ['../player-controls.component.scss']
+    styleUrls: []
+    //styleUrls: ['../player-controls.component.scss']
 })
 export class SongPositionItemComponent implements OnInit
 {

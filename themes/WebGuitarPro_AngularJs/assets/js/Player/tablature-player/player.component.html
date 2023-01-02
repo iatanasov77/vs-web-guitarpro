@@ -1,8 +1,9 @@
+<!--  
 <app-loader *ngIf="!scoreLoaded"></app-loader>
+-->
 
 <div id="tablaturePlayer" class="row" style="margin-top: 80px;">
     <player-controls *ngIf="scoreLoaded == true"
-        [tabId]="tabId"
         [player]="alphatabApi"
     ></player-controls>
 

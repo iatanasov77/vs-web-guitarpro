@@ -6,7 +6,7 @@ declare var $: any;
 @Component({
     selector: 'count-in-button-item',
     templateUrl: './count-in-button-item.component.html',
-    styleUrls: ['../player-controls.component.scss']
+    styleUrls: []
 })
 export class CountInButtonItemComponent implements OnInit
 {

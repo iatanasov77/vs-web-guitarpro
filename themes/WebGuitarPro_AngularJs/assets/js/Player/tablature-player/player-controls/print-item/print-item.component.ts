@@ -6,7 +6,8 @@ declare var $: any;
 @Component({
     selector: 'print-item',
     templateUrl: './print-item.component.html',
-    styleUrls: ['../player-controls.component.scss']
+    styleUrls: []
+    //styleUrls: ['../player-controls.component.scss']
 })
 export class PrintItemComponent implements OnInit
 {

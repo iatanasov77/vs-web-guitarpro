@@ -7,7 +7,8 @@ declare var $: any;
 @Component({
     selector: 'tracks-item',
     templateUrl: './tracks-item.component.html',
-    styleUrls: ['../player-controls.component.scss']
+    styleUrls: []
+    //styleUrls: ['../player-controls.component.scss']
 })
 export class TracksItemComponent implements OnInit
 {

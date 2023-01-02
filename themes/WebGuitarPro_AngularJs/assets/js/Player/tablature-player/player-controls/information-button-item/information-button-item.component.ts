@@ -6,7 +6,8 @@ declare var $: any;
 @Component({
     selector: 'information-button-item',
     templateUrl: './information-button-item.component.html',
-    styleUrls: ['../player-controls.component.scss']
+    styleUrls: []
+    //styleUrls: ['../player-controls.component.scss']
 })
 export class InformationButtonItemComponent implements OnInit
 {

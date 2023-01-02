@@ -1,5 +1,6 @@
 const Encore = require('@symfony/webpack-encore');
 const AngularCompilerPlugin = require('@ngtools/webpack').AngularWebpackPlugin;
+const rxjsOperators = require( 'rxjs/operators' );
 
 Encore
     .setOutputPath( 'public/shared_assets/build/web-guitar-pro-angularjs/' )
@@ -20,10 +21,21 @@ Encore
     .enableTypeScriptLoader()
     .addPlugin(new AngularCompilerPlugin({
         "tsConfigPath": './themes/WebGuitarPro_AngularJs/assets/js/Player/tsconfig.app.json',
-        "entryModule": './themes/WebGuitarPro_AngularJs/assets/js/Player/player.module',
-        "skipCodeGeneration": true,
-        "exclude": [],
+        "entryModule": './themes/WebGuitarPro_AngularJs/assets/js/Player/main.ts',
+        "exclude": ["**/*.spec.ts"],
     }))
+    
+    /*
+    .addLoader({
+        test: /\.scss$/,
+        loader: 'style-loader',
+    })
+    .addLoader({
+        test: /\.scss$/,
+        loader: 'css-loader',
+    })
+    */
+
     
     /**
      * Add Entries
@@ -55,7 +67,9 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('app', './themes/WebGuitarPro_AngularJs/assets/app.js')
+    
     .addEntry('tablature-player', './themes/WebGuitarPro_AngularJs/assets/js/Player/main.ts')
+    //.addEntry('tablature-player', './themes/WebGuitarPro_AngularJs/assets/js/Player/index.js')
     
     .addEntry('authentication', './themes/WebGuitarPro_AngularJs/assets/js/pages/authentication.js')
     .addEntry('tablatures', './themes/WebGuitarPro_AngularJs/assets/js/pages/tablatures.js')
@@ -74,7 +88,19 @@ Encore
 const config = Encore.getWebpackConfig();
 config.name = 'WebGuitarPro_AngularJs';
 config.resolve = {
-    extensions: ['.ts']
+    extensions: ['.ts', '.js']
 };
+
+
+/* */
+config.experiments = {
+    outputModule: true,
+};
+config.externalsType = 'module';
+config.externals = {
+    'rxjs/operators': rxjsOperators,
+};
+
+
 
 module.exports = config;

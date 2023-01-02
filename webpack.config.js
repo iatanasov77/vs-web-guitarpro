@@ -37,7 +37,8 @@ Encore
         css: '[name].css?[contenthash]',
         assets: '[name].[ext]?[hash:8]'
     })
-    .enableSingleRuntimeChunk()
+    //.enableSingleRuntimeChunk()
+    .disableSingleRuntimeChunk()
     .enableVersioning(Encore.isProduction())
     .enableSourceMaps( !Encore.isProduction() )
     
@@ -108,5 +109,5 @@ module.exports = [
     adminPanelConfig,
     WebGuitarPro_VueJs_Config,
     WebGuitarPro_ReactJs_Config,
-    //WebGuitarPro_AngularJs_Config,
+    WebGuitarPro_AngularJs_Config,
 ];

@@ -6,7 +6,8 @@ declare var $: any;
 @Component({
     selector: 'play-pause-button-item',
     templateUrl: './play-pause-button-item.component.html',
-    styleUrls: ['../player-controls.component.scss']
+    styleUrls: []
+    //styleUrls: ['../player-controls.component.scss']
 })
 export class PlayPauseButtonItemComponent implements OnInit
 {
