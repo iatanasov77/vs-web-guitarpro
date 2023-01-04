@@ -6,13 +6,14 @@
     "paths": {
         "tslib" : ["node_modules/tslib/tslib.d.ts"]
     },
-    "types": [],
+    "types": [
+        "node"
+    ],
     "typeRoots": [
       "node_modules/@types"
     ],
-   
     "allowJs": true,
-    "module": "es2020",
+    "module": "commonjs",
     "moduleResolution": "node",
     "jsx": "preserve"
   },
@@ -20,12 +21,12 @@
       "strictTemplates": true,
       "preserveWhitespaces": true
   },
-    
   "files": [
-    "main.ts"
+    "main.ts",
+    "polyfills.ts"
   ],
   "include": [
-    "./**/*"
+    "./**/*.d.ts"
   ],
   "exclude": [
     "node_modules",

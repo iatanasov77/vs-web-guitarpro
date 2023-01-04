@@ -1,9 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AlphaTabApi } from '@coderline/alphatab';
 
+import templateString from './song-position-item.component.html'
+
 @Component({
     selector: 'song-position-item',
-    templateUrl: './song-position-item.component.html',
+    
+    template: templateString || 'Template Not Loaded !!!',
+    //templateUrl: './song-position-item.component.html',
+    
     styleUrls: []
     //styleUrls: ['../player-controls.component.scss']
 })

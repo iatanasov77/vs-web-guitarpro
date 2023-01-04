@@ -1,11 +1,16 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AlphaTabApi } from '@coderline/alphatab';
 
+import templateString from './information-button-item.component.html'
+
 declare var $: any;
 
 @Component({
     selector: 'information-button-item',
-    templateUrl: './information-button-item.component.html',
+    
+    template: templateString || 'Template Not Loaded !!!',
+    //templateUrl: './information-button-item.component.html',
+    
     styleUrls: []
     //styleUrls: ['../player-controls.component.scss']
 })

@@ -1,11 +1,16 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AlphaTabApi } from '@coderline/alphatab';
 
+import templateString from './looping-button-item.component.html'
+
 declare var $: any;
 
 @Component({
     selector: 'looping-button-item',
-    templateUrl: './looping-button-item.component.html',
+    
+    template: templateString || 'Template Not Loaded !!!',
+    //templateUrl: './looping-button-item.component.html',
+    
     styleUrls: []
     //styleUrls: ['../player-controls.component.scss']
 })

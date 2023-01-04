@@ -1,33 +1,37 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
+
+import { alphatabApi } from '../alphatab'
+import templateString from './player.component.html'
 
 declare var $: any;
-
-const alphaTab  = require( "@coderline/alphatab" );
-/*
 declare global {
     interface Window {
-        alphaTab: any;
+        alphatabApi: any;
     }
 }
-*/
 
 @Component({
     selector: 'app-player',
-    templateUrl: './player.component.html',
+    
+    template: templateString || 'Template Not Loaded !!!',
+    //templateUrl: './player.component.html',
+    
     styleUrls: []
     //styleUrls: ['./player.component.scss']
 })
-export class PlayerComponent implements OnInit, OnDestroy
+export class PlayerComponent implements OnInit, AfterViewInit, OnDestroy
 {
     alphatabApi: any;
-    element: any;
     songDetails: any;
+    baseUrl: string;
+    tabFile: string;
 
     scoreLoaded: boolean = false;
     
     constructor()
     {
-        
+        this.baseUrl    = $( "#tablatureContainer" ).attr( 'data-base-url' );
+        this.tabFile    = $( "#tablatureContainer" ).attr( 'data-file' );
     }
     
     ngOnInit(): void
@@ -35,9 +39,13 @@ export class PlayerComponent implements OnInit, OnDestroy
         // Change <body> styling
         document.body.classList.add( 'tablature-player' );
         
-        this.element        = $( "#alphaTab" ).get( 0 );
         this.songDetails    = document.querySelector( '#song-details' );
-        
+        //this.alphatabInit();
+    }
+    
+    ngAfterViewInit(): void
+    {
+        //alert( $( "#alphaTab" ).attr( 'data-base-url' ) );
         this.alphatabInit();
     }
     
@@ -49,41 +57,8 @@ export class PlayerComponent implements OnInit, OnDestroy
     
     alphatabInit(): void
     {
-        //this.alphatabApi    = new window.alphaTab.AlphaTabApi( this.element, {
-        this.alphatabApi    = new alphaTab.AlphaTabApi( this.element, {
-        
-            core: {
-                logLevel: 'debug',
-                engine: 'html5',
-                tracks: 0,
-                fontDirectory: '/assets/alphatab/font/'
-            },
-            display: {
-                layoutMode: 'page',
-                staveProfile: 'scoretab'
-            },
-            notation: {
-                rhythmMode: 'showwithbars',
-                elements: {
-                    scoreTitle: false,
-                    scoreSubTitle: false,
-                    scoreArtist: false,
-                    scoreAlbum: false,
-                    scoreWords: false,
-                    scoreMusic: false,
-                    scoreWordsAndMusic: false,
-                    scoreCopyright: false,
-                    guitarTuning: true
-                }
-            },
-            player: {
-                enablePlayer: true,
-                enableUserInteraction: true,
-                enableCursor: true,
-                soundFont: '/assets/alphatab/soundfont/sonivox.sf2'
-            },
-            logging: 'debug',
-        });
+        this.alphatabApi    = alphatabApi();
+        //this.alphatabApi    = window.alphatabApi;
         
         this.alphatabApi.soundFontLoad.on( (e: any) => {
             console.log( 'soundFont Loading: Loaded(' + e.loaded + '), Total(' + e.total + ')' );

@@ -1,10 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+import templateString from './favorites-button-item.component.html'
+
 declare var $: any;
 
 @Component({
     selector: 'favorites-button-item',
-    templateUrl: './favorites-button-item.component.html',
+    
+    template: templateString || 'Template Not Loaded !!!',
+    //templateUrl: './favorites-button-item.component.html',
+    
     styleUrls: []
     //styleUrls: ['../player-controls.component.scss']
 })

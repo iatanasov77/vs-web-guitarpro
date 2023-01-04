@@ -1,2 +1,4 @@
+//require( './alphatab.js' );
+
+import './polyfills.ts';
 import './main.ts';
-//import { PlayerModule } from './tablature-player/player.module';

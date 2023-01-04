@@ -1,11 +1,16 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AlphaTabApi } from '@coderline/alphatab';
 
+import templateString from './metronome-button-item.component.html'
+
 declare var $: any;
 
 @Component({
     selector: 'metronome-button-item',
-    templateUrl: './metronome-button-item.component.html',
+    
+    template: templateString || 'Template Not Loaded !!!',
+    //templateUrl: './metronome-button-item.component.html',
+    
     styleUrls: []
     //styleUrls: ['../player-controls.component.scss']
 })

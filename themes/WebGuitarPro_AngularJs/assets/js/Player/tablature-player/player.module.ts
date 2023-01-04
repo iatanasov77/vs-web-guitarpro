@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { MatTooltipModule } from '@angular/material/tooltip';
-//import { Observable } from 'rxjs'
 
 import { PlayerComponent } from './player.component';
 import { PlayerControlsComponent } from './player-controls/player-controls.component';
@@ -19,10 +18,8 @@ import { PrintItemComponent } from './player-controls/print-item/print-item.comp
 import { LayoutItemComponent } from './player-controls/layout-item/layout-item.component';
 import { SpeedItemComponent } from './player-controls/speed-item/speed-item.component';
 
-
 import { TracksItemComponent } from './player-controls/tracks-item/tracks-item.component';
 import { NgxBootstrapSliderModule } from 'ngx-bootstrap-slider';
-
 
 @NgModule({
     declarations: [

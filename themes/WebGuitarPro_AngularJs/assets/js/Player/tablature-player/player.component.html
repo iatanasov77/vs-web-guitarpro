@@ -2,17 +2,6 @@
 <app-loader *ngIf="!scoreLoaded"></app-loader>
 -->
 
-<div id="tablaturePlayer" class="row" style="margin-top: 80px;">
-    <player-controls *ngIf="scoreLoaded == true"
-        [player]="alphatabApi"
-    ></player-controls>
-
-    <div id="tablatureWrapper">
-        <div id="song-details">
-            <h1 class="artist"></h1>
-            <h2 class="title"></h2>
-            <h3 class="album"></h3>
-        </div>
-        <div id="alphaTab"></div>
-    </div>
-</div>
+<player-controls *ngIf="scoreLoaded == true"
+    [player]="alphatabApi"
+></player-controls>
