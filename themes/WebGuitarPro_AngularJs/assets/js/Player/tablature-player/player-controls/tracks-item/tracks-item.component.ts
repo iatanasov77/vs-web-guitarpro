@@ -2,12 +2,18 @@ import { Component, Input, OnInit, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { AlphaTabApi } from '@coderline/alphatab';
 
+import templateString from './tracks-item.component.html'
+
 declare var $: any;
 
 @Component({
     selector: 'tracks-item',
-    templateUrl: './tracks-item.component.html',
-    styleUrls: ['../player-controls.component.scss']
+    
+    template: templateString || 'Template Not Loaded !!!',
+    //templateUrl: './tracks-item.component.html',
+    
+    styleUrls: []
+    //styleUrls: ['../player-controls.component.scss']
 })
 export class TracksItemComponent implements OnInit
 {

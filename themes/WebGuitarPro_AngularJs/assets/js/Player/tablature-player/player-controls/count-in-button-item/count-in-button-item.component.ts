@@ -1,12 +1,17 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AlphaTabApi } from '@coderline/alphatab';
 
+import templateString from './count-in-button-item.component.html'
+
 declare var $: any;
 
 @Component({
     selector: 'count-in-button-item',
-    templateUrl: './count-in-button-item.component.html',
-    styleUrls: ['../player-controls.component.scss']
+    
+    template: templateString || 'Template Not Loaded !!!',
+    //templateUrl: './count-in-button-item.component.html',
+    
+    styleUrls: []
 })
 export class CountInButtonItemComponent implements OnInit
 {

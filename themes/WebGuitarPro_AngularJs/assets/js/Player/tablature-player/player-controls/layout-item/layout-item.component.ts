@@ -1,12 +1,18 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AlphaTabApi, LayoutMode, StaveProfile } from '@coderline/alphatab';
 
+import templateString from './layout-item.component.html'
+
 declare var $: any;
 
 @Component({
     selector: 'layout-item',
-    templateUrl: './layout-item.component.html',
-    styleUrls: ['../player-controls.component.scss']
+    
+    template: templateString || 'Template Not Loaded !!!',
+    //templateUrl: './layout-item.component.html',
+    
+    styleUrls: []
+    //styleUrls: ['../player-controls.component.scss']
 })
 export class LayoutItemComponent implements OnInit
 {
