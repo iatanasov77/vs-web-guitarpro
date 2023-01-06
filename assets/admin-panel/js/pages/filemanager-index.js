@@ -1,6 +1,8 @@
 require( '../includes/resource-delete.js' );
 //require ( 'jquery-duplicate-fields/jquery.duplicateFields.js' );
 
+const bootstrap = require( 'bootstrap' );
+
 $( function()
 {
     $( '.btnUploadFiles' ).on( 'click', function()
@@ -11,7 +13,12 @@ $( function()
             success: function( response )
             {
                 $( '#cardUploadFile > div.card-body' ).html( response );
-                $( '#modalUploadFile' ).modal( 'toggle' );
+                
+                /** Bootstrap 5 Modal Toggle */
+                const myModal = new bootstrap.Modal('#modalUploadFile', {
+                    keyboard: false
+                });
+                myModal.show( $( '#modalUploadFile' ).get( 0 ) );
             },
             error: function()
             {

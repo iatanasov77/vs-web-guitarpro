@@ -1,16 +1,9 @@
 //require ( '../../css/custom.css' );
 //require ( 'jquery-duplicate-fields/jquery.duplicateFields.js' );
+const bootstrap = require( 'bootstrap' );
 
 $( function ()
 {
-
-/*
-    $( '.attributesContainer' ).duplicateFields({
-        btnRemoveSelector: ".btnRemoveField",
-        btnAddSelector:    ".btnAddField"
-    });
-*/
-
     $( '.btnEdit' ).on( 'click', function()
     {
 		$.ajax({
@@ -19,8 +12,12 @@ $( function ()
 			success: function( response )
 			{
 				$( '#applicationEdit > div.card-body' ).html( response );
-				$( '#application-edit-modal' ).modal( 'toggle' );
-				$( '#btnEditInstallManual').show();
+				
+				/** Bootstrap 5 Modal Toggle */
+				const myModal = new bootstrap.Modal('#application-edit-modal', {
+                    keyboard: false
+                });
+                myModal.show( $( '#application-edit-modal' ).get( 0 ) );
 			},
 			error: function()
 			{
@@ -39,8 +36,12 @@ $( function ()
 			{
 				$( '#modalApplicationSettingsTitle' ).text( applicationTitle );
 				$( '#applicationSettings > div.card-body' ).html( response );
-				$( '#application-settings-modal' ).modal( 'toggle' );
-				$( '#btnEditInstallManual').show();
+				
+				/** Bootstrap 5 Modal Toggle */
+                const myModal = new bootstrap.Modal('#application-settings-modal', {
+                    keyboard: false
+                });
+                myModal.show( $( '#application-edit-modal' ).get( 0 ) );
 			},
 			error: function()
 			{

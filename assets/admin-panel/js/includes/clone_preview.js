@@ -1,12 +1,19 @@
+const bootstrap = require( 'bootstrap' );
+
 $( function()
 {
 	//////////////////////
 	//	Clone Page
 	//////////////////////
 	$( '.pageClone' ).on( 'click', function ( e )
-	{alert('EHO' );
+	{
 		$( '#formClone' ).attr( 'action', $( this ).attr( 'data-url' ) );
-		$( '#page-clone-modal' ).modal( 'toggle' );
+		
+		/** Bootstrap 5 Modal Toggle */
+        const myModal = new bootstrap.Modal('#page-clone-modal', {
+            keyboard: false
+        });
+        myModal.show( $( '#page-clone-modal' ).get( 0 ) );
 	});
 	
 	$( '#btnSaveFormClone' ).on( 'click', function ( e )
@@ -42,7 +49,12 @@ $( function()
 	$( '.pagePreview' ).on( 'click', function ( e )
 	{
 		$( '#preview_page_form_pagePreviewUrl' ).val( $( this ).attr( 'data-url' ) )
-		$( '#page-preview-modal' ).modal( 'toggle' );
+		
+		/** Bootstrap 5 Modal Toggle */
+        const myModal = new bootstrap.Modal('#page-preview-modal', {
+            keyboard: false
+        });
+        myModal.show( $( '#page-preview-modal' ).get( 0 ) );
 	});
 	
 	$( '#btnSaveFormPreview' ).on( 'click', function ( e )
@@ -54,8 +66,13 @@ $( function()
 	{
 		e.stopPropagation();
 		e.preventDefault();
-		$( '#page-preview-modal' ).modal( 'toggle' );
 		
+		/** Bootstrap 5 Modal Toggle */
+        const myModal = new bootstrap.Modal('#page-preview-modal', {
+            keyboard: false
+        });
+        myModal.show( $( '#page-preview-modal' ).get( 0 ) );
+        
 		var layout		= $( '#preview_page_form_layout' ).val();
 		var layoutParts	= layout.split( "/" );
 		switch ( layoutParts[0] ) {

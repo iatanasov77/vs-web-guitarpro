@@ -69,17 +69,17 @@ jQuery(document).ready(function($) {
     // ============================================================== 
     // tooltip
     // ============================================================== 
-    if ($('[data-toggle="tooltip"]').length) {
+    if ($('[data-bs-toggle="tooltip"]').length) {
             
-            $('[data-toggle="tooltip"]').tooltip()
+            $('[data-bs-toggle="tooltip"]').tooltip()
 
         }
 
      // ============================================================== 
     // popover
     // ============================================================== 
-       if ($('[data-toggle="popover"]').length) {
-            $('[data-toggle="popover"]').popover()
+       if ($('[data-bs-toggle="popover"]').length) {
+            $('[data-bs-toggle="popover"]').popover()
 
     }
      // ============================================================== 

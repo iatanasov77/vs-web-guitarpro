@@ -3,6 +3,9 @@ var Encore = require( '@symfony/webpack-encore' );
 /**
  *  AdminPanel Default Theme
  */
+ 
+ 
+/*
 Encore
     .setOutputPath( 'public/admin-panel/build/default/' )
     .setPublicPath( '/build/default/' )
@@ -76,8 +79,12 @@ Encore
     .addEntry( 'js/gateway-config', './assets/admin-panel/js/payment_pages/gateway-config.js' )
 ;
 
-const adminPanelConfig = Encore.getWebpackConfig();
-adminPanelConfig.name = 'adminPanel';
+const adminPanelConfig  = Encore.getWebpackConfig();
+adminPanelConfig.name   = 'adminPanel';
+*/
+
+const themePath         = './vendor/vankosoft/application/src/Vankosoft/ApplicationBundle/Resources/themes/default';
+const adminPanelConfig  = require( themePath + '/webpack.config' );
 
 //=================================================================================================
 
