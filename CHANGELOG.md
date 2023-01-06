@@ -1,3 +1,14 @@
+2.1.0	|	Release date: **06.01.2023**
+============================================
+* New Features and Improvements:
+  - Util Module is Not Needed In Webpack 5
+  - Many Many Fixes and Improvements.
+  - Gitignore Files Added By Flex
+  - The Angular Theme is Approximately Done.
+  - Add Assets Relations for Angular Theme.
+  - Use AdminPanel Assets From Vankosoft ApplicationBundle.
+
+
 2.0.2	|	Release date: **24.12.2022**
 ============================================
 * New Features:

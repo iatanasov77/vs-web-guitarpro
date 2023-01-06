@@ -1,12 +1,18 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AlphaTabApi } from '@coderline/alphatab';
 
+import templateString from './speed-item.component.html'
+
 declare var $: any;
 
 @Component({
     selector: 'speed-item',
-    templateUrl: './speed-item.component.html',
-    styleUrls: ['../player-controls.component.scss']
+    
+    template: templateString || 'Template Not Loaded !!!',
+    //templateUrl: './speed-item.component.html',
+    
+    styleUrls: []
+    //styleUrls: ['../player-controls.component.scss']
 })
 export class SpeedItemComponent implements OnInit
 {

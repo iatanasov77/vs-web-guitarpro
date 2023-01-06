@@ -62,7 +62,7 @@ const PlayerControls = ( {player, logged} ) => {
     }
 
     function favorite() {         
-        $.get( $( '#add-favorite-url' ).data( 'url' ), function( data ) {
+        $.get( $( '#alphaTab' ).attr( 'data-add-favorite-url' ), function( data ) {
             //alert('This Tab is Added To Favorite List !!!');
             console.log( 'This Tab is Added To Favorite List !!!' );
             document.location.reload();

@@ -15,7 +15,6 @@ var $ = require( 'jquery' );
 window.$ = window.jQuery = $;
 
 import 'popper.js/dist/popper.js';
-var util = require( 'util' ); // https://www.npmjs.com/package/util
 import 'bootstrap';
 
 import './js/login.js';
@@ -24,7 +23,6 @@ import './js/topbar.js';
 require( 'jquery-easyui/css/easyui.css' );
 require( 'jquery-easyui/js/jquery.easyui.min.js' );
 // Need copy of: jquery-easyui/images/*
-
 
 // Showing the Selected Filename in File Inputs
 $( '.custom-file-input' ).on( 'change', function( event )

@@ -1,5 +1,7 @@
 require( '../includes/resource-delete.js' );
 
+const bootstrap = require( 'bootstrap' );
+
 $( function()
 {
     $( '.btnUserInfo' ).on( 'click', function()
@@ -10,7 +12,12 @@ $( function()
             success: function( response )
             {
                 $( '#cardUserInfo > div.card-body' ).html( response );
-                $( '#modalUserInfo' ).modal( 'toggle' );
+                
+                /** Bootstrap 5 Modal Toggle */
+                const myModal = new bootstrap.Modal('#modalUserInfo', {
+                    keyboard: false
+                });
+                myModal.show( $( '#modalUserInfo' ).get( 0 ) );
             },
             error: function()
             {

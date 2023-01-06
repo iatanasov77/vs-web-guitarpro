@@ -8,6 +8,8 @@ require( 'ckeditor' );
 import { VsPath } from '../includes/fos_js_routes.js';
 import { VsFormSubmit } from '../includes/vs_form.js';
 
+const bootstrap = require( 'bootstrap' );
+
 $( function()
 {
     $( '#tblTocPages' ).simpleTreeTable({
@@ -31,8 +33,12 @@ $( function()
 			success: function( response )
 			{
 				$( '#modalBodyTocPage > div.card-body' ).html( response );
-				$( '#multipageTocPageModal' ).modal( 'toggle' );
-				//$( '#btnEditInstallManual').show();
+				
+				/** Bootstrap 5 Modal Toggle */
+                const myModal = new bootstrap.Modal('#multipageTocPageModal', {
+                    keyboard: false
+                });
+                myModal.show( $( '#multipageTocPageModal' ).get( 0 ) );
 			},
 			error: function()
 			{

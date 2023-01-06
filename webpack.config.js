@@ -3,6 +3,9 @@ var Encore = require( '@symfony/webpack-encore' );
 /**
  *  AdminPanel Default Theme
  */
+ 
+ 
+/*
 Encore
     .setOutputPath( 'public/admin-panel/build/default/' )
     .setPublicPath( '/build/default/' )
@@ -37,7 +40,8 @@ Encore
         css: '[name].css?[contenthash]',
         assets: '[name].[ext]?[hash:8]'
     })
-    .enableSingleRuntimeChunk()
+    //.enableSingleRuntimeChunk()
+    .disableSingleRuntimeChunk()
     .enableVersioning(Encore.isProduction())
     .enableSourceMaps( !Encore.isProduction() )
     
@@ -75,8 +79,12 @@ Encore
     .addEntry( 'js/gateway-config', './assets/admin-panel/js/payment_pages/gateway-config.js' )
 ;
 
-const adminPanelConfig = Encore.getWebpackConfig();
-adminPanelConfig.name = 'adminPanel';
+const adminPanelConfig  = Encore.getWebpackConfig();
+adminPanelConfig.name   = 'adminPanel';
+*/
+
+const themePath         = './vendor/vankosoft/application/src/Vankosoft/ApplicationBundle/Resources/themes/default';
+const adminPanelConfig  = require( themePath + '/webpack.config' );
 
 //=================================================================================================
 
@@ -108,5 +116,5 @@ module.exports = [
     adminPanelConfig,
     WebGuitarPro_VueJs_Config,
     WebGuitarPro_ReactJs_Config,
-    //WebGuitarPro_AngularJs_Config,
+    WebGuitarPro_AngularJs_Config,
 ];
