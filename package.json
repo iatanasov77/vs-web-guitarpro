@@ -20,7 +20,7 @@
         "@coderline/alphatab": "^1.2.2",
         "@fortawesome/fontawesome-free": "^5.12.1",
         "@kanety/jquery-simple-tree-table": "^0.5.0",
-        "@popperjs/core": "^2.10.1",
+        "@popperjs/core": "^2.11.6",
         "bazinga-translator": "^5.0.0",
         "bootstrap": "^5.2.3",
         "bootstrap-sass": "^3.4.1",

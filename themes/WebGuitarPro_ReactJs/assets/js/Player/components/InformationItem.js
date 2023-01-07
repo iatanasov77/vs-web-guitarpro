@@ -21,7 +21,7 @@ const InformationItem = ( {player} ) => {
   
     return (
         <div className="player-controls__item">
-            <svg className="icon" data-toggle="modal" data-target="#tab-information-modal" onClick={handleClick}>
+            <svg className="icon" data-bs-toggle="modal" data-bs-target="#tab-information-modal" onClick={handleClick}>
                 <use xlinkHref="#icon-about"></use>
             </svg>
             

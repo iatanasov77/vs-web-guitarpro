@@ -1,6 +1,6 @@
 <template>
     <div class="player-controls__item">
-        <svg class="icon dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+        <svg class="icon dropdown-toggle" data-bs-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
             <use xlink:href="#icon-layout"></use>
         </svg>
         <div class="dropdown-menu dropdown-menu-right dropright dropup dropdown-layers player-menu-right">

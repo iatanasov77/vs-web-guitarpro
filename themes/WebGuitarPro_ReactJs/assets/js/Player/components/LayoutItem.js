@@ -101,7 +101,7 @@ const LayoutItem = ( {player} ) => {
     
     return (
         <div className="player-controls__item">
-            <svg className="icon dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+            <svg className="icon dropdown-toggle" data-bs-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
                 <use xlinkHref="#icon-layout"></use>
             </svg>
             <div className="dropdown-menu dropdown-menu-right dropright dropup dropdown-layers player-menu-right">

@@ -8,10 +8,10 @@
         
     {% if app.user and app_environment == 'dev' %}
         <div class="collapse navbar-collapse" id="navbarPaidServices">
-            <ul class="nav navbar-nav ml-auto">
+            <ul class="nav navbar-nav ms-auto">
                 <li class="nav-item dropdown btn-group">
                     <a class="nav-link dropdown-toggle"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                         href="javascript:void(0);"
                     >
                         {{ 'vs_wgp.template.menu.extend_your_tablatures_store' | trans( {},'WebGuitarPro' ) }}
@@ -35,11 +35,11 @@
     {% endif %}
         
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="nav navbar-nav ml-auto">
+            <ul class="nav navbar-nav ms-auto">
             
             {% if app_environment == 'dev' %}
                 <li class="nav-item dropdown btn-group">
-                    <a class="nav-link dropdown-toggle" id="btnDemoPages" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Demo Pages</a>
+                    <a class="nav-link dropdown-toggle" id="btnDemoPages" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Demo Pages</a>
                     <div class="dropdown-menu dropdown-menu-right scrollable-menu" aria-labelledby="btnDemoPages">
                         <!-- Demo Pages list -->
                         <div class="sm-main-nav" >
@@ -82,7 +82,7 @@
                 
                 <!--  Create Tablature Category  -->
                 <li class="nav-item dropdown btn-group">
-                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{ 'vs_wgp.template.menu.create_tablature_category' | trans( {},'WebGuitarPro' ) }}
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
@@ -93,7 +93,7 @@
                 
                 <!--  Submit Tablature  -->
                 <li class="nav-item dropdown btn-group">
-                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{ 'vs_wgp.template.menu.create_tablature' | trans( {},'WebGuitarPro' ) }}
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
@@ -111,7 +111,7 @@
                 
                 <!--  User Profile  -->
                 <li class="nav-item dropdown btn-group">
-                    <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{ 'vs_wgp.template.menu.profile' | trans( {},'WebGuitarPro' ) }}
                     </a>
                     <ul class="dropdown-menu dropdown-menu-right">
@@ -122,7 +122,7 @@
                                 </a>
                             </li>
                             <li class="dropdown-submenu dropleft dropdown keepopen language-submenu">
-                                <a class="dropdown-item dropdown-toggle keepopen language-submenu" data-toggle="dropdown">
+                                <a class="dropdown-item dropdown-toggle keepopen language-submenu" data-bs-toggle="dropdown">
                                     <i class="fas fa-language mr-2"></i>{{ 'vs_wgp.template.menu.language' | trans( {},'WebGuitarPro' ) }}
                                 </a>
                                 
@@ -172,7 +172,7 @@
                 
                 <!--  User Login  -->
                 <li class="nav-item dropdown btn-group">
-                    <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{ 'vs_wgp.template.menu.login' | trans( {},'WebGuitarPro' ) }}
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-login-form">
