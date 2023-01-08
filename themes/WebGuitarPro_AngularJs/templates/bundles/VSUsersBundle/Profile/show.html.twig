@@ -24,7 +24,7 @@
                     {% if hasSubscriptionsExtension %}
                         <li class="nav-item">
                             <a class="nav-link" id="subscriptions-tab" data-bs-toggle="tab" href="#subscriptions" role="tab" aria-controls="subscription" aria-selected="false">
-                                Subscriptions
+                                {{ 'vs_users.template.profile_show_tab_subscriptions' | trans( {},'VSUsersBundle' ) }}
                             </a>
                         </li>
                     {% endif %}
@@ -37,7 +37,6 @@
                     </ul>
             		<div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="details" role="tabpanel" aria-labelledby="details-tab">
-                            {# #}
                             {% include '@VSUsers/Profile/tab/_profile-edit-form.html.twig' %}
                         </div>
                         <div class="tab-pane fade" id="change_password" role="tabpanel" aria-labelledby="change_password-tab">
@@ -60,7 +59,6 @@
     </div>
 {% endblock content %}
 
-{# #}
 {% block stylesheets %} 
     {{ parent() }}
     {{ encore_entry_link_tags( 'js/profile', null, 'WebGuitarPro_AngularJs' ) }}
