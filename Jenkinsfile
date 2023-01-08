@@ -2,6 +2,7 @@
 
 node ( label: 'php-host' ) {
     String[] environments       = ["production", "staging"]
+    def HOST_PREFIX             = 'guitarpro-'
     def APP_HOST                = 'guitarpro.vankosoft.org'
     def BUILD_ENVIRONMENT
     def BRANCH_NAME
@@ -52,7 +53,7 @@ node ( label: 'php-host' ) {
                 break;
             default:
                 DB_BACKUP       = false
-                APP_HOST        = "guitarpro-${BUILD_ENVIRONMENT}.vankosoft.org"  
+                APP_HOST        = "${HOST_PREFIX}${BUILD_ENVIRONMENT}.vankosoft.org"  
                 
                 def branches    = vankosoftJob.getGitBranches( GIT_REPO_WITH_CRED )
                 
