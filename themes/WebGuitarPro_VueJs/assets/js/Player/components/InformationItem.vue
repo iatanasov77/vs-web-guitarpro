@@ -1,6 +1,6 @@
 <template>    
     <div class="player-controls__item">
-        <svg class="icon" data-toggle="modal" data-target="#tab-information-modal">
+        <svg class="icon" data-bs-toggle="modal" data-bs-target="#tab-information-modal">
             <use xlink:href="#icon-about"></use>
         </svg>
     </div>

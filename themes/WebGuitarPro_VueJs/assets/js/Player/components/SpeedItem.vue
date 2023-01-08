@@ -1,6 +1,6 @@
 <template>    
     <div class="player-controls__item">
-        <svg class="icon dropdown-toggle player-button" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+        <svg class="icon dropdown-toggle player-button" data-bs-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
             <use xlink:href="#speed-selector"></use>
         </svg>
         <div class="dropdown-menu dropdown-menu-right player-menu-right">

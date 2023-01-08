@@ -1,3 +1,11 @@
+2.1.1	|	Release date: **08.01.2023**
+============================================
+* Bug-Fixes and Improvements:
+  - Remove AdminPanel Assets From Project. Already Used From ApplicationBundle.
+  - Fix All Themes About Bootstrap 5
+  - Improve and Fix UsersBundle Templates.
+
+
 2.1.0	|	Release date: **06.01.2023**
 ============================================
 * New Features and Improvements:

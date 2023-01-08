@@ -11,26 +11,26 @@
         		<div class="tab-regular">
                     <ul class="nav nav-tabs " id="myTab" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" id="details-tab" data-toggle="tab" href="#details" role="tab" aria-controls="details" aria-selected="true">
+                            <a class="nav-link active" id="details-tab" data-bs-toggle="tab" href="#details" role="tab" aria-controls="details" aria-selected="true">
                             	{{ 'vs_users.template.profile_show_tab_details' | trans( {},'VSUsersBundle' ) }}
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="change_password-tab" data-toggle="tab" href="#change_password" role="tab" aria-controls="change_password" aria-selected="false">
+                            <a class="nav-link" id="change_password-tab" data-bs-toggle="tab" href="#change_password" role="tab" aria-controls="change_password" aria-selected="false">
                             	{{ 'vs_users.template.profile_show_tab_change_password' | trans( {},'VSUsersBundle' ) }}
                             </a>
                         </li>
                         
                     {% if hasSubscriptionsExtension %}
                         <li class="nav-item">
-                            <a class="nav-link" id="subscriptions-tab" data-toggle="tab" href="#subscriptions" role="tab" aria-controls="subscription" aria-selected="false">
+                            <a class="nav-link" id="subscriptions-tab" data-bs-toggle="tab" href="#subscriptions" role="tab" aria-controls="subscription" aria-selected="false">
                                 Subscriptions
                             </a>
                         </li>
                     {% endif %}
                         
                         <li class="nav-item">
-                            <a class="nav-link" id="activity-tab" data-toggle="tab" href="#activity" role="tab" aria-controls="activity-tab" aria-selected="false">
+                            <a class="nav-link" id="activity-tab" data-bs-toggle="tab" href="#activity" role="tab" aria-controls="activity-tab" aria-selected="false">
                             	{{ 'vs_users.template.profile_show_tab_activity' | trans( {},'VSUsersBundle' ) }}
                             </a>
                         </li>

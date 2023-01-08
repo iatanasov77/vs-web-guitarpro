@@ -33,7 +33,7 @@ const SpeedItem = ( {player} ) => {
     
     return (
         <div className="player-controls__item">
-            <svg className="icon dropdown-toggle player-button" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+            <svg className="icon dropdown-toggle player-button" data-bs-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
                 <use xlinkHref="#speed-selector"></use>
             </svg>
             <div className="dropdown-menu dropdown-menu-right player-menu-right">
