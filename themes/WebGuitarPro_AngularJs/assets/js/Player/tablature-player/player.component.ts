@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { alphatabApi } from '../alphatab'
 import templateString from './player.component.html'
+import cssString from './player.component.scss'
 
 declare var $: any;
 
@@ -9,10 +10,7 @@ declare var $: any;
     selector: 'app-player',
     
     template: templateString || 'Template Not Loaded !!!',
-    //templateUrl: './player.component.html',
-    
-    styleUrls: []
-    //styleUrls: ['./player.component.scss']
+    styles: [cssString || 'Template Not Loaded !!!',]
 })
 export class PlayerComponent implements OnInit, OnDestroy
 {

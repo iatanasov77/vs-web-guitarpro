@@ -29,10 +29,13 @@ Encore
         use: 'raw-loader',
     })
     
-    /*
+    /* 
     .addLoader({
         test: /\.scss$/,
         loader: 'css-loader',
+        options: {
+            esModule: false,
+        }
     })
     */
 
