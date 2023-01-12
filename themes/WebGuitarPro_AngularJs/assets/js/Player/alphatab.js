@@ -1,7 +1,8 @@
 /**
  * https://alphatab.net/docs/guides/nodejs/
  */
-const alphaTab      = require( "@coderline/alphatab" );
+import * as alphaTab from '@coderline/alphatab';
+//const alphaTab      = require( "@coderline/alphatab" );
 const baseUrl       = $( "#tablatureContainer" ).attr( 'data-base-url' );
     
 const element       = $( "#alphaTab" ).get( 0 );

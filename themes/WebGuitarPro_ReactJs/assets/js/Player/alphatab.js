@@ -1,7 +1,8 @@
 /**
  * https://alphatab.net/docs/guides/nodejs/
  */
-const alphaTab      = require( "@coderline/alphatab" );
+import * as alphaTab from '@coderline/alphatab';
+//const alphaTab      = require( "@coderline/alphatab" );
 const element       = $( "#alphaTab" ).get( 0 );
 const songDetails   = document.querySelector( '#song-details' );
 
