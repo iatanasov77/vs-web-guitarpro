@@ -4,7 +4,7 @@
                 https://www.alphatab.net/docs/reference/api/changetracksolo/
     -->
     <div class="player-controls__item">
-        <svg class="icon dropdown-toggle" data-bs-toggle="dropdown" data-bs-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+        <svg class="icon dropdown-toggle" data-bs-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
             <use xlink:href="#icon-guitar"></use>
         </svg>
         <div class="dropdown-menu dropdown-menu-right player-menu-right" role="menu" aria-labelledby="dLabel">

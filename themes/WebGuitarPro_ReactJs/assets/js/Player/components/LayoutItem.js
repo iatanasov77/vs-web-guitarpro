@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-const alphaTab  = require( "@coderline/alphatab" );
+import * as alphaTab from '@coderline/alphatab';
+//const alphaTab  = require( "@coderline/alphatab" );
 
 const LayoutItem = ( {player} ) => {
 

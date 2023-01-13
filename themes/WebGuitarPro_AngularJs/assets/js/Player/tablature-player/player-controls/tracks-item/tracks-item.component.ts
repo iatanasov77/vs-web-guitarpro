@@ -2,7 +2,11 @@ import { Component, Input, OnInit, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { AlphaTabApi } from '@coderline/alphatab';
 
+import Slider from 'bootstrap-slider';
+(window as any).Slider = Slider;
+
 import templateString from './tracks-item.component.html'
+import cssString from './tracks-item.component.scss'
 
 declare var $: any;
 
@@ -10,10 +14,7 @@ declare var $: any;
     selector: 'tracks-item',
     
     template: templateString || 'Template Not Loaded !!!',
-    //templateUrl: './tracks-item.component.html',
-    
-    styleUrls: []
-    //styleUrls: ['../player-controls.component.scss']
+    styles: [cssString || 'Template Not Loaded !!!',]
 })
 export class TracksItemComponent implements OnInit
 {

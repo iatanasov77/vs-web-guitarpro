@@ -50,7 +50,8 @@ parameters:
     vs_application.taxon_repository_throw_exception: false
     
     vs_wgp.tablature-categories.taxonomy_code: tablature-categories
-
+    vs_wgp.alphatab.use_cdn: 'true'
+    
 services:
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.

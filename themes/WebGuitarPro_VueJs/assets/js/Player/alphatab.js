@@ -1,7 +1,11 @@
-/**
- * https://alphatab.net/docs/guides/nodejs/
- */
-const alphaTab      = require( "@coderline/alphatab" );
+//import * as alphaTab from '@coderline/alphatab';
+let alphaTab      = require( "@coderline/alphatab" );
+
+const useCdn    = $( "#alphaTab" ).attr( 'data-use-cdn' ) == 'true' ? true : false;
+if ( useCdn ) {
+    alphaTab    = window.alphaTab;
+}
+
 const element       = $( "#alphaTab" ).get( 0 );
 const songDetails   = document.querySelector( '#song-details' );
 
@@ -37,11 +41,13 @@ var api             = new alphaTab.AlphaTabApi( element, {
     },
     logging: 'debug',
 });
+
 api.scoreLoaded.on( score => {
     songDetails.querySelector( '.artist' ).innerText    = score.artist;
     songDetails.querySelector( '.title' ).innerText     = score.title;
     songDetails.querySelector( '.album' ).innerText     = score.album;
     
-})
+});
+
 window.api = global.api = api;
 

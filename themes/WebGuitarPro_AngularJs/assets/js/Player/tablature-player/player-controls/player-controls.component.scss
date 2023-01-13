@@ -4,6 +4,7 @@
     min-width: 250px;
     max-width: 250px;
     transition: all 0.3s;
+    margin-left: 10px;
 }
 
 #sidebar.active {
@@ -86,7 +87,7 @@
 .player-menu-right {
     right: auto !important;
     left: 55px !important;
-    top: -15px !important;
+    top: -60px !important;
     background-color: inherit !important;
 }
 
@@ -185,4 +186,12 @@ div#layoutSelector ul li.active {
 
 #trackList div.track:hover {
     background-color: #eaeaea !important;
+}
+
+.B2925c {
+    font-family: Helvetica Neue Condenced Bold,Arial,sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    font-size: 11px;
+    transition: fill .1s ease;
 }

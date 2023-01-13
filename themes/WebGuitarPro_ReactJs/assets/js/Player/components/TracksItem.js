@@ -146,7 +146,7 @@ const TracksItem = ( {player} ) => {
     return (
         
         <div className="player-controls__item">
-            <svg className="icon dropdown-toggle" data-bs-toggle="dropdown" data-bs-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+            <svg className="icon dropdown-toggle" data-bs-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
                 <use xlinkHref='#icon-guitar' />
             </svg>
             <div className="dropdown-menu dropdown-menu-right player-menu-right" role="menu" aria-labelledby="dLabel">

@@ -1,38 +1,25 @@
-import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { alphatabApi } from '../alphatab'
 import templateString from './player.component.html'
+import cssString from './player.component.scss'
 
 declare var $: any;
-declare global {
-    interface Window {
-        alphatabApi: any;
-    }
-}
 
 @Component({
     selector: 'app-player',
     
     template: templateString || 'Template Not Loaded !!!',
-    //templateUrl: './player.component.html',
-    
-    styleUrls: []
-    //styleUrls: ['./player.component.scss']
+    styles: [cssString || 'Template Not Loaded !!!',]
 })
-export class PlayerComponent implements OnInit, AfterViewInit, OnDestroy
+export class PlayerComponent implements OnInit, OnDestroy
 {
     alphatabApi: any;
     songDetails: any;
-    baseUrl: string;
-    tabFile: string;
 
     scoreLoaded: boolean = false;
     
-    constructor()
-    {
-        this.baseUrl    = $( "#tablatureContainer" ).attr( 'data-base-url' );
-        this.tabFile    = $( "#tablatureContainer" ).attr( 'data-file' );
-    }
+    constructor() { }
     
     ngOnInit(): void
     {
@@ -40,12 +27,6 @@ export class PlayerComponent implements OnInit, AfterViewInit, OnDestroy
         document.body.classList.add( 'tablature-player' );
         
         this.songDetails    = document.querySelector( '#song-details' );
-        //this.alphatabInit();
-    }
-    
-    ngAfterViewInit(): void
-    {
-        //alert( $( "#alphaTab" ).attr( 'data-base-url' ) );
         this.alphatabInit();
     }
     
@@ -58,7 +39,6 @@ export class PlayerComponent implements OnInit, AfterViewInit, OnDestroy
     alphatabInit(): void
     {
         this.alphatabApi    = alphatabApi();
-        //this.alphatabApi    = window.alphatabApi;
         
         this.alphatabApi.soundFontLoad.on( (e: any) => {
             console.log( 'soundFont Loading: Loaded(' + e.loaded + '), Total(' + e.total + ')' );

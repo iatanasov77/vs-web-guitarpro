@@ -1,22 +1,24 @@
-/**
- * https://alphatab.net/docs/guides/nodejs/
- */
-const alphaTab      = require( "@coderline/alphatab" );
-const baseUrl       = $( "#tablatureContainer" ).attr( 'data-base-url' );
-
+declare global {
+    interface Window {
+        alphaTab: any;
+    }
+}
 declare var $: any;
+
+//import * as alphaTab from '@coderline/alphatab';
+let alphaTab      = require( "@coderline/alphatab" );
+
+const baseUrl   = $( "#tablatureContainer" ).attr( 'data-base-url' );
+const useCdn    = $( "#alphaTab" ).attr( 'data-use-cdn' ) == 'true' ? true : false;
+if ( useCdn ) {
+    alphaTab    = window.alphaTab;
+}
 
 export function alphatabApi(): any
 {
-    //alert( baseUrl );
-    //alert( $( "#alphaTab" ).attr( 'data-base-url' ) );
-    
     const element       = $( "#alphaTab" ).get( 0 );
     
-    var alphatabApi     = new alphaTab.AlphaTabApi( element, {
-    
-        //file: $( "#tablatureContainer" ).attr( 'data-file' ),
-        
+    let alphatabApi     = new alphaTab.AlphaTabApi( element, {
         core: {
             logLevel: 'debug',
             engine: 'html5',
@@ -51,5 +53,3 @@ export function alphatabApi(): any
     
     return alphatabApi;
 }
-//window.alphatabApi = global.alphatabApi = alphatabApi;
-

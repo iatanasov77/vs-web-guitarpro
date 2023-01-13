@@ -9,9 +9,6 @@ declare var $: any;
     selector: 'count-in-button-item',
     
     template: templateString || 'Template Not Loaded !!!',
-    //templateUrl: './count-in-button-item.component.html',
-    
-    styleUrls: []
 })
 export class CountInButtonItemComponent implements OnInit
 {

@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { AlphaTabApi } from '@coderline/alphatab';
 
 import templateString from './player-controls.component.html'
+import cssString from './player-controls.component.scss'
 
 declare var $: any;
 
@@ -9,10 +10,7 @@ declare var $: any;
     selector: 'player-controls',
     
     template: templateString || 'Template Not Loaded !!!',
-    //templateUrl: './player-controls.component.html',
-    
-    styleUrls: []
-    //styleUrls: ['./player-controls.component.scss']
+    styles: [cssString || 'Template Not Loaded !!!',]
 })
 export class PlayerControlsComponent implements OnInit
 {
