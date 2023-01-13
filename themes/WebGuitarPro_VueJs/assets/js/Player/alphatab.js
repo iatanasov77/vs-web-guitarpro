@@ -41,6 +41,7 @@ var api             = new alphaTab.AlphaTabApi( element, {
     },
     logging: 'debug',
 });
+
 api.scoreLoaded.on( score => {
     songDetails.querySelector( '.artist' ).innerText    = score.artist;
     songDetails.querySelector( '.title' ).innerText     = score.title;
