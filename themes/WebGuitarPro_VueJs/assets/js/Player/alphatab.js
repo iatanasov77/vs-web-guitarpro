@@ -47,6 +47,7 @@ api.scoreLoaded.on( score => {
     songDetails.querySelector( '.title' ).innerText     = score.title;
     songDetails.querySelector( '.album' ).innerText     = score.album;
     
-})
+});
+
 window.api = global.api = api;
 
