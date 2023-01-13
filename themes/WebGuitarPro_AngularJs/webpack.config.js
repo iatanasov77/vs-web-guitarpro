@@ -1,4 +1,5 @@
-const Encore = require('@symfony/webpack-encore');
+const Encore    = require('@symfony/webpack-encore');
+const webpack   = require('webpack');
 const AngularCompilerPlugin = require('@ngtools/webpack').AngularWebpackPlugin;
 
 Encore
@@ -89,8 +90,15 @@ Encore
 
 const config = Encore.getWebpackConfig();
 config.name = 'WebGuitarPro_AngularJs';
+
 config.resolve = {
     extensions: ['.ts', '.js']
 };
+
+config.plugins.push(
+    new webpack.DefinePlugin({
+        PRODUCTION: JSON.stringify( Encore.isProduction() ),
+    })
+);
 
 module.exports = config;
