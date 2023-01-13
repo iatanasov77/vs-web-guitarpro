@@ -1,3 +1,18 @@
+2.1.2	|	Release date: **13.01.2023**
+============================================
+* New Features:
+  - Add Option to Configure if AlphaTab to Load From CDN or From node_modules .
+  - Styling AngularJs Theme.
+  - AngularJs Theme Styling Bootstrap Slider.
+  - Detect Webpack Production Build in AngularJs Theme.
+* Bug-Fixes:
+  - Improve Jenkinsfile
+  - Improve Import Alphatab from node_modules .
+  - Remove Duplicate of data-bs-toggle in Templates.
+  - Fix VueJs Theme Templates.
+  - Try to Resolve Circular dependency between chunks.
+
+
 2.1.1	|	Release date: **08.01.2023**
 ============================================
 * Bug-Fixes and Improvements:
