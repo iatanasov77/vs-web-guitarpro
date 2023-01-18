@@ -1,3 +1,11 @@
+2.1.3	|	Release date: **18.01.2023**
+============================================
+* Bug-Fixes and Improvements:
+  - Update Phing Build Configuration.
+  - Styling Registration Form.
+  - Add Styles for Player Marker in AngularJs Theme.
+
+
 2.1.2	|	Release date: **13.01.2023**
 ============================================
 * New Features:
