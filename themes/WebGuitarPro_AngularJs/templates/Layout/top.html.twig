@@ -47,8 +47,26 @@
                         </div>
                     </div>
                 </li>
+                
+                <!-- Documentation
+                    ( This is in DEV Section Because I dont know if is needed.)
+                -->
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:;">
+                        {{ 'vs_wgp.template.menu.documentation' | trans( {},'WebGuitarPro' ) }}
+                    </a>
+                </li>
+                <!--/ Documentation  -->
             {% endif %}
             
+            <!-- About Application -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path( 'wgp_about_application' ) }}">
+                    {{ 'vs_wgp.template.menu.about_application' | trans( {},'WebGuitarPro' ) }}
+                </a>
+            </li>
+            <!--/ About Application -->
+                
             <li class="nav-item">
                 <a class="nav-link" href="{{ path( 'app_home' ) }}">
                     {{ 'vs_wgp.template.menu.latest_tablatures' | trans( {},'WebGuitarPro' ) }}
@@ -154,14 +172,6 @@
                 <!--/ User Profile  -->
                 
             {% else %}
-                <!--  Documentation  -->
-                <li class="nav-item">
-                    <a class="nav-link" href="javascript:;">
-                        {{ 'vs_wgp.template.menu.documentation' | trans( {},'WebGuitarPro' ) }}
-                    </a>
-                </li>
-                <!--/  Documentation  -->
-                
                 <!--  Registration  -->
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path( 'vs_users_register_form' ) }}">

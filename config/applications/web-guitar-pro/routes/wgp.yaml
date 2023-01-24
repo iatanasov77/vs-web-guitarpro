@@ -61,3 +61,8 @@ wgp_share_tablature_my_shares_delete_share:
 wgp_access_denied:
     path: /error/access-denied
     controller: App\Controller\WebGuitarPro\ErrorController::accessDenied
+
+wgp_about_application:
+    path: /about-application
+    controller: App\Controller\WebGuitarPro\PagesController::aboutApplication
+
