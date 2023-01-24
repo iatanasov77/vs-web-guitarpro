@@ -1,4 +1,8 @@
-<div class="player-controls__item favorite" (click)="favoriteHandler()">
+<div class="player-controls__item favorite"
+    placement="top"
+    ngbTooltip="Add to Favorites"
+    (click)="favoriteHandler()"
+>
     <svg class="icon">
         <use xlink:href="#icon-heart"></use>
     </svg>

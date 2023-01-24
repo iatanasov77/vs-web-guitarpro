@@ -8,6 +8,7 @@
     "@angular/material": "^15.0.0",
     "@angular/platform-browser": "^15.0.0",
     "@angular/platform-browser-dynamic": "^15.0.0",
+    "@ng-bootstrap/ng-bootstrap": "^14.0.1",
     "rxjs": "^7.5.5",
     "rxjs-compat": "^6.6.7",
     "rxjs-observable": "0.0.7",

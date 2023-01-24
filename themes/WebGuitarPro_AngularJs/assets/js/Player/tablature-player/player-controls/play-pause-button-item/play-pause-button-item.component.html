@@ -1,4 +1,9 @@
-<div id="btnPlayPause" class="player-controls__item" (click)="playPause()">
+<div id="btnPlayPause"
+    class="player-controls__item"
+    placement="top"
+    ngbTooltip="Play / Pause"
+    (click)="playPause()"
+>
     <svg class="icon" style="font-size: 50px;">
 	    <use *ngIf="playerState == 1" xlink:href="#icon-pause-litle"></use>
 	    <use *ngIf="playerState != 1" xlink:href="#icon-play-litle"></use>
