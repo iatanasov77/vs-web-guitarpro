@@ -25,9 +25,11 @@
 }
 
 #navbarSupportedContent .dropdown-menu::before {
-    left: inherit !important;
-    background-color: inherit !important;
-    top: auto;
+    display: none;
+}
+
+#navbarSupportedContent .dropdown-menu form div.form-group {
+	margin-bottom: 10px;
 }
 
 nav.copyright-bar {
@@ -56,4 +58,10 @@ a, a:hover, a:focus {
 
 .dropdown-login-form {
 	width: 300px;
+}
+
+/* Used For ProfileMenu Language */
+.dropdown-item:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; /* remove the gap so it doesn't close */
 }

@@ -17,6 +17,7 @@
         "@angular/material": "^15.0.0",
         "@angular/platform-browser": "^15.0.0",
         "@angular/platform-browser-dynamic": "^15.0.0",
+        "@ng-bootstrap/ng-bootstrap": "^14.0.1",
         "@coderline/alphatab": "^1.2.2",
         "@fortawesome/fontawesome-free": "^5.12.1",
         "@kanety/jquery-simple-tree-table": "^0.5.0",

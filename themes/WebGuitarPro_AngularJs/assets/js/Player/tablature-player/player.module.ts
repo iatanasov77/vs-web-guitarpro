@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxBootstrapSliderModule } from 'ngx-bootstrap-slider';
 
 import { PlayerComponent } from './player.component';
 import { PlayerControlsComponent } from './player-controls/player-controls.component';
@@ -19,7 +21,6 @@ import { LayoutItemComponent } from './player-controls/layout-item/layout-item.c
 import { SpeedItemComponent } from './player-controls/speed-item/speed-item.component';
 
 import { TracksItemComponent } from './player-controls/tracks-item/tracks-item.component';
-import { NgxBootstrapSliderModule } from 'ngx-bootstrap-slider';
 
 @NgModule({
     declarations: [
@@ -44,6 +45,7 @@ import { NgxBootstrapSliderModule } from 'ngx-bootstrap-slider';
         
         CommonModule,
         MatTooltipModule,
+        NgbModule,
         NgxBootstrapSliderModule
     ],
     bootstrap: [PlayerComponent]

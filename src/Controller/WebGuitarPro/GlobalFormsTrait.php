@@ -70,7 +70,7 @@ trait GlobalFormsTrait
     {
         //return true;    // Work-Around
         
-        $hasAccess  = $tablature->isPublic() || $tablature->getAppUser() == $this->getAppUser();
+        $hasAccess  = $tablature->isPublic() || $tablature->getUser() == $this->getAppUser();
         if ( $hasAccess ) {
             return  true;
         }
