@@ -37,6 +37,7 @@ vs_wgp:
         owner: Owner
         my_favorites: My Favorites
         
+        button_play: Play Tablature
         button_share: Share
         modal_share_title: Share Tablature
         modal_edit_share_title: Edit Share

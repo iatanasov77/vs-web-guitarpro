@@ -9,6 +9,7 @@
             {% if ( item.slug|length ) %}{% set tabId = item.slug %}{% else %}{% set tabId = item.id %}{% endif %}
             <a  class="btn btn-primary mr-2"
                 href="{{ path( 'vs_wgp_tablature_show', {id: tabId} ) }}"
+                title="Play Tablature"
             >
                 <i class="fas fa-play"></i> {# Play #}
             </a>
