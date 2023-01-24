@@ -52,4 +52,19 @@ class FavoritesController extends AbstractController
         
         return new JsonResponse( 'Success' );
     }
+    
+    public function removeFavorite( $id, Request $request ): Response
+    {
+        $em             = $this->doctrine->getManager();
+        $er             = $this->doctrine->getRepository( 'App\Entity\Tablature' );
+        
+        $oTablature     = $er->find( $id );
+        $oUser          = $this->getUser();
+        
+        $oUser->removeFavorite( $oTablature );
+        $em->persist( $oUser );
+        $em->flush();
+        
+        return $this->redirectToRoute( 'tablature_favorite_index' );
+    }
 }

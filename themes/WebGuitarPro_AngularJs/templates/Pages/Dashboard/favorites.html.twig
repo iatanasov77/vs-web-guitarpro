@@ -30,8 +30,17 @@
                             <td>{{ t.user.info.fullName }}</td>
                             <td>
                                 {% if ( t.slug|length ) %}{% set tabId = t.slug %}{% else %}{% set tabId = t.id %}{% endif %}
-                                <a href="{{ path( 'vs_wgp_tablature_show', {id: tabId} ) }}" class="btn btn-primary">
-                                    {{ 'vs_wgp.template.play' | trans( {},'WebGuitarPro' ) }}
+                                <a  class="btn btn-primary mr-2"
+                                    href="{{ path( 'vs_wgp_tablature_show', {id: tabId} ) }}"
+                                    title="{{ 'vs_wgp.template.button_play' | trans( {},'WebGuitarPro' ) }}"
+                                >
+                                    <i class="fas fa-play"></i> {# Play #}
+                                </a>
+                                <a class="btn btn-danger btnDeleteResource mr-2"
+                                    href="{{ path('tablature_remove_favorite', {'id': t.id}) }}"
+                                    title="{{ 'vs_wgp.template.button_remove_favorite' | trans( {},'WebGuitarPro' ) }}"
+                                >
+                                    <i class="fas fa-window-close"></i>
                                 </a>
                             </td>
                         </tr>
