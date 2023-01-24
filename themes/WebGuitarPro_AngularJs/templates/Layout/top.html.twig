@@ -144,7 +144,7 @@
                                     <i class="fas fa-language mr-2"></i>{{ 'vs_wgp.template.menu.language' | trans( {},'WebGuitarPro' ) }}
                                 </a>
                                 
-                                <ul class="submenu dropdown-menu dropdown-menu-start">
+                                <ul class="dropdown-menu dropdown-menu-start">
                                     {% for locale in locales %}
                                         <li>
                                             <a class="dropdown-item" href="{{ path('app_set_lang', {'lang': locale.code | slice( 0, 2 ) }) }}">
