@@ -1,3 +1,12 @@
+2.1.6	|	Release date: **24.01.2023**
+============================================
+* Bug-Fixes and Improvements:
+  - Add Tooltips on Tablature Controls in AngularJs Theme.
+  - Fix Top Bar Forms.
+  - Fix Profile Dropdown Menu.
+  - Fix checkHasAccess of Tablature.
+
+
 2.1.5	|	Release date: **24.01.2023**
 ============================================
 * New Features and Improvements:
