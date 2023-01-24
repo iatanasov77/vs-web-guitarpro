@@ -1,3 +1,10 @@
+2.1.5	|	Release date: **24.01.2023**
+============================================
+* New Features and Improvements:
+  - Improve Tablatures Listing Templates.
+  - Add Remove Favorite Feature.
+
+
 2.1.4	|	Release date: **24.01.2023**
 ============================================
 * New Features and Improvements:
