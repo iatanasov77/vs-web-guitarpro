@@ -25,9 +25,11 @@
 }
 
 #navbarSupportedContent .dropdown-menu::before {
-    left: inherit !important;
-    background-color: inherit !important;
-    top: auto;
+    display: none;
+}
+
+#navbarSupportedContent .dropdown-menu form div.form-group {
+	margin-bottom: 10px;
 }
 
 nav.copyright-bar {

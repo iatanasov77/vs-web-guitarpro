@@ -103,7 +103,7 @@
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{ 'vs_wgp.template.menu.create_tablature_category' | trans( {},'WebGuitarPro' ) }}
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right">
+                    <div class="dropdown-menu dropdown-menu-right" style="width: 300px;">
                         {% include 'Partial/tablature-category-form.html.twig' %}
                     </div>
                 </li>
@@ -114,7 +114,7 @@
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{ 'vs_wgp.template.menu.create_tablature' | trans( {},'WebGuitarPro' ) }}
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right">
+                    <div class="dropdown-menu dropdown-menu-right" style="width: 300px;">
                         {% if tablatureUploadLimited %}
                             <div class="alert alert-danger px-4 py-3" role="alert">
                                 <h4 class="alert-heading">{{ 'vs_wgp.template.alerts.tablature_upload_limited_error' | trans( {},'WebGuitarPro' ) }}</h4>
