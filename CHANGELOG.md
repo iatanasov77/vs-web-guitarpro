@@ -1,3 +1,11 @@
+2.1.4	|	Release date: **24.01.2023**
+============================================
+* New Features and Improvements:
+  - Move Angular Custom Types to a Folder.
+  - Add Application Config 'set_locale_from_accept_language'.
+  - Add a PagesController in Application and an About Application Page.
+
+
 2.1.3	|	Release date: **18.01.2023**
 ============================================
 * Bug-Fixes and Improvements:
