@@ -38,6 +38,7 @@ vs_wgp:
         my_favorites: Предпочитани
         
         button_play: Плейни Таблатурата
+        button_remove_favorite: Премахни от Предпочитани
         button_share: Сподели
         modal_share_title: Споделяне на Таблатури
         modal_edit_share_title: Редакция на Споделяне

@@ -36,6 +36,12 @@
                                 >
                                     <i class="fas fa-play"></i> {# Play #}
                                 </a>
+                                <a class="btn btn-danger btnDeleteResource mr-2"
+                                    href="{{ path('tablature_remove_favorite', {'id': t.id}) }}"
+                                    title="{{ 'vs_wgp.template.button_remove_favorite' | trans( {},'WebGuitarPro' ) }}"
+                                >
+                                    <i class="fas fa-window-close"></i>
+                                </a>
                             </td>
                         </tr>
                     {% endfor %}

@@ -13,6 +13,10 @@ tablature_favorite_index:
 tablature_favorite:
     path: /tablatures-ext/{id}/add-favorite
     controller: App\Controller\WebGuitarPro\FavoritesController::addFavorite
+    
+tablature_remove_favorite:
+    path: /tablatures-ext/{id}/remove-favorite
+    controller: App\Controller\WebGuitarPro\FavoritesController::removeFavorite
 
 wgp_upoad_tablatures_limited:
     path: /error/upoad-tablatures-limited
