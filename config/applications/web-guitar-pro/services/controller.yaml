@@ -136,4 +136,12 @@ services:
             - '%vs_wgp.tablature-categories.taxonomy_code%'
         calls:
             - setResetPasswordHelper: ['@?symfonycasts.reset_password.helper']
+            
+    App\Controller\WebGuitarPro\PagesController:
+        tags: ['controller.service_arguments']
+        autowire: true
+        arguments:
+            - '@doctrine'
+            - '@vs_application.repository.taxonomy'
+            - '%vs_wgp.tablature-categories.taxonomy_code%'
 
