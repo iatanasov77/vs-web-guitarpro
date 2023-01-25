@@ -10,10 +10,13 @@ services:
         arguments:
             - '%vs_wgp.model.tablature_category.class%'
             - '@request_stack'
+
     vs_wgp.resources.tablature.form:
         class: App\Form\TablatureForm
         tags:
             - { name: form.type }
         arguments:
             - '%vs_wgp.model.tablature.class%'
+            - '@security.token_storage'
+            - '@request_stack'
 
