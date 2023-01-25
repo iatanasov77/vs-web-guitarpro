@@ -1,3 +1,18 @@
+2.1.8	|	Release date: **25.01.2023**
+============================================
+* New Features:
+  - Add a Coment To Translation config.
+* Bug-Fixes:
+  - Fix ForgotPasswordController Routes.
+  - Styling Application Registration Form.
+  - Fix GlobalFormsTrait For Resource Controllers.
+  - Fix Creating Tablature Category.
+  - Show Tablature Category Name If Not in Default Locale.
+  - Fix Template of Tablature Form.
+  - Fix Add New Tablature.
+  - Fix and Improve TopBar Forms.
+
+
 2.1.7	|	Release date: **25.01.2023**
 ============================================
 * Bug-Fixes and Improvements:
