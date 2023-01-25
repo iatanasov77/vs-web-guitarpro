@@ -169,4 +169,9 @@ class TablatureCategory implements ResourceInterface
     {
         return $this->taxon ? $this->taxon->getName() : '';
     }
+    
+    public function getNameTranslated( string $locale )
+    {
+        return $this->taxon ? $this->taxon->getTranslation( $locale )->getName() : '';
+    }
 }
