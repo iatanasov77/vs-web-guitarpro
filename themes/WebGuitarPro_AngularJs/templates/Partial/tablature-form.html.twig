@@ -6,7 +6,12 @@
         'value': path( app.request.attributes.get( '_route' ), app.request.attributes.get( '_route_params' ) )} )
     }}
     
-    <div class="form-group">{{ form_row( tabForm.enabled ) }}</div>
+    <div class="form-group">
+        <label class="custom-control custom-checkbox">
+            {{ form_widget( tabForm.enabled, {'attr': {'class': 'custom-control-input'}} ) }}
+            <span class="custom-control-label">{{ tabForm.enabled.vars.label  | trans( {},'WebGuitarPro' ) }}</span>
+        </label>
+    </div>
     
     <div class="form-group">
         {{ form_label( tabForm.category_taxon, null, {
@@ -17,8 +22,16 @@
         {{ form_widget( tabForm.category_taxon, {'attr': {'class': 'form-control form-select' }, 'multiple': false}) }}
     </div>
     
-    <div class="form-group">{{ form_row( tabForm.artist ) }}</div>
-    <div class="form-group">{{ form_row( tabForm.song ) }}</div>
+    <div class="form-group">
+        {{ form_label( tabForm.artist, null, {'label_attr': {'class': 'col-form-label'}} ) }}
+        {{ form_widget( tabForm.artist, {'attr': {'class': 'form-control'}} ) }}
+    </div>
+    
+    <div class="form-group">
+        {{ form_label( tabForm.song, null, {'label_attr': {'class': 'col-form-label'}} ) }}
+        {{ form_widget( tabForm.song, {'attr': {'class': 'form-control'}} ) }}
+    </div>
+    
     <div class="form-group">
         <label for="tablature_form_tablature" class="col-form-label">
             {{ 'vs_wgp.form.tablature.tablature'  | trans( {},'WebGuitarPro' ) }}
@@ -31,5 +44,6 @@
         </div>
     </div>
     
-    <div class="form-group">{{ form_widget( tabForm.btnSave ) }}</div>
+    <hr class="border-2 border-top border-primary">
+    <div class="form-group mt-3">{{ form_widget( tabForm.btnSave, {'attr': {'class': 'form-control' }} ) }}</div>
 {{ form_end( tabForm, {'render_rest': false} ) }}
