@@ -3,7 +3,10 @@
     {% if parentId %}data-node-pid="{{ parentId }}"{% endif %}
 >
     
-    <td>{{ item.getNameTranslated( app.request.locale ) }}</td>
+    <td>
+        {# Show Tablature Category Name If Not in Default Locale. #}
+        {{ item.getNameTranslated( app.request.locale ) }}
+    </td>
     <td>
         <div class="btn-group">
         {% if isTab %}
