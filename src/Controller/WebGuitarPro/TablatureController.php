@@ -84,7 +84,7 @@ class TablatureController extends AbstractCrudController
             $this->redirectToRoute( 'wgp_upoad_tablatures_limited' );
         }
         
-        $this->easyuiPost( $entity, $request->request->get( 'tablature_form' ) );
+        $this->easyuiPost( $entity, $request->request->all( 'tablature_form' ) );
         
         $entity->setUser( $this->getAppUser() );
         
@@ -100,18 +100,25 @@ class TablatureController extends AbstractCrudController
         $repo       = $this->get( 'vs_wgp.repository.tablature_category' );
         
         if ( isset( $formPost['category_taxon'] ) ) {
-            
-            foreach ( $formPost['category_taxon'] as $taxonId ) {
-                $category       = $repo->findOneBy( ['taxon' => $taxonId] );
-                if ( $category ) {
-                    $categories[]   = $category;
-                    $entity->addCategory( $category );
+            if ( is_array( $formPost['category_taxon'] ) ) {
+                foreach ( $formPost['category_taxon'] as $taxonId ) {
+                    $category       = $repo->findOneBy( ['taxon' => $taxonId] );
+                    if ( $category ) {
+                        $categories[]   = $category;
+                        $entity->addCategory( $category );
+                    }
                 }
-            }
-            
-            foreach ( $entity->getCategories() as $cat ) {
-                if ( ! $categories->contains( $cat ) ) {
-                    $entity->removeCategory( $cat );
+                
+                foreach ( $entity->getCategories() as $cat ) {
+                    if ( ! $categories->contains( $cat ) ) {
+                        $entity->removeCategory( $cat );
+                    }
+                }
+            } else {
+               // For Now Not Multiple Categories
+                $category   = $repo->find( $formPost['category_taxon'] );
+                if ( $category ) {
+                    $entity->addCategory( $category );
                 }
             }
         }

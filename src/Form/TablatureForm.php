@@ -10,12 +10,32 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
+use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
 use App\Entity\Tablature;
 use App\Entity\TablatureCategory;
 
 class TablatureForm extends AbstractForm
 {
+    /** @var TokenStorageInterface */
+    private $tokenStorage;
+    
+    /** @var RequestStack */
+    private $requestStack;
+    
+    public function __construct(
+        string $dataClass,
+        TokenStorageInterface $tokenStorage,
+        RequestStack $requestStack
+    ) {
+        parent::__construct( $dataClass );
+        
+        $this->tokenStorage = $tokenStorage;
+        $this->requestStack = $requestStack;
+    }
+    
     public function buildForm( FormBuilderInterface $builder, array $options )
     {
         parent::buildForm( $builder, $options );
@@ -61,17 +81,26 @@ class TablatureForm extends AbstractForm
             ->add( 'category_taxon', EntityType::class, [
                 'label'                 => 'vs_cms.form.page.categories',
                 'translation_domain'    => 'VSCmsBundle',
-                'multiple'              => true,
+                'multiple'              => true,    // Multiple Can be Changed in Template
                 'required'              => false,
                 'mapped'                => false,
                 'placeholder'           => 'vs_cms.form.page.categories_placeholder',
                 
                 'class'                 => TablatureCategory::class,
-                'choice_label'          => 'name',
+                'choice_label'          => function ( $category ) {
+                    return $category->getNameTranslated( $this->requestStack->getMainRequest()->getLocale() );
+                },
+                'query_builder'         => function ( EntityRepository $er )
+                {
+                    $qb     = $er->createQueryBuilder( 'tc' );
+                    $token  = $this->tokenStorage->getToken();
+                    if ( $token ) {
+                        $qb->where( 'tc.user = :user' )->setParameter( 'user', $token->getUser() );
+                    }
+                    
+                    return $qb;
+                }
             ])
-            
-            
-
         ;
     }
     

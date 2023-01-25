@@ -33,11 +33,11 @@ trait GlobalFormsTrait
         $paid           = false;
         
         if ( $this->getAppUser() && $this->getAppUser()->getUsername() != 'admin' ) {
-            $lastPayment    = $this->doctrine
+            $lastPayment    = $this->_getDoctrine()
                                     ->getRepository( 'App\Entity\UserManagement\User' )
                                     ->getPaidForWhat( $this->getAppUser() );
             if ( ! empty( $lastPayment ) ) {
-                $paidService    = $this->doctrine
+                $paidService    = $this->_getDoctrine()
                                         ->getRepository( 'App\Entity\UsersSubscriptions\PayedServiceSubscriptionPeriod' )
                                         ->find( $lastPayment['objectId'] )
                                         ->getPayedService();
@@ -103,6 +103,15 @@ trait GlobalFormsTrait
             return $user;
         } else {
             return $this->getUser();
+        }
+    }
+    
+    protected function _getDoctrine()
+    {
+        if ( \method_exists( $this, 'getDoctrine' ) ) {
+            return $this->getDoctrine();
+        } else {
+            return $this->doctrine;
         }
     }
 }

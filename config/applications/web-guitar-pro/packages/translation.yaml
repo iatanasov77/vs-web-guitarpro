@@ -1,10 +1,10 @@
 framework:
-
+    # Set Locale From Browser is Usefull but Language Switcher not Work When this is enabled
+    ##########################################################################################
     #set_locale_from_accept_language: true
     #set_content_language_from_locale: true
     
-    default_locale: "%locale%"
-    
+    default_locale: "%locale%"    
     translator:
         fallbacks: ["%locale%"]
         default_path: '%kernel.project_dir%/translations'
