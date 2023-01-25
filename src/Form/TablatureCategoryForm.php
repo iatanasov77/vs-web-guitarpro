@@ -4,6 +4,7 @@ use Vankosoft\ApplicationBundle\Form\AbstractForm;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -16,17 +17,22 @@ use App\Entity\TablatureCategory;
 
 class TablatureCategoryForm extends AbstractForm
 {
-    protected $requestStack;
-    protected $categoryClass;
+    private $requestStack;
+    private $categoryClass;
+    
+    /** @var TokenStorageInterface */
+    private $tokenStorage;
     
     public function __construct(
         string $dataClass,
-        RequestStack $requestStack
+        RequestStack $requestStack,
+        TokenStorageInterface $tokenStorage
     ) {
         parent::__construct( $dataClass );
         
         $this->requestStack     = $requestStack;
         $this->categoryClass    = $dataClass;
+        $this->tokenStorage     = $tokenStorage;
     }
     
     public function buildForm( FormBuilderInterface $builder, array $options )
@@ -61,9 +67,16 @@ class TablatureCategoryForm extends AbstractForm
                         $qb->where( 'tc.id != :id' )->setParameter( 'id', $category->getId() );
                     }
                     
+                    $token  = $this->tokenStorage->getToken();
+                    if ( $token ) {
+                        $qb->where( 'tc.user = :user' )->setParameter( 'user', $token->getUser() );
+                    }
+                    
                     return $qb;
                 },
-                'choice_label'  => 'name',
+                'choice_label'  => function ( $category ) {
+                    return $category->getNameTranslated( $this->requestStack->getMainRequest()->getLocale() );
+                },
                 
                 'required'      => false,
                 'placeholder'   => 'vs_cms.form.category.parent_category_placeholder',

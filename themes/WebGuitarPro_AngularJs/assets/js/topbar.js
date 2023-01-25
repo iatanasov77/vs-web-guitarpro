@@ -83,4 +83,33 @@ $( function()
             //alert( 'always' );
         });
     });
+    
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    // Manualy Open Dropdown Forms
+    // https://stackoverflow.com/questions/25089297/avoid-dropdown-menu-close-on-click-inside
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+    $( '.dropdown-toggle.topFormToggle' ).on( 'click', function ( e )
+    {
+        $( '.dropdown-menu.topForm' ).not( $( this ).next( '.dropdown-menu' ) ).each( function()
+        {
+            $( this ).hide();
+        });
+        $( this ).next( '.dropdown-menu' ).toggle();
+    });
+    
+    $( document ).mouseup( function( e ) 
+    {
+        var container       = $( '.dropdown-menu.topForm' );
+        var comboContainer  = $( '.combo-panel' );
+    
+        // if the target of the click isn't the container nor a descendant of the container
+        if ( ! container.is( e.target )
+            && container.has( e.target ).length === 0
+            && ! $( '.dropdown-toggle.topFormToggle' ).is( e.target )
+            && ! comboContainer.is( e.target )
+            && ! ( comboContainer.find( e.target ).length > 0 )
+        ) {
+            container.hide();
+        }
+    });
 });

@@ -10,6 +10,7 @@ use Vankosoft\PaymentBundle\Model\Traits\PaymentsUserTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
+use App\Entity\TablatureCategory;
 use App\Entity\Tablature;
 use App\Entity\TablatureShareUserTrait;
 
@@ -22,6 +23,13 @@ class User extends BaseUser implements SubscribedUserInterface, PaymentsUserInte
     use SubscribedUserTrait;
     use PaymentsUserTrait;
     use TablatureShareUserTrait;
+    
+    /**
+     * @var Collection|TablatureCategory[]
+     *
+     * @ORM\OneToMany(targetEntity="App\Entity\TablatureCategory", mappedBy="user")
+     */
+    protected $tabCategories;
     
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Tablature", mappedBy="user")
@@ -42,6 +50,7 @@ class User extends BaseUser implements SubscribedUserInterface, PaymentsUserInte
         $this->subscriptions    = new ArrayCollection();
         $this->orders           = new ArrayCollection();
         
+        $this->tabCategories    = new ArrayCollection();
         $this->tablatures       = new ArrayCollection();
         $this->favorites        = new ArrayCollection();
         
@@ -58,6 +67,14 @@ class User extends BaseUser implements SubscribedUserInterface, PaymentsUserInte
     {
         /* Use RolesCollection */
         return $this->getRolesFromCollection();
+    }
+    
+    /**
+     * @return Collection|Tablature[]
+     */
+    public function getTabCategories(): Collection
+    {
+        return $this->tabCategories;
     }
     
     /**

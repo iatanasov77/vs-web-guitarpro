@@ -81,8 +81,7 @@ class TablatureForm extends AbstractForm
             ->add( 'category_taxon', EntityType::class, [
                 'label'                 => 'vs_cms.form.page.categories',
                 'translation_domain'    => 'VSCmsBundle',
-                //'multiple'              => true,
-                'multiple'              => false,
+                'multiple'              => true,    // Multiple Can be Changed in Template
                 'required'              => false,
                 'mapped'                => false,
                 'placeholder'           => 'vs_cms.form.page.categories_placeholder',
@@ -93,8 +92,11 @@ class TablatureForm extends AbstractForm
                 },
                 'query_builder'         => function ( EntityRepository $er )
                 {
-                    $qb = $er->createQueryBuilder( 'tc' );
-                    $qb->where( 'tc.user = :user' )->setParameter( 'user', $this->tokenStorage->getToken()->getUser() );
+                    $qb     = $er->createQueryBuilder( 'tc' );
+                    $token  = $this->tokenStorage->getToken();
+                    if ( $token ) {
+                        $qb->where( 'tc.user = :user' )->setParameter( 'user', $token->getUser() );
+                    }
                     
                     return $qb;
                 }

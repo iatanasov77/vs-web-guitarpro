@@ -10,6 +10,7 @@ services:
         arguments:
             - '%vs_wgp.model.tablature_category.class%'
             - '@request_stack'
+            - '@security.token_storage'
 
     vs_wgp.resources.tablature.form:
         class: App\Form\TablatureForm

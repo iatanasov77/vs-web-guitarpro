@@ -55,6 +55,10 @@ security:
         
         - { path: ^/about-application, roles: PUBLIC_ACCESS }
         
+        - { route: 'vs_wgp_tablature_create', roles: [ROLE_SUPER_ADMIN, ROLE_APPLICATION_ADMIN, ROLE_WEB_GUITAR_PRO_ADMIN] }
+        - { route: 'vs_wgp_tablature_update', roles: [ROLE_SUPER_ADMIN, ROLE_APPLICATION_ADMIN, ROLE_WEB_GUITAR_PRO_ADMIN] }
+        - { route: 'vs_wgp_tablature_delete', roles: [ROLE_SUPER_ADMIN, ROLE_APPLICATION_ADMIN, ROLE_WEB_GUITAR_PRO_ADMIN] }
+        
         - { path: ^/tablatures/, roles: PUBLIC_ACCESS } # Tablature ACCESS SHOULD BE CHECK BY A VOTER
         - { path: ^/tablatures-ext/, roles: PUBLIC_ACCESS } # Tablature ACCESS SHOULD BE CHECK BY A VOTER
         - { path: ^/build/, roles: PUBLIC_ACCESS }
