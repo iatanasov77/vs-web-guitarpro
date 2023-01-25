@@ -1,7 +1,7 @@
 require( '../css/topbar.css' );
 require( './includes/submenu.js' );
 
-import { VsPath } from './includes/fos_js_routes.js';
+import { VsPath } from '@/js/includes/fos_js_routes.js';
 
 function showPaymentMethodsForm()
 {

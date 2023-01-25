@@ -1,4 +1,4 @@
-require( '../includes/file-input.js' );
+require( '@/js/includes/file-input.js' );
 
 $( function()
 {

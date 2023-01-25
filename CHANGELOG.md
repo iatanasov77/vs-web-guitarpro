@@ -1,3 +1,10 @@
+2.1.7	|	Release date: **25.01.2023**
+============================================
+* Bug-Fixes and Improvements:
+  - Using Dhared Assets Js Includes in All Themes.
+  - Fix Changing Locale.
+
+
 2.1.6	|	Release date: **24.01.2023**
 ============================================
 * Bug-Fixes and Improvements:

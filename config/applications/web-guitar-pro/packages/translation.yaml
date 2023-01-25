@@ -1,7 +1,7 @@
 framework:
 
-    set_locale_from_accept_language: true
-    set_content_language_from_locale: true
+    #set_locale_from_accept_language: true
+    #set_content_language_from_locale: true
     
     default_locale: "%locale%"
     

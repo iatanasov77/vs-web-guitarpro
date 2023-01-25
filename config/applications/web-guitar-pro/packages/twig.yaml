@@ -14,8 +14,6 @@ twig:
         app_environment: '%env(APP_ENV)%'
         alphatabUseCdn: '%vs_wgp.alphatab.use_cdn%'
         
-    form_themes: [
-      'bootstrap_4_layout.html.twig',
-      '@FOSCKEditor/Form/ckeditor_widget.html.twig'
-    ]
+    form_themes:
+        - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
     

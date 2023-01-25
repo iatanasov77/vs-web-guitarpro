@@ -19,4 +19,12 @@ class DefaultController extends AbstractController
         
         return $this->redirect( $request->headers->get( 'referer' ) );
     }
+    
+    public function setLocale( Request $request ): Response
+    {
+        $locale   = $request->attributes->get( 'locale' );
+        $request->getSession()->set( '_locale', $locale );
+        
+        return $this->redirect( $request->headers->get( 'referer' ) );
+    }
 }
