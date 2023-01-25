@@ -1,6 +1,6 @@
 require( '@kanety/jquery-simple-tree-table/dist/jquery-simple-tree-table.js' );
 
-import { VsFormDlete, onResourceDeleteOk, onResourceDeleteCancel } from '../includes/resource-delete.js';
+import { VsFormDlete, onResourceDeleteOk, onResourceDeleteCancel } from '@/js/includes/resource-delete.js';
 
 $( function()
 {

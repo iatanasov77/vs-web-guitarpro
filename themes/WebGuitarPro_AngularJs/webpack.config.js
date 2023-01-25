@@ -1,5 +1,6 @@
 const Encore    = require('@symfony/webpack-encore');
 const webpack   = require('webpack');
+const path      = require('path');
 const AngularCompilerPlugin = require('@ngtools/webpack').AngularWebpackPlugin;
 
 Encore
@@ -10,6 +11,10 @@ Encore
     .cleanupOutputBeforeBuild()
     .enableSourceMaps(!Encore.isProduction())
     .enableVersioning(Encore.isProduction())
+    
+    .addAliases({
+        '@': path.resolve( __dirname, '../../vendor/vankosoft/application/src/Vankosoft/ApplicationBundle/Resources/themes/default/assets' ),
+    })
     
     .enableSassLoader(function(sassOptions) {}, {
         resolveUrlLoader: true
@@ -62,7 +67,6 @@ Encore
          to: 'images/[path][name].[ext]',
      })
 
-    
     /*
      * ENTRY CONFIG
      *
@@ -93,10 +97,7 @@ Encore
 const config = Encore.getWebpackConfig();
 config.name = 'WebGuitarPro_AngularJs';
 
-config.resolve = {
-    extensions: ['.ts', '.js']
-};
-
+config.resolve.extensions = ['.ts', '.js'];
 config.plugins.push(
     new webpack.DefinePlugin({
         PRODUCTION: JSON.stringify( Encore.isProduction() ),

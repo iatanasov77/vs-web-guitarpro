@@ -1,5 +1,6 @@
 const { VueLoaderPlugin } = require('vue-loader');
-const Encore = require('@symfony/webpack-encore');
+const Encore    = require('@symfony/webpack-encore');
+const path      = require('path');
 
 Encore
     .setOutputPath( 'public/shared_assets/build/web-guitar-pro-vuejs/' )
@@ -9,6 +10,10 @@ Encore
     .cleanupOutputBeforeBuild()
     .enableSourceMaps(!Encore.isProduction())
     .enableVersioning(Encore.isProduction())
+    
+    .addAliases({
+        '@': path.resolve( __dirname, '../../vendor/vankosoft/application/src/Vankosoft/ApplicationBundle/Resources/themes/default/assets' ),
+    })
     
     .enableSassLoader(function(sassOptions) {}, {
         resolveUrlLoader: true

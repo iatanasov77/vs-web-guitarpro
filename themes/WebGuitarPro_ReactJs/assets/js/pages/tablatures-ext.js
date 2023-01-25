@@ -1,4 +1,4 @@
-require( '../includes/resource-delete.js' );
+require( '@/js/includes/resource-delete.js' );
 
 $( function()
 {

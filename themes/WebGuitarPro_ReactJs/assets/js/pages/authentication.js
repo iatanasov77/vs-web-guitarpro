@@ -1,8 +1,8 @@
 require( '../../css/authentication.css' );
 
-import { VsDisplayPassword } from '../includes/password-generator.js';
-import { VsPath } from '../includes/fos_js_routes.js';
-import { VsTranslator, VsLoadTranslations } from '../includes/bazinga_js_translations.js';
+import { VsDisplayPassword } from '@/js/includes/password-generator.js';
+import { VsPath } from '@/js/includes/fos_js_routes.js';
+import { VsTranslator, VsLoadTranslations } from '@/js/includes/bazinga_js_translations.js';
 VsLoadTranslations(['VSApplicationBundle']);
 
 $( function()
