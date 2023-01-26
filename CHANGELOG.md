@@ -1,3 +1,12 @@
+2.1.9	|	Release date: **26.01.2023**
+============================================
+* Bug-Fixes and Improvements:
+  - Fix Set Locale on Application When Unauthenticated.
+  - Some Fixes.
+  - Add Styles For Rquired Fields in UsersBundle Forms.
+  - Improve Application Registration Form.
+
+
 2.1.8	|	Release date: **25.01.2023**
 ============================================
 * New Features:
