@@ -17,5 +17,5 @@ label.required:after {
 }
 
 input:invalid {
-    border-color: red;
+    /*border-color: red;*/
 }
