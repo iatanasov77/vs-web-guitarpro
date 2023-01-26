@@ -53,6 +53,7 @@ security:
         - { path: ^/password-generator/json-get-passwords, roles: PUBLIC_ACCESS }
         - { path: ^/translations/, roles: PUBLIC_ACCESS }
         
+        - { path: ^/set_locale, roles: PUBLIC_ACCESS }
         - { path: ^/about-application, roles: PUBLIC_ACCESS }
         
         - { route: 'vs_wgp_tablature_create', roles: [ROLE_SUPER_ADMIN, ROLE_APPLICATION_ADMIN, ROLE_WEB_GUITAR_PRO_ADMIN] }
