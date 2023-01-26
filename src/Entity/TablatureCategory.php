@@ -22,7 +22,7 @@ class TablatureCategory implements ResourceInterface
     private $id;
     
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\UserManagement\User", inversedBy="tablatureCategories")
+     * @ORM\ManyToOne(targetEntity="App\Entity\UserManagement\User", inversedBy="tabCategories")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;

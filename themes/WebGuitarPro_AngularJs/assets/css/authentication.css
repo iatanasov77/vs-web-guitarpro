@@ -11,3 +11,11 @@
     color: #007bff;
 }
 
+label.required:after {
+    content: '*';
+    color: red;
+}
+
+input:invalid {
+    /*border-color: red;*/
+}
