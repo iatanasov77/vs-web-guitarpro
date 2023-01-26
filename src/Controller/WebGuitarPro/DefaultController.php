@@ -1,6 +1,7 @@
 <?php namespace App\Controller\WebGuitarPro;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+//use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Controller\Application\DefaultController as BaseDefaultController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Doctrine\Persistence\ManagerRegistry;
@@ -10,7 +11,7 @@ use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 use Vankosoft\ApplicationBundle\Component\Context\ApplicationContextInterface;
 use Vankosoft\ApplicationBundle\Model\Interfaces\TaxonomyInterface;
 
-class DefaultController extends AbstractController
+class DefaultController extends BaseDefaultController // AbstractController
 {
     use GlobalFormsTrait;
     

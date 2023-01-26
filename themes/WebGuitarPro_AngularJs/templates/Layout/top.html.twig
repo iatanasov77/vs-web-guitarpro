@@ -195,7 +195,7 @@
                 <li class="nav-item ml-2">&nbsp;</li>
                 {% for locale in locales %}
                     <li class="nav-item pt-2">
-                        <a href="{{ path('app_set_lang', {'lang': locale.code}) }}">
+                        <a href="{{ path('app_set_locale', {'locale': locale.code}) }}">
                             <i class="flag flag-{{ locale.code | slice( 3, 2 ) | lower }}"></i>
                         </a>
                     </li>
