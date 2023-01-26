@@ -100,7 +100,7 @@ config.name = 'WebGuitarPro_AngularJs';
 config.resolve.extensions = ['.ts', '.js'];
 config.plugins.push(
     new webpack.DefinePlugin({
-        PRODUCTION: JSON.stringify( Encore.isProduction() ),
+        IS_PRODUCTION: JSON.stringify( Encore.isProduction() ),
     })
 );
 

@@ -5,6 +5,8 @@
  * (and its CSS file) in your base layout (base.html.twig).
  */
 
+import './analytics.js';
+
 // any CSS you import will output into a single css file (app.css in this case)
 import './css/app.scss';
 require( '@fortawesome/fontawesome-free/css/all.min.css' );
@@ -32,4 +34,3 @@ $( '.custom-file-input' ).on( 'change', function( event )
         .find( '.custom-file-label' )
         .html( inputFile.files[0].name );
 });
-    

@@ -1,3 +1,3 @@
 export const context    =  {
-    isProduction: PRODUCTION
+    isProduction: IS_PRODUCTION
 }

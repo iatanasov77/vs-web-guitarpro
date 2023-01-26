@@ -1,3 +1,9 @@
+2.1.10	|	Release date: **26.01.2023**
+============================================
+* New Features:
+  - Add Google Analytics.
+
+
 2.1.9	|	Release date: **26.01.2023**
 ============================================
 * Bug-Fixes and Improvements:
