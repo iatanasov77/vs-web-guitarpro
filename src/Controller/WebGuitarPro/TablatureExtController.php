@@ -11,16 +11,15 @@ use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 use Vankosoft\ApplicationBundle\Repository\TaxonomyRepository;
 use Vankosoft\ApplicationBundle\Repository\TaxonRepository;
 use Vankosoft\ApplicationBundle\Controller\TaxonomyTreeDataTrait;
-
-use App\Security\Helper as AppSecurityHelper;
+use Vankosoft\UsersBundle\Security\SecurityBridge;
 
 class TablatureExtController extends AbstractController
 {
     use GlobalFormsTrait;
     use TaxonomyTreeDataTrait;
     
-    /** @var AppSecurityHelper */
-    protected AppSecurityHelper $appSecurityHelper;
+    /** @var SecurityBridge */
+    protected SecurityBridge $securityBridge;
     
     /** @var EntityRepository */
     protected EntityRepository $tabsRepository;
@@ -32,14 +31,14 @@ class TablatureExtController extends AbstractController
         ManagerRegistry $doctrine,
         TaxonomyRepository $taxonomyRepository,
         EntityRepository $taxonRepository,
-        AppSecurityHelper $appSecurityHelper,
+        SecurityBridge $securityBridge,
         EntityRepository $tabsRepository,
         string $tabsDirectory
     ) {
         $this->doctrine             = $doctrine;
         $this->taxonomyRepository   = $taxonomyRepository;
         $this->taxonRepository      = $taxonRepository;
-        $this->appSecurityHelper    = $appSecurityHelper;
+        $this->securityBridge       = $securityBridge;
         $this->tabsRepository       = $tabsRepository;
         $this->tabsDirectory        = $tabsDirectory;
     }
@@ -89,11 +88,10 @@ class TablatureExtController extends AbstractController
     
     protected function getUserCategoriesTaxons( string $locale ): array
     {
-        $token  = $this->appSecurityHelper->getTokenStorage()->getToken();
         $taxons = [];
         
-        if ( $token ) {
-            $categories = $token->getUser()->getTabCategories();
+        if ( $this->securityBridge->getUser() ) {
+            $categories = $this->securityBridge->getUser()->getTabCategories();
             foreach( $categories as $cat ) {
                 $taxon  = $cat->getTaxon();
                 $taxon->setCurrentLocale( $locale );

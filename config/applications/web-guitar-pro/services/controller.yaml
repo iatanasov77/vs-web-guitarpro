@@ -49,7 +49,7 @@ services:
             - '@doctrine'
             - '@vs_application.repository.taxonomy'
             - '@vs_application.repository.taxon'
-            - '@app.security_helper'
+            - '@vs_users.security_bridge'
             - '@vs_wgp.repository.tablature'
             - '%vs_wgp.tablatures_directory%'
         calls:
