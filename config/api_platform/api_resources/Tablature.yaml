@@ -1,0 +1,142 @@
+resources:
+    App\Entity\Tablature:
+        operations:
+            tablatures_get:
+                class: ApiPlatform\Metadata\GetCollection
+                method: GET
+                uriTemplate: /tablatures
+                normalizationContext:
+                    groups: ['tablature:read']
+                    
+            latest_tablatures_get:
+                class: ApiPlatform\Metadata\GetCollection
+                method: GET
+                uriTemplate: /latest-tablatures
+                normalizationContext:
+                    groups: ['tablature:read']
+                
+                # Filters
+                filters:
+                    - 'tablatures.public_filter'
+                
+                # Pagination
+                pagination_enabled: true
+                pagination_client_enabled: true
+                pagination_client_items_per_page: true
+                pagination_items_per_page: 10
+                
+            my_tablatures_get:
+                class: ApiPlatform\Metadata\GetCollection
+                method: GET
+                uriTemplate: /my-tablatures
+                controller: App\Controller\Api\MyTablaturesController
+                normalizationContext:
+                    groups: ['tablature:read']
+                
+                # Pagination
+                pagination_enabled: true
+                pagination_client_enabled: true
+                pagination_client_items_per_page: true
+                pagination_items_per_page: 10
+                
+            my_favorites_get:
+                class: ApiPlatform\Metadata\GetCollection
+                method: GET
+                uriTemplate: /my-favorites
+                controller: App\Controller\Api\MyFavoritesController
+                normalizationContext:
+                    groups: ['tablature:read']
+                
+                # Pagination
+                pagination_enabled: true
+                pagination_client_enabled: true
+                pagination_client_items_per_page: true
+                pagination_items_per_page: 10
+                
+
+            tablature_get:
+                class: ApiPlatform\Metadata\Get
+                method: GET
+                uriTemplate: /tablatures/{id}
+                normalizationContext:
+                    groups: ['tablature:read']
+            tablature_post:
+                class: ApiPlatform\Metadata\Post
+                method: POST
+                uriTemplate: /tablatures/new
+                controller: App\Controller\Api\CreateTablatureController
+                
+                read: false # Disable ReadListener
+                write: false
+                deserialize: false,
+                
+                normalizationContext:
+                    groups: ['tablature:read']
+                denormalizationContext:
+                    groups: ['tablature:create']
+                openapi_context:
+                    requestBody:
+                        content:
+                            multipart/form-data:
+                                schema:
+                                    type: object
+                                    properties:
+                                        tablature:
+                                            type: string
+                                            format: binary
+                    
+            tablature_put:
+                class: ApiPlatform\Metadata\Put
+                method: PUT
+                uriTemplate: /tablatures/{id}
+                controller: App\Controller\Api\EditTablatureController
+                
+                read: false # Disable ReadListener
+                write: false
+                deserialize: false,
+                
+                normalizationContext:
+                    groups: ['tablature:read']
+                denormalizationContext:
+                    groups: ['tablature:update']
+                openapi_context:
+                    requestBody:
+                        content:
+                            multipart/form-data:
+                                schema:
+                                    type: object
+                                    properties:
+                                        tablature:
+                                            type: string
+                                            format: binary
+            tablature_delete:
+                class: ApiPlatform\Metadata\Delete
+                method: DELETE
+                uriTemplate: /tablatures/{id}
+                controller: App\Controller\Api\DeleteTablatureController
+                    
+        properties:
+            id:
+                identifier: true
+                writeable: false
+                required: false
+            artist:
+                writeable: true
+                required: true
+            song:
+                writeable: true
+                required: true
+            enabled:
+                writeable: true
+                
+            user:
+                writeable: true
+                required: true
+            createdBy:
+                writeable: false
+            updatedBy:
+                writeable: false
+            createdAt:
+                writeable: false
+            updatedAt:
+                writeable: false

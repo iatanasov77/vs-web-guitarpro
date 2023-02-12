@@ -1,0 +1,29 @@
+services:    
+    tablatures.public_filter:
+        parent: 'api_platform.doctrine.orm.search_filter'
+        arguments: [ { enabled: 'exact' } ]
+        tags:  [ 'api_platform.filter' ]
+        # The following are mandatory only if a _defaults section is defined with inverted values.
+        # You may want to isolate filters in a dedicated file to avoid adding the following lines (by adding them in the defaults section)
+        autowire: false
+        autoconfigure: false
+        public: false
+        
+        
+        
+        
+        
+        
+    App\ApiPlatform\Encoder\MultipartDecoder:
+        tags:  [ 'serializer.encoder' ]
+        autowire: true
+        autoconfigure: true
+        public: true
+        
+    App\ApiPlatform\Serializer\UploadedFileDenormalizer:
+        tags:  [ 'serializer.normalizer' ]
+        autowire: true
+        autoconfigure: true
+        public: true
+      
+

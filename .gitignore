@@ -78,6 +78,7 @@ yarn-error.log
 # Except for the applications configs:
 !/config/admin-panel
 !/config/applications
+!/config/api_platform
 
 # Example Application ignores
 /public/test-vankosoft-application/build/
