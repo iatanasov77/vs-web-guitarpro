@@ -1,24 +1,24 @@
 App\Entity\Tablature:
     attributes:
         id:
-            groups: ['tablature:read']
+            groups: ['tablature:read', 'tablature-category:read']
         artist:
-            groups: ['tablature:read', 'tablature:create', 'tablature:update']
+            groups: ['tablature:read', 'tablature:create', 'tablature:update', 'tablature-category:read']
         song:
-            groups: ['tablature:read', 'tablature:create', 'tablature:update']
+            groups: ['tablature:read', 'tablature:create', 'tablature:update', 'tablature-category:read']
         enabled:
             groups: ['tablature:read', 'tablature:create', 'tablature:update']
 
         tablatureFile:
-            groups: ['tablature:read']
+            groups: ['tablature:read', 'tablature-category:read']
             
         user:
             groups: ['tablature:read']
         
         createdBy:
-            groups: ['tablature:read']
+            groups: ['tablature:read', 'tablature-category:read']
         updatedBy:
-            groups: ['tablature:read']
+            groups: ['tablature:read', 'tablature-category:read']
         createdAt:
             groups: ['tablature:read']
         updatedAt:
@@ -27,6 +27,8 @@ App\Entity\Tablature:
 App\Entity\TablatureFile:
     attributes:
         originalName:
-            groups: ['tablature:read']
+            groups: ['tablature:read', 'tablature-category:read']
+        path:
+            groups: ['tablature:read', 'tablature-category:read']
 
 
