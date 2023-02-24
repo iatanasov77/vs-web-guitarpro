@@ -2,7 +2,11 @@ services:
     _defaults:
         autowire: true
         autoconfigure: true
-        
+    
+    App\Controller\Api\MyTablaturesCategoriesController:
+        tags: ['controller.service_arguments']
+        autowire: true
+    
     App\Controller\Api\MyTablaturesController:
         tags: ['controller.service_arguments']
         autowire: true

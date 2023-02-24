@@ -1,0 +1,12 @@
+resources:
+    App\Entity\TablatureCategory:
+        operations:
+            my_categories_get:
+                class: ApiPlatform\Metadata\GetCollection
+                method: GET
+                uriTemplate: /my-categories
+                controller: App\Controller\Api\MyTablaturesCategoriesController
+                normalizationContext:
+                    groups: ['tablature-category:read']
+
+
