@@ -32,7 +32,7 @@ class TablatureCategoryController extends AbstractCrudController
     
     protected function prepareEntity( &$entity, &$form, Request $request )
     {
-        $currentUser    = $this->get( 'app.security_helper' )->getTokenStorage()->getToken()->getUser();
+        $currentUser    = $this->container->get( 'vs_users.security_bridge' )->getUser();
         $entity->setUser( $currentUser );
         
         $translatableLocale     = $form['currentLocale']->getData();
