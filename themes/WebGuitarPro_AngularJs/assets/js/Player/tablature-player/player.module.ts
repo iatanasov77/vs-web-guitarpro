@@ -21,6 +21,7 @@ import { LayoutItemComponent } from './player-controls/layout-item/layout-item.c
 import { SpeedItemComponent } from './player-controls/speed-item/speed-item.component';
 
 import { TracksItemComponent } from './player-controls/tracks-item/tracks-item.component';
+import { DownloadButtonItemComponent } from './player-controls/download-button-item/download-button-item.component';
 
 @NgModule({
     declarations: [
@@ -38,7 +39,8 @@ import { TracksItemComponent } from './player-controls/tracks-item/tracks-item.c
         PrintItemComponent,
         LayoutItemComponent,
         SpeedItemComponent,
-        TracksItemComponent
+        TracksItemComponent,
+        DownloadButtonItemComponent
     ],
     imports: [
         BrowserModule,
