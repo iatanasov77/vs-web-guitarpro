@@ -38,6 +38,20 @@ resources:
                 pagination_client_enabled: true
                 pagination_client_items_per_page: true
                 pagination_items_per_page: 10
+               
+            my_tablatures_uncategorized_get:
+                class: ApiPlatform\Metadata\GetCollection
+                method: GET
+                uriTemplate: /my-tablatures-uncategorized
+                controller: App\Controller\Api\MyTablaturesUncategorizedController
+                normalizationContext:
+                    groups: ['tablature:read']
+                
+                # Pagination
+                pagination_enabled: true
+                pagination_client_enabled: true
+                pagination_client_items_per_page: true
+                pagination_items_per_page: 10
                 
             my_favorites_get:
                 class: ApiPlatform\Metadata\GetCollection

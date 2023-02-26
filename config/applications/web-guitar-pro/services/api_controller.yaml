@@ -11,6 +11,10 @@ services:
         tags: ['controller.service_arguments']
         autowire: true
         
+    App\Controller\Api\MyTablaturesUncategorizedController:
+        tags: ['controller.service_arguments']
+        autowire: true
+        
     App\Controller\Api\MyFavoritesController:
         tags: ['controller.service_arguments']
         autowire: true
