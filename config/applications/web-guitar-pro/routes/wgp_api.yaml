@@ -1,0 +1,5 @@
+api_tablature_download:
+    path: /api/download/{id}-{originalName}
+    controller: App\Controller\Api\DownloadTablatureController::download
+
+

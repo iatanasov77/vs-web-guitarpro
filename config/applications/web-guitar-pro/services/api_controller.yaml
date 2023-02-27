@@ -47,5 +47,12 @@ services:
             - '@translator'
             - '@vs_wgp.repository.tablature'
             - '%vs_wgp.tablatures_directory%'
+            
+    App\Controller\Api\DownloadTablatureController:
+        tags: ['controller.service_arguments']
+        autowire: true
+        arguments:
+            - '@vs_wgp.repository.tablature'
+            - '%vs_wgp.tablatures_directory%'
 
 
