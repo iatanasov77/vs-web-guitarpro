@@ -1,0 +1,51 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+    
+    App\Controller\Api\MyTablaturesCategoriesController:
+        tags: ['controller.service_arguments']
+        autowire: true
+    
+    App\Controller\Api\MyTablaturesController:
+        tags: ['controller.service_arguments']
+        autowire: true
+        
+    App\Controller\Api\MyTablaturesUncategorizedController:
+        tags: ['controller.service_arguments']
+        autowire: true
+        
+    App\Controller\Api\MyFavoritesController:
+        tags: ['controller.service_arguments']
+        autowire: true
+
+    App\Controller\Api\CreateTablatureController:
+        tags: ['controller.service_arguments']
+        autowire: true
+        arguments:
+            - '@security.token_storage'
+            - '@doctrine'
+            - '@vs_wgp.factory.tablature'
+            - '@vs_wgp.factory.tablature_file'
+            - '@vs_wgp.tablature_uploader'
+            
+    App\Controller\Api\EditTablatureController:
+        tags: ['controller.service_arguments']
+        autowire: true
+        arguments:
+            - '@security.token_storage'
+            - '@doctrine'
+            - '@vs_wgp.repository.tablature'
+            - '@vs_wgp.tablature_uploader'
+            
+    App\Controller\Api\DeleteTablatureController:
+        tags: ['controller.service_arguments']
+        autowire: true
+        arguments:
+            - '@security.token_storage'
+            - '@doctrine'
+            - '@translator'
+            - '@vs_wgp.repository.tablature'
+            - '%vs_wgp.tablatures_directory%'
+
+

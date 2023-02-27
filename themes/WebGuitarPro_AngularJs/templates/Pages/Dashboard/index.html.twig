@@ -29,6 +29,13 @@
                             <td>{{ t.song }}</td>
                             <td>{{ t.user.info.fullName }}</td>
                             <td>
+                                <a class="btn btn-primary mr-2"
+                                    href="{{ url( 'tablature_read', {id: t.id} ) }}"
+                                    title="{{ 'vs_application.template.items_index_row_action_download' | trans( {},'VSApplicationBundle' ) }}"
+                                >
+                                    <i class="fas fa-download"></i>
+                                </a>
+                                
                                 {% if ( t.slug|length ) %}{% set tabId = t.slug %}{% else %}{% set tabId = t.id %}{% endif %}
                                 <a  class="btn btn-primary mr-2"
                                     href="{{ path( 'vs_wgp_tablature_show', {id: tabId} ) }}"

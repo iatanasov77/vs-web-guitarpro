@@ -88,22 +88,11 @@ trait GlobalFormsTrait
     
     protected function getAppUser():? UserInterface
     {
-        if ( $this->container->has( 'app.security_helper' ) ) {
-            $securityHelper = $this->container->get( 'app.security_helper' );
-            
-            if ( null === $token = $securityHelper->getTokenStorage()->getToken() ) {
-                return null;
-            }
-            
-            if ( ! \is_object( $user = $token->getUser() ) ) {
-                // e.g. anonymous authentication
-                return null;
-            }
-        
-            return $user;
-        } else {
-            return $this->getUser();
+        if ( $this->container->has( 'vs_users.security_bridge' ) ) {
+            return $this->container->get( 'vs_users.security_bridge' )->getUser();
         }
+
+        return $this->getUser();
     }
     
     protected function _getDoctrine()

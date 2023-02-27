@@ -1,0 +1,12 @@
+imports:
+    #- { resource: "@VSApiBundle/Resources/config/app/security.yaml" }
+    - { resource: "@VSApiBundle/Resources/config/app/api_platform.yaml" }
+    - { resource: "@VSApiBundle/Resources/config/app/serializer.yaml" }
+    - { resource: "@VSApiBundle/Resources/config/app/lexik_jwt_authentication.yaml" }
+    - { resource: "@VSApiBundle/Resources/config/app/nelmio_cors.yaml" }
+
+
+vs_api:
+    enabled: true
+
+
