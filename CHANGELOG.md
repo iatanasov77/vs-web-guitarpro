@@ -1,3 +1,22 @@
+2.2.0	|	Release date: **27.02.2023**
+============================================
+* New Features and Improvements:
+  - Change Analytics App ID.
+  - Add and Configure Vankosoft Api Extension.
+  - Add a Header for API HTTP Authorization.
+  - Add Download Tablature Buttons.
+  - Tablature Download Set Original Filename.
+  - Add Download Tablature Button on Tablature Player.
+  - Add To API - TablaturesCategories.
+  - Improve TablaturesCategories API.
+  - Add to API Get My Uncategorized Tablatures.
+  - Place Player Controls Tooltip On Right.
+* Bug-Fixes:
+  - Change NPM Package from ckeditor to ckeditor4
+  - Use VSUsersBundle SecurityBridge ti for getUser
+  - Remove FrameworkExtraBundle Configs.
+
+
 2.1.10	|	Release date: **26.01.2023**
 ============================================
 * New Features:
