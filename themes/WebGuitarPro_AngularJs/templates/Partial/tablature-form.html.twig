@@ -19,27 +19,14 @@
             }) 
         }}
         
-        {# 
+        {# #}
         {{ form_widget( tabForm.category_taxon, {
-            'attr': {'class': 'form-control form-select' },
-            'multiple': false,
-            'placeholder': 'vs_cms.form.page.categories_placeholder',
-        }) }}
-        #}
-        
-        {# Documentation: https://www.jeasyui.com/documentation/combotree.php #}
-        {% if item is defined and item.id %}{% set itemId = item.id %}{% else %}{% set itemId = 0 %}{% endif %}
-        {% set comboDataSourceUrl  = url('vs_wgp_tablature_categories_tree_combo_with_selected', {'categoriesTaxonomyId': tabCategoriesTaxonomyId, 'tabId': itemId}) %}
-        {% set comboTreePlaceholder = 'vs_cms.form.page.categories_placeholder' | trans( {},'VSCmsBundle' ) %}
-        {{ vs_tree.easyuiCombobox( tabForm.category_taxon, comboDataSourceUrl, itemId,
-            {
-                'required': 'true',
-                'multiple': 'true',
-                'checkbox': 'true',
-                'placeholder': comboTreePlaceholder
-            }
-        ) }}
-        
+            'attr': {
+                'class': 'form-control form-select',
+                'data-url': path( 'vs_wgp_tablature_categories_tree_combo' ),
+                'data-placeholder': 'vs_cms.form.page.categories_placeholder' | trans( {},'VSCmsBundle' ),
+            },
+        }) }}        
     </div>
     
     <div class="form-group">

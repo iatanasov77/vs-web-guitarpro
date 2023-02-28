@@ -2,7 +2,16 @@
     data-node-id="{% if isTab %}tab-{{ item.id }}{% else %}{{ item.id }}{% endif %}" 
     {% if parentId %}data-node-pid="{{ parentId }}"{% endif %}
 >
-    
+
+    <td width="10%">
+    {% if not isTab %}
+        <i class="fa fa-folder" aria-hidden="true"></i>
+    {% else %}
+        {# <img src="{{ asset( 'build/web-guitar-pro-reactjs/images/logo.png' ) }}" width="15" height="15" /> #}
+        <img src="{{ asset( 'build/web-guitar-pro-angularjs/images/guitarpro.jpg' ) }}" width="15" height="15" />
+    {% endif %}
+    </td>
+
     <td>
     {% if not isTab %}
         {# Show Tablature Category Name If Not in Default Locale. #}
@@ -12,7 +21,6 @@
     {% endif %}
     </td>
     <td>
-        <div class="btn-group">
         {% if isTab %}
             <a class="btn btn-primary mr-2"
                 href="{{ url( 'tablature_read', {id: item.id} ) }}"
@@ -44,6 +52,7 @@
             <a class="btn btn-danger btnDeleteResource mr-2"
                 href="{{ path('vs_wgp_tablature_delete', {'id': item.id}) }}"
                 data-csrftoken="{{ csrf_token( item.id ) }}"
+                data-redirectUrl="{{ path( 'vs_wgp_tablature_index' ) }}"
                 title="{{ 'vs_cms.template.button_delete' | trans( {},'VSCmsBundle' ) }}"
             >
                 <i class="fas fa-window-close"></i>
@@ -61,13 +70,13 @@
             <a class="btn btn-danger btnDeleteResource mr-2"
                 href="{{ path('vs_wgp_tablature_category_delete', {'id': item.id}) }}"
                 data-csrftoken="{{ csrf_token( item.id ) }}"
+                data-redirectUrl="{{ path( 'vs_wgp_tablature_index' ) }}"
                 title="{{ 'vs_cms.template.button_delete' | trans( {},'VSCmsBundle' ) }}"
             >
                 <i class="fas fa-window-close"></i>
             </a>
             
         {% endif %}
-        </div>
     </td>
 </tr>
 {% if item.children is defined %}
