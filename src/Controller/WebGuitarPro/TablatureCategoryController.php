@@ -53,7 +53,8 @@ class TablatureCategoryController extends AbstractCrudController
     {
         $repo       = $this->get( 'vs_wgp.repository.tablature_category' );
         if ( isset( $formPost['parent'] ) ) {
-            return $repo->findOneBy( ['taxon' => $formPost['parent']] );
+            //return $repo->findOneBy( ['taxon' => $formPost['parent']] );
+            return $repo->find( $formPost['parent'] );
         }
         
         return null;
