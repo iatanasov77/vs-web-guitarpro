@@ -43,6 +43,7 @@
             <a class="btn btn-danger btnDeleteResource mr-2"
                 href="{{ path('vs_wgp_tablature_delete', {'id': item.id}) }}"
                 data-csrftoken="{{ csrf_token( item.id ) }}"
+                data-redirectUrl="{{ path( 'vs_wgp_tablature_index' ) }}"
                 title="{{ 'vs_cms.template.button_delete' | trans( {},'VSCmsBundle' ) }}"
             >
                 <i class="fas fa-window-close"></i>
@@ -60,6 +61,7 @@
             <a class="btn btn-danger btnDeleteResource mr-2"
                 href="{{ path('vs_wgp_tablature_category_delete', {'id': item.id}) }}"
                 data-csrftoken="{{ csrf_token( item.id ) }}"
+                data-redirectUrl="{{ path( 'vs_wgp_tablature_index' ) }}"
                 title="{{ 'vs_cms.template.button_delete' | trans( {},'VSCmsBundle' ) }}"
             >
                 <i class="fas fa-window-close"></i>

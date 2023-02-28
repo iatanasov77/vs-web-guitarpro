@@ -1,6 +1,10 @@
 require( '../css/topbar.css' );
 require( './includes/submenu.js' );
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// bin/web-guitar-pro fos:js-routing:dump --format=json --target=public/shared_assets/js/fos_js_routes_application.json
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+var routes  = require( '../../../../public/shared_assets/js/fos_js_routes_application.json' );
 import { VsPath } from '@/js/includes/fos_js_routes.js';
 
 function showPaymentMethodsForm()
@@ -65,6 +69,7 @@ $( function()
     $( '#formTablatureCategory' ).on( 'submit', function( e )
     {
         e.preventDefault();
+        e.stopPropagation();
         
         var url     = $( this ).attr( "action" );
         var method  = $( this ).attr( "method" );
@@ -75,7 +80,7 @@ $( function()
             type: method,
             data : data
         }).done( function( response ) {
-            document.location = VsPath( 'vs_wgp_tablature_index' )
+            document.location = VsPath( 'vs_wgp_tablature_index', {}, routes )
             //document.location = document.location;
         }).fail( function() {
               alert( 'CREATE CATEGORY ERROR !!!' );
