@@ -12,7 +12,6 @@
     {% endif %}
     </td>
     <td>
-        <div class="btn-group">
         {% if isTab %}
             <a class="btn btn-primary mr-2"
                 href="{{ url( 'tablature_read', {id: item.id} ) }}"
@@ -67,7 +66,6 @@
             </a>
             
         {% endif %}
-        </div>
     </td>
 </tr>
 {% if item.children is defined %}
