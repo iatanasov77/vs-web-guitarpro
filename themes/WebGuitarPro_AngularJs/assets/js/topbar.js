@@ -66,6 +66,16 @@ $( function()
         });
     });
     
+    $( '#tablature_category_form_parent' ).combotree({
+        url: $( '#tablature_category_form_parent' ).attr( 'data-url' ),
+        prompt: '-- Select Parent Category --'
+    });
+    
+    $( '#tablature_form_category_taxon' ).combotree({
+        url: $( '#tablature_form_category_taxon' ).attr( 'data-url' ),
+        prompt: $( '#tablature_form_category_taxon' ).attr( 'data-placeholder' )
+    });
+    
     $( '#formTablatureCategory' ).on( 'submit', function( e )
     {
         e.preventDefault();
