@@ -2,7 +2,16 @@
     data-node-id="{% if isTab %}tab-{{ item.id }}{% else %}{{ item.id }}{% endif %}" 
     {% if parentId %}data-node-pid="{{ parentId }}"{% endif %}
 >
-    
+
+    <td width="10%">
+    {% if not isTab %}
+        <i class="fa fa-folder" aria-hidden="true"></i>
+    {% else %}
+        {# <img src="{{ asset( 'build/web-guitar-pro-reactjs/images/logo.png' ) }}" width="15" height="15" /> #}
+        <img src="{{ asset( 'build/web-guitar-pro-angularjs/images/guitarpro.jpg' ) }}" width="15" height="15" />
+    {% endif %}
+    </td>
+
     <td>
     {% if not isTab %}
         {# Show Tablature Category Name If Not in Default Locale. #}
