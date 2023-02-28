@@ -1,3 +1,16 @@
+2.2.1	|	Release date: **28.02.2023**
+============================================
+* New Features and Improvements:
+  - Add API Download Functionality. 
+  - Set Icons Of My Tablatures Tree.
+  - Exporting SQL DEV Data.
+* Bug-Fixes:
+  - Litle Fix.
+  - Fix Deletiing Resources.
+  - Fix Create Categories.
+  - Fix TopBar Forms.
+
+
 2.2.0	|	Release date: **27.02.2023**
 ============================================
 * New Features and Improvements:
