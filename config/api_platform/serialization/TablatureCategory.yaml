@@ -4,6 +4,8 @@ App\Entity\TablatureCategory:
             groups: ['tablature-category:read']
         taxon:
             groups: ['tablature-category:read', 'tablature-category:create', 'tablature-category:update']
+        parent:
+            groups: ['tablature-category:read', 'tablature-category:create', 'tablature-category:update']
         children:
             groups: ['tablature-category:read', 'tablature-category:create', 'tablature-category:update']
         tablatures:
