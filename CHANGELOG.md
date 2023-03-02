@@ -1,3 +1,10 @@
+2.2.2	|	Release date: **02.03.2023**
+============================================
+* New Features and Improvements:
+  - Improve API.
+  - FTP Deploy Only The Theme That Is Used.
+
+
 2.2.1	|	Release date: **28.02.2023**
 ============================================
 * New Features and Improvements:
