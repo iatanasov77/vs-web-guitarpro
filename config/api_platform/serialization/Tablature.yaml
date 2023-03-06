@@ -7,7 +7,7 @@ App\Entity\Tablature:
         song:
             groups: ['tablature:read', 'tablature:create', 'tablature:update', 'tablature-category:read']
         enabled:
-            groups: ['tablature:read', 'tablature:create', 'tablature:update']
+            groups: ['tablature:read', 'tablature:create', 'tablature:update', 'tablature-category:read']
 
         tablatureFile:
             groups: ['tablature:read', 'tablature-category:read']
@@ -20,9 +20,9 @@ App\Entity\Tablature:
         updatedBy:
             groups: ['tablature:read', 'tablature-category:read']
         createdAt:
-            groups: ['tablature:read']
+            groups: ['tablature:read', 'tablature-category:read']
         updatedAt:
-            groups: ['tablature:read']
+            groups: ['tablature:read', 'tablature-category:read']
 
 App\Entity\TablatureFile:
     attributes:
