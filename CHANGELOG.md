@@ -1,3 +1,11 @@
+2.3.0	|	Release date: **06.03.2023**
+============================================
+* New Features:
+  - Add API Docs Assets.
+  - Improve API.
+  - Add Mercure into the API.
+
+
 2.2.2	|	Release date: **02.03.2023**
 ============================================
 * New Features and Improvements:
