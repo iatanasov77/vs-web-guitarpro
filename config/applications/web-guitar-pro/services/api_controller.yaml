@@ -55,4 +55,38 @@ services:
             - '@vs_wgp.repository.tablature'
             - '%vs_wgp.tablatures_directory%'
 
+    App\Controller\Api\CreateCategoryController:
+        tags: ['controller.service_arguments']
+        autowire: true
+        arguments:
+            - '@security.token_storage'
+            - '@doctrine'
+            - '@translator'
+            - '@vs_wgp.factory.tablature_category'
+            - '@vs_wgp.repository.tablature_category'
+            - '@vs_application.factory.taxon'
+            - '@vs_application.repository.taxon'
+            - '@vs_application.slug_generator'
+            - '@vs_application.repository.taxonomy'
+            - '%vs_wgp.tablature-categories.taxonomy_code%'
+            
+    App\Controller\Api\EditCategoryController:
+        tags: ['controller.service_arguments']
+        autowire: true
+        arguments:
+            - '@security.token_storage'
+            - '@doctrine'
+            - '@translator'
+            - '@vs_wgp.repository.tablature_category'
+            
+    App\Controller\Api\DeleteCategoryController:
+        tags: ['controller.service_arguments']
+        autowire: true
+        arguments:
+            - '@security.token_storage'
+            - '@doctrine'
+            - '@translator'
+            - '@vs_wgp.repository.tablature_category'
+
+
 

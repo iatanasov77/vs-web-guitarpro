@@ -8,5 +8,41 @@ resources:
                 controller: App\Controller\Api\MyTablaturesCategoriesController
                 normalizationContext:
                     groups: ['tablature-category:read']
+            
+            category_post:
+                class: ApiPlatform\Metadata\Post
+                method: POST
+                uriTemplate: /my-categories/new
+                controller: App\Controller\Api\CreateCategoryController
+                
+                read: false # Disable ReadListener
+                write: false
+                deserialize: false,
+                
+                normalizationContext:
+                    groups: ['tablature:read']
+                denormalizationContext:
+                    groups: ['tablature:create']
+            
+            category_put:
+                class: ApiPlatform\Metadata\Put
+                method: PUT
+                uriTemplate: /my-categories/{id}
+                controller: App\Controller\Api\EditCategoryController
+                
+                read: false # Disable ReadListener
+                write: false
+                deserialize: false,
+                
+                normalizationContext:
+                    groups: ['tablature:read']
+                denormalizationContext:
+                    groups: ['tablature:update']
+                
+            category_delete:
+                class: ApiPlatform\Metadata\Delete
+                method: DELETE
+                uriTemplate: /my-categories/{id}
+                controller: App\Controller\Api\DeleteCategoryController
 
 
