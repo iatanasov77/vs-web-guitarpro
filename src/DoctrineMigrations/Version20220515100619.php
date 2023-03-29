@@ -28,7 +28,6 @@ final class Version20220515100619 extends AbstractMigration
         $this->addSql('ALTER TABLE WGP_Payments DROP FOREIGN KEY FK_213C576287FFD8A7');
         $this->addSql('DROP INDEX IDX_213C576287FFD8A7 ON WGP_Payments');
         $this->addSql('ALTER TABLE WGP_Payments CHANGE paid_service_id paid_service_period_id INT DEFAULT NULL');
-        $this->addSql('ALTER TABLE WGP_Payments ADD CONSTRAINT FK_213C5762F504121C FOREIGN KEY (paid_service_period_id) REFERENCES VSUS_PayedServiceSubscriptionPeriods (id)');
         $this->addSql('CREATE INDEX IDX_213C5762F504121C ON WGP_Payments (paid_service_period_id)');
     }
 
@@ -43,7 +42,6 @@ final class Version20220515100619 extends AbstractMigration
         $this->addSql('ALTER TABLE WGP_Payments DROP FOREIGN KEY FK_213C5762F504121C');
         $this->addSql('DROP INDEX IDX_213C5762F504121C ON WGP_Payments');
         $this->addSql('ALTER TABLE WGP_Payments CHANGE paid_service_period_id paid_service_id INT DEFAULT NULL');
-        $this->addSql('ALTER TABLE WGP_Payments ADD CONSTRAINT FK_213C576287FFD8A7 FOREIGN KEY (paid_service_id) REFERENCES VSUS_PayedServices (id) ON UPDATE NO ACTION ON DELETE NO ACTION');
         $this->addSql('CREATE INDEX IDX_213C576287FFD8A7 ON WGP_Payments (paid_service_id)');
     }
 }
