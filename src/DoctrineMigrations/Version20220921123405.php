@@ -25,7 +25,6 @@ final class Version20220921123405 extends AbstractMigration
         $this->addSql('ALTER TABLE VSAPP_Settings CHANGE maintenance_page_id maintenance_page_id  INT DEFAULT NULL');
         $this->addSql('ALTER TABLE VSAPP_Settings ADD CONSTRAINT FK_4A491FD507FAB6A FOREIGN KEY (maintenance_page_id ) REFERENCES VSCMS_Pages (id) ON DELETE CASCADE');
         $this->addSql('CREATE INDEX IDX_4A491FD507FAB6A ON VSAPP_Settings (maintenance_page_id )');
-        $this->addSql('ALTER TABLE VSPAY_Order CHANGE status status ENUM(\'shopping_cart\', \'paid_order\', \'failed_order\')');
         $this->addSql('ALTER TABLE WGP_Tablatures DROP FOREIGN KEY FK_B4690701185F7FB6');
         $this->addSql('DROP INDEX UNIQ_B4690701185F7FB6 ON WGP_Tablatures');
         $this->addSql('ALTER TABLE WGP_Tablatures DROP tablature_file_id');
@@ -39,7 +38,6 @@ final class Version20220921123405 extends AbstractMigration
         $this->addSql('ALTER TABLE VSAPP_Settings CHANGE maintenance_page_id  maintenance_page_id INT DEFAULT NULL');
         $this->addSql('ALTER TABLE VSAPP_Settings ADD CONSTRAINT FK_4A491FD507FAB6A FOREIGN KEY (maintenance_page_id) REFERENCES VSCMS_Pages (id) ON UPDATE NO ACTION ON DELETE CASCADE');
         $this->addSql('CREATE INDEX IDX_4A491FD507FAB6A ON VSAPP_Settings (maintenance_page_id)');
-        $this->addSql('ALTER TABLE VSPAY_Order CHANGE status status VARCHAR(255) DEFAULT NULL');
         $this->addSql('ALTER TABLE WGP_Tablatures ADD tablature_file_id INT DEFAULT NULL');
         $this->addSql('ALTER TABLE WGP_Tablatures ADD CONSTRAINT FK_B4690701185F7FB6 FOREIGN KEY (tablature_file_id) REFERENCES WGP_Tablatures_Files (id) ON UPDATE NO ACTION ON DELETE NO ACTION');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_B4690701185F7FB6 ON WGP_Tablatures (tablature_file_id)');

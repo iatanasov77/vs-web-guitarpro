@@ -2,6 +2,7 @@ imports:
     - { resource: services/menu.yaml }
     - { resource: services/controller.yaml }
     - { resource: services/form.yaml }
+    - { resource: services/uploader.yaml }
 
 # This file is the entry point to configure your own services.
 # Files in the packages/ subdirectory configure your dependencies.

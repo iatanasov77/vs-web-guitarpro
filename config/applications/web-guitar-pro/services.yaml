@@ -2,6 +2,7 @@ imports:
     - { resource: services/security.yaml }
     - { resource: services/controller.yaml }
     - { resource: services/forms.yaml }
+    - { resource: services/uploader.yaml }
     - { resource: services/doctrine_extensions.yaml }
     - { resource: services/menu.yaml }
     - { resource: services/wgp_tablature.yaml }

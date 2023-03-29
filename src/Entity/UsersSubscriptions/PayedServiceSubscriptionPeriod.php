@@ -3,7 +3,7 @@
 use Doctrine\ORM\Mapping as ORM;
 use Vankosoft\UsersSubscriptionsBundle\Model\PayedServiceSubscriptionPeriod as PayedServiceSubscriptionPeriodBase;
 use Vankosoft\PaymentBundle\Model\Interfaces\PayableObjectInterface;
-use Vankosoft\PaymentBundle\Model\Traits\PayableObjectTrait;
+use Vankosoft\PaymentBundle\Model\Traits\PaidServiceSubscriptionTrait;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -13,7 +13,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class PayedServiceSubscriptionPeriod extends PayedServiceSubscriptionPeriodBase implements PayableObjectInterface
 {
-    use PayableObjectTrait;
+    use PaidServiceSubscriptionTrait;
     
     public function __construct()
     {
