@@ -1,3 +1,14 @@
+2.4.0	|	Release date: **29.03.2023**
+============================================
+* New Features and Upgrade:
+  - Add All CRUD Operations For Category API.
+  - Update PaymentBundle Version.
+  - Fix All Forms About Base Form Class.
+  - Update Vankosoft Payment Bundle.
+  - Update All Entities and Configs About New Version of Payment Bundle.
+  - Fix All Doctrine Migrations About New Version of Payment Bundle.
+
+
 2.3.0	|	Release date: **06.03.2023**
 ============================================
 * New Features:
