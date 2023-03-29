@@ -25,7 +25,7 @@
         "vankosoft/application": "1.10.*",
         
         "vankosoft/users-subscriptions-bundle": "2.4.*",
-        "vankosoft/payment-bundle": "2.4.*",
+        "vankosoft/payment-bundle": "2.6.*",
         "vankosoft/api-bundle": "2.1.*"
     },
     "require-dev": {
