@@ -1,3 +1,9 @@
+2.4.1	|	Release date: **05.04.2023**
+============================================
+* Bug Fixes:
+  - Improve AngularJs Theme
+
+
 2.4.0	|	Release date: **29.03.2023**
 ============================================
 * New Features and Upgrade:
