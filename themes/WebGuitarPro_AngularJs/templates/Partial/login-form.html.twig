@@ -13,7 +13,13 @@
             placeholder="{{ 'vs_wgp.form.login.password' | trans( {},'WebGuitarPro' ) }}"
         >
     </div>
-
+    <div class="form-group">
+        <label class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name="_remember_me" />
+            <span class="custom-control-label">{{ 'vs_application.form.login.remember_me' | trans( {},'VSApplicationBundle' ) }}</span>
+        </label>
+    </div>
+            
     <div class="row ml-2">
         <div class="col-4"><a href="{{ path( 'vs_users_register_form' ) }}">{{ 'vs_wgp.form.login.register' | trans( {},'WebGuitarPro' ) }}</a></div>
         <div class="col-8"><a href="{{ path( 'vs_users_forgot_password_form' ) }}">{{ 'vs_wgp.form.login.forgot_password' | trans( {},'WebGuitarPro' ) }}</a></div>

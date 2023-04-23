@@ -57,6 +57,10 @@ security:
                 path: app_logout
                 target: app_login
                 invalidate_session: true
+            remember_me:
+                secret: '%kernel.secret%'
+                lifetime: 33264000 # 1 year in seconds
+                signature_properties: ['password', 'salt']
 
             custom_authenticators:
                 - vs_users.security.login_form_authenticator

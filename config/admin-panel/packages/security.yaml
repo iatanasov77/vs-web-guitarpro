@@ -32,12 +32,6 @@ security:
             #provider: debug_provider
             provider: default_provider
             
-            # activate different ways to authenticate
-            # https://symfony.com/doc/current/security.html#firewalls-authentication
-
-            # https://symfony.com/doc/current/security/impersonating_user.html
-            # switch_user: true
-            
             form_login:
                 enable_csrf: true
                 login_path: vs_application_login
@@ -50,6 +44,12 @@ security:
                 path: vs_application_logout
                 target: /login
                 invalidate_session: true
+                
+            # https://symfony.com/doc/current/security/remember_me.html
+            remember_me:
+                secret: '%kernel.secret%'
+                lifetime: 33264000 # 1 year in seconds
+                signature_properties: ['password', 'salt']
 
             custom_authenticators:
                 - vs_users.security.login_form_authenticator
