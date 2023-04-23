@@ -1,3 +1,11 @@
+2.4.2	|	Release date: **23.04.2023**
+============================================
+* New Features:
+  - Add Lgin RememberMe Functionality.
+* Bug-Fixes:
+  - Fix Frontent Packages.
+
+
 2.4.1	|	Release date: **05.04.2023**
 ============================================
 * Bug Fixes:
