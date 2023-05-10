@@ -101,6 +101,7 @@ node ( label: 'php-host' ) {
     stage( 'Build Application' ) {
         sh """
             export COMPOSER_HOME='/home/vagrant/.composer';
+            export NODE_OPTIONS=--max-old-space-size=4096
             /usr/local/bin/phing install-${BUILD_ENVIRONMENT} -verbose -debug
         """
         
