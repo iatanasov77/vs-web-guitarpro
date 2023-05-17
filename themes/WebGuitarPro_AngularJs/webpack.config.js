@@ -94,14 +94,13 @@ Encore
     .addEntry( 'my-shares', './themes/WebGuitarPro_AngularJs/assets/js/pages/my-shares.js' )
 ;
 
+Encore.configureDefinePlugin( ( options ) => {
+    options.IS_PRODUCTION = JSON.stringify( Encore.isProduction() );
+});
+
 const config = Encore.getWebpackConfig();
 config.name = 'WebGuitarPro_AngularJs';
 
 config.resolve.extensions = ['.ts', '.js'];
-config.plugins.push(
-    new webpack.DefinePlugin({
-        IS_PRODUCTION: JSON.stringify( Encore.isProduction() ),
-    })
-);
 
 module.exports = config;
