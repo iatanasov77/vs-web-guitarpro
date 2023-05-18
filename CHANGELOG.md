@@ -1,3 +1,14 @@
+2.4.3	|	Release date: **18.05.2023**
+============================================
+* Bug-Fixes and Improvements:
+  - Add to Gitignore.
+  - Update package.json
+  - Update Jenkinsfile.
+  - Improve WebPack Encore Config Globals.
+  - Update Angular Theme Context.
+  - Update Git Ignore.
+
+
 2.4.2	|	Release date: **23.04.2023**
 ============================================
 * New Features:
