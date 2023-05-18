@@ -60,6 +60,7 @@ ignore = "
     /config/routes.yaml
     /config/services.yaml
     
+    /public/web-guitar-pro/_themes/vankosoft/web-guitar-pro-angularjs/bundles/*
     /themes/WebGuitarPro_ReactJs
     /themes/WebGuitarPro_VueJs
 "
@@ -87,6 +88,9 @@ include = "
     /themes/WebGuitarPro_AngularJs
     /themes/WebGuitarPro_AngularJs/*
     /VERSION
+    
+    /public/web-guitar-pro/_themes/vankosoft/web-guitar-pro-angularjs/bundles/apiplatform
+    /public/web-guitar-pro/_themes/vankosoft/web-guitar-pro-angularjs/bundles/apiplatform/*
 "
 
 ; is allowed to delete remote files? (defaults to yes)

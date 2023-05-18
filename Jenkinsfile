@@ -101,6 +101,10 @@ node ( label: 'php-host' ) {
     stage( 'Build Application' ) {
         sh """
             export COMPOSER_HOME='/home/vagrant/.composer';
+            
+            # https://www.makeuseof.com/javascript-heap-out-of-memory-error-fix/
+            export NODE_OPTIONS='--max-old-space-size=4096';
+            
             /usr/local/bin/phing install-${BUILD_ENVIRONMENT} -verbose -debug
         """
         

@@ -12,6 +12,7 @@
 /public/index.php
 /src/Kernel.php
 /templates/base.html.twig
+/src/ApiResource/
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###
