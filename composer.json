@@ -69,10 +69,9 @@
     },
     "scripts": {
         "auto-scripts": {
-            "assets:install public/admin-panel": "symfony-cmd",
             "cache:clear": "symfony-cmd",
-            "liip:imagine:cache:remove": "symfony-cmd",
-            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+            "assets:install public/web-guitar-pro/_themes/vankosoft/web-guitar-pro-angularjs": "symfony-cmd",
+            "liip:imagine:cache:remove": "symfony-cmd"
         },
         "post-install-cmd": [
             "@auto-scripts"
