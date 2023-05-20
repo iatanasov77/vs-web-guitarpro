@@ -13,6 +13,7 @@ twig:
         
         languageFlags: '%language_flags%'
         localesRepo: '@vs_application.repository.locale'
+        applicationsRepo: '@vs_application.repository.application'
         
     form_themes:
         - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
