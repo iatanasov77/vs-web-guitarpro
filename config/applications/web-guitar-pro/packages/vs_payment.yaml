@@ -1,4 +1,7 @@
 vs_payment:
+    # Supported Storages: doctrine_orm, filesystem
+    token_storage: doctrine_orm
+
     resources:
         gateway_config:
             classes:
@@ -9,15 +12,15 @@ vs_payment:
         payment:
             classes:
                 model: App\Entity\Payment\Payment
+        payment_token:
+            classes:
+                model: App\Entity\Payment\PaymentToken
         order:
             classes:
                 model: App\Entity\Payment\Order
         order_item:
             classes:
                 model: App\Entity\Payment\OrderItem
-        token:
-            classes:
-                model: App\Entity\Payment\Token
         currency:
             classes:
                 model: App\Entity\Payment\Currency

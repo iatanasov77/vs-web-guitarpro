@@ -20,10 +20,10 @@
         <if>
 		    <available file="${root_path}/vendor" type="dir" />
 		    <then>
-                <exec command="/usr/local/bin/composer update --no-dev --no-interaction --prefer-dist" returnProperty="vendors_output" />
+                <exec command="/usr/local/bin/composer update --no-dev --no-scripts --no-interaction --prefer-dist" returnProperty="vendors_output" />
             </then>
             <else>
-                <exec command="/usr/local/bin/composer install --no-dev --no-interaction --prefer-dist" returnProperty="vendors_output" />
+                <exec command="/usr/local/bin/composer install --no-dev --no-scripts --no-interaction --prefer-dist" returnProperty="vendors_output" />
  			</else>
         </if>
     </target>
@@ -32,10 +32,10 @@
         <if>
             <available file="${root_path}/vendor" type="dir" />
             <then>
-                <exec command="/usr/local/bin/composer update --no-interaction --prefer-dist" returnProperty="vendors_output" />
+                <exec command="/usr/local/bin/composer update --no-scripts --no-interaction --prefer-dist" returnProperty="vendors_output" />
             </then>
             <else>
-                <exec command="/usr/local/bin/composer install --no-interaction --prefer-dist" returnProperty="vendors_output" />
+                <exec command="/usr/local/bin/composer install --no-scripts --no-interaction --prefer-dist" returnProperty="vendors_output" />
             </else>
         </if>
     </target>
