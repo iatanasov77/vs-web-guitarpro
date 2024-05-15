@@ -7,24 +7,46 @@
     <target name="install-staging" depends="setup-backend-staging,setup-frontend-staging"></target>
   
     <target name="setup-frontend-production">
-        <exec command="yarn install" returnProperty="yarn_install_output" />
-        <exec command="yarn run build" returnProperty="yarn_run_output" />
+        <exec executable="/usr/bin/yarn" returnProperty="yarn_install_output">
+            <arg value="install"/>
+        </exec>
+        <exec executable="/usr/bin/yarn" returnProperty="yarn_run_output">
+            <arg value="run"/>
+            <arg value="build"/>
+        </exec>
     </target>
     
     <target name="setup-frontend-staging">
-        <exec command="yarn install" returnProperty="yarn_install_output" />
-        <exec command="yarn run dev" returnProperty="yarn_run_output" />
+        <exec executable="/usr/bin/yarn" returnProperty="yarn_install_output">
+            <arg value="install"/>
+        </exec>
+        <exec executable="/usr/bin/yarn" returnProperty="yarn_run_output">
+            <arg value="run"/>
+            <arg value="dev"/>
+        </exec>
     </target>
 
     <target name="setup-backend-production">
         <if>
-		    <available file="${root_path}/vendor" type="dir" />
-		    <then>
-                <exec command="/usr/local/bin/composer update --no-dev --no-scripts --no-interaction --prefer-dist" returnProperty="vendors_output" />
+            <available file="${root_path}/vendor" type="dir" />
+            <then>
+                <exec executable="/usr/local/bin/composer" returnProperty="vendors_output">
+                    <arg value="update"/>
+                    <arg value="--no-dev"/>
+                    <arg value="--no-scripts"/>
+                    <arg value="--no-interaction"/>
+                    <arg value="--prefer-dist"/>
+                </exec>
             </then>
             <else>
-                <exec command="/usr/local/bin/composer install --no-dev --no-scripts --no-interaction --prefer-dist" returnProperty="vendors_output" />
- 			</else>
+                <exec executable="/usr/local/bin/composer" returnProperty="vendors_output">
+                    <arg value="install"/>
+                    <arg value="--no-dev"/>
+                    <arg value="--no-scripts"/>
+                    <arg value="--no-interaction"/>
+                    <arg value="--prefer-dist"/>
+                </exec>
+            </else>
         </if>
     </target>
     
@@ -32,15 +54,29 @@
         <if>
             <available file="${root_path}/vendor" type="dir" />
             <then>
-                <exec command="/usr/local/bin/composer update --no-scripts --no-interaction --prefer-dist" returnProperty="vendors_output" />
+                <exec executable="/usr/local/bin/composer" returnProperty="vendors_output">
+                    <arg value="update"/>
+                    <arg value="--no-scripts"/>
+                    <arg value="--no-interaction"/>
+                    <arg value="--prefer-dist"/>
+                </exec>
             </then>
             <else>
-                <exec command="/usr/local/bin/composer install --no-scripts --no-interaction --prefer-dist" returnProperty="vendors_output" />
+                <exec executable="/usr/local/bin/composer" returnProperty="vendors_output">
+                    <arg value="install"/>
+                    <arg value="--no-scripts"/>
+                    <arg value="--no-interaction"/>
+                    <arg value="--prefer-dist"/>
+                </exec>
             </else>
         </if>
     </target>
 
     <target name="run-tests">
         <exec command="phpunit -c app" checkreturn="true" />
+        <exec executable="/usr/local/bin/phpunit" checkreturn="true">
+            <arg value="-c"/>
+            <arg value="app"/>
+        </exec>
     </target>
 </project>
