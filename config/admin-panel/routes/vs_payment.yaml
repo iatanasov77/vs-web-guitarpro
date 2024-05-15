@@ -1,0 +1,37 @@
+vs_payment_config_resources:
+    resource: "@VSPaymentBundle/Resources/config/routing/payment_config_resources.yaml"
+    prefix: /
+    options:
+        expose: true
+    
+vs_payment_promotions:
+    resource: "@VSPaymentBundle/Resources/config/routing/promotions.yaml"
+    prefix: /
+    options:
+        expose: true
+        
+vs_payment_config:
+    resource: "@VSPaymentBundle/Resources/config/routing/payment_config.yaml"
+    prefix: /
+    options:
+        expose: true
+    
+vs_payment_config_gateway:
+    resource: "@VSPaymentBundle/Resources/config/routing/gateway_config.yaml"
+    prefix: /
+    options:
+        expose: true
+
+vs_catalog_products:
+    resource: "@VSCatalogBundle/Resources/config/routing/products.yaml"
+    prefix: /
+    options:
+        expose: true
+    
+vs_catalog_pricing_plans:
+    resource: "@VSCatalogBundle/Resources/config/routing/pricing_plans.yaml"
+    prefix: /
+    options:
+        expose: true
+
+

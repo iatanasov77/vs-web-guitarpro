@@ -37,6 +37,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="nav navbar-nav ms-auto">
             
+            {#
             {% if app_environment == 'dev' %}
                 <li class="nav-item dropdown btn-group">
                     <a class="nav-link dropdown-toggle" id="btnDemoPages" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Demo Pages</a>
@@ -59,6 +60,7 @@
                 <!--/ Documentation  -->
             {% endif %}
             
+            
             <!-- About Application -->
             <li class="nav-item">
                 <a class="nav-link" href="{{ path( 'wgp_about_application' ) }}">
@@ -66,7 +68,8 @@
                 </a>
             </li>
             <!--/ About Application -->
-                
+            #}
+            
             <li class="nav-item">
                 <a class="nav-link" href="{{ path( 'app_home' ) }}">
                     {{ 'vs_wgp.template.menu.latest_tablatures' | trans( {},'WebGuitarPro' ) }}
@@ -144,16 +147,7 @@
                                     <i class="fas fa-language mr-2"></i>{{ 'vs_wgp.template.menu.language' | trans( {},'WebGuitarPro' ) }}
                                 </a>
                                 
-                                <ul class="dropdown-menu dropdown-menu-start">
-                                    {% for locale in locales %}
-                                        <li>
-                                            <a class="dropdown-item" href="{{ path('app_set_locale', {'locale': locale.code }) }}">
-                                                <i class="flag flag-{{ locale.code | slice( 3, 2 ) | lower }}"></i>
-                                                {{ locale.name }}
-                                            </a>
-                                        </li>
-                                    {% endfor %}
-                                </ul>
+                                {{ vs_widget_render( 'videos-layout', ['application-menu-locales'] ) }}
                             </li>
                             <li>
                                 <a class="dropdown-item" href="javascript:;">
@@ -193,6 +187,7 @@
                 
                 <li class="nav-item ml-2">&nbsp;</li>
                 <li class="nav-item ml-2">&nbsp;</li>
+                <li class="nav-item pt-2">
                 {% for locale in locales %}
                     <li class="nav-item pt-2">
                         <a href="{{ path('app_set_locale', {'locale': locale.code}) }}">
@@ -200,6 +195,7 @@
                         </a>
                     </li>
                 {% endfor %}
+                </li>
             {% endif %}
             </ul>
         </div>

@@ -12,12 +12,11 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
-use Vankosoft\ApplicationBundle\Component\I18N;
 use App\Entity\TablatureCategory;
 
 class TablatureCategoryForm extends AbstractForm
 {
-    private $requestStack;
+    /** @var string */
     private $categoryClass;
     
     /** @var TokenStorageInterface */
@@ -44,13 +43,6 @@ class TablatureCategoryForm extends AbstractForm
         $builder
             ->add( '_currentUrl', HiddenType::class, ['mapped' => false] )
             
-            ->add( 'currentLocale', ChoiceType::class, [
-                'choices'               => \array_flip( I18N::LanguagesAvailable() ),
-                'data'                  => $this->requestStack->getCurrentRequest()->getLocale(),
-                'mapped'                => false,
-                'label'                 => 'vs_wgp.form.locale',
-                'translation_domain'    => 'WebGuitarPro',
-            ])
             ->add( 'name', TextType::class, [
                 'label'                 => 'vs_wgp.form.name',
                 'translation_domain'    => 'WebGuitarPro',

@@ -24,7 +24,6 @@ return [
 	Knp\Bundle\GaufretteBundle\KnpGaufretteBundle::class => ['all' => true],
 	Artgris\Bundle\FileManagerBundle\ArtgrisFileManagerBundle::class => ['all' => true],
 	Liip\ImagineBundle\LiipImagineBundle::class => ['all' => true],
-	SPE\FilesizeExtensionBundle\SPEFilesizeExtensionBundle::class => ['all' => true],
 	
 	BabDev\PagerfantaBundle\BabDevPagerfantaBundle::class => ['all' => true],
     Sylius\Bundle\ResourceBundle\SyliusResourceBundle::class => ['all' => true],
@@ -35,6 +34,7 @@ return [
     Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle::class => ['all' => true],
     Bazinga\Bundle\HateoasBundle\BazingaHateoasBundle::class => ['all' => true],
     
+    Vankosoft\AgentBundle\VSAgentBundle::class => ['all' => true],
     Vankosoft\ApplicationInstalatorBundle\VSApplicationInstalatorBundle::class => ['all' => true],
     Vankosoft\ApplicationBundle\VSApplicationBundle::class => ['all' => true],
     Vankosoft\CmsBundle\VSCmsBundle::class => ['all' => true],
@@ -46,14 +46,16 @@ return [
     
     Twig\Extra\TwigExtraBundle\TwigExtraBundle::class => ['all' => true],
     
+    Payum\Bundle\PayumBundle\PayumBundle::class => ['all' => true],
     Vankosoft\UsersSubscriptionsBundle\VSUsersSubscriptionsBundle::class => ['all' => true],
     Vankosoft\PaymentBundle\VSPaymentBundle::class => ['all' => true],
-    Payum\Bundle\PayumBundle\PayumBundle::class => ['all' => true],
+    Vankosoft\BoricaBundle\VSBoricaBundle::class => ['all' => true],
+    Vankosoft\CatalogBundle\VSCatalogBundle::class => ['all' => true],
     
-    ApiPlatform\Symfony\Bundle\ApiPlatformBundle::class => ['all' => true],
-    Vankosoft\ApiBundle\VSApiBundle::class => ['all' => true],
-    Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle::class => ['all' => true],
-    Gesdinet\JWTRefreshTokenBundle\GesdinetJWTRefreshTokenBundle::class => ['all' => true],
-    Nelmio\CorsBundle\NelmioCorsBundle::class => ['all' => true],
-    Symfony\Bundle\MercureBundle\MercureBundle::class => ['all' => true],
+//     ApiPlatform\Symfony\Bundle\ApiPlatformBundle::class => ['all' => true],
+//     Vankosoft\ApiBundle\VSApiBundle::class => ['all' => true],
+//     Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle::class => ['all' => true],
+//     Gesdinet\JWTRefreshTokenBundle\GesdinetJWTRefreshTokenBundle::class => ['all' => true],
+//     Nelmio\CorsBundle\NelmioCorsBundle::class => ['all' => true],
+//     Symfony\Bundle\MercureBundle\MercureBundle::class => ['all' => true],
 ];

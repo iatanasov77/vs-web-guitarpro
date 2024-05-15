@@ -10,10 +10,10 @@ use Vankosoft\PaymentBundle\Component\Payment\Payment;
 use Vankosoft\PaymentBundle\Exception\ShoppingCardException;
 use Vankosoft\PaymentBundle\Form\PaymentForm;
 
-use Vankosoft\PaymentBundle\Controller\Checkout\PaymentController as BasePaymentController;
+use Vankosoft\PaymentBundle\Controller\Checkout\CreditCardController;
 use App\Controller\WebGuitarPro\GlobalFormsTrait;
 
-class PaymentController extends BasePaymentController
+class PaymentController extends CreditCardController
 {
     use GlobalFormsTrait;
     

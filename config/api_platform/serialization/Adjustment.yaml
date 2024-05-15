@@ -1,0 +1,13 @@
+App\Entity\Payment\Adjustment:
+    attributes:
+        type:
+            groups: ['tablature:read']
+        label:
+            groups: ['tablature:read']
+        amount:
+            groups: ['tablature:read']
+        neutral:
+            groups: ['tablature:read']
+        originCode:
+            groups: ['tablature:read']
+

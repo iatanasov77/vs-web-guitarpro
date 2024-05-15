@@ -1,17 +1,17 @@
-imports:
-    #- { resource: "@VSApiBundle/Resources/config/app/security.yaml" }
-    - { resource: "@VSApiBundle/Resources/config/app/api_platform.yaml" }
-    - { resource: "@VSApiBundle/Resources/config/app/serializer.yaml" }
-    - { resource: "@VSApiBundle/Resources/config/app/lexik_jwt_authentication.yaml" }
-    - { resource: "@VSApiBundle/Resources/config/app/nelmio_cors.yaml" }
-    - { resource: "@VSApiBundle/Resources/config/app/mercure.yaml" }
-
-
-vs_api:
-    enabled: true
-    
-    title: 'WebGuitarPro API'
-    description: 'API for WebGuitarProStore Application.'
-    version: '0.0.1'  # The version of the API.
+# imports:
+#     #- { resource: "@VSApiBundle/Resources/config/app/security.yaml" }
+#     - { resource: "@VSApiBundle/Resources/config/app/api_platform.yaml" }
+#     - { resource: "@VSApiBundle/Resources/config/app/serializer.yaml" }
+#     - { resource: "@VSApiBundle/Resources/config/app/lexik_jwt_authentication.yaml" }
+#     - { resource: "@VSApiBundle/Resources/config/app/nelmio_cors.yaml" }
+#     - { resource: "@VSApiBundle/Resources/config/app/mercure.yaml" }
+# 
+# 
+# vs_api:
+#     enabled: true
+#     
+#     title: 'WebGuitarPro API'
+#     description: 'API for WebGuitarProStore Application.'
+#     version: '0.0.1'  # The version of the API.
 
 

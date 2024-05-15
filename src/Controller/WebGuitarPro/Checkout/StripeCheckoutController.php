@@ -14,7 +14,7 @@ use Payum\Core\Model\CreditCard;
 use Vankosoft\PaymentBundle\Model\Order;
 use Vankosoft\PaymentBundle\Exception\ShoppingCardException;
 
-use Vankosoft\PaymentBundle\Controller\Checkout\StripeCheckoutController as BaseStripeCheckoutController;
+use Vankosoft\PaymentBundle\Controller\Checkout\Stripe\StripeCheckoutController as BaseStripeCheckoutController;
 use App\Controller\WebGuitarPro\GlobalFormsTrait;
 
 class StripeCheckoutController extends BaseStripeCheckoutController
@@ -25,17 +25,36 @@ class StripeCheckoutController extends BaseStripeCheckoutController
     private $tabCategoriesTaxonomy;
     
     public function __construct(
+        EventDispatcherInterface $eventDispatcher,
+        TranslatorInterface $translator,
         ManagerRegistry $doctrine,
-        EntityRepository $ordersRepository,
         Payum $payum,
+        SecurityBridge $securityBridge,
+        Payment $vsPayment,
+        OrderFactory $orderFactory,
+        CatalogBridgeInterface $subscriptionsBridge,
         string $paymentClass,
-        EntityRepository $subscriptionRepository,
-        Factory $subscriptionFactory,
+        bool $throwExceptionOnPaymentDone,
+        ?string $routeRedirectOnShoppingCartDone,
+        ?string $routeRedirectOnPricingPlanDone,
         
         EntityRepository $taxonomyRepository,
         string $tabCategoriesTaxonomyCosde
     ) {
-        parent::__construct( $doctrine, $ordersRepository, $payum, $paymentClass, $subscriptionRepository, $subscriptionFactory );
+        parent::__construct(
+            $eventDispatcher,
+            $translator,
+            $doctrine,
+            $payum,
+            $securityBridge,
+            $vsPayment,
+            $orderFactory,
+            $subscriptionsBridge,
+            $paymentClass,
+            $throwExceptionOnPaymentDone,
+            $routeRedirectOnShoppingCartDone,
+            $routeRedirectOnPricingPlanDone
+        );
         
         $this->tabCategoriesTaxonomy    = $taxonomyRepository->findByCode( $tabCategoriesTaxonomyCosde );
     }

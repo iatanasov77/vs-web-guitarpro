@@ -6,12 +6,10 @@ use Vankosoft\CmsBundle\Model\TocPage as BaseTocPage;
 
 /**
  * MultiPageToc
- *
- * @Gedmo\Loggable(logEntryClass="App\Entity\Application\LogEntry")
- * @Gedmo\TranslationEntity(class="App\Entity\Application\Translation")
- * @ORM\Table(name="VSCMS_TocPage")
- * @ORM\Entity
+ * 
  */
+#[ORM\Entity]
+#[ORM\Table(name: "VSCMS_TocPage")]
 class TocPage extends BaseTocPage
 {
     

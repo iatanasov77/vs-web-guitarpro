@@ -4,14 +4,12 @@ twig:
     strict_variables: '%kernel.debug%'
     
     globals:
+        app_environment: '%env(APP_ENV)%'
         applicationTitle: '%applicationTitle%'
-        lang: '%lang%'
         locale: '%locale%'
         formCreateAccount: '%vs_users.form_create_account%'
         alerts: '@vs_app.twig.alerts'
-        languages: '%languages%'
         installedBundles: '%kernel.bundles%'
-        app_environment: '%env(APP_ENV)%'
         alphatabUseCdn: '%vs_wgp.alphatab.use_cdn%'
         
     form_themes:

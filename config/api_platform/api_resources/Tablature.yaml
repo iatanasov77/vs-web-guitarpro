@@ -143,9 +143,9 @@ resources:
             enabled:
                 writeable: true
                 
-            user:
-                writeable: true
-                required: true
+#             user:
+#                 writeable: true
+#                 required: true
             createdBy:
                 writeable: false
             updatedBy:

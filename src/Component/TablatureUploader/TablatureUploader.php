@@ -6,7 +6,7 @@ use Webmozart\Assert\Assert;
 
 use Vankosoft\CmsBundle\Component\Uploader\FileUploaderInterface;
 use Vankosoft\CmsBundle\Component\Generator\FilePathGeneratorInterface;
-use Vankosoft\CmsBundle\Model\FileInterface;
+use Vankosoft\CmsBundle\Model\Interfaces\FileInterface;
 
 class TablatureUploader implements FileUploaderInterface
 {

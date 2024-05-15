@@ -3,12 +3,8 @@
 use Doctrine\ORM\Mapping as ORM;
 use Vankosoft\CmsBundle\Model\FileManager as BaseFileManager;
 
-/**
- * MultiPageToc
- *
- * @ORM\Table(name="VSCMS_FileManager")
- * @ORM\Entity
- */
+#[ORM\Entity]
+#[ORM\Table(name: "VSCMS_FileManager")]
 class FileManager extends BaseFileManager
 {
     

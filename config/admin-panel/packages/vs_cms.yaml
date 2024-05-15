@@ -21,3 +21,18 @@ vs_cms:
         file_manager_file:
             classes:
                 model: App\Entity\Cms\FileManagerFile
+        helpcenter_question:
+            classes:
+                model: App\Entity\Cms\HelpCenterQuestion
+        quick_link:
+            classes:
+                model: App\Entity\Cms\QuickLink
+        slider:
+            classes:
+                model: App\Entity\Cms\Slider
+        slider_item:
+            classes:
+                model: App\Entity\Cms\SliderItem
+        slider_item_photo:
+            classes:
+                model: App\Entity\Cms\SliderItemPhoto

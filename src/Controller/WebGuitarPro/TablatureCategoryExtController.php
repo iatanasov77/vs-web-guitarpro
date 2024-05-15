@@ -6,7 +6,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 use Vankosoft\ApplicationBundle\Repository\TaxonomyRepository;
-use Vankosoft\ApplicationBundle\Controller\TaxonomyTreeDataTrait;
+use Vankosoft\ApplicationBundle\Controller\Traits\TaxonomyTreeDataTrait;
 use Vankosoft\ApplicationBundle\Component\Status;
 
 class TablatureCategoryExtController extends AbstractController

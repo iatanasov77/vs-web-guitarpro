@@ -3,10 +3,8 @@
 use Doctrine\ORM\Mapping as ORM;
 use Vankosoft\ApplicationBundle\Model\TaxonImage as BaseTaxonImage;
 
-/**
- * @ORM\Table(name="VSAPP_TaxonImage")
- * @ORM\Entity
- */
+#[ORM\Entity]
+#[ORM\Table(name: "VSAPP_TaxonImage")]
 class TaxonImage extends BaseTaxonImage
 {
 }

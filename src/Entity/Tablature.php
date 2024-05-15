@@ -10,70 +10,49 @@ use Sylius\Component\Resource\Model\ToggleableTrait;
 
 use App\Entity\UserManagement\User;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="WGP_Tablatures")
- */
+#[ORM\Entity]
+#[ORM\Table(name: "WGP_Tablatures")]
 class Tablature implements ResourceInterface
 {
     use TimestampableEntity;
     use ToggleableTrait;    // About enabled field - $enabled (public)
     
-    /**
-     * @var integer
-     * 
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
+    /** @var int */
+    #[ORM\Id, ORM\Column(type: "integer"), ORM\GeneratedValue(strategy: "IDENTITY")]
     private $id;
     
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\UserManagement\User", inversedBy="tablatures")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     */
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: "tablatures")]
+    #[ORM\JoinColumn(name: "user_id", referencedColumnName: "id")]
     private $user;
     
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\UserManagement\User", mappedBy="favorites", cascade={"persist"})
-     */
+    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: "favorites", indexBy: "id", cascade: ["all"])]
     private $favoriteUsers;
     
-    /**
-     * @ORM\Column(name="artist", type="string", length=255, nullable=false)
-     */
+    /** @var string */
+    #[ORM\Column(type: "string", length: 255, nullable: false)]
     private $artist;
     
-    /**
-     * @ORM\Column(name="song", type="string", length=255, nullable=false)
-     */
+    /** @var string */
+    #[ORM\Column(type: "string", length: 255, nullable: false)]
     private $song;
     
-    /**
-     * @ORM\OneToOne(targetEntity=TablatureFile::class, mappedBy="owner", cascade={"persist", "remove"})
-     */
+    #[ORM\OneToOne(targetEntity: TablatureFile::class, mappedBy: "owner", cascade: ["persist", "remove"], orphanRemoval: true)]
     private $tablatureFile;
     
-    /**
-     * @ORM\ManyToMany(targetEntity=TablatureCategory::class, inversedBy="tablatures")
-     * @ORM\JoinTable(name="WGP_Tablatures_Categories",
-     *      joinColumns={@ORM\JoinColumn(name="tablature_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="category_id", referencedColumnName="id")}
-     * )
-     */
+    /** @var Collection|TablatureCategory[] */
+    #[ORM\ManyToMany(targetEntity: TablatureCategory::class, inversedBy: "tablatures", indexBy: "id")]
+    #[ORM\JoinTable(name: "WGP_Tablatures_Categories")]
+    #[ORM\JoinColumn(name: "tablature_id", referencedColumnName: "id")]
+    #[ORM\InverseJoinColumn(name: "category_id", referencedColumnName: "id")]
     private $categories;
     
-    /**
-     * @Gedmo\Slug(fields={"artist", "song", "id"})
-     * @ORM\Column(name="slug", type="string", length=255, nullable=false, unique=true)
-     */
+    /** @var string */
+    #[ORM\Column(type: "string", length: 255, unique: true)]
+    #[Gedmo\Slug(fields: ["artist", "song", "id"])]
     private $slug;
     
-    /**
-     * @var bool
-     *
-     * @ORM\Column(name="public", type="boolean", options={"default":"1"})
-     */
+    /** @var bool */
+    #[ORM\Column(name: "public", type: "boolean", options: ["default" => 1])]
     protected $enabled = true;
     
     public function __construct()

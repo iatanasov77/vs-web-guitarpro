@@ -3,7 +3,7 @@
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 use Vankosoft\CmsBundle\Component\Generator\FilePathGeneratorInterface;
-use Vankosoft\CmsBundle\Model\FileInterface;
+use Vankosoft\CmsBundle\Model\Interfaces\FileInterface;
 
 final class FilePathGenerator implements FilePathGeneratorInterface
 {

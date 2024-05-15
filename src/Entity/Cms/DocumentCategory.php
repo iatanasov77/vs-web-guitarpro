@@ -3,10 +3,8 @@
 use Doctrine\ORM\Mapping as ORM;
 use Vankosoft\CmsBundle\Model\DocumentCategory as DocumentCategoryBase;
 
-/**
- * @ORM\Table(name="VSCMS_DocumentCategories")
- * @ORM\Entity
- */
+#[ORM\Entity]
+#[ORM\Table(name: "VSCMS_DocumentCategories")]
 class DocumentCategory extends DocumentCategoryBase
 {
     

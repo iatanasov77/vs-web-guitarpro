@@ -5,10 +5,10 @@ use Vankosoft\CmsBundle\Model\Document as BaseDocument;
 
 /**
  * MultiPageToc
- *
- * @ORM\Table(name="VSCMS_Documents")
- * @ORM\Entity
+ * 
  */
+#[ORM\Entity]
+#[ORM\Table(name: "VSCMS_Documents")]
 class Document extends BaseDocument
 {
     

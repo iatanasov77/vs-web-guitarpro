@@ -1,0 +1,9 @@
+app_vs_catalog_pricing_plans:
+    resource: "@VSCatalogBundle/Resources/config/routing/pricing_plans.yaml"
+    prefix: /
+    
+app_vs_catalog_payment:
+    resource: "@VSCatalogBundle/Resources/config/routing/payment.yaml"
+    prefix: /
+
+

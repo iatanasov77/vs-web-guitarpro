@@ -11,11 +11,7 @@ imports:
     - { resource: services/api_platform.yaml }
     
 parameters:
-    lang: 'en'
     locale: 'en_US'
-    languages:
-        en: English
-        bg: Български
 
     vankosoft_host: '%env(HOST)%'    
     applicationTitle: 'Web Guitar Pro'
@@ -69,9 +65,9 @@ services:
             - '../../../src/Form/'
             - '../../../src/Tests/'
             - '../../../src/Controller/'
-            - '../../../src/Controller/Application'
-            - '../../../src/Controller/WebGuitarPro'
-            - '../../../src/Component/TablatureUploader'
+            - '../../../src/Widgets/'
+            - '../../../src/Component/'
+            - '../../../src/Command/'
             - '../../../src/WebGuitarProKernel.php'
         autowire: true
 

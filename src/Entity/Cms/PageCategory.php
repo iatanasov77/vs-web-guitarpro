@@ -3,10 +3,8 @@
 use Doctrine\ORM\Mapping as ORM;
 use Vankosoft\CmsBundle\Model\PageCategory as PageCategoryBase;
 
-/**
- * @ORM\Table(name="VSCMS_PageCategories")
- * @ORM\Entity
- */
+#[ORM\Entity]
+#[ORM\Table(name: "VSCMS_PageCategories")]
 class PageCategory extends PageCategoryBase
 {
     

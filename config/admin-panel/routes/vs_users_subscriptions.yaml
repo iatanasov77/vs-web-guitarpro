@@ -2,11 +2,3 @@ vs_users_subscriptions:
     resource: "@VSUsersSubscriptionsBundle/Resources/config/routing/users_subscriptions.yml"
     prefix:   /
 
-vs_payment_config_resources:
-    resource: "@VSPaymentBundle/Resources/config/routing/payment_config_resources.yaml"
-    prefix: /
-
-vs_payment_config:
-    resource: "@VSPaymentBundle/Resources/config/routing/payment_config.yaml"
-    prefix: /
-

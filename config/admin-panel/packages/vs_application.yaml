@@ -4,6 +4,16 @@ vs_application_instalator:
             classes:
                 model: App\Entity\Application\InstalationInfo
 vs_application:
+    project_type: extended_application
+    
+    vankosoft_api:
+        enabled: false
+        project: 'web-guitar-pro'
+        connection:
+            host: 'http://api.vankosoft.org/api'
+            user: apiadmin
+            password: uSEDceYyzVEa
+    
     resources:
         application:
             classes:
@@ -32,21 +42,125 @@ vs_application:
         locale:
             classes:
                 model: App\Entity\Application\Locale
+        cookie_consent_translation:
+            classes:
+                model: App\Entity\Application\CookieConsentTranslation
+        tags_whitelist_context:
+            classes:
+                model: App\Entity\Application\TagsWhitelistContext
+        tags_whitelist_tag:
+            classes:
+                model: App\Entity\Application\TagsWhitelistTag
+        widget_group:
+            classes:
+                model: App\Entity\Application\WidgetGroup
+        widget:
+            classes:
+                model: App\Entity\Application\Widget
+        widgets_registry:
+            classes:
+                model: App\Entity\Application\WidgetsRegistry
          
     menu:
         mainSystemMenu:
+            dashboard:
+                name: vs_application.menu.dashboard
+                uri: "javascript:;"
+                attributes:
+                    iconClass: icon_genius
+                    breadcrumb_route: vs_application_dashboard
+                childs:
+                    locales:
+                        name: vs_application.menu.dashboard
+                        route: vs_application_dashboard
+            
             settings:
                 name: vs_application.menu.settings
                 uri: "javascript:;"
                 attributes:
                     iconClass: icon_genius
+                    breadcrumb_route: vs_application_settings_index
                 childs:
                     locales:
                         name: vs_application.menu.available_locales
                         route: vs_application_locale_index
+                    create_locale:
+                        name: vs_application.menu.create_new_locale
+                        route: vs_application_locale_create
+                        display: false
+                    update_locale:
+                        name: vs_application.menu.edit_locale
+                        route: vs_application_locale_update
+                        routeParameters:
+                          id: int
+                        display: false
+                    cookie_consent_translations:
+                        name: vs_application.menu.cookie_consent_translations
+                        route: vs_application_cookie_consent_translation_index
+                    create_cookie_consent_translation:
+                        name: vs_application.menu.create_new_cookie_consent_translation
+                        route: vs_application_cookie_consent_translation_create
+                        display: false
+                    update_cookie_consent_translation:
+                        name: vs_application.menu.edit_cookie_consent_translation
+                        route: vs_application_cookie_consent_translation_update
+                        routeParameters:
+                          id: int
+                        display: false
+                    tags_whitelist_contexts:
+                        name: vs_application.menu.tags_whitelist_contexts
+                        route: vs_application_tags_whitelist_context_index
+                    create_tags_whitelist_context:
+                        name: vs_application.menu.create_new_tags_whitelist_context
+                        route: vs_application_tags_whitelist_context_create
+                        display: true
+                    update_tags_whitelist_context:
+                        name: vs_application.menu.edit_tags_whitelist_context
+                        route: vs_application_tags_whitelist_context_update
+                        routeParameters:
+                          id: int
+                        display: false
                     settings:
                         name: vs_application.menu.preferences
                         route: vs_application_settings_index
+                        
+            widgets:
+                name: vs_application.menu.widgets
+                uri: "javascript:;"
+                attributes:
+                    iconClass: icon_genius
+                    breadcrumb_route: vs_application_widget_ext_index
+                childs:
+                    list_widget_groups:
+                        name: vs_application.menu.list_widget_groups
+                        route: vs_application_widget_group_index
+                    create_widget_group:
+                        name: vs_application.menu.create_widget_group
+                        route: vs_application_widget_group_create
+                        display: true
+                    update_widget_group:
+                        name: vs_application.menu.update_widget_group
+                        route: vs_application_widget_group_update
+                        routeParameters:
+                          id: int
+                        display: false
+                    list_widgets:
+                        name: vs_application.menu.list_widgets
+                        route: vs_application_widget_index
+                    create_widget:
+                        name: vs_application.menu.create_new_widget
+                        route: vs_application_widget_create
+                        display: true
+                    update_widget:
+                        name: vs_application.menu.update_widget
+                        route: vs_application_widget_update
+                        routeParameters:
+                          id: int
+                        display: false
+                    widgets_registry:
+                        name: vs_application.menu.widgets_registry
+                        route: vs_application_widget_ext_index
+            
             taxonomy:
                 name: vs_application.menu.taxonomy
                 uri: "javascript:;"
@@ -66,6 +180,7 @@ vs_application:
                         routeParameters:
                           id: int
                         display: false
+            
             user_management:
                 name: vs_application.menu.user_management
                 uri: "javascript:;"
@@ -166,6 +281,7 @@ vs_application:
                         routeParameters:
                           id: int
                         display: false
+            
             filemanager_vankosoft:
                 name: vs_application.menu.vankoSoft_file_manager
                 uri: "javascript:;"
@@ -220,19 +336,8 @@ vs_application:
                 uri: "javascript:;"
                 attributes:
                     iconClass: icon_genius
+                    breadcrumb_route: vs_users_subscriptions_payed_service_index
                 childs:
-                    paid_services_category_index:
-                        name: vs_application.menu.categories
-                        route: vs_users_subscriptions_payed_service_category_index
-                    paid_services_category_create:
-                        name: vs_application.menu.create_a_category
-                        route: vs_users_subscriptions_payed_service_category_create
-                    paid_services_category_update:
-                        name: vs_application.menu.edit_a_category
-                        route: vs_users_subscriptions_payed_service_category_update
-                        routeParameters:
-                          id: int
-                        display: false
                     paid_services_index:
                         name: vs_application.menu.paid_services
                         route: vs_users_subscriptions_payed_service_index
@@ -249,14 +354,18 @@ vs_application:
         
         mainPaymentMenu:
             gateway_config:
-                name: vs_application.menu.gateway_config
+                name: vs_application.menu.gateways_payment_methods
                 uri: "javascript:;"
                 attributes:
                     iconClass: icon_genius
+                    breadcrumb_route: vs_payment_gateway_config_index
                 childs:
+                    ####################################
+                    # Payment Gateways Config Entries
+                    ####################################
                     gateways_index:
                         name: vs_application.menu.gateways
-                        route: vs_payment_gateways_index
+                        route: vs_payment_gateway_config_index
                     gateways_create:
                         name: vs_application.menu.create_new_gateway
                         route: vs_payment_gateways_config
@@ -266,21 +375,248 @@ vs_application:
                         routeParameters:
                           gatewayName: string
                         display: false
-            payment_methods:
-                name: vs_application.menu.payment_methods
+                        
+                    ###########################
+                    # Payment Method Entries
+                    ###########################
+                    payment_methods_index:
+                        name: vs_application.menu.payment_methods
+                        route: vs_payment_payment_method_index
+                    payment_methods_create:
+                        name: vs_application.menu.create_new_payment_method
+                        route: vs_payment_methods_config
+                    payment_methods_config:
+                        name: vs_application.menu.edit_a_payment_method
+                        route: vs_payment_methods_config
+                        routeParameters:
+                          id: int
+                        display: false
+                        
+                    ################################
+                    # Payum/Stripe Objects Entries
+                    ################################
+                    gateway_config_stripe_subscription_plans:
+                        name: vs_application.menu.stripe_subscription_plans
+                        route: gateway_config_stripe_subscription_objects_index
+                    gateway_config_stripe_coupons:
+                        name: vs_application.menu.stripe_coupons
+                        route: gateway_config_stripe_coupon_objects_index
+                        
+            currencies:
+                name: vs_application.menu.currencies
                 uri: "javascript:;"
                 attributes:
                     iconClass: icon_genius
+                    breadcrumb_route: vs_payment_currency_index
                 childs:
-                    gateways_index:
-                        name: vs_application.menu.payment_methods
-                        route: vs_payment_methods_index
-                    gateways_create:
-                        name: vs_application.menu.create_new_payment_method
-                        route: vs_payment_methods_config
-                    gateways_config:
-                        name: vs_application.menu.edit_a_payment_method
-                        route: vs_payment_methods_config
+                    currency_index:
+                        name: vs_application.menu.currencies
+                        route: vs_payment_currency_index
+                    currency_create:
+                        name: vs_application.menu.create_new_currency
+                        route: vs_payment_currency_create
+                    currency_update:
+                        name: vs_application.menu.edit_currency
+                        route: vs_payment_currency_update
+                        routeParameters:
+                          id: int
+                        display: false
+                    exchange_rate_index:
+                        name: vs_application.menu.exchange_rates
+                        route: vs_payment_exchange_rate_index
+                    exchange_rate_create:
+                        name: vs_application.menu.create_new_exchange_rate
+                        route: vs_payment_exchange_rate_create
+                    exchange_rate_update:
+                        name: vs_application.menu.edit_exchange_rate
+                        route: vs_payment_exchange_rate_update
+                        routeParameters:
+                          id: int
+                        display: false
+                        
+            customers:
+                name: vs_application.menu.customers
+                uri: "javascript:;"
+                attributes:
+                    iconClass: icon_genius
+                    breadcrumb_route: vs_payment_customer_group_index
+                childs:
+                    customer_group_index:
+                        name: vs_application.menu.customer_groups_listing
+                        route: vs_payment_customer_group_index
+                    customer_group_create:
+                        name: vs_application.menu.create_customer_group
+                        route: vs_payment_customer_group_create
+                    customer_group_update:
+                        name: vs_application.menu.edit_customer_group
+                        route: vs_payment_customer_group_update
+                        routeParameters:
+                          id: int
+                        display: false
+                
+            promotions:
+                name: vs_application.menu.discounts_coupouns
+                uri: "javascript:;"
+                attributes:
+                    iconClass: icon_genius
+                    breadcrumb_route: vs_payment_currency_index
+                childs:
+                    promotion_index:
+                        name: vs_application.menu.promotions_listing
+                        route: vs_payment_promotion_index
+                    promotion_create:
+                        name: vs_application.menu.create_promotion
+                        route: vs_payment_promotion_create
+                    promotion_update:
+                        name: vs_application.menu.edit_promotion
+                        route: vs_payment_promotion_update
+                        routeParameters:
+                          id: int
+                        display: false
+                    promotion_coupon_index:
+                        name: vs_application.menu.promotion_coupons_listing
+                        route: vs_payment_promotion_coupon_index
+                        routeParameters:
+                          promotionId: int
+                        display: false
+                    promotion_coupon_generate:
+                        name: vs_application.menu.generate_promotion_coupon
+                        route: vs_payment_promotion_coupon_generate
+                        routeParameters:
+                          promotionId: int
+                        display: false
+                    promotion_coupon_create:
+                        name: vs_application.menu.create_promotion_coupon
+                        route: vs_payment_promotion_coupon_create
+                        routeParameters:
+                          promotionId: int
+                        display: false
+                    promotion_coupon_update:
+                        name: vs_application.menu.edit_promotion_coupon
+                        route: vs_payment_promotion_coupon_update
+                        routeParameters:
+                          id: int
+                          promotionId: int
+                        display: false
+                    
+            orders_and_payments:
+                name: vs_application.menu.orders_and_payments
+                uri: "javascript:;"
+                attributes:
+                    iconClass: icon_genius
+                    breadcrumb_route: vs_payment_order_index
+                childs:
+                    orders:
+                        name: vs_application.menu.orders
+                        route: vs_payment_order_index
+                    recieved_payments:
+                        name: vs_application.menu.recieved_payments
+                        route: vs_payment_payment_index
+                    recieved_payments_show:
+                        name: vs_application.menu.show_payment_details
+                        route: vs_payment_payment_show
+                        routeParameters:
+                          id: int
+                        display: false
+                    pricing_plan_subscriptions:
+                        name: vs_application.menu.pricing_plan_subscriptions
+                        route: vs_catalog_pricing_plan_subscriptions_index
+                        
+            developement:
+                name: vs_application.menu.developement
+                uri: "javascript:;"
+                attributes:
+                    iconClass: icon_genius
+                    breadcrumb_route: app_home
+                childs:
+                    orders:
+                        name: vs_application.menu.delete_all_orders
+                        route: vs_payment_developement_delete_all_orders
+                    clear_session:
+                        name: vs_application.menu.clear_session
+                        route: vs_payment_developement_clear_session
+                        
+        mainCatalogMenu:
+            catalog:
+                name: vs_application.menu.catalog
+                uri: "javascript:;"
+                attributes:
+                    iconClass: icon_genius
+                    breadcrumb_route: vs_catalog_product_index
+                childs:
+                    catalog_category_index:
+                        name: vs_application.menu.catalog_categories
+                        route: vs_catalog_product_category_index
+                    catalog_category_create:
+                        name: vs_application.menu.create_catalog_category
+                        route: vs_catalog_product_category_create
+                    catalog_category_update:
+                        name: vs_application.menu.edit_catalog_category
+                        route: vs_catalog_product_category_update
+                        routeParameters:
+                          id: int
+                        display: false
+                    catalog_product_index:
+                        name: vs_application.menu.catalog_products
+                        route: vs_catalog_product_index
+                    catalog_product_create:
+                        name: vs_application.menu.create_catalog_product
+                        route: vs_catalog_product_create
+                    catalog_product_update:
+                        name: vs_application.menu.edit_catalog_product
+                        route: vs_catalog_product_update
+                        routeParameters:
+                          id: int
+                        display: false
+                        
+            pricing_plans:
+                name: vs_application.menu.pricing_plans
+                uri: "javascript:;"
+                attributes:
+                    iconClass: icon_genius
+                    breadcrumb_route: vs_catalog_pricing_plan_index
+                childs:
+                    pricing_plan_category_index:
+                        name: vs_application.menu.pricing_plan_categories
+                        route: vs_catalog_pricing_plan_category_index
+                    pricing_plan_category_create:
+                        name: vs_application.menu.create_pricing_plan_category
+                        route: vs_catalog_pricing_plan_category_create
+                    pricing_plan_category_update:
+                        name: vs_application.menu.edit_pricing_plan_category
+                        route: vs_catalog_pricing_plan_category_update
+                        routeParameters:
+                          id: int
+                        display: false
+                    pricing_plan_index:
+                        name: vs_application.menu.pricing_plans_listing
+                        route: vs_catalog_pricing_plan_index
+                    pricing_plan_create:
+                        name: vs_application.menu.create_pricing_plan
+                        route: vs_catalog_pricing_plan_create
+                    pricing_plan_update:
+                        name: vs_application.menu.edit_pricing_plan
+                        route: vs_catalog_pricing_plan_update
+                        routeParameters:
+                          id: int
+                        display: false
+                        
+            associations:
+                name: vs_application.menu.associations
+                uri: "javascript:;"
+                attributes:
+                    iconClass: icon_genius
+                    breadcrumb_route: vs_catalog_association_type_index
+                childs:
+                    association_type_index:
+                        name: vs_application.menu.association_types
+                        route: vs_catalog_association_type_index
+                    association_type_create:
+                        name: vs_application.menu.create_association_type
+                        route: vs_catalog_association_type_create
+                    association_type_update:
+                        name: vs_application.menu.edit_association_type
+                        route: vs_catalog_association_type_update
                         routeParameters:
                           id: int
                         display: false

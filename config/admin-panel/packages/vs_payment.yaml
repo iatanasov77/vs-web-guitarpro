@@ -1,6 +1,17 @@
+payum:
+    gateways:
+        core:
+            payum.template.obtain_token: '@VSPayment/Payum/obtainStripeJsToken.html.twig'
+            payum.template.obtain_credit_card: '@VSPayment/Payum/obtainCreditCard.html.twig'
+            payum.template.obtain_coupon_code: '@VSPayment/Payum/obtainCouponCode.html.twig'
+
 vs_payment:
     # Supported Storages: doctrine_orm, filesystem
     token_storage: doctrine_orm
+    
+    http_client:
+        verify_peer: true
+        verify_host: true
     
     resources:
         gateway_config:
@@ -27,14 +38,22 @@ vs_payment:
         exchange_rate:
             classes:
                 model: App\Entity\Payment\ExchangeRate
-        product:
+        promotion:
             classes:
-                model: App\Entity\Payment\Product
-        product_picture:
+                model: App\Entity\Payment\Promotion
+        promotion_coupon:
             classes:
-                model: App\Entity\Payment\ProductPicture
-        product_category:
+                model: App\Entity\Payment\PromotionCoupon
+        promotion_action:
             classes:
-                model: App\Entity\Payment\ProductCategory
-
-
+                model: App\Entity\Payment\PromotionAction
+        promotion_rule:
+            classes:
+                model: App\Entity\Payment\PromotionRule
+        adjustment:
+            classes:
+                model: App\Entity\Payment\Adjustment
+        customer_group:
+            classes:
+                model: App\Entity\Payment\CustomerGroup
+            
