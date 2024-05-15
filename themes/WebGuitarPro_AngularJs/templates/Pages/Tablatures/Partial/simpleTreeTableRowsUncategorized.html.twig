@@ -5,7 +5,7 @@
 </tr>
 <script>var uncategorizedTablatures=0;</script>
 
-{% for item in items %}
+{% for item in resources %}
     {% if ( item.categories|length == 0 ) and item.user == app.user %}
         <script>uncategorizedTablatures++;</script>
         
