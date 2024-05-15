@@ -1,0 +1,10 @@
+<ul class="dropdown-menu dropdown-menu-start">
+    {% for locale in widget.params.availableLocales %}
+        <li>
+            <a class="dropdown-item" href="{{ path('app_set_locale', {'locale': locale.code }) }}">
+                <i class="flag flag-{{ locale.code | slice( 3, 2 ) | lower }}"></i>
+                {{ locale.name }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>

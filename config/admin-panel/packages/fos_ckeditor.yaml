@@ -10,12 +10,16 @@ fos_ck_editor:
 
     toolbars:
         configs:
-            document_toolbar: ["@document", "|", "@basicstyles", "|", "@links", "|", "@lists"]
-            devpage_toolbar: [
-                "@document", "|", "@justify", "|", "@lists", "|", "@dev_tools", "|", "@links", "/", 
-                "@basicstyles", "|", "@styles"
-            ]
             example_toolbar: [ [ "Source" ], "/", [ "Anchor" ], "/", [ "Maximize" ] ]
+            document_toolbar: [
+                "@justify", "|", "@basicstyles", "@styles", "|", "@lists", "/", 
+                "@links", "@media", "|", "@document"
+            ]
+            devpage_toolbar: [
+                "@justify", "|", "@basicstyles", "@styles", "|", "@lists", "/", 
+                "@links", "@media", "@dev_tools", "|", "@document"
+            ]
+            description_toolbar: ["@justify", "|", "@basicstyles", "@styles", "|", "@lists", "@links", "|", "@document"]
             
         items:
             basicstyles: ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript']
@@ -23,7 +27,8 @@ fos_ck_editor:
             justify: ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock']
             document: ['Source', 'Save', 'NewPage']
             lists: ['NumberedList', 'BulletedList']
-            links: ['Link', 'Unlink','Image', 'lightbox']
+            links: ['Link', 'Unlink', 'ckeditor_add_class']
+            media: ['Image', 'lightbox']
             dev_tools: [ 'CodeSnippet', 'Indent', 'Outdent' ]
             
     plugins:

@@ -11,7 +11,7 @@ use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
 use Vankosoft\ApplicationBundle\Repository\TaxonomyRepository;
 use Vankosoft\ApplicationBundle\Repository\TaxonRepository;
-use Vankosoft\ApplicationBundle\Controller\TaxonomyTreeDataTrait;
+use Vankosoft\ApplicationBundle\Controller\Traits\TaxonomyTreeDataTrait;
 use Vankosoft\UsersBundle\Security\SecurityBridge;
 
 class TablatureExtController extends AbstractController
@@ -20,18 +20,18 @@ class TablatureExtController extends AbstractController
     use TaxonomyTreeDataTrait;
     
     /** @var SecurityBridge */
-    protected SecurityBridge $securityBridge;
+    protected $securityBridge;
     
     /** @var EntityRepository */
-    protected EntityRepository $tabsRepository;
+    protected $tabsRepository;
     
     /** @var string */
-    protected string $tabsDirectory;
+    protected $tabsDirectory;
     
     public function __construct(
         ManagerRegistry $doctrine,
         TaxonomyRepository $taxonomyRepository,
-        EntityRepository $taxonRepository,
+        TaxonRepository $taxonRepository,
         SecurityBridge $securityBridge,
         EntityRepository $tabsRepository,
         string $tabsDirectory

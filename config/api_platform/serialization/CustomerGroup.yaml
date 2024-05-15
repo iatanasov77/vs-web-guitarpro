@@ -1,0 +1,5 @@
+App\Entity\Payment\CustomerGroup:
+    attributes:
+        name:
+            groups: ['tablature:read']
+

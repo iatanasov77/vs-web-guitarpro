@@ -3,11 +3,8 @@
 use Doctrine\ORM\Mapping as ORM;
 use Vankosoft\PaymentBundle\Model\GatewayConfig as GatewayConfigBase;
 
-/**
- * @ORM\Table(name="VSPAY_GatewayConfig")
- * @ORM\Entity
- */
+#[ORM\Entity]
+#[ORM\Table(name: "VSPAY_GatewayConfig")]
 class GatewayConfig extends GatewayConfigBase
 {
-    
 }

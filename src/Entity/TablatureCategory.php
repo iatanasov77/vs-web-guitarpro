@@ -4,57 +4,34 @@ use Doctrine\ORM\Mapping as ORM;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Vankosoft\ApplicationBundle\Model\Interfaces\TaxonInterface;
+use Vankosoft\ApplicationBundle\Model\Interfaces\TaxonDescendentInterface;
+use Vankosoft\ApplicationBundle\Model\Traits\TaxonDescendentEntity;
+use App\Entity\UserManagement\User;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="WGP_TablatureCategories")
- */
-class TablatureCategory implements ResourceInterface
+#[ORM\Entity]
+#[ORM\Table(name: "WGP_TablatureCategories")]
+class TablatureCategory implements ResourceInterface, TaxonDescendentInterface
 {
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
+    use TaxonDescendentEntity;
+    
+    /** @var int */
+    #[ORM\Id, ORM\Column(type: "integer"), ORM\GeneratedValue(strategy: "IDENTITY")]
     private $id;
     
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\UserManagement\User", inversedBy="tabCategories")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     */
+    /** @var User */
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: "tabCategories")]
     private $user;
     
-    /**
-     * @var TablatureCategory
-     *
-     * @ORM\ManyToOne(targetEntity="App\Entity\TablatureCategory", inversedBy="children", cascade={"all"})
-     */
+    /** @var TablatureCategory */
+    #[ORM\ManyToOne(targetEntity: TablatureCategory::class, inversedBy: "children", cascade: ["all"])]
     private $parent;
     
-    /**
-     * @var Collection|TablatureCategory[]
-     *
-     * @ORM\OneToMany(targetEntity="App\Entity\TablatureCategory", mappedBy="parent")
-     */
+    /** @var TablatureCategory[] */
+    #[ORM\OneToMany(targetEntity: TablatureCategory::class, mappedBy: "parent")]
     private $children;
     
-     /**
-      * @var Collection|Tablature[]
-      * 
-     * @ORM\ManyToMany(targetEntity="App\Entity\Tablature", mappedBy="categories")
-     */
+    #[ORM\ManyToMany(targetEntity: Tablature::class, mappedBy: "categories", indexBy: "id")]
     private $tablatures;
-    
-    /**
-     * @var TaxonInterface
-     *
-     * @ORM\OneToOne(targetEntity="App\Entity\Application\Taxon", cascade={"all"})
-     * @ORM\JoinColumn(name="taxon_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
-     */
-    private $taxon;
     
     public function __construct()
     {
@@ -129,38 +106,6 @@ class TablatureCategory implements ResourceInterface
             $this->tablatures->removeElement( $tablature );
             $tablature->removeCategory( $this );
         }
-        
-        return $this;
-    }
-    
-    /**
-     * {@inheritdoc}
-     */
-    public function getTaxon(): ?TaxonInterface
-    {
-        return $this->taxon;
-    }
-    
-    /**
-     * {@inheritdoc}
-     */
-    public function setTaxon(?TaxonInterface $taxon): void
-    {
-        $this->taxon = $taxon;
-    }
-
-    public function getName()
-    {
-        return $this->taxon ? $this->taxon->getName() : '';
-    }
-    
-    public function setName( string $name ) : self
-    {
-        if ( ! $this->taxon ) {
-            // Create new taxon into the controller and set the properties passed from form
-            return $this;
-        }
-        $this->taxon->setName( $name );
         
         return $this;
     }

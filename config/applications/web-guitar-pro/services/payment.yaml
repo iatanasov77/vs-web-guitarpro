@@ -30,12 +30,18 @@ services:
     ##############################
     App\Controller\WebGuitarPro\Checkout\StripeCheckoutController:
         arguments:
+            - '@event_dispatcher'
+            - '@translator'
             - '@doctrine'
-            - '@vs_payment.repository.order'
             - '@payum'
+            - '@vs_users.security_bridge'
+            - '@vs_payment_payment'
+            - '@vs_payment.order_factory'
+            - '@vs_payment.pricing_plan_subscriptions_bridge'
             - '%vs_payment.model.payment.class%'
-            - '@vs_users_subscriptions.repository.payed_service_subscriptions'
-            - '@vs_users_subscriptions.factory.payed_service_subscriptions'
+            - '%vs_payment.checkout.throw_exception_on_payment_done%'
+            - '%vs_payment.shopping_cart_redirect_on_payment_done%'
+            - '%vs_payment.pricing_plans_redirect_on_payment_done%'
             - '@vs_application.repository.taxonomy'
             - '%vs_wgp.tablature-categories.taxonomy_code%'
         calls:

@@ -3,10 +3,8 @@
 use Doctrine\ORM\Mapping as ORM;
 use Vankosoft\ApplicationBundle\Model\Settings as GeneralSettings;
 
-/**
- * @ORM\Table(name="VSAPP_Settings")
- * @ORM\Entity
- */
+#[ORM\Entity]
+#[ORM\Table(name: "VSAPP_Settings")]
 class Settings extends GeneralSettings
 {
 

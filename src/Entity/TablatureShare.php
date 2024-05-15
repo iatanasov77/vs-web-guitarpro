@@ -7,50 +7,35 @@ use Doctrine\Common\Collections\Collection;
 
 use App\Entity\UserManagement\User;
 
-/**
- * @ORM\Entity
- * @ORM\Table( name="WGP_TablatureShares",
- *              uniqueConstraints={@ORM\UniqueConstraint(name="owner_share_unique_idx", columns={"owner_id", "name"})}
- *            )
- */
+#[ORM\Entity]
+#[ORM\Table(name: "WGP_TablatureShares")]
+#[ORM\UniqueConstraint(name: 'owner_share_unique_idx', columns: ["owner_id", "name"])]
 class TablatureShare implements ResourceInterface
 {
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
+    /** @var int */
+    #[ORM\Id, ORM\Column(type: "integer"), ORM\GeneratedValue(strategy: "IDENTITY")]
     private $id;
     
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\UserManagement\User", inversedBy="myShares")
-     * @ORM\JoinColumn(name="owner_id", referencedColumnName="id")
-     */
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: "myShares")]
+    #[ORM\JoinColumn(name: "owner_id", referencedColumnName: "id")]
     private $owner;
     
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\UserManagement\User", inversedBy="targetedShares")
-     * @ORM\JoinTable(name="WGP_Users_TablatureShares",
-     *      joinColumns={@ORM\JoinColumn(name="share_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")}
-     * )
-     */
+    /** @var Collection|User[] */
+    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: "targetedShares", indexBy: "id")]
+    #[ORM\JoinTable(name: "WGP_Users_TablatureShares")]
+    #[ORM\JoinColumn(name: "share_id", referencedColumnName: "id")]
+    #[ORM\InverseJoinColumn(name: "user_id", referencedColumnName: "id")]
     private $targetUsers;
     
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Tablature")
-     * @ORM\JoinTable(name="WGP_TablatureShares_Tablatures",
-     *      joinColumns={@ORM\JoinColumn(name="share_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="tablature_id", referencedColumnName="id")}
-     * )
-     */
+    /** @var Collection|Tablature[] */
+    #[ORM\ManyToMany(targetEntity: Tablature::class)]
+    #[ORM\JoinTable(name: "WGP_TablatureShares_Tablatures")]
+    #[ORM\JoinColumn(name: "share_id", referencedColumnName: "id")]
+    #[ORM\InverseJoinColumn(name: "tablature_id", referencedColumnName: "id")]
     private $tablatures;
     
-    /**
-     * @ORM\Column(name="name", type="string", length=255, nullable=false)
-     */
+    /** @var string */
+    #[ORM\Column(type: "string", length: 255, nullable: false)]
     private $name;
     
     public function __construct()

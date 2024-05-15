@@ -15,7 +15,7 @@
         <div class="card">
             <h5 class="card-header">{{ 'vs_wgp.template.my_tablatures' | trans( {},'WebGuitarPro' ) }}</h5>
             <div class="card-body">
-                {% if items|length > 0 %}
+                {% if resources|length > 0 %}
                     {% include 'Pages/Tablatures/Partial/simpleTreeTable.html.twig' %}
                 {% else %}
                     {{ alerts.info('sylius.ui.there_are_no_mappers_to_display'|trans) }}

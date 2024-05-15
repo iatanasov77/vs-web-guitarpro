@@ -9,3 +9,14 @@ vs_application_password_generator:
     prefix:   /
     options:
         expose: true
+        
+vs_application_frontend:
+    resource: "@VSApplicationBundle/Resources/config/routing/frontend.yaml"
+    prefix:   /
+    options:
+        expose: true
+
+# vs_application_contact:
+#     path: /contact
+#     controller: App\Controller\SugarBabes\ContactController::index
+

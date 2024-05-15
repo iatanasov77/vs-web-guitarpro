@@ -22,9 +22,6 @@ class TablatureForm extends AbstractForm
     /** @var TokenStorageInterface */
     private $tokenStorage;
     
-    /** @var RequestStack */
-    private $requestStack;
-    
     public function __construct(
         string $dataClass,
         TokenStorageInterface $tokenStorage,

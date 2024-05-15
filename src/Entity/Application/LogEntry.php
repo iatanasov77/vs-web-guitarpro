@@ -3,10 +3,8 @@
 use Doctrine\ORM\Mapping as ORM;
 use Vankosoft\ApplicationBundle\Model\LogEntry as BaseLogEntry;
 
-/**
- * @ORM\Table(name="VSAPP_LogEntries")
- * @ORM\Entity
- */
+#[ORM\Entity]
+#[ORM\Table(name: "VSAPP_LogEntries")]
 class LogEntry extends BaseLogEntry
 {
      

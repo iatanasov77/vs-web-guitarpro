@@ -8,6 +8,11 @@ stof_doctrine_extensions:
             sluggable:      true
             tree:           true
             translatable:   true
+            loggable:       true
+            sortable:       true
+            
             #blameable:      false
             #uploadable:     false
+    class:
+        loggable:       Vankosoft\ApplicationBundle\EventSubscriber\LoggableListener
  

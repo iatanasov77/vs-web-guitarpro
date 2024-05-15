@@ -3,10 +3,8 @@
 use Doctrine\ORM\Mapping as ORM;
 use Vankosoft\ApplicationBundle\Model\Taxonomy as BaseTaxonomy;
 
-/**
- * @ORM\Table(name="VSAPP_Taxonomy")
- * @ORM\Entity
- */
+#[ORM\Entity]
+#[ORM\Table(name: "VSAPP_Taxonomy")]
 class Taxonomy extends BaseTaxonomy
 {
     

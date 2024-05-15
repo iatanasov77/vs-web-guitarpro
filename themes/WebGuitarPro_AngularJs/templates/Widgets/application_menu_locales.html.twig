@@ -1,0 +1,7 @@
+{% for locale in widget.params.availableLocales %}
+    <li class="nav-item pt-2">
+        <a href="{{ path('app_set_locale', {'locale': locale.code}) }}">
+            <i class="flag flag-{{ locale.code | slice( 3, 2 ) | lower }}"></i>
+        </a>
+    </li>
+{% endfor %}

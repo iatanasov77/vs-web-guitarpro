@@ -5,14 +5,10 @@ use Doctrine\Common\Collections\Collection;
 
 trait TablatureShareUserTrait
 {
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\TablatureShare", mappedBy="owner")
-     */
+    #[ORM\OneToMany(targetEntity: TablatureShare::class, mappedBy: "owner", indexBy: "id", cascade: ["all"])]
     protected $myShares;
     
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\TablatureShare", mappedBy="targetUsers")
-     */
+    #[ORM\ManyToMany(targetEntity: TablatureShare::class, mappedBy: "targetUsers", indexBy: "id")]
     protected $targetedShares;
     
     /**

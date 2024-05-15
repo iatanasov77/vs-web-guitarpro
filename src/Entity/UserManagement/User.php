@@ -2,10 +2,16 @@
 
 use Doctrine\ORM\Mapping as ORM;
 use Vankosoft\UsersBundle\Model\User as BaseUser;
+
 use Vankosoft\UsersSubscriptionsBundle\Model\Interfaces\SubscribedUserInterface;
-use Vankosoft\UsersSubscriptionsBundle\Model\Traits\SubscribedUserTrait;
-use Vankosoft\PaymentBundle\Model\Interfaces\PaymentsUserInterface;
-use Vankosoft\PaymentBundle\Model\Traits\PaymentsUserTrait;
+use Vankosoft\UsersSubscriptionsBundle\Model\Traits\SubscribedUserEntity;
+use Vankosoft\PaymentBundle\Model\Interfaces\UserPaymentAwareInterface;
+use Vankosoft\PaymentBundle\Model\Traits\UserPaymentAwareEntity;
+use Vankosoft\PaymentBundle\Model\Interfaces\CustomerInterface;
+use Vankosoft\PaymentBundle\Model\Traits\CustomerEntity;
+
+use Vankosoft\CatalogBundle\Model\Interfaces\UserSubscriptionAwareInterface;
+use Vankosoft\CatalogBundle\Model\Traits\UserSubscriptionAwareEntity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -14,48 +20,45 @@ use App\Entity\TablatureCategory;
 use App\Entity\Tablature;
 use App\Entity\TablatureShareUserTrait;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="VSUM_Users")
- */
-class User extends BaseUser implements SubscribedUserInterface, PaymentsUserInterface
+#[ORM\Entity]
+#[ORM\Table(name: "VSUM_Users")]
+class User extends BaseUser implements
+    SubscribedUserInterface,
+    UserPaymentAwareInterface,
+    CustomerInterface,
+    UserSubscriptionAwareInterface
 {
-    use SubscribedUserTrait;
-    use PaymentsUserTrait;
+    use SubscribedUserEntity;
+    use UserPaymentAwareEntity;
+    use CustomerEntity;
+    use UserSubscriptionAwareEntity;
+    
     use TablatureShareUserTrait;
     
-    /**
-     * @var Collection|TablatureCategory[]
-     *
-     * @ORM\OneToMany(targetEntity="App\Entity\TablatureCategory", mappedBy="user")
-     */
+    #[ORM\OneToMany(targetEntity: TablatureCategory::class, mappedBy: "user", indexBy: "id")]
     protected $tabCategories;
     
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Tablature", mappedBy="user")
-     */
+    #[ORM\OneToMany(targetEntity: Tablature::class, mappedBy: "user", indexBy: "id")]
     protected $tablatures;
     
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Tablature", inversedBy="favoriteUsers")
-     * @ORM\JoinTable(name="WGP_Users_Favorites",
-     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="favorite_id", referencedColumnName="id")}
-     * )
-     */
+    #[ORM\ManyToMany(targetEntity: Tablature::class, inversedBy: "favoriteUsers", indexBy: "id")]
+    #[ORM\JoinTable(name: "WGP_Users_Favorites")]
+    #[ORM\JoinColumn(name: "user_id", referencedColumnName: "id")]
+    #[ORM\InverseJoinColumn(name: "favorite_id", referencedColumnName: "id")]
     protected $favorites;
     
     public function __construct()
     {
-        $this->subscriptions    = new ArrayCollection();
-        $this->orders           = new ArrayCollection();
+        $this->newsletterSubscriptions  = new ArrayCollection();
+        $this->orders                   = new ArrayCollection();
+        $this->pricingPlanSubscriptions = new ArrayCollection();
         
-        $this->tabCategories    = new ArrayCollection();
-        $this->tablatures       = new ArrayCollection();
-        $this->favorites        = new ArrayCollection();
+        $this->tabCategories        = new ArrayCollection();
+        $this->tablatures           = new ArrayCollection();
+        $this->favorites            = new ArrayCollection();
         
-        $this->myShares         = new ArrayCollection();
-        $this->targetedShares   = new ArrayCollection();
+        $this->myShares             = new ArrayCollection();
+        $this->targetedShares       = new ArrayCollection();
         
         parent::__construct();
     }

@@ -9,6 +9,8 @@ stof_doctrine_extensions:
             tree:           true
             translatable:   true
             loggable:       true
+            sortable:       true
+            
             #blameable:      false
             #uploadable:     false
     class:

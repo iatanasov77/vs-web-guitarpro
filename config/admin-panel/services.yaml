@@ -12,13 +12,11 @@ imports:
 parameters:
     lang: 'en'
     locale: 'en_US'
-    languages:
-        en: English
-        bg: Български¸
-    language_flags:
-        en: us
-        bg: bg
+    
+    applicationIcon: 'build/default/images/superman.svg'
+    applicationCompany: 'vs_application.template.vankosoft_application'
     applicationTitle: 'WebGuitarPro Admin Panel'
+    hasTopSearch: true
     
     vs_application.version: !php/const App\AdminPanelKernel::VERSION
     vs_application.public_dir: "%kernel.project_dir%/public/admin-panel"

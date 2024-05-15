@@ -1,8 +1,7 @@
 doctrine:
     dbal:
         # Add which tables to be removed from migrations
-        schema_filter: '/^(?!wbnt_dfgb_|mailchimp_audience|newsletter_subscription|taxon_translation|sylius_taxon|sylius_taxon_translation|sylius_locale|ext_log_entries|subscription_period|payed_service|payed_service_subscription).*$/'
-        # New Added After Load Subscription and Payment Bundles: |mailchimp_audience|newsletter_subscription|payment_details|
+        schema_filter: '/^(?!wbnt_dfgb_|ext_log_entries|VSAPP_DoctrineDbalCache).*$/'
         
 doctrine_migrations:
     enable_profiler: '%kernel.debug%'
