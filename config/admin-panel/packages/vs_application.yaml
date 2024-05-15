@@ -12,7 +12,7 @@ vs_application:
         connection:
             host: 'http://api.vankosoft.org/api'
             user: apiadmin
-            password: uSEDceYyzVEa
+            password: '%env(VANKOSOFT_API_PASSWORD)%'
     
     resources:
         application:
