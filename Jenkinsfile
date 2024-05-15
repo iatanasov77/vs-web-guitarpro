@@ -101,6 +101,7 @@ node ( label: 'php-host' ) {
     stage( 'Build Application' ) {
         sh """
             export COMPOSER_HOME='/home/vagrant/.composer';
+            export COMPOSER_ALLOW_SUPERUSER=1;
             
             # https://www.makeuseof.com/javascript-heap-out-of-memory-error-fix/
             export NODE_OPTIONS='--max-old-space-size=4096';
