@@ -132,7 +132,13 @@
                 
                 <!--  User Profile  -->
                 <li class="nav-item dropdown btn-group">
-                    <a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle"
+                        href="#"
+                        data-bs-toggle="dropdown"
+                        data-bs-auto-close="outside"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                    >
                         {{ 'vs_wgp.template.menu.profile' | trans( {},'WebGuitarPro' ) }}
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
@@ -142,12 +148,16 @@
                                     <i class="fas fa-user mes-2"></i>{{ 'vs_wgp.template.menu.my_profile' | trans( {},'WebGuitarPro' ) }}
                                 </a>
                             </li>
-                            <li class="dropdown-submenu dropstart dropdown keepopen language-submenu">
-                                <a class="dropdown-item dropdown-toggle keepopen language-submenu" data-bs-toggle="dropdown" href="#">
+                            <li class="dropdown-submenu btn-group dropstart dropdown keepopen language-submenu">
+                                <a class="dropdown-item dropdown-toggle keepopen language-submenu"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                                    href="#"
+                                >
                                     <i class="fas fa-language mr-2"></i>{{ 'vs_wgp.template.menu.language' | trans( {},'WebGuitarPro' ) }}
                                 </a>
                                 
-                                {{ vs_widget_render( 'videos-layout', ['application-menu-locales'] ) }}
+                                {{ vs_widget_render( 'webguitarpro-layout', ['wgp-profile-menu-locales'] ) }}
                             </li>
                             <li>
                                 <a class="dropdown-item" href="javascript:;">
@@ -187,15 +197,9 @@
                 
                 <li class="nav-item ml-2">&nbsp;</li>
                 <li class="nav-item ml-2">&nbsp;</li>
-                <li class="nav-item pt-2">
-                {% for locale in locales %}
-                    <li class="nav-item pt-2">
-                        <a href="{{ path('app_set_locale', {'locale': locale.code}) }}">
-                            <i class="flag flag-{{ locale.code | slice( 3, 2 ) | lower }}"></i>
-                        </a>
-                    </li>
-                {% endfor %}
-                </li>
+                
+                {{ vs_widget_render( 'webguitarpro-layout', ['application-menu-locales'] ) }}
+                
             {% endif %}
             </ul>
         </div>

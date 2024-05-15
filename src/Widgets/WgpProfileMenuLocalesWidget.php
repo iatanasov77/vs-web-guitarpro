@@ -8,7 +8,7 @@ use Vankosoft\ApplicationBundle\EventListener\Event\WidgetEvent;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 
-final class ApplicationMenuLocalesWidget implements WidgetLoaderInterface
+final class WgpProfileMenuLocalesWidget implements WidgetLoaderInterface
 {
     /** @var RequestStack */
     private $requestStack;
@@ -19,9 +19,9 @@ final class ApplicationMenuLocalesWidget implements WidgetLoaderInterface
     public function __construct(
         RequestStack $requestStack,
         RepositoryInterface $localesRepository
-    ) {
-        $this->requestStack         = $requestStack;
-        $this->localesRepository    = $localesRepository;
+        ) {
+            $this->requestStack         = $requestStack;
+            $this->localesRepository    = $localesRepository;
     }
     
     public function builder( WidgetEvent $event )
@@ -36,9 +36,9 @@ final class ApplicationMenuLocalesWidget implements WidgetLoaderInterface
         $widgetContainer    = $event->getWidgetContainer();
         
         /** @var Item */
-        $widgetItem = $widgetContainer->createWidgetItem( 'application-menu-locales', false );
+        $widgetItem = $widgetContainer->createWidgetItem( 'wgp-profile-menu-locales', false );
         if( $widgetItem ) {
-            $widgetItem->setTemplate( 'Widgets/application_menu_locales.html.twig', [
+            $widgetItem->setTemplate( 'Widgets/wgp_profile_menu_locales.html.twig', [
                 'currentLocale'     => $currentLocale,
                 'availableLocales'  => $availableLocales,
             ]);

@@ -7,8 +7,11 @@ imports:
     - { resource: services/menu.yaml }
     - { resource: services/wgp_tablature.yaml }
     - { resource: services/payment.yaml }
+    - { resource: services/widgets.yaml }
+    
     - { resource: services/api_controller.yaml }
     - { resource: services/api_platform.yaml }
+    
     
 parameters:
     locale: 'en_US'

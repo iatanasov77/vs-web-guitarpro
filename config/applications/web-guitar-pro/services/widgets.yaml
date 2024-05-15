@@ -10,5 +10,12 @@ services:
             - '@vs_application.repository.locale'
         tags:
             - { name: kernel.event_listener, event: widget.start, method: builder }
+            
+    App\Widgets\WgpProfileMenuLocalesWidget:
+        arguments:
+            - '@request_stack'
+            - '@vs_application.repository.locale'
+        tags:
+            - { name: kernel.event_listener, event: widget.start, method: builder }
 
 
