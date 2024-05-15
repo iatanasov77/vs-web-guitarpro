@@ -1,3 +1,18 @@
+2.5.0	|	Release date: **15.05.2024**
+============================================
+* New Features:
+  - Add to AdminPanel Twig Globals.
+  - CKEditor 4.22.1 was the last version of CKEditor 4 available under the open source license terms.
+  - Improve Phing Build Config.
+  - Add a Payment Entity.
+  - Add Some Configurations.
+  - Update Doctrine Migrations config 'schema_filter'.
+  - Update About New Versions of VankoSoft Bundles.
+  - Fix Some Templates.
+  - Create and Use Widgets for Application Menu Locale Menues.
+  - Get Analytics Measurement ID From ENV Variable.
+
+
 2.4.3	|	Release date: **18.05.2023**
 ============================================
 * Bug-Fixes and Improvements:
