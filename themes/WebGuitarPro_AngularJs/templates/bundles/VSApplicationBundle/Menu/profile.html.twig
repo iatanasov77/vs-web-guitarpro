@@ -1,0 +1,43 @@
+{% extends 'knp_menu.html.twig' %}
+
+{% block root %}
+    {# {{ dump( item.children ) }} #}
+
+    <ul class="dropdown-menu dropdown-menu-end">
+        <div class="sm-main-nav" >
+            {% for id, parentItem in item.children %}
+                {% if parentItem.attributes.id is defined and parentItem.attributes.id == 'alphatab_demo' %}
+                    {% if app_environment == 'dev' %}
+                        <li>
+                            <a class="dropdown-item" href="{{ parentItem.uri }}">
+                                <i class="{{ parentItem.attributes.iconClass }}"></i>{{ parentItem.name }}
+                            </a>
+                        </li>
+                    {% endif %}
+                {% elseif parentItem.attributes.id is defined and parentItem.attributes.id == 'language' %}
+                    <li class="dropdown-submenu btn-group dropstart dropdown keepopen language-submenu">
+                        <a class="dropdown-item dropdown-toggle keepopen language-submenu"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                            href="{{ parentItem.uri }}"
+                        >
+                            <i class="{{ parentItem.attributes.iconClass }}"></i>{{ parentItem.name }}
+                        </a>
+                        
+                        {{ vs_widget_render( 'webguitarpro-layout', ['wgp-profile-menu-locales'] ) }}
+                    </li>
+                {% else %}
+                    <li>
+                        {% if parentItem.extra( 'divider' ) %}
+                            {% if app_environment == 'dev' or id != 'divider_2' %}<hr/>{% endif %}
+                        {% else %}
+                            <a class="dropdown-item" href="{{ parentItem.uri }}">
+                                <i class="{{ parentItem.attributes.iconClass }}"></i>{{ parentItem.name }}
+                            </a>   
+                        {% endif %}
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </ul>
+{% endblock %}

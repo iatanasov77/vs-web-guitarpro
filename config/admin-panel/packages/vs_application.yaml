@@ -626,14 +626,14 @@ vs_application:
                 name: vs_application.menu.my_profile
                 route: vs_users_profile_show
                 attributes:
-                    iconClass: "fas fa-user mr-2"
+                    iconClass: "fas fa-user me-2"
                     target: '_self'
                     
             documentation:
                 name: vs_application.menu.documentation
                 uri: "http://vankosoft.org/projects/vankosoft-application-project/documentation"
                 attributes:
-                    iconClass: "fas fa-cog mr-2"
+                    iconClass: "fas fa-cog me-2"
                     target: '_blank'
             
             language:
@@ -641,7 +641,7 @@ vs_application:
                 uri: "javascript:;"
                 attributes:
                     id: language
-                    iconClass: "fas fa-language mr-2"
+                    iconClass: "fas fa-language me-2"
                     target: '_self'
                         
             divider_1:
@@ -651,7 +651,7 @@ vs_application:
                 name: vs_application.menu.logout
                 route: vs_application_logout
                 attributes:
-                    iconClass: "fas fa-power-off mr-2"
+                    iconClass: "fas fa-power-off me-2"
                     divider_prepend: false
                     divider_append: true
                     target: '_self'

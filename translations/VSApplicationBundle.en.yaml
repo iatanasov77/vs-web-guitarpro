@@ -1,5 +1,12 @@
 vs_application:
     menu:
+        my_profile: My Profile
+        profile: Profile
+        language: Language
+        logout: Logout
+        documentation: Documentation
+        about_application: About Application
+        
         site_main:
             login: Login
             my_tablatures: My Tablatures
@@ -7,12 +14,7 @@ vs_application:
             my_favorites: My Favorites
             create_tablature_category: Create Category
             create_tablature: Submit Tablature
-            profile: Profile
-            my_profile: My Profile
-            language: Language
-            documentation: Documentation
-            about_application: About Application
-            logout: Logout
+            
             extend_your_tablatures_store: Extend Your Tablatures Store
             latest_tablatures: Latest Tablatures
             

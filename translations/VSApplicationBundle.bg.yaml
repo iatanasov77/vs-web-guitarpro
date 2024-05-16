@@ -1,5 +1,12 @@
 vs_application:
     menu:
+        profile: Профил
+        my_profile: Моят Профил
+        language: Език
+        logout: Изход
+        documentation: Документация
+        about_application: За Приложението
+        
         site_main:
             login: Вход
             my_tablatures: Моите Таблатури
@@ -7,12 +14,7 @@ vs_application:
             my_favorites: Предпочитани
             create_tablature_category: Създай Категория
             create_tablature: Добави Таблатура
-            profile: Профил
-            my_profile: Моят Профил
-            language: Език
-            documentation: Документация
-            about_application: За Приложението
-            logout: Изход
+            
             extend_your_tablatures_store: Увеличете Вашият Таблатури Склад
             latest_tablatures: Най-нови Таблатури
             
