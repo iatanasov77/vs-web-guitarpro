@@ -1,0 +1,12 @@
+{% extends 'knp_menu.html.twig' %}
+
+{% block root %}
+    {# {{ dump( item.children ) }} #}
+    {% for key, parentItem in item.children %}
+        <li class="nav-item">
+            <a class="nav-link" href="{{ parentItem.uri }}">
+                {{ parentItem.name|trans }}
+            </a>
+        </li>
+    {% endfor %}
+{% endblock %}

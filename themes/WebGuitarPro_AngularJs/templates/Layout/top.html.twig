@@ -19,6 +19,7 @@
                     <div class="dropdown-menu dropdown-menu-right scrollable-menu" aria-labelledby="btnDemoPages">
                         <!-- Paid Services list -->
                         <div class="sm-main-nav" >
+                        {#
                         {% for paidService in paidTablatureStoreServices %}
                             <a class="dropdown-item btnPayment"
                                 href="javascript:void(0);"
@@ -27,6 +28,7 @@
                                 {{ paidService.title }} ( {{ paidService.price }} {{ paidService.currencyCode }} / {{ paidService.subscriptionPeriod }} )
                             </a><hr>
                         {% endfor %}
+                        #}
                         </div>
                     </div>
                 </li>
@@ -48,16 +50,6 @@
                         </div>
                     </div>
                 </li>
-                
-                <!-- Documentation
-                    ( This is in DEV Section Because I dont know if is needed.)
-                -->
-                <li class="nav-item">
-                    <a class="nav-link" href="javascript:;">
-                        {{ 'vs_wgp.template.menu.documentation' | trans( {},'WebGuitarPro' ) }}
-                    </a>
-                </li>
-                <!--/ Documentation  -->
             {% endif %}
             
             
@@ -70,37 +62,9 @@
             <!--/ About Application -->
             #}
             
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path( 'app_home' ) }}">
-                    {{ 'vs_wgp.template.menu.latest_tablatures' | trans( {},'WebGuitarPro' ) }}
-                </a>
-            </li>
+            {{ knp_menu_render('mainWebGuitarPro', {'template': 'Menu/main-menu.html.twig'}) }}
             
             {% if app.user %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path( 'vs_wgp_tablature_index' ) }}">
-                        {{ 'vs_wgp.template.menu.my_tablatures' | trans( {},'WebGuitarPro' ) }}
-                    </a>
-                </li>
-                
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path( 'tablature_favorite_index' ) }}">
-                        {{ 'vs_wgp.template.menu.my_favorites' | trans( {},'WebGuitarPro' ) }}
-                    </a>
-                </li>
-                
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path( 'wgp_share_tablature_my_shares' ) }}">
-                        {{ 'vs_wgp.template.menu.my_shares' | trans( {},'WebGuitarPro' ) }}
-                    </a>
-                </li>
-                
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path( 'wgp_share_tablature_shared_to_me' ) }}">
-                        {{ 'vs_wgp.template.menu.shared_to_me' | trans( {},'WebGuitarPro' ) }}
-                    </a>
-                </li>
-                
                 <!--  Create Tablature Category  -->
                 <li class="nav-item dropdown btn-group">
                     <a class="nav-link dropdown-toggle topFormToggle" href="#" aria-haspopup="true" aria-expanded="false">

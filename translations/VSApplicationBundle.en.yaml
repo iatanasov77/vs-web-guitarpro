@@ -1,0 +1,36 @@
+vs_application:
+    menu:
+        site_main:
+            login: Login
+            my_tablatures: My Tablatures
+            favorites: Favorites
+            my_favorites: My Favorites
+            create_tablature_category: Create Category
+            create_tablature: Submit Tablature
+            profile: Profile
+            my_profile: My Profile
+            language: Language
+            documentation: Documentation
+            about_application: About Application
+            logout: Logout
+            extend_your_tablatures_store: Extend Your Tablatures Store
+            latest_tablatures: Latest Tablatures
+            
+            shared_to_me: Shared to Me
+            my_shares: My Shares
+            pricing_plans: Pricing Plans
+            
+    template:
+        vankosoft_application: WebGuitarPro
+        super_admin_panel: Admin Panel
+        
+        contact_page:
+            my_address: 'bul. "Al. Stamboliiski", Plovdiv 4000'
+            visit_us: Contacts
+            contact_details: Get In Touch
+            contact_text: 'We are always happy to help and provide more information about our services. You can contact us through email, phone, or by filling out the form on our website. Thank you for considering us!'
+            opening_hours: Opening Hours
+            email_us: Email Us
+            view_larger_map: View Larger Map
+
+

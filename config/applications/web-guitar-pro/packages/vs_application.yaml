@@ -54,10 +54,25 @@ vs_application:
                 model: App\Entity\Application\WidgetsRegistry
 
     menu:
-        mainApplicationMenu:
-            home:
-                name: Home
-                uri: "http://%vankosoft_host%"
+        mainWebGuitarProMenu:
+            latest_tablatures:
+                name: vs_application.menu.site_main.latest_tablatures
+                route: app_home
+            my_tabulatures:
+                name: vs_application.menu.site_main.my_tablatures
+                route: vs_wgp_tablature_index
+            my_favorites:
+                name: vs_application.menu.site_main.my_favorites
+                route: tablature_favorite_index
+            my_shares:
+                name: vs_application.menu.site_main.my_shares
+                route: wgp_share_tablature_my_shares
+            shared_to_me:
+                name: vs_application.menu.site_main.shared_to_me
+                route: wgp_share_tablature_shared_to_me
+            pricing_plans:
+                name: vs_application.menu.site_main.pricing_plans
+                route: vs_payment_pricing_plans
 
         profileMenu:
             profile:
