@@ -11,6 +11,7 @@ use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 use Vankosoft\ApplicationBundle\Model\Interfaces\TaxonomyInterface;
 use Vankosoft\CmsBundle\Component\Uploader\FileUploaderInterface;
 use Vankosoft\UsersBundle\Security\UserManager;
+use Vankosoft\AgentBundle\Component\VankosoftAgent;
 
 class ProfileController extends BaseProfileController
 {
@@ -25,11 +26,12 @@ class ProfileController extends BaseProfileController
         UserManager $userManager,
         FactoryInterface $avatarImageFactory,
         FileUploaderInterface $imageUploader,
+        VankosoftAgent $vankosoftAgent,
         
         EntityRepository $taxonomyRepository,
         string $tabCategoriesTaxonomyCosde
     ) {
-        parent::__construct( $doctrine, $usersClass, $userManager, $avatarImageFactory, $imageUploader );
+        parent::__construct( $doctrine, $usersClass, $userManager, $avatarImageFactory, $imageUploader, $vankosoftAgent );
         
         $this->tabCategoriesTaxonomy    = $taxonomyRepository->findByCode( $tabCategoriesTaxonomyCosde );
     }

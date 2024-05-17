@@ -17,8 +17,10 @@ var $ = require( 'jquery' );
 window.$ = window.jQuery = $;
 
 import 'popper.js/dist/popper.js';
-import 'bootstrap';
+const bootstrap = require( 'bootstrap' );
+window.bootstrap = bootstrap;
 
+import './js/includes/vs_cookieconsent.js';
 import './js/login.js';
 import './js/topbar.js';
 

@@ -15,7 +15,7 @@ parameters:
     
     applicationIcon: 'build/default/images/superman.svg'
     applicationCompany: 'vs_application.template.vankosoft_application'
-    applicationTitle: 'WebGuitarPro Admin Panel'
+    applicationTitle: 'vs_application.template.super_admin_panel'
     hasTopSearch: true
     
     vs_application.version: !php/const App\AdminPanelKernel::VERSION

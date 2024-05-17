@@ -39,6 +39,7 @@ services:
             - '@vs_users.manager.user'
             - '@vs_users.factory.avatar_image'
             - '@vs_cms.profile_uploader'
+            - '@vs_agent.agent'
             - '@vs_application.repository.taxonomy'
             - '%vs_wgp.tablature-categories.taxonomy_code%'
 

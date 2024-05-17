@@ -12,8 +12,9 @@ services:
     # PAYMENT CONTROLLER
     ##############################
     App\Controller\WebGuitarPro\Checkout\PaymentController:
+        public: true
+        autowire: true
         tags: ['controller.service_arguments']
-        autowire: false
         arguments:
             - '@doctrine'
             - '@vs_payment_payment'
@@ -29,6 +30,9 @@ services:
     # STRIPE CHECKOUT
     ##############################
     App\Controller\WebGuitarPro\Checkout\StripeCheckoutController:
+        public: true
+        autowire: true
+        tags: ['controller.service_arguments']
         arguments:
             - '@event_dispatcher'
             - '@translator'
@@ -42,6 +46,33 @@ services:
             - '%vs_payment.checkout.throw_exception_on_payment_done%'
             - '%vs_payment.shopping_cart_redirect_on_payment_done%'
             - '%vs_payment.pricing_plans_redirect_on_payment_done%'
+            - '@vs_application.repository.taxonomy'
+            - '%vs_wgp.tablature-categories.taxonomy_code%'
+        calls:
+            - [ setContainer, [ '@service_container' ] ]
+            
+    # VS Catalog Controllers
+    ##############################   
+    App\Controller\WebGuitarPro\PricingPlanCheckoutController:
+        public: true
+        autowire: true
+        autoconfigure: true
+        tags: ['controller.service_arguments']
+        arguments:
+            - '@doctrine'
+            - '@event_dispatcher'
+            - '@vs_users.security_bridge'
+            - '@vs_payment.factory.order'
+            - '@vs_payment.repository.order'
+            - '@vs_payment.factory.order_item'
+            - '@vs_payment.repository.payment_method'
+            - '@vs_payment_payment'
+            - '@vs_payment.order_factory'
+            - '@vs_payment.repository.gateway_config'
+            - '@vs_catalog.repository.pricing_plan_category'
+            - '@vs_catalog.repository.pricing_plan'
+            - '@vs_catalog.repository.pricing_plan_subscription'
+            
             - '@vs_application.repository.taxonomy'
             - '%vs_wgp.tablature-categories.taxonomy_code%'
         calls:

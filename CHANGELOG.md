@@ -1,3 +1,15 @@
+2.5.2	|	Release date: **17.05.2024**
+============================================
+* New Features, Fixes and Improvements:
+  - Cahnge MySql Version in Doctrine Config for Production Environement.
+  - Move Vankosoft API Password into ENV Variables.
+  - Create a TablureStore Component.
+  - Use Menu Builder for Application Main Menu
+  - Create WebGuitarPro Application Profile Menu.
+  - Fix ProfileController .
+  - Create Pricing Plans Page.
+
+
 2.5.1	|	Release date: **15.05.2024**
 ============================================
 * Bug-Fixes:

@@ -1,6 +1,8 @@
+/*
 require( 'bootstrap/js/dist/modal.js' );
 require( 'jquery-easyui/css/easyui.css' );
 require( 'jquery-easyui/js/jquery.easyui.min.js' );
+*/
 
 import { VsTranslator, VsLoadTranslations } from '@/js/includes/bazinga_js_translations.js';
 VsLoadTranslations(['WebGuitarPro']);

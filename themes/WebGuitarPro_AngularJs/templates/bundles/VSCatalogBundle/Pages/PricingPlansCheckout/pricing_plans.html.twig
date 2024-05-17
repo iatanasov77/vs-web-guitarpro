@@ -1,0 +1,39 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+    <div class="tablatures-container" style="margin-top: 110px">
+        <div class="card">
+            <h5 class="card-header">{{ 'vs_payment.template.pricing_plans_index_title' | trans( {},'VSPaymentBundle' ) }}</h5>
+            <div class="card-body">
+                {% include '@VSCatalog/Pages/PricingPlansCheckout/Partial/pricing-plans-listing.html.twig' %}
+            </div>
+        </div>
+    </div>      
+{% endblock %}
+
+{% block widgets %}
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    <div id="RealPaymentFormContainer" style="display: none;">
+        {% include '@VSPayment/Pages/CreditCard/Partial/StripeJsV2Form.html.twig' with {
+             'formAction': '',
+             'formMethod': 'POST'
+        } %}
+    </div>
+{% endblock %}
+
+{% block modals %}
+    {% include '@VSCatalog/Pages/PricingPlansCheckout/plan-modal.html.twig' %}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    {{ encore_entry_link_tags( 'js/pricing-plans', null, 'WebGuitarPro_AngularJs' ) }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    
+    {{ encore_entry_script_tags( 'js/pricing-plans', null, 'WebGuitarPro_AngularJs' ) }}
+    {{ encore_entry_script_tags( 'js/profile', null, 'WebGuitarPro_AngularJs' ) }}
+{% endblock %}
