@@ -5,5 +5,11 @@ app_vs_catalog_pricing_plans:
 app_vs_catalog_payment:
     resource: "@VSCatalogBundle/Resources/config/routing/payment.yaml"
     prefix: /
+    
+vs_payment_pricing_plans:
+    path: /pricing-plans
+    controller: App\Controller\WebGuitarPro\PricingPlanCheckoutController::showPricingPlans
+    options:
+        expose: true
 
 

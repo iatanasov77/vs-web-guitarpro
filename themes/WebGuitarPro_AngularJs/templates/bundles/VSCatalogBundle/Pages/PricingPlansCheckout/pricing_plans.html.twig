@@ -1,33 +1,14 @@
 {% extends "base.html.twig" %}
 
 {% block content %}
-    <!-- page title -->
-    <section class="section section--first section--bg"
-        data-bg="{{ asset( 'build/video-platform-theme/img/bg/section__bg.jpg' ) }}"
-    >
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="section__wrap">
-                        <!-- section title -->
-                        <h1 class="section__title section__title--head">{{ 'vs_vvp.template.pricing_plans.pricing_plans' | trans( {},'VanzVideoPlayer' ) }}</h1>
-                        <!-- end section title -->
-
-                        <!-- breadcrumbs -->
-                        <ul class="breadcrumbs">
-                            {% if app.environment == 'dev' or not inMaintenance %}
-                                {{ knp_menu_render( 'breadcrumbs', {'template': 'Menu/breadcrumb.html.twig'} ) }}
-                            {% endif %}
-                        </ul>
-                        <!-- end breadcrumbs -->
-                    </div>
-                </div>
+    <div class="tablatures-container" style="margin-top: 110px">
+        <div class="card">
+            <h5 class="card-header">{{ 'vs_payment.template.pricing_plans_index_title' | trans( {},'VSPaymentBundle' ) }}</h5>
+            <div class="card-body">
+                {% include '@VSCatalog/Pages/PricingPlansCheckout/Partial/pricing-plans-listing.html.twig' %}
             </div>
         </div>
-    </section>
-    <!-- end page title -->
-
-    {% include '@VSCatalog/Pages/PricingPlansCheckout/Partial/pricing-plans-listing.html.twig' %}
+    </div>      
 {% endblock %}
 
 {% block widgets %}
