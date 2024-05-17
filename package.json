@@ -69,7 +69,7 @@
         "vue-clickaway": "^2.1.0",
         "vue-loader": "^15.9.5",
         "vue-modals": "^0.5.0",
-        "vue-moment": "^2.0.2",
+        "vue-moment": "^4.1",
         "vue-multiselect": "^2.0.0-beta.10",
         "vue-resource": "~1.0.3",
         "vue-router": "^2.1.0",
