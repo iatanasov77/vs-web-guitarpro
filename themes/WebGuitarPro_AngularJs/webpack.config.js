@@ -14,6 +14,7 @@ Encore
     
     .addAliases({
         '@': path.resolve( __dirname, '../../vendor/vankosoft/application/src/Vankosoft/ApplicationBundle/Resources/themes/default/assets' ),
+        '@@': path.resolve( __dirname, '../../vendor/vankosoft/payment-bundle/lib/Resources/assets' )
     })
     
     .enableSassLoader(function(sassOptions) {}, {
@@ -88,7 +89,8 @@ Encore
     .addEntry( 'js/filemanager-file-upload', './themes/WebGuitarPro_AngularJs/assets/js/pages/filemanager-file-upload.js' )
     .addEntry( 'js/profile', './themes/WebGuitarPro_AngularJs/assets/js/pages/profile.js' )
     
-    .addEntry( 'paymentForm', './themes/WebGuitarPro_AngularJs/assets/js/Stripe/paymentForm.js' )
+    //.addEntry( 'paymentForm', './themes/WebGuitarPro_AngularJs/assets/js/Stripe/paymentForm.js' )
+    .addEntry( 'js/pricing-plans', './themes/WebGuitarPro_AngularJs/assets/js/pages/pricing-plans.js' )
     
     .addEntry( 'shared-tablatures', './themes/WebGuitarPro_AngularJs/assets/js/pages/shared-tablatures.js' )
     .addEntry( 'my-shares', './themes/WebGuitarPro_AngularJs/assets/js/pages/my-shares.js' )

@@ -1,0 +1,58 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+    <!-- page title -->
+    <section class="section section--first section--bg"
+        data-bg="{{ asset( 'build/video-platform-theme/img/bg/section__bg.jpg' ) }}"
+    >
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section__wrap">
+                        <!-- section title -->
+                        <h1 class="section__title section__title--head">{{ 'vs_vvp.template.pricing_plans.pricing_plans' | trans( {},'VanzVideoPlayer' ) }}</h1>
+                        <!-- end section title -->
+
+                        <!-- breadcrumbs -->
+                        <ul class="breadcrumbs">
+                            {% if app.environment == 'dev' or not inMaintenance %}
+                                {{ knp_menu_render( 'breadcrumbs', {'template': 'Menu/breadcrumb.html.twig'} ) }}
+                            {% endif %}
+                        </ul>
+                        <!-- end breadcrumbs -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end page title -->
+
+    {% include '@VSCatalog/Pages/PricingPlansCheckout/Partial/pricing-plans-listing.html.twig' %}
+{% endblock %}
+
+{% block widgets %}
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    <div id="RealPaymentFormContainer" style="display: none;">
+        {% include '@VSPayment/Pages/CreditCard/Partial/StripeJsV2Form.html.twig' with {
+             'formAction': '',
+             'formMethod': 'POST'
+        } %}
+    </div>
+{% endblock %}
+
+{% block modals %}
+    {% include '@VSCatalog/Pages/PricingPlansCheckout/plan-modal.html.twig' %}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    {{ encore_entry_link_tags( 'js/pricing-plans', null, 'WebGuitarPro_AngularJs' ) }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    
+    {{ encore_entry_script_tags( 'js/pricing-plans', null, 'WebGuitarPro_AngularJs' ) }}
+    {{ encore_entry_script_tags( 'js/profile', null, 'WebGuitarPro_AngularJs' ) }}
+{% endblock %}
