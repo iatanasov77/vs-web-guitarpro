@@ -1,0 +1,10 @@
+<table class="table table-hover align-middle table-nowrap mb-0" id="tblTablatures">
+	<tbody>
+        {% set rowClass = 'simpleTreeTable_Row_Odd' %}
+        {% for item in shares %}
+            {% set rowClass = loop.index0 is odd ? 'simpleTreeTable_Row_Odd' : 'simpleTreeTable_Row_Even' %}
+            {% include 'Pages/SharedTablatures/Partial/simpleTreeTableRows.html.twig' with {'share': item, 'parentId': 0, 'isTab': 0, 'rowClass': rowClass} %}
+        {% endfor %}
+    </tbody>
+</table>
+                

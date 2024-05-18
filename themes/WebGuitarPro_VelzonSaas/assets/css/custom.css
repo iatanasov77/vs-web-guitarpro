@@ -47,7 +47,8 @@ label.required:after {
     margin-right: 0 !important;
 }
 
-.dropdown-menu.locales-menu::before {
+.dropdown-menu.locales-menu::before,
+.dropdown-menu.profile-menu::before {
     background: unset !important;
     background-color: unset !important;
     border: unset !important;
