@@ -96,30 +96,33 @@
                 {% include 'Layout/notifications.html.twig' %}
                 #}
                 
-                <div class="dropdown ms-sm-3 header-item topbar-user">
-                    <button type="button" class="btn" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="d-flex align-items-center">
-
-                            {% if app.user.info and app.user.info.avatar %}
-                               <img src="{{ app.user.info.avatar.path|imagine_filter('users_crud_index_thumb') }}" alt="" class="rounded-circle header-profile-user" />
-                            {% else %}
-                                <img src="{{ asset( 'build/compas-billing-theme/images/users/avatar-1.jpg' ) }}" alt="" class="rounded-circle header-profile-user" />
-                            {% endif %}                            
-
-                            <span class="text-start ms-xl-2">
-                                <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{ app.user.info.fullName }}</span>
-                                <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">{{ app.user.info.designation }}</span>
+                {% if app.user %}
+                    <div class="dropdown ms-sm-3 header-item topbar-user">
+                        <button type="button" class="btn" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="d-flex align-items-center">
+    
+                                {% if app.user.info and app.user.info.avatar %}
+                                   <img src="{{ app.user.info.avatar.path|imagine_filter('users_crud_index_thumb') }}" alt="" class="rounded-circle header-profile-user" />
+                                {% else %}
+                                    <img src="{{ asset( 'build/compas-billing-theme/images/users/avatar-1.jpg' ) }}" alt="" class="rounded-circle header-profile-user" />
+                                {% endif %}                            
+    
+                                <span class="text-start ms-xl-2">
+                                    <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{ app.user.info.fullName }}</span>
+                                    <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">{{ app.user.info.designation }}</span>
+                                </span>
+                                
                             </span>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <!-- item-->
+                            <h6 class="dropdown-header">Welcome {{ app.user.info.fullName }}!</h6>
                             
-                        </span>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-end">
-                        <!-- item-->
-                        <h6 class="dropdown-header">Welcome {{ app.user.info.fullName }}!</h6>
-                        
-                        {{ knp_menu_render('profile', {'template': '@VSApplication/Menu/profile.html.twig'}) }}
+                            {{ knp_menu_render('profile', {'template': '@VSApplication/Menu/profile.html.twig'}) }}
+                        </div>
                     </div>
-                </div>
+                {% endif %}
+                    
             </div>
         </div>
     </div>

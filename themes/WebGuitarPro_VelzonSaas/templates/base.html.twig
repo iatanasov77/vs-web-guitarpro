@@ -25,14 +25,13 @@
 
         {% block head_scripts %}
             {{ encore_entry_script_tags( 'js/layout', null, 'WebGuitarPro_VelzonSaas' ) }}
+            
+            {% if alphatabUseCdn == 'true' %}
+                <script src="https://cdn.jsdelivr.net/npm/@coderline/alphatab@1.3.0/dist/alphaTab.min.js"></script>
+            {% endif %}
         {% endblock %}
         
-        {% if alphatabUseCdn == 'true' %}
-            {# Try Import AlphaTab From node_modules
-            {{ encore_entry_script_tags( 'alphatab', null, 'WebGuitarPro_AngularJs' ) }}
-            #}
-            <script src="https://cdn.jsdelivr.net/npm/@coderline/alphatab@1.3.0/dist/alphaTab.min.js"></script>
-        {% endif %}
+        
     </head>
     
     <body>
@@ -53,19 +52,21 @@
                 <div class="page-content">
                     <div class="container-fluid">
                     
-                        <!-- start page title -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                    <h4 class="mb-sm-0">{% block pageTitle %}{% endblock %}</h4>
-                        
-                                    <div class="page-title-right">
-                                        {{ knp_menu_render('breadcrumbs', {'template': 'Menu/breadcrumb.html.twig'}) }}
+                        {% block header %}
+                            <!-- start page title -->
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                        <h4 class="mb-sm-0">{% block pageTitle %}{% endblock %}</h4>
+                            
+                                        <div class="page-title-right">
+                                            {{ knp_menu_render('breadcrumbs', {'template': 'Menu/breadcrumb.html.twig'}) }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- end page title -->
+                            <!-- end page title -->
+                        {% endblock %}
                     
                         {% block content %}{% endblock %}
                     </div>
@@ -73,7 +74,9 @@
                 </div>
                 <!-- End Page-content -->
                 
-                {% include 'Layout/footer.html.twig' %}
+                {% block copyright %}
+                    {% include 'Layout/footer.html.twig' %}
+                {% endblock %}
             </div>
             <!-- end main content-->
         </div>

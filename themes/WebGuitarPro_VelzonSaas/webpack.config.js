@@ -24,11 +24,11 @@ Encore
     /**
      * Configure Angular Compiler and Loader
      */
-//     .enableTypeScriptLoader()
-//     .addPlugin(new AngularCompilerPlugin({
-//         "tsConfigPath": './themes/WebGuitarPro_VelzonSaas/assets/js/Player/tsconfig.app.json',
-//         "entryModule": './themes/WebGuitarPro_VelzonSaas/assets/js/Player/main.ts',
-//     }))
+    .enableTypeScriptLoader()
+    .addPlugin(new AngularCompilerPlugin({
+        "tsConfigPath": './themes/WebGuitarPro_VelzonSaas/assets/js/Player/tsconfig.app.json',
+        "entryModule": './themes/WebGuitarPro_VelzonSaas/assets/js/Player/main.ts',
+    }))
     
     /* Embed Angular Component Templates. */
     .addLoader({
@@ -53,14 +53,18 @@ Encore
         {from: './node_modules/@coderline/alphatab/dist/soundfont/', to: 'soundfont/[name].[ext]'}
     ])
 
+    // Application Images
     .copyFiles({
          from: './themes/WebGuitarPro_VelzonSaas/assets/images',
          to: 'images/[path][name].[ext]',
      })
      
+     // Velzon Images
     .copyFiles([
-        {from: './themes/WebGuitarPro_VelzonSaas/assets/vendor/Velzon_v4.2.0/images', to: 'images/[path][name].[ext]'},
-        {from: './themes/WebGuitarPro_VelzonSaas/assets/vendor/Velzon_v4.2.0/lang', to: 'lang/[path][name].[ext]'}
+        //{from: './themes/WebGuitarPro_VelzonSaas/assets/vendor/Velzon_v4.2.0/lang', to: 'lang/[path][name].[ext]'},
+        {from: './themes/WebGuitarPro_VelzonSaas/assets/vendor/Velzon_v4.2.0/fonts', to: 'fonts/[path][name].[ext]'},
+        {from: './themes/WebGuitarPro_VelzonSaas/assets/vendor/Velzon_v4.2.0/images/flags', to: 'images/flags/[path][name].[ext]'},
+        {from: './themes/WebGuitarPro_VelzonSaas/assets/vendor/Velzon_v4.2.0/images/users', to: 'images/users/[path][name].[ext]'},
     ])
 
     // Global Assets
@@ -69,8 +73,8 @@ Encore
     .addEntry( 'js/app', './themes/WebGuitarPro_VelzonSaas/assets/app.js' )
     
     // Try Import AlphaTab From node_modules
-//     .addEntry('alphatab', './themes/WebGuitarPro_VelzonSaas/assets/js/alphatab.js')
-//     .addEntry('tablature-player', './themes/WebGuitarPro_VelzonSaas/assets/js/Player/index.js')
+    .addEntry('js/alphatab', './themes/WebGuitarPro_VelzonSaas/assets/js/alphatab.js')
+    .addEntry('js/tablature-player', './themes/WebGuitarPro_VelzonSaas/assets/js/Player/index.js')
     
     // Pages Assets
     .addEntry( 'js/home', './themes/WebGuitarPro_VelzonSaas/assets/js/pages/home.js' )
@@ -82,7 +86,6 @@ Encore
 //     .addEntry( 'js/filemanager-file-upload', './themes/WebGuitarPro_VelzonSaas/assets/js/pages/filemanager-file-upload.js' )
 //     .addEntry( 'js/profile', './themes/WebGuitarPro_VelzonSaas/assets/js/pages/profile.js' )
 //     
-//     //.addEntry( 'paymentForm', './themes/WebGuitarPro_AngularJs/assets/js/Stripe/paymentForm.js' )
 //     .addEntry( 'js/pricing-plans', './themes/WebGuitarPro_VelzonSaas/assets/js/pages/pricing-plans.js' )
 //     
 //     .addEntry( 'shared-tablatures', './themes/WebGuitarPro_VelzonSaas/assets/js/pages/shared-tablatures.js' )

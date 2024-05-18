@@ -1,0 +1,100 @@
+<tr class="{{ rowClass }}"
+    data-node-id="{% if isTab %}tab-{{ item.id }}{% else %}{{ item.id }}{% endif %}" 
+    {% if parentId %}data-node-pid="{{ parentId }}"{% endif %}
+>
+
+    <td width="10%">
+    {% if not isTab %}
+        <i class="fa fa-folder" aria-hidden="true"></i>
+    {% else %}
+        {# <img src="{{ asset( 'build/web-guitar-pro-reactjs/images/logo.png' ) }}" width="15" height="15" /> #}
+        <img src="{{ asset( 'build/web-guitar-pro-velzon-saas/images/guitarpro.jpg' ) }}" width="15" height="15" />
+    {% endif %}
+    </td>
+
+    <td>
+    {% if not isTab %}
+        {# Show Tablature Category Name If Not in Default Locale. #}
+        {{ item.getNameTranslated( app.request.locale ) }}
+    {% else %}
+        {{ item.name }}
+    {% endif %}
+    </td>
+    <td>
+        {% if isTab %}
+            <a class="btn btn-primary mr-2"
+                href="{{ url( 'tablature_read', {id: item.id} ) }}"
+                title="{{ 'vs_application.template.items_index_row_action_download' | trans( {},'VSApplicationBundle' ) }}"
+            >
+                <i class="fas fa-download"></i>
+            </a>
+                                
+            {% if ( item.slug|length ) %}{% set tabId = item.slug %}{% else %}{% set tabId = item.id %}{% endif %}
+            <a  class="btn btn-primary mr-2"
+                href="{{ path( 'vs_wgp_player_show', {id: tabId} ) }}"
+                title="{{ 'vs_wgp.template.button_play' | trans( {},'WebGuitarPro' ) }}"
+            >
+                <i class="fas fa-play"></i> {# Play #}
+            </a>
+            
+            <a class="btn btn-primary btnShareTablature mr-2"
+                href="{{ path('wgp_share_tablature_get_form', {'tabId': item.id}) }}"
+                title="{{ 'vs_wgp.template.button_share' | trans( {},'WebGuitarPro' ) }}"
+            >
+                <i class="fas fa-share-alt"></i>
+            </a>
+            <a class="btn btn-primary mr-2"
+                href="{{ path('vs_wgp_tablature_update', {'id': item.id}) }}"
+                title="{{ 'vs_cms.template.button_edit' | trans( {},'VSCmsBundle' ) }}"
+            >
+                <i class="fas fa-edit"></i>
+            </a>
+            <a class="btn btn-danger btnDeleteResource mr-2"
+                href="{{ path('vs_wgp_tablature_delete', {'id': item.id}) }}"
+                data-csrftoken="{{ csrf_token( item.id ) }}"
+                data-redirectUrl="{{ path( 'vs_wgp_tablature_index' ) }}"
+                title="{{ 'vs_cms.template.button_delete' | trans( {},'VSCmsBundle' ) }}"
+            >
+                <i class="fas fa-window-close"></i>
+            </a>
+        	
+        {% else %}
+        
+            <a class="btn btn-primary mr-2"
+                href="{{ path('vs_wgp_tablature_category_update', {'id': item.id}) }}"
+                title="{{ 'vs_cms.template.button_edit' | trans( {},'VSCmsBundle' ) }}"
+            >
+                <i class="fas fa-edit"></i>
+            </a>
+            
+            <a class="btn btn-danger btnDeleteResource mr-2"
+                href="{{ path('vs_wgp_tablature_category_delete', {'id': item.id}) }}"
+                data-csrftoken="{{ csrf_token( item.id ) }}"
+                data-redirectUrl="{{ path( 'vs_wgp_tablature_index' ) }}"
+                title="{{ 'vs_cms.template.button_delete' | trans( {},'VSCmsBundle' ) }}"
+            >
+                <i class="fas fa-window-close"></i>
+            </a>
+            
+        {% endif %}
+    </td>
+</tr>
+{% if item.children is defined %}
+    {% for child in item.children %}
+        {% if child.user == app.user %}
+            {% set rowClass = ( rowClass == 'simpleTreeTable_Row_Even' ) ? 'simpleTreeTable_Row_Odd' : 'simpleTreeTable_Row_Even' %}
+            {% include 'Pages/Tablatures/Partial/simpleTreeTableRows.html.twig' with {'parentId': item.id, 'item': child, 'isTab': 0, 'rowClass': rowClass} %}
+    	{% endif %}
+    {% endfor %}
+{% endif %}
+
+{# #}
+{% if item.tablatures is defined %}
+    {% for tab in item.tablatures %}
+        {% if tab.user == app.user %}
+            {% set rowClass = ( rowClass == 'simpleTreeTable_Row_Even' ) ? 'simpleTreeTable_Row_Odd' : 'simpleTreeTable_Row_Even' %}
+            {% include 'Pages/Tablatures/Partial/simpleTreeTableRows.html.twig' with {'parentId': item.id, 'item': tab, 'isTab': 1} %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+

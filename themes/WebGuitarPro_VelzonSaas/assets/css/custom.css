@@ -19,3 +19,30 @@ label.required:after {
 .clientOptionsFieldset legend {
     margin-bottom: 0 !important;
 }
+
+[data-layout="horizontal"] {
+    @media (min-width: 1024.1px) {
+
+        .layout-width,
+        .container-fluid {
+            max-width: 100% !important;
+            margin: 0 auto;
+        }
+
+        .topnav-hamburger {
+            visibility: hidden;
+        }
+    }
+}
+
+.footer.fixed-bottom {
+    position: fixed !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.footer.fixed-bottom .container-fluid {
+    margin-right: 0 !important;
+}

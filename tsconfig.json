@@ -33,6 +33,7 @@
   "exclude": [
     "node_modules",
     "vendor",
-    "**/*.spec.ts"
+    "**/*.spec.ts",
+    "themes/WebGuitarPro_AngularJs"
   ]
 }

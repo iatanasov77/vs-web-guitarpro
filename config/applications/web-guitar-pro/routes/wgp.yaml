@@ -1,3 +1,7 @@
+vs_wgp_player_show:
+    path: /tablatures/{id}
+    controller: App\Controller\WebGuitarPro\TablatureExtController::show
+
 tablature_read:
     path: /tablatures-ext/{id}/read
     controller: App\Controller\WebGuitarPro\TablatureExtController::read

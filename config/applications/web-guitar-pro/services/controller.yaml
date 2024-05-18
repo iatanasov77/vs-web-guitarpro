@@ -47,6 +47,7 @@ services:
         tags: ['controller.service_arguments']
         autowire: false
         arguments:
+            - "@parameter_bag"
             - '@doctrine'
             - '@vs_application.repository.taxonomy'
             - '@vs_application.repository.taxon'

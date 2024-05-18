@@ -27,8 +27,8 @@ const adminPanelConfig  = require( themePath + '/webpack.config' );
 /**
  *  WebGuitarPro AngularJs Theme
  */
-Encore.reset();
-const WebGuitarPro_AngularJs_Config   = require('./themes/WebGuitarPro_AngularJs/webpack.config');
+// Encore.reset();
+// const WebGuitarPro_AngularJs_Config   = require('./themes/WebGuitarPro_AngularJs/webpack.config');
 
 //=================================================================================================
 
@@ -43,6 +43,6 @@ module.exports = [
     adminPanelConfig,
     //WebGuitarPro_VueJs_Config,
     //WebGuitarPro_ReactJs_Config,
-    WebGuitarPro_AngularJs_Config,
+    //WebGuitarPro_AngularJs_Config,
     WebGuitarPro_VelzonSaas_Config,
 ];

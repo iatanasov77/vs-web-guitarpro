@@ -23,7 +23,7 @@ export function alphatabApi(): any
             logLevel: 'debug',
             engine: 'html5',
             tracks: 0,
-            fontDirectory: baseUrl + '/build/web-guitar-pro-angularjs/font/'
+            fontDirectory: baseUrl + '/build/web-guitar-pro-velzon-saas/font/'
         },
         display: {
             layoutMode: 'page',
@@ -46,7 +46,7 @@ export function alphatabApi(): any
             enablePlayer: true,
             enableUserInteraction: true,
             enableCursor: true,
-            soundFont: baseUrl + '/build/web-guitar-pro-angularjs/soundfont/sonivox.sf2'
+            soundFont: baseUrl + '/build/web-guitar-pro-velzon-saas/soundfont/sonivox.sf2'
         },
         logging: 'debug',
     });
