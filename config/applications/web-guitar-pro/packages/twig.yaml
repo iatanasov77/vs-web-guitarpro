@@ -13,6 +13,7 @@ twig:
         alerts: '@vs_app.twig.alerts'
         installedBundles: '%kernel.bundles%'
         alphatabUseCdn: '%vs_wgp.alphatab.use_cdn%'
+        alphatabUseVersion: '%vs_wgp.alphatab.version%'
         analyticsMeasurementId: '%env(GOOGLE_MEASUREMENT_ID)%'
         
     form_themes:

@@ -55,6 +55,7 @@ parameters:
     
     vs_wgp.tablature-categories.taxonomy_code: tablature-categories
     vs_wgp.alphatab.use_cdn: 'true'
+    vs_wgp.alphatab.version: '1.3.0'
     
 services:
     _defaults:

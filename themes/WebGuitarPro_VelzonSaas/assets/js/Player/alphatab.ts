@@ -6,7 +6,9 @@ declare global {
 declare var $: any;
 
 //import * as alphaTab from '@coderline/alphatab';
-let alphaTab      = require( "@coderline/alphatab" );
+let alphaTab  = require( "@coderline/alphatab" );
+//window.alphaTab = alphaTab;
+//console.log( alphaTab );
 
 const baseUrl   = $( "#tablatureContainer" ).attr( 'data-base-url' );
 const useCdn    = $( "#alphaTab" ).attr( 'data-use-cdn' ) == 'true' ? true : false;

@@ -27,7 +27,7 @@
             {{ encore_entry_script_tags( 'js/layout', null, 'WebGuitarPro_VelzonSaas' ) }}
             
             {% if alphatabUseCdn == 'true' %}
-                <script src="https://cdn.jsdelivr.net/npm/@coderline/alphatab@1.3.0/dist/alphaTab.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/@coderline/alphatab@{{ alphatabUseVersion }}/dist/alphaTab.min.js"></script>
             {% endif %}
         {% endblock %}
         
@@ -39,7 +39,7 @@
         <!-- Begin page -->
         <div id="layout-wrapper">
             {% include 'Layout/top.html.twig' %}
-            {% include 'Layout/menu.html.twig' %}
+            {% include 'Layout/main-menu.html.twig' %}
             
             <!-- Vertical Overlay-->
             <div class="vertical-overlay"></div>

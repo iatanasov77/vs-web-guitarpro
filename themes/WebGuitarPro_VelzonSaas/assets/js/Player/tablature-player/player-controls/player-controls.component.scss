@@ -7,12 +7,13 @@
     margin-left: 10px;
 }
 
+
 #sidebar.active {
     min-width: 80px;
-    max-width: 86px;
+    /* max-width: 86px; */
     text-align: center;
 }
-    
+
 .player-controls {
     flex-direction: column !important;
 }
@@ -114,14 +115,16 @@
     top: 0;
 }
 
+/*  */
 .dropdown-menu-background {
     border-radius: 6px;
     margin-left: 0;
     border: 1px solid black;
     background-color: #f8f9fa;
     box-shadow: 0 3px 20px #00000038;
-    z-index: 999;
+    z-index: 99999;
 }
+
 
 .dropdown-menu::before {
     top: 35px;
