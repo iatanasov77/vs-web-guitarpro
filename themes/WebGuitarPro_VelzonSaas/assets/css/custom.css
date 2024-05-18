@@ -1,0 +1,21 @@
+.auth-page-wrapper .auth-page-content {
+	padding-bottom: 0 !important;
+}
+
+.footer a {
+	color: var(--vz-footer-color) !important;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+label.required:after {
+    content: '*';
+    color: red;
+    margin-left: 5px;
+}
+
+.clientOptionsFieldset legend {
+    margin-bottom: 0 !important;
+}

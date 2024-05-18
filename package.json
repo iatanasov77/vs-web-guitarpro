@@ -40,6 +40,7 @@
         "vanilla-cookieconsent": "^3.0",
         "remixicon": "^3.5",
 
+        "@coderline/alphatab": "^1.3",
         "bootstrap-slider": "^11.0.2",
         "@angular/animations": "^15.0.0",
         "@angular/cdk": "^15.0.0",
@@ -51,7 +52,6 @@
         "@angular/platform-browser": "^15.0.0",
         "@angular/platform-browser-dynamic": "^15.0.0",
         "@ng-bootstrap/ng-bootstrap": "^14.0.1",
-        "@coderline/alphatab": "^1.2.2",
         "ngx-bootstrap-slider": "^1.9.0",
         "@types/bootstrap-slider": "^11.0.2",
         "prop-types": "15.8.0",
@@ -79,7 +79,18 @@
         "vuejs-datepicker": "^0.4.29",
         "zone.js": "~0.12.0",
         "@analytics/google-analytics": "^1.0.5",
-        "analytics": "^0.8.1"
+        "analytics": "^0.8.1",
+        
+        "node-sass": "^9.0.0",
+        "postcss-rtl": "^2.0.0",
+        "rtl-css-loader": "^1.0.1",
+        "particles.js": "^2.0",
+        "jsvectormap": "^1.5",
+        "swiper": "^11.0",
+        "feather-icons": "^4.29",
+        "node-waves": "^0.7",
+        "simplebar": "^6.2",
+        "choices.js": "^10.2"
     },
     "devDependencies": {
         "@angular-devkit/build-angular": "^15.0.0",

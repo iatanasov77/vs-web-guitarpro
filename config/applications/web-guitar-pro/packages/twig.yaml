@@ -5,7 +5,9 @@ twig:
     
     globals:
         app_environment: '%env(APP_ENV)%'
+        applicationCompany: '%applicationCompany%'
         applicationTitle: '%applicationTitle%'
+        hasTopSearch: '%hasTopSearch%'
         locale: '%locale%'
         formCreateAccount: '%vs_users.form_create_account%'
         alerts: '@vs_app.twig.alerts'

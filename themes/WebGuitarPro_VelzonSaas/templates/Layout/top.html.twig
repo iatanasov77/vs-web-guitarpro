@@ -1,0 +1,130 @@
+<header id="page-topbar">
+    <div class="layout-width">
+        <div class="navbar-header">
+            <div class="d-flex">
+            
+                <!-- LOGO -->
+                <div class="navbar-brand-box horizontal-logo">
+                    <a href="{{ path( 'app_home' ) }}" class="logo logo-dark">
+                        <span class="logo-sm">
+                            <img src="{{ asset( 'build/web-guitar-pro-velzon-saas/images/guitarpro.png' ) }}"
+                                alt="{{ applicationCompany }} {{ applicationTitle }}"
+                                height="22"
+                            >
+                        </span>
+                        <span class="logo-lg">
+                            <img src="{{ asset( 'build/web-guitar-pro-velzon-saas/images/guitarpro.png' ) }}"
+                                alt="{{ applicationCompany }} {{ applicationTitle }}"
+                                height="17"
+                            >
+                        </span>
+                    </a>
+
+                    <a href="{{ path( 'app_home' ) }}" class="logo logo-light">
+                        <span class="logo-sm">
+                            <img src="{{ asset( 'build/web-guitar-pro-velzon-saas/images/guitarpro.png' ) }}"
+                                alt="{{ applicationCompany }} {{ applicationTitle }}"
+                                height="55"
+                            >
+                        </span>
+                        <span class="logo-lg">
+                            <img src="{{ asset( 'build/web-guitar-pro-velzon-saas/images/guitarpro.png' ) }}"
+                                alt="{{ applicationCompany }} {{ applicationTitle }}"
+                                height="50"
+                            >
+                        </span>
+                    </a>
+                </div>
+
+                <button type="button" class="btn btn-sm px-3 fs-16 header-item vertical-menu-btn topnav-hamburger" id="topnav-hamburger-icon">
+                    <span class="hamburger-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </button>
+                
+                {% if hasTopSearch %}
+                    {% include 'Layout/search_form.html.twig' %}
+                {% endif %}
+                
+            </div>
+
+            <div class="d-flex align-items-center">
+
+                {#
+                <div class="dropdown d-md-none topbar-head-dropdown header-item">
+                    <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle" id="page-header-search-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="bx bx-search fs-22"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0" aria-labelledby="page-header-search-dropdown">
+                        <form class="p-3">
+                            <div class="form-group m-0">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search ..." aria-label="Recipient's username">
+                                    <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                #}
+                
+                <div class="dropdown ms-1 topbar-head-dropdown header-item">
+                    <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="flag flag-{{ ( app.request.locale | split( '_' ) )[1] | lower }} rounded" style="height: 12px; margin-left: 8px;"></i>
+                    </button>
+                    
+                    {{ vs_widget_render( 'webguitarpro-layout', ['application-menu-locales'] ) }}
+                </div>
+
+                {#
+                {% include 'Layout/shopping_cart.html.twig' %}
+
+                <div class="ms-1 header-item d-none d-sm-flex">
+                    <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle" data-toggle="fullscreen">
+                        <i class='bx bx-fullscreen fs-22'></i>
+                    </button>
+                </div>
+
+                <div class="ms-1 header-item d-none d-sm-flex">
+                    <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle light-dark-mode">
+                        <i class='bx bx-moon fs-22'></i>
+                    </button>
+                </div>
+
+                {% include 'Layout/notifications.html.twig' %}
+                #}
+                
+                <div class="dropdown ms-sm-3 header-item topbar-user">
+                    <button type="button" class="btn" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="d-flex align-items-center">
+
+                            {% if app.user.info and app.user.info.avatar %}
+                               <img src="{{ app.user.info.avatar.path|imagine_filter('users_crud_index_thumb') }}" alt="" class="rounded-circle header-profile-user" />
+                            {% else %}
+                                <img src="{{ asset( 'build/compas-billing-theme/images/users/avatar-1.jpg' ) }}" alt="" class="rounded-circle header-profile-user" />
+                            {% endif %}                            
+
+                            <span class="text-start ms-xl-2">
+                                <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{ app.user.info.fullName }}</span>
+                                <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">{{ app.user.info.designation }}</span>
+                            </span>
+                            
+                        </span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <!-- item-->
+                        <h6 class="dropdown-header">Welcome {{ app.user.info.fullName }}!</h6>
+                        
+                        {{ knp_menu_render('profile', {'template': '@VSApplication/Menu/profile.html.twig'}) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+{#  #}
+{% include 'Modal/removeNotificationModal.html.twig' %}
+

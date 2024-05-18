@@ -24,11 +24,11 @@ Encore
     /**
      * Configure Angular Compiler and Loader
      */
-    .enableTypeScriptLoader()
-    .addPlugin(new AngularCompilerPlugin({
-        "tsConfigPath": './themes/WebGuitarPro_AngularJs/assets/js/Player/tsconfig.app.json',
-        "entryModule": './themes/WebGuitarPro_AngularJs/assets/js/Player/main.ts',
-    }))
+//     .enableTypeScriptLoader()
+//     .addPlugin(new AngularCompilerPlugin({
+//         "tsConfigPath": './themes/WebGuitarPro_AngularJs/assets/js/Player/tsconfig.app.json',
+//         "entryModule": './themes/WebGuitarPro_AngularJs/assets/js/Player/main.ts',
+//     }))
     
     /* Embed Angular Component Templates. */
     .addLoader({
@@ -77,9 +77,8 @@ Encore
     .addEntry('app', './themes/WebGuitarPro_AngularJs/assets/app.js')
     
     // Try Import AlphaTab From node_modules
-    .addEntry('alphatab', './themes/WebGuitarPro_AngularJs/assets/js/alphatab.js')
-    
-    .addEntry('tablature-player', './themes/WebGuitarPro_AngularJs/assets/js/Player/index.js')
+//     .addEntry('alphatab', './themes/WebGuitarPro_AngularJs/assets/js/alphatab.js')
+//     .addEntry('tablature-player', './themes/WebGuitarPro_AngularJs/assets/js/Player/index.js')
     
     .addEntry('authentication', './themes/WebGuitarPro_AngularJs/assets/js/pages/authentication.js')
     .addEntry('tablatures', './themes/WebGuitarPro_AngularJs/assets/js/pages/tablatures.js')

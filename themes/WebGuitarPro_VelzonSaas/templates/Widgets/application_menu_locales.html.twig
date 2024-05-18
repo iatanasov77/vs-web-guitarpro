@@ -1,0 +1,12 @@
+<div class="dropdown-menu dropdown-menu-end">
+    {% for locale in widget.params.availableLocales %}
+        <!-- item-->
+        <a href="{{ path( 'app_set_locale', {'locale': locale.code} ) }}" 
+            class="dropdown-item notify-item language py-2" 
+            data-lang="{{ ( locale.code | split( '_' ) )[0] }}" title="{{ locale.title | capitalize }}"
+        >
+            <i class="flag flag-{{ ( locale.code | split( '_' ) )[1] | lower }} rounded" style="height: 12px; margin-left: 8px;"></i>
+            <span class="align-middle">{{ locale.title | capitalize }}</span>
+        </a>
+    {% endfor %}
+</div>

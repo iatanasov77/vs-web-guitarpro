@@ -1,0 +1,40 @@
+{% extends 'knp_menu.html.twig' %}
+
+{% block root %}
+    {% for id, parentItem in item.children %}
+        {% if parentItem.extra( 'divider' ) %}
+            <div class="dropdown-divider"></div>
+        {% else %}
+            {% if parentItem.attributes.id is defined and parentItem.attributes.id == 'alphatab_demo' %}
+                {% if app_environment == 'dev' %}
+                    <li>
+                        <a class="dropdown-item" href="{{ parentItem.uri }}">
+                            <i class="{{ parentItem.attributes.iconClass }}"></i>{{ parentItem.name }}
+                        </a>
+                    </li>
+                {% endif %}
+            {% elseif parentItem.attributes.id is defined and parentItem.attributes.id == 'language' %}
+                <li class="dropdown-submenu btn-group dropstart dropdown keepopen language-submenu">
+                    <a class="dropdown-item dropdown-toggle keepopen language-submenu"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                        href="{{ parentItem.uri }}"
+                    >
+                        <i class="{{ parentItem.attributes.iconClass }}"></i>{{ parentItem.name }}
+                    </a>
+                    
+                    {{ vs_widget_render( 'webguitarpro-layout', ['wgp-profile-menu-locales'] ) }}
+                </li>
+            {% else %}
+                <a class="dropdown-item"
+                    href="{{ parentItem.uri }}"
+                    {% if parentItem.attributes.target is defined %}target="{{ parentItem.attributes.target }}"{% endif %}
+                >
+                    <i class="{{ parentItem.attributes.iconClass }}"></i> 
+                    <span class="align-middle">{{ parentItem.name }}</span>
+                </a>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+
