@@ -71,8 +71,13 @@
                 #}
                 
                 <div class="dropdown ms-1 topbar-head-dropdown header-item">
+                    {% set currentLang = ( app.request.locale | split( '_' ) )[1] | lower %}
+                    {% set currentFlag = 'build/web-guitar-pro-velzon-saas/images/flags/' ~ currentLang ~ '.svg' %}
                     <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="flag flag-{{ ( app.request.locale | split( '_' ) )[1] | lower }} rounded" style="height: 12px; margin-left: 8px;"></i>
+                        {#
+                        <i class="flag flag-{{ currentLang }} rounded" style="height: 12px; margin-left: 8px;"></i>
+                        #}
+                        <img src="{{ asset( currentFlag ) }}" alt="Header Language" height="20" class="rounded">
                     </button>
                     
                     {{ vs_widget_render( 'webguitarpro-layout', ['application-menu-locales'] ) }}
