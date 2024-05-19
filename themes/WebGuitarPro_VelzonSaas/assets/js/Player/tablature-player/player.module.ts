@@ -41,7 +41,7 @@ import { DownloadButtonItemComponent } from './player-controls/download-button-i
         LayoutItemComponent,
         SpeedItemComponent,
         TracksItemComponent,
-        DownloadButtonItemComponent
+        DownloadButtonItemComponent,
     ],
     imports: [
         BrowserModule,
@@ -49,7 +49,8 @@ import { DownloadButtonItemComponent } from './player-controls/download-button-i
         CommonModule,
         MatTooltipModule,
         NgbModule,
-        NgxBootstrapSliderModule
+        NgxBootstrapSliderModule,
+        //NgSlimScrollModule
     ],
     bootstrap: [PlayerComponent]
 })
