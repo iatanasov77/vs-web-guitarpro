@@ -1,0 +1,99 @@
+{% extends 'base-login.html.twig' %} 
+
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            <div class="card mt-4">
+
+                <div class="card-body p-4">
+                    <div class="text-center mt-2">
+                        <h5 class="text-primary">{{ 'vs_users.template.register_header_title' | trans( {},'VSUsersBundle' ) }}</h5>
+                        <p class="text-muted">{{ 'vs_users.template.register_header_description' | trans( {},'VSUsersBundle' ) }}</p>
+                    </div>
+                    <div class="p-2 mt-4">
+                        {{ form_start(form, { 'attr': {'class': 'form-horizontal', 'id': 'registration-form'} }) }}
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token( 'registration' ) }}" />
+                            
+                            {% if form_errors( form ) is not empty %}
+                                <div class="alert alert-block alert-danger fade in">
+                                    <button type="button" class="close close-sm" data-bs-dismiss="alert">
+                                        <i class="icon-remove"></i>
+                                    </button>
+                                    <strong>Error!</strong> {{ form_errors( form ) }}
+                                </div>
+                            {% endif %}
+                            
+                            <div class="mb-3">
+                                {{ form_label( form.username, null, {'label_attr': {'class': 'form-label'}} ) }}
+                                {{ form_widget( form.username, {'attr': {'class': 'form-control'}} ) }}
+                            </div>
+                            <div class="mb-3">
+                                {{ form_label( form.email, null, {'label_attr': {'class': 'form-label'}} ) }}
+                                {{ form_widget( form.email, {'attr': {'class': 'form-control'}} ) }}
+                            </div>
+                            
+                            <div class="mb-3">
+                                {{ form_label( form.prefered_locale, null, {'label_attr': {'class': 'form-label'}} ) }}
+                                {{ form_widget( form.prefered_locale, {'attr': {'class': 'form-select'}} ) }}
+                            </div>
+                            
+                            <div class="mb-3">
+                                {{ form_label( form.plain_password.first, null, {'label_attr': {'class': 'form-label'}} ) }}
+                                <div class="input-group">
+                                    {{ form_widget( form.plain_password.first, {'attr': {'class': 'form-control'}} ) }}
+                                    <div class="input-group-append">
+                                        <button type="button" class="btn btn-primary" id="btnGeneratePasswordRegisterForm">{{ 'vs_users.form.generate_password' | trans( {},'VSUsersBundle' ) }}</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                {{ form_label( form.plain_password.second, null, {'label_attr': {'class': 'form-label'}} ) }}
+                                {{ form_widget( form.plain_password.second, {'attr': {'class': 'form-control'}} ) }}
+                            </div>
+                            
+                            <div class="form-group mt-4">
+                                <label class="custom-control custom-checkbox">
+                                    <input type="checkbox"
+                                        class="custom-control-input"
+                                        required="required"
+                                    />
+                                    <span class="custom-control-label">
+                                        {{ 'vs_wgp.form.register.agreement_text' | trans( {},'WebGuitarPro' ) }} 
+                                        <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#terms-and-conditions-modal">
+                                            {{ 'vs_wgp.form.register.terms_and_conditions' | trans( {},'WebGuitarPro' ) }}
+                                        </a>
+                                    </span>
+                                </label>
+                            </div>
+                            
+                            <div class="mt-4">
+                                <button class="btn btn-success w-100" type="submit">{{ 'vs_wgp.form.register.button_register' | trans( {},'WebGuitarPro' ) }} </button>
+                            </div>
+                            
+                        {{ form_end(form, {'render_rest': false}) }}
+                        
+                    </div>
+                </div>
+                <!-- end card body -->
+            </div>
+            <!-- end card -->
+            
+            {#
+            <div class="mt-4 text-center">
+                <p class="mb-0">
+                    Already have an account ? 
+                    <a href="auth-signin-basic.html" class="fw-semibold text-primary text-decoration-underline"> Signin </a> 
+                </p>
+            </div>
+            #}
+            
+        </div>
+    </div>
+    <!-- end row -->
+{% endblock %}
+
+{% block modals %}    
+    {% include 'Modal/terms_and_conditions.html.twig' %}
+{% endblock %} 
+

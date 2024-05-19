@@ -59,8 +59,16 @@
     {{ parent() }}
     
     {{ encore_entry_link_tags( 'js/tablature-player', null, 'WebGuitarPro_VelzonSaas' ) }}
-{% endblock %}  
+{% endblock %}
 
+{% block head_scripts %}
+    {{ parent() }}
+    
+    {% if alphatabUseCdn == 'true' %}
+        <script src="https://cdn.jsdelivr.net/npm/@coderline/alphatab@{{ alphatabUseVersion }}/dist/alphaTab.min.js"></script>
+    {% endif %}
+{% endblock %}
+        
 {% block javascripts %}
     {{ parent() }}
     

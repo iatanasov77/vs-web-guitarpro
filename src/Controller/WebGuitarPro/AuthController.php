@@ -34,7 +34,11 @@ class AuthController extends AbstractController
     public function login( AuthenticationUtils $authenticationUtils ): Response
     {
         // NOT NEED LOGIN FORM, REDIRECT TO DEFAULT PATH
-        return $this->redirectToRoute( $this->getParameter( 'vs_users.default_redirect' ) );
+        //return $this->redirectToRoute( $this->getParameter( 'vs_users.default_redirect' ) );
+        
+        if ( $this->getUser() ) {
+            return $this->redirectToRoute( $this->getParameter( 'vs_users.default_redirect' ) );
+        }
         
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();

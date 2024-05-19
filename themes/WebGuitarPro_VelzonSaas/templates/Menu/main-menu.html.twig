@@ -2,16 +2,40 @@
 
 {% block root %}
     <ul class="navbar-nav" id="navbar-nav">
-        <li class="menu-title"><span data-key="t-menu">Menu</span></li>
+        <li class="menu-title"><span data-key="t-menu">{{ 'vs_application.menu.menu' | trans( {},'VSApplicationBundle' ) }}</span></li>
         
         {# {{ dump( item.children ) }} #}
         {% for key, parentItem in item.children %}
-            <li class="nav-item">
-                <a class="nav-link menu-link" href="{{ parentItem.uri }}">
-                    <i class="bx bxs-dashboard"></i> 
-                    <span>{{ parentItem.name|trans }}</span>
-                </a>
-            </li>
+            {% if parentItem.attributes.id is defined and parentItem.attributes.id == 'user_register' %}
+                {% if not app.user %}
+                    <!--  Registration  -->
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="{{ parentItem.uri }}">
+                            <i class="{{ parentItem.attributes.iconClass }}"></i> 
+                            <span>{{ 'vs_wgp.form.login.register' | trans( {},'WebGuitarPro' ) }}</span>
+                        </a>
+                    </li>
+                    <!--/  Registration  -->
+                {% endif %}
+            {% elseif parentItem.attributes.id is defined and parentItem.attributes.id == 'user_login' %}
+                {% if not app.user %}
+                    <!--  User Login  -->
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="{{ parentItem.uri }}">
+                            <i class="{{ parentItem.attributes.iconClass }}"></i> 
+                            <span>{{ 'vs_wgp.template.menu.login' | trans( {},'WebGuitarPro' ) }}</span>
+                        </a>
+                    </li>
+                    <!--/ User Login  -->
+                {% endif %}
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="{{ parentItem.uri }}">
+                        <i class="{{ parentItem.attributes.iconClass }}"></i> 
+                        <span>{{ parentItem.name|trans }}</span>
+                    </a>
+                </li>
+            {% endif %}
         {% endfor %}
     </ul>
 {% endblock %}

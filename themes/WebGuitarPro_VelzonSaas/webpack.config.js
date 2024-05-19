@@ -82,10 +82,10 @@ Encore
     .addEntry( 'js/shared-tablatures', './themes/WebGuitarPro_VelzonSaas/assets/js/pages/shared-tablatures.js' )
     .addEntry( 'js/my-shares', './themes/WebGuitarPro_VelzonSaas/assets/js/pages/my-shares.js' )
     
-//     .addEntry('tablature-edit', './themes/WebGuitarPro_VelzonSaas/assets/js/pages/tablature-edit.js')
+//     .addEntry( 'tablature-edit', './themes/WebGuitarPro_VelzonSaas/assets/js/pages/tablature-edit.js' )
 //     .addEntry( 'js/filemanager-file-upload', './themes/WebGuitarPro_VelzonSaas/assets/js/pages/filemanager-file-upload.js' )
 
-//     .addEntry('authentication', './themes/WebGuitarPro_VelzonSaas/assets/js/pages/authentication.js')
+     .addEntry( 'js/authentication', './themes/WebGuitarPro_VelzonSaas/assets/js/pages/authentication.js' )
 //     .addEntry( 'js/profile', './themes/WebGuitarPro_VelzonSaas/assets/js/pages/profile.js' )
 //     .addEntry( 'js/pricing-plans', './themes/WebGuitarPro_VelzonSaas/assets/js/pages/pricing-plans.js' )
 ;

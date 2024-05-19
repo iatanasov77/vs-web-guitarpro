@@ -58,18 +58,40 @@ vs_application:
             latest_tablatures:
                 name: vs_application.menu.site_main.latest_tablatures
                 route: app_home
+                attributes:
+                    iconClass: "bx bxs-dashboard"
+            user_register:
+                name: vs_wgp.form.login.register
+                route: vs_users_register_form
+                attributes:
+                    id: user_register
+                    iconClass: "bx bx-user-circle"
+            user_login:
+                name: vs_wgp.template.menu.login
+                route: app_login
+                attributes:
+                    id: user_login
+                    iconClass: "bx bx-user-circle"
             my_tabulatures:
                 name: vs_application.menu.site_main.my_tablatures
                 route: vs_wgp_tablature_index
+                attributes:
+                    iconClass: "bx bxs-dashboard"
             my_favorites:
                 name: vs_application.menu.site_main.my_favorites
                 route: tablature_favorite_index
+                attributes:
+                    iconClass: "bx bxs-dashboard"
             my_shares:
                 name: vs_application.menu.site_main.my_shares
                 route: wgp_share_tablature_my_shares
+                attributes:
+                    iconClass: "bx bxs-dashboard"
             shared_to_me:
                 name: vs_application.menu.site_main.shared_to_me
                 route: wgp_share_tablature_shared_to_me
+                attributes:
+                    iconClass: "bx bxs-dashboard"
 
 #         profileMenu:
 #             profile:
