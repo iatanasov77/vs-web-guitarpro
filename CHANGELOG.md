@@ -1,3 +1,17 @@
+3.0.0	|	Release date: **19.05.2024**
+============================================
+* New Features:
+  - Fixing Some GitHub Vulnerability on Vue Package.
+  - Layout of VelzonSaas Theme is Done.
+  - Create Player for GuitarPro VelzonSaas Theme.
+  - Use Falgs Images For Locales Menu From Velzon Theme.
+  - Fix Some Player Styling.
+  - Create Some Pages on VelzonSaas Theme.
+  - Add Application Title in Header of Application VelzonSaas Theme.
+  - Some Player Improvements.
+  - Create Authentication Templates for VelzonSaas Theme.
+
+
 2.5.2	|	Release date: **17.05.2024**
 ============================================
 * New Features, Fixes and Improvements:
