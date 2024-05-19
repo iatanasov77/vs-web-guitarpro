@@ -1,0 +1,29 @@
+<div class="player-controls__item"
+    placement="top"
+    ngbTooltip="Tablature Layout" placement="right"
+>
+    <svg class="icon dropdown-toggle" data-bs-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+        <use xlink:href="#icon-layout"></use>
+    </svg>
+    <div class="dropdown-menu dropdown-menu-right dropright dropup dropdown-layers player-menu-right">
+        <div id="layoutSelector" class="dropdown-menu-background">
+        
+            <div style="font-weight: bold; padding-left: 10px;">Layout</div>
+            <ul>
+                <li *ngFor="let layout of layouts"
+                    [ngClass]="layout.id == selectedLayout.id ? 'active' : ''"
+		            (click)="layoutHandler( layout, $event )"
+		        >{{ layout.text }}</li>
+            </ul>
+            
+            <div style="font-weight: bold; padding-left: 10px;">Stave Profile</div>
+            <ul>
+                <li *ngFor="let staveprofile of staveprofiles"
+                    [ngClass]="staveprofile.staveprofile == selectedStaveprofile.staveprofile ? 'active' : ''"
+		            (click)="staveprofileHandler( staveprofile, $event )"
+		        >{{ staveprofile.text }}</li>
+            </ul>
+            
+        </div>
+    </div>
+</div>

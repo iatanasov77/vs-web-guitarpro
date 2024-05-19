@@ -1,0 +1,20 @@
+<div class="dropdown-menu dropdown-menu-end locales-menu">
+    {% for locale in widget.params.availableLocales %}
+        {% set currentLang = ( locale.code | split( '_' ) )[1] | lower %}
+        {% set currentFlag = 'build/web-guitar-pro-velzon-saas/images/flags/' ~ currentLang ~ '.svg' %}
+        
+        <!-- item-->
+        <a href="{{ path( 'app_set_locale', {'locale': locale.code} ) }}" 
+            class="dropdown-item notify-item language py-2" 
+            data-lang="{{ ( locale.code | split( '_' ) )[0] }}" title="{{ locale.title | capitalize }}"
+            title="{{ locale.title }}"
+        >
+            {#
+            <i class="flag flag-{{ currentLang }} rounded" style="height: 12px; margin-left: 8px;"></i>
+            #}
+            <img src="{{ asset( currentFlag ) }}" alt="Header Language" height="18" class="me-2 rounded">
+            
+            <span class="align-middle">{{ locale.title }}</span>
+        </a>
+    {% endfor %}
+</div>

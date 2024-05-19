@@ -5,11 +5,14 @@ use Vankosoft\UsersBundle\Controller\RegisterController as BaseRegisterControlle
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Sylius\Component\Resource\Factory\Factory;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
+
+use Vankosoft\ApplicationBundle\Component\Context\ApplicationContextInterface;
 use Vankosoft\UsersBundle\Security\UserManager;
 use Vankosoft\UsersBundle\Security\AnotherLoginFormAuthenticator;
 
@@ -22,6 +25,8 @@ class RegisterController extends BaseRegisterController
     
     public function __construct(
         ManagerRegistry $doctrine,
+        TranslatorInterface $translator,
+        ApplicationContextInterface $applicationContext,
         UserManager $userManager,
         RepositoryInterface $usersRepository,
         Factory $usersFactory,
@@ -35,7 +40,20 @@ class RegisterController extends BaseRegisterController
         EntityRepository $taxonomyRepository,
         string $tabCategoriesTaxonomyCode
     ) {
-        parent::__construct( $doctrine, $userManager, $usersRepository, $usersFactory, $userRolesRepository, $mailer, $pagesRepository, $guardHandler, $authenticator, $parameters );
+        parent::__construct(
+            $doctrine,
+            $translator,
+            $applicationContext,
+            $userManager,
+            $usersRepository,
+            $usersFactory,
+            $userRolesRepository,
+            $mailer,
+            $pagesRepository,
+            $guardHandler,
+            $authenticator,
+            $parameters
+        );
 
         $this->tabCategoriesTaxonomy    = $taxonomyRepository->findByCode( $tabCategoriesTaxonomyCode );
     }

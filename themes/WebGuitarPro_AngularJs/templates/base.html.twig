@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         
         <title>{% block title %}.:: VS WebGuitarPro{% endblock %}</title>
-        <link rel="icon" type="image/png" href="{{ asset( 'build/web-guitar-pro-angularjs/images/logo.png' ) }}" />
+        <link rel="icon" type="image/png" href="{{ asset( 'build/web-guitar-pro-angularjs/images/guitarpro.png' ) }}" />
         
         {% block stylesheets %}
         	{{ encore_entry_link_tags( 'app', null, 'WebGuitarPro_AngularJs' ) }}
@@ -14,9 +14,7 @@
             {# Try Import AlphaTab From node_modules
             {{ encore_entry_script_tags( 'alphatab', null, 'WebGuitarPro_AngularJs' ) }}
             #}
-            <!--  -->
-            <script src="https://cdn.jsdelivr.net/npm/@coderline/alphatab@1.2.3/dist/alphaTab.min.js"></script>
-            
+            <script src="https://cdn.jsdelivr.net/npm/@coderline/alphatab@1.3.0/dist/alphaTab.min.js"></script>
         {% endif %}
         
     </head>

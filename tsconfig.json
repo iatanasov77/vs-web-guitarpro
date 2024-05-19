@@ -22,7 +22,9 @@
       "dom"
     ],
     "resolveJsonModule": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "strictPropertyInitialization":false,
+    "skipLibCheck": true
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
@@ -33,6 +35,7 @@
   "exclude": [
     "node_modules",
     "vendor",
-    "**/*.spec.ts"
+    "**/*.spec.ts",
+    "themes/WebGuitarPro_AngularJs"
   ]
 }

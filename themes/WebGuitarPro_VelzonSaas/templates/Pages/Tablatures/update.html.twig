@@ -1,0 +1,81 @@
+{% extends "base.html.twig" %}
+
+{# Import Macros #}
+{% from '@SyliusResource/Macros/actions.html.twig' import create %}
+{% import "@VSApplication/Macros/form.html.twig" as vs_form %}
+{% import "@VSApplication/Macros/tree.html.twig" as vs_tree %}
+{% if item.id %}{% set formMethod = 'PUT' %}{% else %}{% set formMethod = 'POST' %}{% endif %}
+
+{% block title %}{{ parent() }} :: {{ 'vs_wgp.form.tablature_update.title' | trans( {},'WebGuitarPro' ) }}{% endblock %}
+{% block pageTitle %}<i class="icon_genius"></i> {{ 'vs_wgp.form.tablature_update.title' | trans( {},'WebGuitarPro' ) }}{% endblock %}
+
+{% block content %}
+    <div class="tablatures-container" style="margin-top: 110px">
+        <div class="card card-tablature-form">
+            <div class="card-header">
+                <h3 class="mb-1">{{ 'vs_wgp.form.tablature_update.title' | trans( {},'WebGuitarPro' ) }}</h3>
+                {#<p>Please enter your user information.</p>#}
+            </div>
+            <div class="card-body">
+                {{ form_start(form, { 'attr': {'class': 'form-horizontal ', 'id': 'tablature-form'}, 'method': formMethod }) }}
+                    {% if form_errors(form) is not empty %}
+                        <div class="alert alert-block alert-danger fade in">
+                            <button type="button" class="close close-sm" data-bs-dismiss="alert">
+                                <i class="icon-remove"></i>
+                            </button>
+                            <strong>{{ 'vs_wgp.form.error_caption' | trans( {},'WebGuitarPro' ) }}</strong> {{ form_errors(form) }}
+                        </div>
+                    {% endif %}
+                    
+                    {{ form_widget( form._currentUrl, {
+                        'value': path( app.request.attributes.get( '_route' ), app.request.attributes.get( '_route_params' ) )} )
+                    }}
+                    
+                    <div class="form-group">{{ form_row( form.enabled ) }}</div>
+                    
+                    <div class="form-group">
+                        {{ form_label( form.category_taxon, null, {
+                            'label_attr': {'class': 'col-form-label'}
+                            }) 
+                        }}
+                        
+                        {# Documentation: https://www.jeasyui.com/documentation/combotree.php #}
+                        {% if item is defined and item.id %}{% set itemId = item.id %}{% else %}{% set itemId = 0 %}{% endif %}
+                        {% set comboDataSourceUrl  = url('vs_wgp_tablature_categories_tree_combo_with_selected', {'categoriesTaxonomyId': tabCategoriesTaxonomyId, 'tabId': itemId}) %}
+                        {% set comboTreePlaceholder = 'vs_cms.form.page.categories_placeholder' | trans( {},'VSCmsBundle' ) %}
+                        {{ vs_tree.easyuiCombobox( form.category_taxon, comboDataSourceUrl, itemId,
+                            {
+                                'required': 'true',
+                                'multiple': 'true',
+                                'checkbox': 'true',
+                                'placeholder': comboTreePlaceholder
+                            }
+                        ) }}
+                    </div>
+                    
+                    <div class="form-group">{{ form_row( form.artist ) }}</div>
+                    <div class="form-group">{{ form_row( form.song ) }}</div>
+                    <div class="form-group">
+                        {{ form_row( form.tablature, { 'required' : false, attr: { 'placeholder': item.tablatureFile.originalName } } ) }}
+                    </div>
+                    
+                    <div class="row">&nbsp;</div>
+                    {{ vs_form.buttons( form ) }}
+                    
+                {{ form_end(form, {'render_rest': false}) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block head_styles %}
+    {{ parent() }}
+    
+    {{ encore_entry_link_tags( 'tablature-edit', null, 'WebGuitarPro_VelzonSaas' ) }}
+{% endblock %}  
+
+{% block javascripts %}
+    {{ parent() }}
+    
+    {{ encore_entry_script_tags( 'tablature-edit', null, 'WebGuitarPro_VelzonSaas' ) }}
+{% endblock %}

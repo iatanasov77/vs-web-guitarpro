@@ -1,0 +1,27 @@
+.auth-one-bg .bg-overlay {
+    background: -webkit-gradient(linear, left top, right top, from(#000000), to(#878a99));
+    background: linear-gradient(to right, #000000, #878a99);
+    opacity: .9;
+}
+
+.card-registration-form {
+	width: 700px;
+    margin: auto;
+}
+
+.card-registration-form .card-header {
+    text-align: center;
+}
+
+.custom-control-label a {
+    color: #007bff;
+}
+
+label.required:after {
+    content: '*';
+    color: red;
+}
+
+input:invalid {
+    /*border-color: red;*/
+}

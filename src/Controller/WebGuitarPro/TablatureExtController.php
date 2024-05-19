@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
@@ -19,6 +20,9 @@ class TablatureExtController extends AbstractController
     use GlobalFormsTrait;
     use TaxonomyTreeDataTrait;
     
+    /** @var ParameterBagInterface */
+    protected $params;
+    
     /** @var SecurityBridge */
     protected $securityBridge;
     
@@ -29,6 +33,7 @@ class TablatureExtController extends AbstractController
     protected $tabsDirectory;
     
     public function __construct(
+        ParameterBagInterface $params,
         ManagerRegistry $doctrine,
         TaxonomyRepository $taxonomyRepository,
         TaxonRepository $taxonRepository,
@@ -36,12 +41,38 @@ class TablatureExtController extends AbstractController
         EntityRepository $tabsRepository,
         string $tabsDirectory
     ) {
+        $this->params               = $params;
         $this->doctrine             = $doctrine;
         $this->taxonomyRepository   = $taxonomyRepository;
         $this->taxonRepository      = $taxonRepository;
         $this->securityBridge       = $securityBridge;
         $this->tabsRepository       = $tabsRepository;
         $this->tabsDirectory        = $tabsDirectory;
+    }
+    
+    public function show( Request $request ): Response
+    {
+        $id = $request->attributes->get( 'id' );
+        if ( is_numeric( $id ) ) {
+            $oTablature     = $this->tabsRepository->find( $id );
+        } else {
+            $oTablature     = $this->tabsRepository->findOneBy( ['slug' => $id] );
+        }
+        
+        if ( ! $this->checkHasAccess( $oTablature ) ) {
+            return $this->redirectToRoute( 'wgp_access_denied' );
+        }
+        
+        return $this->render( 'Pages/Player/show.html.twig', [
+            'tabForm'                       => $this->getTabForm()->createView(),
+            'tabCategoryForm'               => $this->getTabCategoryForm()->createView(),
+            'item'                          => $oTablature,
+            'error'                         => false,
+            'tabCategoriesTaxonomyId'       => $this->getTabCategoriesTaxonomy()->getId(),
+            
+            'tablatureUploadLimited'        => false, // ! $this->checkTablatureLimit(),
+            'baseUrl'                       => $this->params->get( 'vankosoft_host' ),
+        ]);
     }
     
     /**
@@ -51,8 +82,7 @@ class TablatureExtController extends AbstractController
      */
     public function read( $id, Request $request ): Response
     {
-        $er             = $this->doctrine->getRepository( 'App\Entity\Tablature' );
-        $oTablature     = $er->find( $request->attributes->get( 'id' ) );
+        $oTablature     = $this->tabsRepository->find( $request->attributes->get( 'id' ) );
         
         if ( ! $this->checkHasAccess( $oTablature ) ) {
             return $this->redirectToRoute( 'wgp_access_denied' );
@@ -108,5 +138,12 @@ class TablatureExtController extends AbstractController
         }
         
         return $taxons;
+    }
+    
+    private function getTabCategoriesTaxonomy()
+    {
+        $taxonomy   = $this->taxonomyRepository->findByCode( 'tablature-categories' );
+        
+        return $taxonomy;
     }
 }

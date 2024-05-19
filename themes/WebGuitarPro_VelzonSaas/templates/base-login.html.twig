@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="{{ app.request.locale|slice(0, 2) }}"
+    data-layout="vertical"
+    data-topbar="light"
+    data-sidebar="light"
+    data-sidebar-size="lg"
+    data-sidebar-image="none"
+    data-preloader="disable"
+>
+    <head>
+        <meta charset="utf-8" />
+        <title>{% block title %}{{ applicationCompany }} {{ applicationTitle }}{% endblock %}</title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="Store and Play GuitarPro Tablatures on Web" name="description" />
+        <meta content="VankoSoft" name="author" />
+        <meta name="keywords" content="vankosoft,store,play,guitar,guitarpro,tablature" />
+        
+        <!-- App favicon -->
+        <link rel="shortcut icon" type="image/png" href="{{ asset( 'build/web-guitar-pro-velzon-saas/images/guitarpro.png' ) }}" />
+
+        {% block head_styles %}            
+            {{ encore_entry_link_tags( 'css/app', null, 'WebGuitarPro_VelzonSaas' ) }}
+            {{ encore_entry_link_tags( 'js/authentication', null, 'WebGuitarPro_VelzonSaas' ) }}
+        {% endblock %}
+
+        {% block head_scripts %}
+            {{ encore_entry_script_tags( 'js/layout', null, 'WebGuitarPro_VelzonSaas' ) }}
+        {% endblock %}
+    </head>
+    
+    <body>
+        <div class="auth-page-wrapper pt-5">
+            <!-- auth page bg -->
+            <div class="auth-one-bg-position auth-one-bg" id="auth-particles">
+                <div class="bg-overlay"></div>
+    
+                <div class="shape">
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1440 120">
+                        <path d="M 0,36 C 144,53.6 432,123.2 720,124 C 1008,124.8 1296,56.8 1440,40L1440 140L0 140z"></path>
+                    </svg>
+                </div>
+            </div>
+    
+            <!-- auth page content -->
+            <div class="auth-page-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="text-center mb-4 text-white-50">
+                                <div>
+                                    <a href="{{ path( 'app_home' ) }}" class="d-inline-block auth-logo">
+                                        <img src="{{ asset( 'build/web-guitar-pro-velzon-saas/images/guitarpro.png' ) }}"
+                                            alt="{{ applicationCompany }} {{ applicationTitle }}"
+                                            height="150"
+                                        >
+                                    </a>
+                                </div>
+                                <p class="mt-3 fs-20 fw-medium">{{ applicationCompany }} {{ applicationTitle }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end row -->
+                    
+                    {% block content %}{% endblock %}
+                    
+                </div>
+                <!-- end container -->
+            </div>
+            <!-- end auth page content -->
+            
+            {% include 'Layout/footer-login.html.twig' %}
+        </div>
+        <!-- end auth-page-wrapper -->
+        
+        <!-- Modal Dialogs -->
+        {% block modals %}{% endblock %} 
+        
+        <!-- Optional JavaScript -->
+        {% block javascripts %}
+            {{ encore_entry_script_tags( 'js/app', null, 'WebGuitarPro_VelzonSaas' ) }}
+            {{ encore_entry_script_tags( 'js/authentication', null, 'WebGuitarPro_VelzonSaas' ) }}
+        {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,14 @@
+{
+    "name": "vankosoft/web-guitar-pro-velzon-saas",
+    "authors": [
+        {
+            "name": "Ivan Atanasov",
+            "email": "i.atanasov77@gmail.com"
+        }
+    ],
+    "extra": {
+        "sylius-theme": {
+            "title": "WebGuitarPro VelzonSaas Theme"
+        }
+    }
+}

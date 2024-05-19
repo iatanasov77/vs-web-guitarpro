@@ -5,12 +5,15 @@ twig:
     
     globals:
         app_environment: '%env(APP_ENV)%'
+        applicationCompany: '%applicationCompany%'
         applicationTitle: '%applicationTitle%'
+        hasTopSearch: '%hasTopSearch%'
         locale: '%locale%'
         formCreateAccount: '%vs_users.form_create_account%'
         alerts: '@vs_app.twig.alerts'
         installedBundles: '%kernel.bundles%'
         alphatabUseCdn: '%vs_wgp.alphatab.use_cdn%'
+        alphatabUseVersion: '%vs_wgp.alphatab.version%'
         analyticsMeasurementId: '%env(GOOGLE_MEASUREMENT_ID)%'
         
     form_themes:

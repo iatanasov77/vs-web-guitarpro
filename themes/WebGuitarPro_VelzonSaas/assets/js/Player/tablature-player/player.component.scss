@@ -1,0 +1,55 @@
+body.tablature-player {
+    background: #dfe7ef !important;
+    font-family: "Bitter", serif !important;
+}
+    
+#song-details {
+    font-family: 'Georgia';
+    width: 90%;
+    display: block;
+    margin: auto;
+    position: absolute !important;
+    right: 50px;
+}
+
+/* Hide empty elements */
+#song-details > *:empty {
+   display: none;
+}
+
+#song-details h1, #song-details h2, #song-details h3 {
+    text-align: center;
+}
+
+#alphaTab {
+    width: 90%;
+    display: block;
+    margin: auto;
+    padding-bottom: 20px;
+    position: absolute !important;
+    right: 50px;
+}
+
+
+/*
+ * https://alphatab.net/docs/guides/styling-player/
+ */
+ .at-cursors {
+     z-index: 0 !important;
+}
+
+.at-cursor-bar {
+    background: rgba(255, 242, 0, 0.25);
+    z-index: 0;
+}
+
+.at-cursor-beat {
+    background: rgba(64, 64, 255, 0.75);
+    width: 3px;
+    z-index: 0;
+}
+
+.at-highlight * {
+    fill: #0078ff;
+    stroke: #0078ff;
+}

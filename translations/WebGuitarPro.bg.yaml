@@ -1,5 +1,8 @@
 vs_wgp:
     template:
+        remember_my_password: Wait, I remember my password...
+        reset_password_with: Reset password with WebGuitarPro
+        
         menu:
             login: Вход
             my_tablatures: Моите Таблатури

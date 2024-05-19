@@ -47,6 +47,7 @@ services:
         tags: ['controller.service_arguments']
         autowire: false
         arguments:
+            - "@parameter_bag"
             - '@doctrine'
             - '@vs_application.repository.taxonomy'
             - '@vs_application.repository.taxon'
@@ -87,6 +88,8 @@ services:
         tags: ['controller.service_arguments']
         arguments:
             - '@doctrine'
+            - '@translator'
+            - '@vs_application.context.application'
             - '@vs_users.manager.user'
             - '@vs_users.repository.users'
             - '@vs_users.factory.users'

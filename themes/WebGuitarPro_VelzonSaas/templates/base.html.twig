@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="{{ app.request.locale|slice(0, 2) }}"
+    data-layout="horizontal"
+    data-topbar="dark"
+    data-sidebar-size="lg"
+    data-sidebar="light"
+    data-sidebar-image="none"
+    data-preloader="disable"
+>
+    <head>
+        <meta charset="utf-8" />
+        <title>{% block title %}{{ applicationCompany }} {{ applicationTitle }}{% endblock %}</title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="Store and Play GuitarPro Tablatures on Web" name="description" />
+        <meta content="VankoSoft" name="author" />
+        <meta name="keywords" content="vankosoft,store,play,guitar,guitarpro,tablature" />
+        
+        <!-- App favicon -->
+        <link rel="shortcut icon" type="image/png" href="{{ asset( 'build/web-guitar-pro-velzon-saas/images/guitarpro.png' ) }}" />
+    
+        {% block head_styles %}            
+            {{ encore_entry_link_tags( 'css/app', null, 'WebGuitarPro_VelzonSaas' ) }}
+        {% endblock %}
+
+        {% block head_scripts %}
+            {{ encore_entry_script_tags( 'js/layout', null, 'WebGuitarPro_VelzonSaas' ) }}
+        {% endblock %}
+    </head>
+    
+    <body>
+    
+        <!-- Begin page -->
+        <div id="layout-wrapper">
+            {% include 'Layout/top.html.twig' %}
+            {% include 'Layout/main-menu.html.twig' %}
+            
+            <!-- Vertical Overlay-->
+            <div class="vertical-overlay"></div>
+    
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+    
+                <div class="page-content">
+                    <div class="container-fluid">
+                    
+                        {% block header %}
+                            <!-- start page title -->
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                        <h4 class="mb-sm-0">{% block pageTitle %}{% endblock %}</h4>
+                            
+                                        <div class="page-title-right">
+                                            {{ knp_menu_render('breadcrumbs', {'template': 'Menu/breadcrumb.html.twig'}) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end page title -->
+                        {% endblock %}
+                    
+                        {% block content %}{% endblock %}
+                    </div>
+                    <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+                
+                {% block copyright %}
+                    {% include 'Layout/footer.html.twig' %}
+                {% endblock %}
+            </div>
+            <!-- end main content-->
+        </div>
+        <!-- END layout-wrapper -->
+        
+        {% block modals %}{% endblock %}
+        {% block svg %}{% endblock %}
+        
+        {% block javascripts %}
+            {{ encore_entry_script_tags( 'js/app', null, 'WebGuitarPro_VelzonSaas' ) }}
+        {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,57 @@
+{% extends "base.html.twig" %}
+
+{% import "@VSApplication/Macros/alerts.html.twig" as alerts %}
+
+{% block title %}{{ parent() }} :: {{ 'vs_wgp.template.my_tablatures' | trans( {},'WebGuitarPro' ) }}{% endblock %}
+{% block pageTitle %}{#{{ 'vs_wgp.template.my_tablatures' | trans( {},'WebGuitarPro' ) }}#}{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header align-items-center d-flex">
+                    <h4 class="card-title mb-0 flex-grow-1">{{ 'vs_wgp.template.my_tablatures' | trans( {},'WebGuitarPro' ) }}</h4>
+                </div><!-- end card header -->
+
+                <div class="card-body">
+                    {#
+                    <p class="text-muted">Use <code>table-hover</code> class to enable a hover state on table rows within a &lt;tbody&gt;.</p>
+                    #}
+                    <div>
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="table-responsive">
+                                    {% if resources|length > 0 %}
+                                        {% include 'Pages/Tablatures/Partial/simpleTreeTable.html.twig' %}
+                                    {% else %}
+                                        {{ alerts.info( 'vs_application.template.there_are_no_items_to_display' | trans( {},'VSApplicationBundle' ) ) }}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    {% include '@VSApplication/Partial/resource-delete.html.twig' %}
+{% endblock %}
+
+{% block widgets %}
+    {{ parent() }}
+    
+    {% include 'Modal/tablature_share.html.twig' %}
+{% endblock %}
+
+{% block head_styles %}
+    {{ parent() }}
+    
+    {{ encore_entry_link_tags( 'js/tablatures', null, 'WebGuitarPro_VelzonSaas' ) }}
+{% endblock %}  
+
+{% block javascripts %}
+    {{ parent() }}
+    
+    {{ encore_entry_script_tags( 'js/tablatures', null, 'WebGuitarPro_VelzonSaas' ) }}
+{% endblock %}

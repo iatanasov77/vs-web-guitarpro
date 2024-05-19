@@ -9,6 +9,8 @@ framework:
                 json_manifest_path: '%kernel.project_dir%/public/shared_assets/build/web-guitar-pro-reactjs/manifest.json'
             web-guitar-pro-angularjs:
                 json_manifest_path: '%kernel.project_dir%/public/shared_assets/build/web-guitar-pro-angularjs/manifest.json'
+            web-guitar-pro-velzon-sass:
+                json_manifest_path: '%kernel.project_dir%/public/shared_assets/build/web-guitar-pro-velzon-saas/manifest.json'
 webpack_encore:
     output_path: '%kernel.project_dir%/public/web-guitar-pro/build/default'
     builds:
@@ -17,3 +19,4 @@ webpack_encore:
         WebGuitarPro_VueJs: '%kernel.project_dir%/public/shared_assets/build/web-guitar-pro-vuejs'
         WebGuitarPro_ReactJs: '%kernel.project_dir%/public/shared_assets/build/web-guitar-pro-reactjs'
         WebGuitarPro_AngularJs: '%kernel.project_dir%/public/shared_assets/build/web-guitar-pro-angularjs'
+        WebGuitarPro_VelzonSaas: '%kernel.project_dir%/public/shared_assets/build/web-guitar-pro-velzon-saas'
