@@ -71,6 +71,7 @@ Encore
     .addStyleEntry( 'css/app', './themes/WebGuitarPro_VelzonSaas/assets/css/app.scss' )
     .addEntry( 'js/layout', './themes/WebGuitarPro_VelzonSaas/assets/js/layout.js' )
     .addEntry( 'js/app', './themes/WebGuitarPro_VelzonSaas/assets/app.js' )
+    .addEntry( 'js/app-login', './themes/WebGuitarPro_VelzonSaas/assets/app-login.js' )
     
     // Try Import AlphaTab From node_modules
     .addEntry('js/alphatab', './themes/WebGuitarPro_VelzonSaas/assets/js/alphatab.js')
