@@ -29,7 +29,6 @@
     </head>
     
     <body>
-    
         <!-- Begin page -->
         <div id="layout-wrapper">
             {% include 'Layout/top.html.twig' %}
@@ -62,6 +61,7 @@
                             <!-- end page title -->
                         {% endblock %}
                     
+                        {% include 'Layout/alerts.html.twig' %}
                         {% block content %}{% endblock %}
                     </div>
                     <!-- container-fluid -->
