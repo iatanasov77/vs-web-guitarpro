@@ -1,0 +1,40 @@
+<div class="row">
+    
+    <div class="col-xxl-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title mb-3">{{ 'vs_users.template.profile_about' | trans( {},'VSUsersBundle' ) }}</h5>
+                
+                <div class="row">
+                    <div class="col-6 col-md-4">
+                        <div class="d-flex mt-4">
+                            <div class="flex-shrink-0 avatar-xs align-self-center me-3">
+                                <div class="avatar-title bg-light rounded-circle fs-16 text-primary">
+                                    <i class="ri-user-2-fill"></i>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1 overflow-hidden">
+                                <p class="mb-1">{{ 'vs_users.form.profile.designation' | trans( {},'VSUsersBundle' ) }} :</p>
+                                <h6 class="text-truncate mb-0">{{ app.user.info.designation }}</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end col-->
+                </div>
+                <!--end row-->
+            </div>
+            <!--end card-body-->
+        </div><!-- end card -->
+
+        {#
+        <div class="row">
+            <div class="col-lg-12">
+                {% include '@VSUsers/Profile/partial/_profile-recent-activity.html.twig' %}
+            </div><!-- end col -->
+        </div><!-- end row -->
+        #}
+        
+    </div>
+    <!--end col-->
+</div>
+<!--end row-->

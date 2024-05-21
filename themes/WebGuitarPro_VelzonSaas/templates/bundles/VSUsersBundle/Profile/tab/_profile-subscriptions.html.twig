@@ -1,0 +1,58 @@
+<div class="card">
+    <div class="card-body">
+        <div class="d-flex align-items-center mb-4">
+            <h5 class="card-title flex-grow-1 mb-0">{{ 'vs_users.template.profile_show_tab_subscriptions' | trans( {},'VSUsersBundle' ) }}</h5>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="table-responsive profile-subscriptions">
+                    <table class="table table-borderless align-middle mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th scope="col">{{ 'vs_payment.template.my_profile.service' | trans( {},'VSPaymentBundle' ) }}</th>
+                                <th scope="col">{{ 'vs_payment.template.my_profile.paid' | trans( {},'VSPaymentBundle' ) }}</th>
+                                <th scope="col">{{ 'vs_payment.template.my_profile.recurring' | trans( {},'VSPaymentBundle' ) }}</th>
+                                <th scope="col">{{ 'vs_payment.template.my_profile.expires_at' | trans( {},'VSPaymentBundle' ) }}</th>
+                                
+                                {% if app_environment == 'dev' %}
+                                    <th>{{ 'vs_payment.template.my_profile.payment_factory' | trans( {},'VSPaymentBundle' ) }}</th>
+                                {% endif %}
+                            
+                                <th scope="col">{{ 'vs_payment.template.my_profile.actions' | trans( {},'VSPaymentBundle' ) }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        
+                            {% for serviceCode, subscription in subscriptions %}
+                                <tr>
+                                    <td>{{ subscription.pricingPlan.paidService.payedService.title }}</td>
+                                    <td>Zip File</td>
+                                    <td>4.57 MB</td>
+                                    <td>12 Dec 2021</td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <a href="javascript:void(0);" class="btn btn-light btn-icon" id="dropdownMenuLink15" data-bs-toggle="dropdown" aria-expanded="true">
+                                                <i class="ri-equalizer-fill"></i>
+                                            </a>
+                                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink15">
+                                                <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-eye-fill me-2 align-middle text-muted"></i>View</a>
+                                                </li>
+                                                <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-download-2-fill me-2 align-middle text-muted"></i>Download</a>
+                                                </li>
+                                                <li class="dropdown-divider"></li>
+                                                <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-delete-bin-5-line me-2 align-middle text-muted"></i>Delete</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            
+                        </tbody>
+                    </table>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>

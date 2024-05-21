@@ -1,0 +1,76 @@
+{{ form_start(form) }}
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="mb-3">
+                {{ form_label(form.firstName, null, {
+                    'label_attr': {'class': 'form-label'}
+                    }) 
+                }}
+                {{ form_widget(form.firstName, {'attr': {'class': 'form-control' }, 'value': app.user.info.firstName}) }}
+            </div>
+        </div>
+        <!--end col-->
+        <div class="col-lg-6">
+            <div class="mb-3">
+                {{ form_label(form.lastName, null, {
+                    'label_attr': {'class': 'form-label'}
+                    }) 
+                }}
+                {{ form_widget(form.lastName, {'attr': {'class': 'form-control' }, 'value': app.user.info.lastName}) }}
+            </div>
+        </div>
+        <!--end col-->
+        <div class="col-lg-6">
+            <div class="mb-3">
+                {{ form_label(form.title, null, {
+                    'label_attr': {'class': 'form-label'}
+                    }) 
+                }}
+                {{ form_widget(form.title, {'attr': {
+                    'class': 'form-control',
+                    'data-choices': '',
+                    'data-choices-search-false': '',
+                }, 'value': app.user.info.title}) }}
+            </div>
+        </div>
+        <!--end col-->
+        <div class="col-lg-6">
+            <div class="mb-3">
+                {{ form_label(form.designation, null, {
+                    'label_attr': {'class': 'form-label'}
+                    }) 
+                }}
+                {{ form_widget(form.designation, {'attr': {'class': 'form-control' }, 'value': app.user.info.designation}) }}
+            </div>
+        </div>
+        <!--end col-->
+        <div class="col-lg-12">
+            <div class="mb-3">
+                {{ form_label(form.prefered_locale, null, {
+                    'label_attr': {'class': 'form-label'}
+                    }) 
+                }}
+                {{ form_widget(form.prefered_locale, {'attr': {
+                    'class': 'form-control',
+                    'data-choices': '',
+                    'data-choices-search-false': ''
+                }}) }}
+            </div>
+        </div>
+        <!--end col-->
+        
+        <div class="col-lg-12">
+            <div class="hstack gap-2 justify-content-end">
+                {{ form_widget(form.btnSave, {'attr': {'class': 'btn btn-primary', 'id':'btnSave'}}) }}
+                <button type="button" class="btn btn-soft-secondary"
+                    id="btnProfileEditCancel"
+                    data-url="{{ path( 'vs_users_profile_show' ) }}"
+                >
+                    {{ 'vs_application.form.cancel' | trans( {},'VSApplicationBundle' ) }}
+                </button>
+            </div>
+        </div>
+        <!--end col-->
+    </div>
+    <!--end row-->
+{{ form_end(form, {'render_rest': false}) }}

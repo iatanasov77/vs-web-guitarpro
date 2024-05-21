@@ -53,3 +53,7 @@ label.required:after {
     background-color: unset !important;
     border: unset !important;
 }
+
+.table-responsive.profile-subscriptions {
+    overflow-x: visible !important;
+}

@@ -113,7 +113,10 @@
                                 {% if app.user.info and app.user.info.avatar %}
                                    <img src="{{ app.user.info.avatar.path|imagine_filter('users_crud_index_thumb') }}" alt="" class="rounded-circle header-profile-user" />
                                 {% else %}
-                                    <img src="{{ asset( 'build/compas-billing-theme/images/users/avatar-1.jpg' ) }}" alt="" class="rounded-circle header-profile-user" />
+                                    {#
+                                    <img src="{{ asset( 'build/web-guitar-pro-velzon-saas/images/users/avatar-1.jpg' ) }}" alt="" class="rounded-circle header-profile-user" />
+                                    #}
+                                    <img src="{{ asset( 'build/web-guitar-pro-velzon-saas/images/users/user-dummy-img.jpg' ) }}" alt="" class="rounded-circle header-profile-user" />
                                 {% endif %}                            
     
                                 <span class="text-start ms-xl-2">

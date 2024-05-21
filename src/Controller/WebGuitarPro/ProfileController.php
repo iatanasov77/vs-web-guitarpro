@@ -6,12 +6,13 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Doctrine\Persistence\ManagerRegistry;
 use Sylius\Component\Resource\Factory\FactoryInterface;
-use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
+use Sylius\Component\Resource\Repository\RepositoryInterface;
 
 use Vankosoft\ApplicationBundle\Model\Interfaces\TaxonomyInterface;
 use Vankosoft\CmsBundle\Component\Uploader\FileUploaderInterface;
 use Vankosoft\UsersBundle\Security\UserManager;
 use Vankosoft\AgentBundle\Component\VankosoftAgent;
+use Vankosoft\PaymentBundle\Component\Payment\Payment;
 
 class ProfileController extends BaseProfileController
 {
@@ -19,6 +20,18 @@ class ProfileController extends BaseProfileController
     
     /** @var TaxonomyInterface */
     private $tabCategoriesTaxonomy;
+    
+    /** @var Payment */
+    private $vsPayment;
+    
+    /** @var RepositoryInterface */
+    private $pricingPlanRepository;
+    
+    /** @var RepositoryInterface */
+    private $pricingPlanCategoryRepository;
+    
+    /** @var RepositoryInterface */
+    private $pricingPlanSubscriptionRepository;
     
     public function __construct(
         ManagerRegistry $doctrine,
@@ -28,12 +41,22 @@ class ProfileController extends BaseProfileController
         FileUploaderInterface $imageUploader,
         VankosoftAgent $vankosoftAgent,
         
-        EntityRepository $taxonomyRepository,
-        string $tabCategoriesTaxonomyCosde
+        RepositoryInterface $taxonomyRepository,
+        string $tabCategoriesTaxonomyCosde,
+        
+        Payment $vsPayment,
+        RepositoryInterface $pricingPlanRepository,
+        RepositoryInterface $pricingPlanCategoryRepository,
+        RepositoryInterface $pricingPlanSubscriptionRepository
     ) {
         parent::__construct( $doctrine, $usersClass, $userManager, $avatarImageFactory, $imageUploader, $vankosoftAgent );
         
-        $this->tabCategoriesTaxonomy    = $taxonomyRepository->findByCode( $tabCategoriesTaxonomyCosde );
+        $this->tabCategoriesTaxonomy                = $taxonomyRepository->findByCode( $tabCategoriesTaxonomyCosde );
+        
+        $this->vsPayment                            = $vsPayment;
+        $this->pricingPlanRepository                = $pricingPlanRepository;
+        $this->pricingPlanCategoryRepository        = $pricingPlanCategoryRepository;
+        $this->pricingPlanSubscriptionRepository    = $pricingPlanSubscriptionRepository;
     }
     
     public function indexAction( Request $request ) : Response
@@ -46,6 +69,8 @@ class ProfileController extends BaseProfileController
             return parent::indexAction( $request );
         }
         
+        $activeSubscriptions    = $this->pricingPlanSubscriptionRepository->getSubscriptionsByUser( $this->getUser() );
+        
         $params = [
             'tabForm'                       => $this->getTabForm()->createView(),
             'tabCategoryForm'               => $this->getTabCategoryForm()->createView(),
@@ -54,6 +79,8 @@ class ProfileController extends BaseProfileController
             'paidTablatureStoreServices'    => $this->doctrine->getRepository( 'App\Entity\UsersSubscriptions\PayedServiceSubscriptionPeriod' )->findAll(),
             
             'tablatureUploadLimited'        => ! $this->checkTablatureLimit(),
+            
+            'subscriptions'                 => $activeSubscriptions,
         ];
         
         return $this->render( '@VSUsers/Profile/show.html.twig', array_merge( $params, $this->templateParams( $this->getProfileEditForm() ) ) );

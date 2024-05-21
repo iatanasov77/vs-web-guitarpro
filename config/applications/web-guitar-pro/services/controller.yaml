@@ -42,6 +42,10 @@ services:
             - '@vs_agent.agent'
             - '@vs_application.repository.taxonomy'
             - '%vs_wgp.tablature-categories.taxonomy_code%'
+            - '@vs_payment_payment'
+            - '@vs_catalog.repository.pricing_plan'
+            - '@vs_catalog.repository.pricing_plan_category'
+            - '@vs_catalog.repository.pricing_plan_subscription'
 
     App\Controller\WebGuitarPro\TablatureExtController:
         tags: ['controller.service_arguments']
