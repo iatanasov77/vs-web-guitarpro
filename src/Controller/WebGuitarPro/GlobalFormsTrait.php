@@ -28,42 +28,48 @@ trait GlobalFormsTrait
     protected function checkTablatureLimit()
     {
         //return true;    // Work-Around
+        $user   = $this->getAppUser();
+        if ( ! $user ) {
+            return false;
+        }
+        
+        if ( $user->hasRole( 'ROLE_SUPER_ADMIN' ) || $user->hasRole( 'ROLE_ADMIN' ) || $user->hasRole( 'ROLE_APPLICATION_ADMIN' ) ) {
+            return true;
+        }
         
         $tablatureLimit = $this->getParameter( 'vs_wgp.unpaid_tablature_storage' );
         $paid           = false;
         
-        if ( $this->getAppUser() && $this->getAppUser()->getUsername() != 'admin' ) {
-            $lastPayment    = $this->_getDoctrine()
-                                    ->getRepository( 'App\Entity\UserManagement\User' )
-                                    ->getPaidForWhat( $this->getAppUser() );
-            if ( ! empty( $lastPayment ) ) {
-                $paidService    = $this->_getDoctrine()
-                                        ->getRepository( 'App\Entity\UsersSubscriptions\PayedServiceSubscriptionPeriod' )
-                                        ->find( $lastPayment['objectId'] )
-                                        ->getPayedService();
-                
-                switch ( $lastPayment['period'] ) {
-                    case SubscriptionPeriod::SUBSCRIPTION_PERIOD_YEAR:
-                        $paid   = ( ( new \DateTime( $lastPayment['date'] ) )->add( new \DateInterval( 'P1Y' ) ) ) > ( new \DateTime() );
-                        if ( $paid ) {
-                            $tablatureLimit = (int)$paidService->getAttribute( 'tablature_storage' )->getValue();
-                        }
-                        break;
-                    case SubscriptionPeriod::SUBSCRIPTION_PERIOD_MONTH:
-                        $paid   = ( ( new \DateTime( $lastPayment['date'] ) )->add( new \DateInterval( 'P1M' ) ) ) > ( new \DateTime() );
-                        if ( $paid ) {
-                            $tablatureLimit = (int)$paidService->getAttribute( 'tablature_storage' )->getValue();
-                        }
-                        break;
-                    default:
-                        $paid   = false;
-                }
-            }
+        $lastPayment    = false;
+//         $lastPayment    = $this->_getDoctrine()
+//                                 ->getRepository( 'App\Entity\UserManagement\User' )
+//                                 ->getPaidForWhat( $this->getAppUser() );
+        
+        if ( ! empty( $lastPayment ) ) {
+            $paidService    = $this->_getDoctrine()
+                                    ->getRepository( 'App\Entity\UsersSubscriptions\PayedServiceSubscriptionPeriod' )
+                                    ->find( $lastPayment['objectId'] )
+                                    ->getPayedService();
             
-            return ( $tablatureLimit < 0 || $paid ) || ( $this->getAppUser()->getTablatures()->count() < $tablatureLimit );
+            switch ( $lastPayment['period'] ) {
+                case SubscriptionPeriod::SUBSCRIPTION_PERIOD_YEAR:
+                    $paid   = ( ( new \DateTime( $lastPayment['date'] ) )->add( new \DateInterval( 'P1Y' ) ) ) > ( new \DateTime() );
+                    if ( $paid ) {
+                        $tablatureLimit = (int)$paidService->getAttribute( 'tablature_storage' )->getValue();
+                    }
+                    break;
+                case SubscriptionPeriod::SUBSCRIPTION_PERIOD_MONTH:
+                    $paid   = ( ( new \DateTime( $lastPayment['date'] ) )->add( new \DateInterval( 'P1M' ) ) ) > ( new \DateTime() );
+                    if ( $paid ) {
+                        $tablatureLimit = (int)$paidService->getAttribute( 'tablature_storage' )->getValue();
+                    }
+                    break;
+                default:
+                    $paid   = false;
+            }
         }
         
-        return ( $this->getAppUser() && $this->getAppUser()->getUsername() == 'admin' ) ? true : false;
+        return ( $tablatureLimit < 0 || $paid ) || ( $this->getAppUser()->getTablatures()->count() < $tablatureLimit );
     }
     
     protected function checkHasAccess( Tablature $tablature ): bool

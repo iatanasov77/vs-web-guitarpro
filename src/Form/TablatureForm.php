@@ -1,8 +1,8 @@
 <?php namespace App\Form;
 
 use Vankosoft\ApplicationBundle\Form\AbstractForm;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;

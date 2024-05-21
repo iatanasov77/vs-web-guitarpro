@@ -1,9 +1,9 @@
 <?php namespace App\Repository;
 
-use Vankosoft\UsersBundle\Repository\UsersRepository;
+use Vankosoft\UsersBundle\Repository\UsersRepository as BaseUsersRepository;
 use Vankosoft\PaymentBundle\Model\Order;
 
-class UserRepository extends UsersRepository
+class UsersRepository extends BaseUsersRepository
 {
     public function getPaidForWhat( $user )
     {
