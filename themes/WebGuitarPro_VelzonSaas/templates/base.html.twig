@@ -44,7 +44,8 @@
     
                 <div class="page-content">
                     <div class="container-fluid">
-                    
+                        {% include 'Layout/alerts.html.twig' %}
+                        
                         {% block header %}
                             <!-- start page title -->
                             <div class="row">
@@ -60,8 +61,7 @@
                             </div>
                             <!-- end page title -->
                         {% endblock %}
-                    
-                        {% include 'Layout/alerts.html.twig' %}
+                        
                         {% block content %}{% endblock %}
                     </div>
                     <!-- container-fluid -->
