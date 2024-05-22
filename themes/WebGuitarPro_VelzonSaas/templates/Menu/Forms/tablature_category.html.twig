@@ -1,0 +1,22 @@
+{{ form_start( tabCategoryForm, {'action': path( 'vs_wgp_tablature_category_create' ), 'method': 'POST', 'attr': { 'id': "formTablatureCategory", 'class': 'px-4 py-3'}} ) }}
+    
+    {{ form_widget( tabCategoryForm._currentUrl, {
+        'value': path( app.request.attributes.get( '_route' ), app.request.attributes.get( '_route_params' ) )} )
+    }}
+    
+    <div class="mb-2">
+        {{ form_label( tabCategoryForm.parent, null, {
+            'label_attr': {'class': 'form-label'}
+            }) 
+        }}
+        
+        {{ form_widget( tabCategoryForm.parent, {'attr': {'class': 'form-control form-select', 'data-url': path( 'vs_wgp_tablature_categories_tree_combo' ) }}) }}
+    </div>
+    
+    <div class="mb-2">
+        {{ form_label( tabCategoryForm.name, null, {'label_attr': {'class': 'form-label'}} ) }}
+        {{ form_widget( tabCategoryForm.name, {'attr': {'class': 'form-control'}} ) }}
+    </div>
+    
+    {{ form_widget( tabCategoryForm.btnSave, {'attr': {'class': 'btn btn-primary' }} ) }}
+{{ form_end( tabCategoryForm, {'render_rest': false} ) }}

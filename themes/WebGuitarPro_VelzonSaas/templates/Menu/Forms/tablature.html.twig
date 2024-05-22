@@ -1,0 +1,53 @@
+{{ form_start( tabForm, {'action': path( 'vs_wgp_tablature_create' ), 'method': 'POST', 'attr': {'class': 'px-4 py-3'}} ) }}
+    
+    {{ form_widget( tabForm._currentUrl, {
+        'value': path( app.request.attributes.get( '_route' ), app.request.attributes.get( '_route_params' ) )} )
+    }}
+    
+    <div class="mb-2">
+        <label class="custom-control custom-checkbox">
+            {{ form_widget( tabForm.enabled, {'attr': {'class': 'custom-control-input'}} ) }}
+            <span class="custom-control-label">{{ tabForm.enabled.vars.label  | trans( {},'WebGuitarPro' ) }}</span>
+        </label>
+    </div>
+    
+    <div class="mb-2">
+        {{ form_label( tabForm.category_taxon, null, {
+            'label_attr': {'class': 'form-label'}
+            }) 
+        }}
+        
+        {# #}
+        {{ form_widget( tabForm.category_taxon, {
+            'attr': {
+                'class': 'form-control form-select',
+                'data-url': path( 'vs_wgp_tablature_categories_tree_combo' ),
+                'data-placeholder': 'vs_cms.form.page.categories_placeholder' | trans( {},'VSCmsBundle' ),
+            },
+        }) }}        
+    </div>
+    
+    <div class="mb-2">
+        {{ form_label( tabForm.artist, null, {'label_attr': {'class': 'form-label'}} ) }}
+        {{ form_widget( tabForm.artist, {'attr': {'class': 'form-control'}} ) }}
+    </div>
+    
+    <div class="mb-2">
+        {{ form_label( tabForm.song, null, {'label_attr': {'class': 'form-label'}} ) }}
+        {{ form_widget( tabForm.song, {'attr': {'class': 'form-control'}} ) }}
+    </div>
+    
+    <div class="mb-2">
+        <label for="tablature_form_tablature" class="form-label">
+            {{ 'vs_wgp.form.tablature.tablature'  | trans( {},'WebGuitarPro' ) }}
+        </label>
+        <div class="form-field-file">
+            {{ form_widget(tabForm.tablature, {'attr': {
+                'class': 'form-control',
+                'accept': '.gp, .gp3, .gp4, .gp5'
+            }}) }}
+        </div>
+    </div>
+    
+    {{ form_widget( tabForm.btnSave, {'attr': {'class': 'btn btn-primary' }} ) }}</div>
+{{ form_end( tabForm, {'render_rest': false} ) }}
