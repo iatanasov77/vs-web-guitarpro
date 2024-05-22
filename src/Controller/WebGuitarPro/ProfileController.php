@@ -71,6 +71,14 @@ class ProfileController extends BaseProfileController
         
         $activeSubscriptions    = $this->pricingPlanSubscriptionRepository->getSubscriptionsByUser( $this->getUser() );
         
+        $subscriptionsRoutes    = [];
+        foreach ( $activeSubscriptions as $subscription ) {
+            $subscriptionsRoutes[$subscription->getId()]    = [
+                'createRecurring'   => $this->vsPayment->getPaymentCreateRecurringUrl( $subscription ),
+                'cancelRecurring'   => $this->vsPayment->getPaymentCancelRecurringUrl( $subscription ),
+            ];
+        }
+        
         $params = [
             'tabForm'                       => $this->getTabForm()->createView(),
             'tabCategoryForm'               => $this->getTabCategoryForm()->createView(),
@@ -81,6 +89,7 @@ class ProfileController extends BaseProfileController
             'tablatureUploadLimited'        => ! $this->checkTablatureLimit(),
             
             'subscriptions'                 => $activeSubscriptions,
+            'subscriptionsRoutes'           => $subscriptionsRoutes,
         ];
         
         return $this->render( '@VSUsers/Profile/show.html.twig', array_merge( $params, $this->templateParams( $this->getProfileEditForm() ) ) );

@@ -46,9 +46,9 @@
             <div>
                 <div class="d-flex profile-wrapper">
                     <!-- Nav tabs -->
-                    <ul class="nav nav-pills animation-nav profile-nav gap-2 gap-lg-3 flex-grow-1" role="tablist">
+                    <ul class="nav nav-pills animation-nav profile-nav gap-2 gap-lg-3 flex-grow-1" role="tablist" id="ProfileTabs">
                         <li class="nav-item">
-                            <a class="nav-link fs-14 active" data-bs-toggle="tab" href="#overview-tab" role="tab">
+                            <a class="nav-link fs-14 active" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab" aria-controls="overview" aria-selected="true">
                                 <i class="ri-airplay-fill d-inline-block d-md-none"></i> 
                                 <span class="d-none d-md-inline-block">
                                     {{ 'vs_users.template.profile_overview' | trans( {},'VSUsersBundle' ) }}
@@ -56,7 +56,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link fs-14" data-bs-toggle="tab" href="#subscriptions" role="tab">
+                            <a class="nav-link fs-14" data-bs-toggle="tab" data-bs-target="#subscriptions" type="button" role="tab" aria-controls="subscriptions" aria-selected="false">
                                 <i class="ri-list-unordered d-inline-block d-md-none"></i> 
                                 <span class="d-none d-md-inline-block">
                                     {{ 'vs_users.template.profile_show_tab_subscriptions' | trans( {},'VSUsersBundle' ) }}
@@ -74,7 +74,7 @@
                 <!-- Tab panes -->
                 <div class="tab-content pt-4 text-muted">
                 
-                    <div class="tab-pane active" id="overview-tab" role="tabpanel">
+                    <div class="tab-pane active" id="overview" role="tabpanel">
                         {% include '@VSUsers/Profile/tab/_profile-overview.html.twig' %}
                     </div>
                     
@@ -90,4 +90,10 @@
         <!--end col-->
     </div>
     <!--end row-->
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    
+    {{ encore_entry_script_tags( 'js/profile', null, 'WebGuitarPro_VelzonSaas' ) }}
 {% endblock %}

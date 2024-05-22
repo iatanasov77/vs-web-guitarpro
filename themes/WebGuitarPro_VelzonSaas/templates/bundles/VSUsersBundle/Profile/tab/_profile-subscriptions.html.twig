@@ -26,22 +26,90 @@
                             {% for serviceCode, subscription in subscriptions %}
                                 <tr>
                                     <td>{{ subscription.pricingPlan.paidService.payedService.title }}</td>
-                                    <td>Zip File</td>
-                                    <td>4.57 MB</td>
-                                    <td>12 Dec 2021</td>
+                                    <td>
+                                        {% if subscription.paid %}
+                                            <i class="fas fa-check" style="color: #82c91e;"></i>
+                                        {% else %}
+                                            <i class="fas fa-times" style="color: #ff1e1e;"></i>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if subscription.recurringPayment %}
+                                            <i class="fas fa-check" style="color: #82c91e;"></i>
+                                        {% else %}
+                                            <i class="fas fa-times" style="color: #ff1e1e;"></i>
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ subscription.expiresAt | date( 'd M Y' ) }}</td>
+                                    
+                                    {% if app_environment == 'dev' %}
+                                        <td>{{ subscription.gatewayFactory() }}</td>
+                                    {% endif %}
+                                    
                                     <td>
                                         <div class="dropdown">
                                             <a href="javascript:void(0);" class="btn btn-light btn-icon" id="dropdownMenuLink15" data-bs-toggle="dropdown" aria-expanded="true">
                                                 <i class="ri-equalizer-fill"></i>
                                             </a>
+                                            
                                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink15">
-                                                <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-eye-fill me-2 align-middle text-muted"></i>View</a>
+                                            
+                                                {% if not subscription.recurringPayment %}
+                                                    <li>
+                                                        <a class="dropdown-item btnPaySubscription"
+                                                            href="javascript:void(0);"
+                                                            title="{{ 'vs_payment.template.my_profile.create_payment' | trans( {},'VSPaymentBundle' ) }}"
+                                                            data-url="{{ path( 'vs_payment_select_payment_method_form', {'pricingPlanId': subscription.pricingPlan.id} ) }}"
+                                                        >
+                                                            <i class="fas fa-dollar-sign me-2 align-middle text-muted"></i>
+                                                            {{ 'vs_payment.template.my_profile.create_payment' | trans( {},'VSPaymentBundle' ) }}
+                                                        </a>
+                                                     </li>
+                                                {% endif %}
+                                                
+                                                {% if ( subscription.gateway | supportRecurring ) and subscription.paid %}
+                                                
+                                                    {% if subscription.recurringPayment %}
+                                                        <li>
+                                                            <a class="dropdown-item btnCancelSubscription"
+                                                                href="javascript:void(0);"
+                                                                title="{{ 'vs_payment.template.my_profile.stop_recurring' | trans( {},'VSPaymentBundle' ) }}"
+                                                                data-url="{{ subscriptionsRoutes[subscription.id]['cancelRecurring'] }}"
+                                                            >
+                                                                <i class="fas fa-stop me-2 align-middle text-muted"></i>
+                                                                {{ 'vs_payment.template.my_profile.stop_recurring' | trans( {},'VSPaymentBundle' ) }}
+                                                            </a>
+                                                        </li>
+                                                    {% else %}
+                                                        <li>
+                                                            <a class="dropdown-item btnCreateSubscription"
+                                                                href="javascript:void(0);"
+                                                                title="{{ 'vs_payment.template.my_profile.start_recurring' | trans( {},'VSPaymentBundle' ) }}"
+                                                                data-url="{{ subscriptionsRoutes[subscription.id]['createRecurring'] }}"
+                                                            >
+                                                                <i class="fa-solid fa-play me-2 align-middle text-muted"></i>
+                                                                {{ 'vs_payment.template.my_profile.start_recurring' | trans( {},'VSPaymentBundle' ) }}
+                                                            </a>
+                                                        </li>
+                                                    {% endif %}
+                                                    
+                                                {% endif %}
+                                        
+                                                {#
+                                                <li>
+                                                    <a class="dropdown-item" href="javascript:void(0);">
+                                                        <i class="ri-eye-fill me-2 align-middle text-muted"></i>View
+                                                    </a>
                                                 </li>
-                                                <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-download-2-fill me-2 align-middle text-muted"></i>Download</a>
+                                                <li>
+                                                    <a class="dropdown-item" href="javascript:void(0);"><i class="ri-download-2-fill me-2 align-middle text-muted"></i>Download</a>
                                                 </li>
                                                 <li class="dropdown-divider"></li>
-                                                <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-delete-bin-5-line me-2 align-middle text-muted"></i>Delete</a>
+                                                <li>
+                                                    <a class="dropdown-item" href="javascript:void(0);"><i class="ri-delete-bin-5-line me-2 align-middle text-muted"></i>Delete</a>
                                                 </li>
+                                                #}
+                                                
                                             </ul>
                                         </div>
                                     </td>

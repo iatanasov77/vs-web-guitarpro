@@ -13,6 +13,14 @@ window.CancelSubscriptionSubmited    = false;
 
 $( function()
 {
+    if( window.location.hash == '#subscriptions' ) { 
+        var triggerEl   = document.querySelector( '#ProfileTabs a[data-bs-target="#subscriptions"]' );
+        bootstrap.Tab.getInstance( triggerEl ).show();
+    } else {
+        var triggerFirstTabEl = document.querySelector( '#ProfileTabs li:first-child a' )
+        bootstrap.Tab.getInstance(triggerFirstTabEl).show() // Select first tab
+    }
+
     $( '.btnChoosePlan' ).on( 'click', function()
     {
         ChoosePlan( $( this ).attr( 'data-url' ) );
