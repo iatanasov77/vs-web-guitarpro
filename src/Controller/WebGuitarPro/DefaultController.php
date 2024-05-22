@@ -59,6 +59,8 @@ class DefaultController extends BaseDefaultController // AbstractController
             
             'tablatureUploadLimited'        => ! $this->checkTablatureLimit(),
         ];
+        //var_dump( $params ); die;
+        
         return new Response( $this->templatingEngine->render( $this->getTemplate(), $params ) );
     }
     

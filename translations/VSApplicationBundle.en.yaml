@@ -21,6 +21,7 @@ vs_application:
             shared_to_me: Shared to Me
             my_shares: My Shares
             pricing_plans: Pricing Plans
+            my_bookmarks: My Bookmarks
             
     template:
         vankosoft_application: WebGuitarPro

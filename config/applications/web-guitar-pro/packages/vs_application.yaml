@@ -76,22 +76,25 @@ vs_application:
                 name: vs_application.menu.site_main.my_tablatures
                 route: vs_wgp_tablature_index
                 attributes:
-                    iconClass: "bx bxs-dashboard"
-            my_favorites:
-                name: vs_application.menu.site_main.my_favorites
-                route: tablature_favorite_index
+                    iconClass: "bx bx-sitemap"
+            my_bookmarks:
+                name: vs_application.menu.site_main.my_bookmarks
+                uri: "javascript:;"
                 attributes:
-                    iconClass: "bx bxs-dashboard"
-            my_shares:
-                name: vs_application.menu.site_main.my_shares
-                route: wgp_share_tablature_my_shares
-                attributes:
-                    iconClass: "bx bxs-dashboard"
-            shared_to_me:
-                name: vs_application.menu.site_main.shared_to_me
-                route: wgp_share_tablature_shared_to_me
-                attributes:
-                    iconClass: "bx bxs-dashboard"
+                    id: my_bookmarks
+                    iconClass: "ri-briefcase-2-line"
+#             create_tablature_category:
+#                 name: vs_application.menu.site_main.create_tablature_category
+#                 uri: "javascript:;"
+#                 attributes:
+#                     id: tablature_category
+#                     iconClass: "bx bx-layer"
+#             create_tablature:
+#                 name: vs_application.menu.site_main.create_tablature
+#                 uri: "javascript:;"
+#                 attributes:
+#                     id: tablature
+#                     iconClass: "ri-rocket-line"
 
         profileMenu:
             profile:

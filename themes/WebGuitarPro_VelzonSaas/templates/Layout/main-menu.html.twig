@@ -40,10 +40,39 @@
     <div id="scrollbar">
         <div class="container-fluid">
 
-            <div id="two-column-menu">
-            </div>
+            <div id="two-column-menu"></div>
             
-            {{ knp_menu_render('mainWebGuitarPro', {'template': 'Menu/main-menu.html.twig'}) }}
+            <ul class="navbar-nav" id="navbar-nav">
+                <li class="menu-title"><span data-key="t-menu">{{ 'vs_application.menu.menu' | trans( {},'VSApplicationBundle' ) }}</span></li>
+                
+                {{ knp_menu_render('mainWebGuitarPro', {'template': 'Menu/main-menu.html.twig'}) }}
+            
+                {# Create Tablature Category #}
+                <div class="btn-group">
+                    <a class="nav-link menu-link dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                        href="javascript:void(0)"
+                    >
+                        <i class="bx bx-layer"></i> 
+                        <span>{{ 'vs_application.menu.site_main.create_tablature_category' | trans( {},'VSApplicationBundle' ) }}</span>
+                    </a>
+                    <div class="dropdown-menu">
+                        {% include 'Menu/Forms/tablature_category.html.twig' %}
+                    </div>
+                </div>
+                
+                {# Create Tablature #}
+                <div class="btn-group">
+                    <a class="nav-link menu-link dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                        href="javascript:void(0)"
+                    >
+                        <i class="ri-rocket-line"></i> 
+                        <span>{{ 'vs_application.menu.site_main.create_tablature' | trans( {},'VSApplicationBundle' ) }}</span>
+                    </a>
+                    <div class="dropdown-menu">
+                        {% include 'Menu/Forms/tablature.html.twig' %}
+                    </div>
+                </div>
+            </ul>
             
         </div>
     </div>
