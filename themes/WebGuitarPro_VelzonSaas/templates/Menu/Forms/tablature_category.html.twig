@@ -18,5 +18,7 @@
         {{ form_widget( tabCategoryForm.name, {'attr': {'class': 'form-control'}} ) }}
     </div>
     
-    {{ form_widget( tabCategoryForm.btnSave, {'attr': {'class': 'btn btn-primary' }} ) }}
+    <div class="text-end">
+        {{ form_widget( tabCategoryForm.btnSave, {'attr': {'class': 'btn btn-primary' }} ) }}
+    </div>
 {{ form_end( tabCategoryForm, {'render_rest': false} ) }}

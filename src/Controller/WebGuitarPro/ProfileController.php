@@ -92,6 +92,24 @@ class ProfileController extends BaseProfileController
             'subscriptionsRoutes'           => $subscriptionsRoutes,
         ];
         
-        return $this->render( '@VSUsers/Profile/show.html.twig', array_merge( $params, $this->templateParams( $this->getProfileEditForm() ) ) );
+        return $this->render( '@VSUsers/Profile/show.html.twig', \array_merge( $params, $this->templateParams( $this->getProfileEditForm() ) ) );
+    }
+    
+    public function editAction( Request $request ): Response
+    {
+        $params = [
+            'tabForm'                       => $this->getTabForm()->createView(),
+            'tabCategoryForm'               => $this->getTabCategoryForm()->createView(),
+            'tabCategoriesTaxonomyId'       => $this->tabCategoriesTaxonomy->getId(),
+            'locales'                       => $this->doctrine->getRepository( 'App\Entity\Application\Locale' )->findAll(),
+            'paidTablatureStoreServices'    => $this->doctrine->getRepository( 'App\Entity\UsersSubscriptions\PayedServiceSubscriptionPeriod' )->findAll(),
+            
+            'tablatureUploadLimited'        => ! $this->checkTablatureLimit(),
+            
+            //'subscriptions'                 => $activeSubscriptions,
+            //'subscriptionsRoutes'           => $subscriptionsRoutes,
+        ];
+        
+        return $this->render( '@VSUsers/Profile/edit.html.twig', \array_merge( $params, $this->templateParams( $this->getProfileEditForm() ) ) );
     }
 }
