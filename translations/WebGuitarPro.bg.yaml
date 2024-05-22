@@ -63,6 +63,9 @@ vs_wgp:
             tablature_upload_limited_message: Ъплоада на Таблатури е Ограничен
             pay_for_unlimited: Можете да Платите за Неограничен Ъплоад на Таблатури
             from_here: От Тук
+            
+        plan_right_for_you: "Choose the plan that's right for you"
+        your_current_plan: Your Current Plan
 
     form:
         public: Публичен

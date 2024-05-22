@@ -18,15 +18,16 @@
         "php": "^8.1",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "guzzlehttp/promises": "*",
+        "php-http/httplug": "*",
         "symfony/dotenv": "6.4.*",
         "symfony/flex": "^1.17|^2",
+        "symfony/http-client": "6.4.*",
         "symfony/notifier": "6.4.*",
         "symfony/runtime": "6.4.*",
-        "symfony/http-client": "6.4.*",
-        
+        "vankosoft/api-bundle": "^3.0",
         "vankosoft/application": "1.10.*",
-        "vankosoft/catalog-bundle": "^1.3",
-        "vankosoft/api-bundle": "^3.0"
+        "vankosoft/catalog-bundle": "^1.3"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5",

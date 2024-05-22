@@ -63,6 +63,9 @@ vs_wgp:
             tablature_upload_limited_message: Tablatures Upload is Limited
             pay_for_unlimited: You can Pay for Unlimited Tablatures Store
             from_here: From Here
+            
+        plan_right_for_you: "Choose the plan that's right for you"
+        your_current_plan: Your Current Plan
         
     form:
         public: To Be Public

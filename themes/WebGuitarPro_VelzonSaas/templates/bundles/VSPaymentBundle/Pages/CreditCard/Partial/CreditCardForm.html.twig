@@ -1,0 +1,48 @@
+{% if formClass is not defined %}
+    {% set formClass = 'modal__form' %}
+{% endif %}
+
+{{ form_start( form, {'action': formAction, 'method': formMethod, 'attr': {'class': formClass, 'id': 'credit_card_form'}} ) }}
+    {{ form_widget( form.captureUrl, {'attr': {'data-captureKey': captureKey}} ) }}
+    
+    <h4 class="modal__title">
+        <small>{{ 'vs_payment.template.credit_card_description' | trans( {},'VSPaymentBundle' ) }}</small>
+    </h4>
+    
+    <div class="sign__group">
+        {{ form_label( form.name, null, {'label_attr': {'class': 'sign__label'}} ) }}
+        {{ form_widget( form.name, {'attr': {'class': 'sign__input'}} ) }}
+    </div>
+    
+    <div class="sign__group">
+        {{ form_label( form.number, null, {'label_attr': {'class': 'sign__label'}} ) }}
+        {{ form_widget( form.number, {'attr': {'class': 'sign__input'}} ) }}
+    </div>
+    
+    <div class="row">
+        <div class="col-3 me-2">
+            <div class="sign__group">
+                {{ form_label( form.ccmonth, null, {'label_attr': {'class': 'sign__label'}} ) }}
+                {{ form_widget( form.ccmonth, {'attr': {'class': 'sign__select credit_card_input'}} ) }}
+            </div>
+        </div>
+        <div class="col-4 me-2">
+            <div class="sign__group">
+                {{ form_label( form.ccyear, null, {'label_attr': {'class': 'sign__label'}} ) }}
+                {{ form_widget( form.ccyear, {'attr': {'class': 'sign__select credit_card_input'}} ) }}
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="sign__group">
+                {{ form_label( form.cvv, null, {'label_attr': {'class': 'sign__label'}} ) }}
+                {{ form_widget( form.cvv, {'attr': {'class': 'sign__input credit_card_input'}} ) }}
+            </div>
+        </div>
+    </div>
+    
+    {{ form_widget(form.btnContinue, {
+        'attr': {'class': 'sign__btn sign__btn--modal sign__btn--text', 'id': form.btnContinue.vars.id},
+        'id': form.btnContinue.vars.id
+    }) }}
+ 
+{{ form_end( form, {'render_rest': false} ) }}

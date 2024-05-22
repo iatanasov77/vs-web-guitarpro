@@ -188,6 +188,9 @@ function GetPayumObtainCouponCodeForm( url, modalId, contentId )
 function handlePricingPlanPayment( formId, modalId, contentId )
 {
     var formData    = new FormData( document.getElementById( formId ) );
+    if ( ! formData.has( 'pricingPlan' ) ) {
+        //formData.append( 'pricingPlan', $ )
+    }
     
     VsSpinnerShow( 'selectPricingPlanForm' );
     $.ajax({

@@ -88,8 +88,8 @@ Encore
 
      .addEntry( 'js/authentication', './themes/WebGuitarPro_VelzonSaas/assets/js/pages/authentication.js' )
      .addEntry( 'js/edit-profile', './themes/WebGuitarPro_VelzonSaas/assets/js/pages/edit-profile.js' )
-//     .addEntry( 'js/profile', './themes/WebGuitarPro_VelzonSaas/assets/js/pages/profile.js' )
-//     .addEntry( 'js/pricing-plans', './themes/WebGuitarPro_VelzonSaas/assets/js/pages/pricing-plans.js' )
+     .addEntry( 'js/profile', './themes/WebGuitarPro_VelzonSaas/assets/js/pages/profile.js' )
+     .addEntry( 'js/pricing-plans', './themes/WebGuitarPro_VelzonSaas/assets/js/pages/pricing-plans.js' )
 ;
 
 Encore.configureDefinePlugin( ( options ) => {
