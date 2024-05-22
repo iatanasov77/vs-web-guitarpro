@@ -9,40 +9,42 @@
         <small>{{ 'vs_payment.template.credit_card_description' | trans( {},'VSPaymentBundle' ) }}</small>
     </h4>
     
-    <div class="sign__group">
-        {{ form_label( form.name, null, {'label_attr': {'class': 'sign__label'}} ) }}
-        {{ form_widget( form.name, {'attr': {'class': 'sign__input'}} ) }}
+    <div>
+        {{ form_label( form.name, null, {'label_attr': {'class': 'form-label'}} ) }}
+        {{ form_widget( form.name, {'attr': {'class': 'form-control'}} ) }}
     </div>
     
-    <div class="sign__group">
-        {{ form_label( form.number, null, {'label_attr': {'class': 'sign__label'}} ) }}
-        {{ form_widget( form.number, {'attr': {'class': 'sign__input'}} ) }}
+    <div class="mt-2">
+        {{ form_label( form.number, null, {'label_attr': {'class': 'form-label'}} ) }}
+        {{ form_widget( form.number, {'attr': {'class': 'form-control'}} ) }}
     </div>
     
-    <div class="row">
+    <div class="row mt-2 mb-4">
         <div class="col-3 me-2">
-            <div class="sign__group">
-                {{ form_label( form.ccmonth, null, {'label_attr': {'class': 'sign__label'}} ) }}
-                {{ form_widget( form.ccmonth, {'attr': {'class': 'sign__select credit_card_input'}} ) }}
+            <div>
+                {{ form_label( form.ccmonth, null, {'label_attr': {'class': 'form-label'}} ) }}
+                {{ form_widget( form.ccmonth, {'attr': {'class': 'form-select credit_card_input'}} ) }}
             </div>
         </div>
         <div class="col-4 me-2">
-            <div class="sign__group">
-                {{ form_label( form.ccyear, null, {'label_attr': {'class': 'sign__label'}} ) }}
-                {{ form_widget( form.ccyear, {'attr': {'class': 'sign__select credit_card_input'}} ) }}
+            <div>
+                {{ form_label( form.ccyear, null, {'label_attr': {'class': 'form-label'}} ) }}
+                {{ form_widget( form.ccyear, {'attr': {'class': 'form-select credit_card_input'}} ) }}
             </div>
         </div>
         <div class="col-3">
-            <div class="sign__group">
-                {{ form_label( form.cvv, null, {'label_attr': {'class': 'sign__label'}} ) }}
-                {{ form_widget( form.cvv, {'attr': {'class': 'sign__input credit_card_input'}} ) }}
+            <div>
+                {{ form_label( form.cvv, null, {'label_attr': {'class': 'form-label'}} ) }}
+                {{ form_widget( form.cvv, {'attr': {'class': 'form-control credit_card_input'}} ) }}
             </div>
         </div>
     </div>
     
-    {{ form_widget(form.btnContinue, {
-        'attr': {'class': 'sign__btn sign__btn--modal sign__btn--text', 'id': form.btnContinue.vars.id},
-        'id': form.btnContinue.vars.id
-    }) }}
+    <div class="text-end">
+        {{ form_widget(form.btnContinue, {
+            'attr': {'class': 'btn btn-primary', 'id': form.btnContinue.vars.id},
+            'id': form.btnContinue.vars.id
+        }) }}
+    </div>
  
 {{ form_end( form, {'render_rest': false} ) }}
