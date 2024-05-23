@@ -21,7 +21,7 @@
                         <div class="row">
                             <div class="col-xl-12">
                                 <div class="table-responsive">
-                                    {% if resources|length > 0 %}
+                                    {% if resources | length > 0 %}
                                         {% include 'Pages/Tablatures/Partial/simpleTreeTable.html.twig' %}
                                     {% else %}
                                         {{ alerts.info( 'vs_application.template.there_are_no_items_to_display' | trans( {},'VSApplicationBundle' ) ) }}

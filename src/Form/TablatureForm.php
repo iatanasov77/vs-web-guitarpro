@@ -37,6 +37,7 @@ class TablatureForm extends AbstractForm
     {
         parent::buildForm( $builder, $options );
         
+        $entity = $builder->getData();
         $builder
             ->add( '_currentUrl', HiddenType::class, ['mapped' => false] )
             
@@ -58,7 +59,7 @@ class TablatureForm extends AbstractForm
             
             ->add( 'tablature', FileType::class, [
                 'mapped'                => false,
-                'required'              => true,
+                'required'              => is_null( $entity->getId() ),
                 
                 'label'                 => 'vs_wgp.form.tablature.tablature',
                 'translation_domain'    => 'WebGuitarPro',

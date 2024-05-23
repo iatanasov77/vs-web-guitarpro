@@ -12,7 +12,7 @@ VsLoadTranslations(['WebGuitarPro']);
 
 $( function()
 {
-    if ( uncategorizedTablatures <= 0 ) {
+    if ( window.uncategorizedTablatures <= 0 ) {
         $( '#uncategorized-tablatures' ).hide();
     }
     
