@@ -59,6 +59,25 @@ class TablatureExtController extends AbstractController
         $this->tabsDirectory            = $tabsDirectory;
     }
     
+    public function publicTablatures( Request $request ): Response
+    {
+        $publicTabs = $this->tabsRepository->findBy( ['enabled' => true], [ 'updatedAt' => 'DESC' ] );
+        
+        $params     = [
+            'tabForm'                       => $this->getTabForm()->createView(),
+            'tabCategoryForm'               => $this->getTabCategoryForm()->createView(),
+            //'tabCategoriesTaxonomyId'       => $this->tabCategoriesTaxonomy->getId(),
+            
+            // About enabled field - $enabled (public)
+            'tabs'                          => $publicTabs,
+            
+            'tablatureUploadLimited'        => ! $this->checkTablatureLimit(),
+        ];
+        //var_dump( $params ); die;
+        
+        return $this->render( 'Pages/Dashboard/public_tablatures.html.twig', $params );
+    }
+    
     public function show( Request $request ): Response
     {
         $id = $request->attributes->get( 'id' );

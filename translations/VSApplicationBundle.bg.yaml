@@ -8,6 +8,7 @@ vs_application:
         about_application: За Приложението
         
         site_main:
+            home: Начало
             login: Вход
             my_tablatures: Моите Таблатури
             my_tablature_categories: Моите Категории Таблатури
@@ -18,6 +19,7 @@ vs_application:
             
             extend_your_tablatures_store: Увеличете Вашият Таблатури Склад
             latest_tablatures: Най-нови Таблатури
+            public_tablatures: Публични Таблатури
             
             shared_to_me: Споделени с Мен
             my_shares: Мои Спеделяния

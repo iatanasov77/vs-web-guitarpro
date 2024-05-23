@@ -55,9 +55,20 @@ vs_application:
 
     menu:
         mainWebGuitarProMenu:
-            latest_tablatures:
-                name: vs_application.menu.site_main.latest_tablatures
+            home:
+                name: vs_application.menu.site_main.home
                 route: app_home
+                attributes:
+                    iconClass: "bx bxs-dashboard"
+                display: false
+#             latest_tablatures:
+#                 name: vs_application.menu.site_main.latest_tablatures
+#                 route: app_home
+#                 attributes:
+#                     iconClass: "bx bxs-dashboard"
+            public_tablatures:
+                name: vs_application.menu.site_main.public_tablatures
+                route: vs_wgp_public_tablatures
                 attributes:
                     iconClass: "bx bxs-dashboard"
             user_register:

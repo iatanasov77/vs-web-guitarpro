@@ -30,6 +30,7 @@ vs_wgp:
         delete: Изтриване
         category: Категория
         latest_tablatures: Най-нови Таблатури
+        public_tablatures: Всички Публични Таблатури
         tablatures: Таблатури
         tablature_categories: Категории Таблатури
         artist: Изпълнител

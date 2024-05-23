@@ -8,6 +8,7 @@ vs_application:
         about_application: About Application
         
         site_main:
+            home: Home
             login: Login
             my_tablatures: My Tablatures
             my_tablature_categories: My Tablature Categories
@@ -18,6 +19,7 @@ vs_application:
             
             extend_your_tablatures_store: Extend Your Tablatures Store
             latest_tablatures: Latest Tablatures
+            public_tablatures: Public Tablatures
             
             shared_to_me: Shared to Me
             my_shares: My Shares

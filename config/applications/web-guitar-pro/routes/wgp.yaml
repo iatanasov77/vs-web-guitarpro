@@ -1,3 +1,7 @@
+vs_wgp_public_tablatures:
+    path: /tablatures
+    controller: App\Controller\WebGuitarPro\TablatureExtController::publicTablatures
+
 vs_wgp_player_show:
     path: /tablatures/{id}
     controller: App\Controller\WebGuitarPro\TablatureExtController::show

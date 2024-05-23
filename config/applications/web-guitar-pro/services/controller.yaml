@@ -49,7 +49,7 @@ services:
 
     App\Controller\WebGuitarPro\TablatureExtController:
         tags: ['controller.service_arguments']
-        autowire: false
+        autowire: true
         arguments:
             - "@parameter_bag"
             - '@doctrine'
@@ -59,8 +59,6 @@ services:
             - '@vs_wgp.repository.tablature'
             - '@vs_wgp.repository.tablature_category'
             - '%vs_wgp.tablatures_directory%'
-        calls:
-            - [ setContainer, [ '@service_container' ] ]
             
     App\Controller\WebGuitarPro\TablatureCategoryExtController:
         tags: ['controller.service_arguments']

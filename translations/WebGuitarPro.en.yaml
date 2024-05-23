@@ -30,6 +30,7 @@ vs_wgp:
         delete: Delete
         category: Category
         latest_tablatures: Latest Tablatures
+        public_tablatures: All Public Tablatures
         tablatures: Tablatures
         tablature_categories: Tablature Categories
         artist: Artist
