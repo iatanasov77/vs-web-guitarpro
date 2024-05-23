@@ -7,22 +7,7 @@
         
             {% if app.user %}
             
-                {% if parentItem.attributes.id is defined and parentItem.attributes.id == 'my_bookmarks' %}
-                    <div class="btn-group">
-                        <a class="nav-link menu-link dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                            href="{{ parentItem.uri }}"
-                        >
-                            <i class="{{ parentItem.attributes.iconClass }}"></i> 
-                            <span>{{ parentItem.name|trans }}</span>
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="{{ path( 'tablature_favorite_index' ) }}">{{ 'vs_application.menu.site_main.my_favorites' | trans( {},'VSApplicationBundle' ) }}</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ path( 'wgp_share_tablature_my_shares' ) }}">{{ 'vs_application.menu.site_main.my_shares' | trans( {},'VSApplicationBundle' ) }}</a>
-                            <a class="dropdown-item" href="{{ path( 'wgp_share_tablature_shared_to_me' ) }}">{{ 'vs_application.menu.site_main.shared_to_me' | trans( {},'VSApplicationBundle' ) }}</a>
-                        </div>
-                    </div>
-                {% elseif parentItem.attributes.id is defined and parentItem.attributes.id == 'tablature_category' %}
+                {% if parentItem.attributes.id is defined and parentItem.attributes.id == 'tablature_category' %}
                     <div class="btn-group">
                         <a class="nav-link menu-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false"
                             href="{{ parentItem.uri }}"
@@ -51,12 +36,32 @@
                         {# Dont Show This Items #}
                     {% else %}
                         {% if( parentItem.displayed ) %}
-                            <li class="nav-item">
-                                <a class="nav-link menu-link" href="{{ parentItem.uri }}">
-                                    <i class="{{ parentItem.attributes.iconClass }}"></i> 
-                                    <span>{{ parentItem.name|trans }}</span>
-                                </a>
-                            </li>
+                            {% if( parentItem.hasChildren ) %}
+                                <div class="btn-group">
+                                    <a class="nav-link menu-link dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                        href="{{ parentItem.uri }}"
+                                    >
+                                        <i class="{{ parentItem.attributes.iconClass }}"></i> 
+                                        <span>{{ parentItem.name | trans }}</span>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        {% for childItem in parentItem.children %}
+                                            {% if childItem.extra( 'divider' ) %}
+                                                <div class="dropdown-divider"></div>
+                                            {% else %}
+                                                <a class="dropdown-item" href="{{ childItem.uri }}">{{ childItem.name | trans }}</a>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            {% else %}
+                                <li class="nav-item">
+                                    <a class="nav-link menu-link" href="{{ parentItem.uri }}">
+                                        <i class="{{ parentItem.attributes.iconClass }}"></i> 
+                                        <span>{{ parentItem.name|trans }}</span>
+                                    </a>
+                                </li>
+                            {% endif %}
                         {% endif %}
                     {% endif %}
                 {% endif %}
