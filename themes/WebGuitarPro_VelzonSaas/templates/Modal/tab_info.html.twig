@@ -1,0 +1,45 @@
+<div id="tab-information-modal" class="modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document" style="max-width: 800px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{{ 'vs_wgp.template.modal_tab_info.tab_info' | trans( {},'WebGuitarPro' ) }}</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="tabInfo">
+                    <h1 class="artist" style="text-align: center;"></h1>
+                    <h2 class="title" style="text-align: center;"></h2>
+                    <h2 class="subTitle" style="text-align: center;"></h2>
+                    
+                    <div class="row"><div class="col-sm">&nbsp;</div></div>
+                    
+                    <div class="row">
+                        <div class="col-sm-2" style="font-weight: bold;">{{ 'vs_wgp.template.modal_tab_info.album' | trans( {},'WebGuitarPro' ) }}:</div>
+                        <div class="col-sm album"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2" style="font-weight: bold;">{{ 'vs_wgp.template.modal_tab_info.copyright' | trans( {},'WebGuitarPro' ) }}:</div>
+                        <div class="col-sm copyright"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2" style="font-weight: bold;">{{ 'vs_wgp.template.modal_tab_info.notices' | trans( {},'WebGuitarPro' ) }}:</div>
+                        <div class="col-sm notices"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2" style="font-weight: bold;">{{ 'vs_wgp.template.modal_tab_info.words' | trans( {},'WebGuitarPro' ) }}:</div>
+                        <div class="col-sm words"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2" style="font-weight: bold;">{{ 'vs_wgp.template.modal_tab_info.music' | trans( {},'WebGuitarPro' ) }}:</div>
+                        <div class="col-sm music"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ 'vs_application.form.close' | trans( {},'VSApplicationBundle' ) }}</button>
+            </div>
+        </div>
+    </div>
+</div>

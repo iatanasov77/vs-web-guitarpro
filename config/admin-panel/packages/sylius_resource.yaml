@@ -5,6 +5,27 @@ sylius_resource:
 
     # Configure your resources
     resources:
-        #app.book:
-            #classes:
-                #model: App\Entity\Book
+        vs_wgp.tablature_category:
+            driver: doctrine/orm
+            classes:
+                model:      App\Entity\TablatureCategory
+                interface:  Sylius\Component\Resource\Model\ResourceInterface
+                repository: App\Repository\TablatureCategoryRepository
+                controller: App\Controller\WebGuitarPro\TablatureCategoryController
+                form:       App\Form\TablatureCategoryForm
+                
+        vs_wgp.tablature:
+            driver: doctrine/orm
+            classes:
+                model:      App\Entity\Tablature
+                interface:  Sylius\Component\Resource\Model\ResourceInterface
+                repository: Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository
+                controller: App\Controller\WebGuitarPro\TablatureController
+                form:       App\Form\TablatureForm
+        vs_wgp.tablature_file:
+            driver: doctrine/orm
+            classes:
+                model:      App\Entity\TablatureFile
+                interface:  Sylius\Component\Resource\Model\ResourceInterface
+                repository: Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository
+

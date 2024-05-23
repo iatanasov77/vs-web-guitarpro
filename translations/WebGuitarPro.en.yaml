@@ -95,6 +95,7 @@ vs_wgp:
             tablature_placeholder: Upload a Tablature File
             
         tablature_update:
+            create_title: Create New Tablature
             title: Edit Tablature
             
         share_tablature:

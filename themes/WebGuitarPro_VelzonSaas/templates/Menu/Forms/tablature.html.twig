@@ -1,4 +1,6 @@
-{{ form_start( tabForm, {'action': path( 'vs_wgp_tablature_create' ), 'method': 'POST', 'attr': {'class': 'px-4 py-3'}} ) }}
+{% import "@VSApplication/Macros/tree.html.twig" as vs_tree %}
+
+{{ form_start( tabForm, {'action': path( 'vs_wgp_tablature_create' ), 'method': 'POST'} ) }}
     
     {{ form_widget( tabForm._currentUrl, {
         'value': path( app.request.attributes.get( '_route' ), app.request.attributes.get( '_route_params' ) )} )
@@ -11,20 +13,25 @@
         </label>
     </div>
     
+    {# Documentation: https://www.jeasyui.com/documentation/combotree.php #}
+    {% set comboDataSourceUrl  = url( 'vs_wgp_tablature_categories_tree_combo' ) %}
+    {% set comboTreePlaceholder = 'vs_cms.form.page.categories_placeholder' | trans( {},'VSCmsBundle' ) %}
     <div class="mb-2">
         {{ form_label( tabForm.category_taxon, null, {
-            'label_attr': {'class': 'form-label'}
+            'label_attr': {'class': 'form-label required'}
             }) 
         }}
         
-        {# #}
-        {{ form_widget( tabForm.category_taxon, {
-            'attr': {
-                'class': 'form-control form-select',
-                'data-url': path( 'vs_wgp_tablature_categories_tree_combo' ),
-                'data-placeholder': 'vs_cms.form.page.categories_placeholder' | trans( {},'VSCmsBundle' ),
-            },
-        }) }}        
+        {{ vs_tree.easyuiCombobox( tabForm.category_taxon, comboDataSourceUrl, 0,
+            {
+                'elementSelector': '#tablature_form_category_taxon',
+                'required': 'true',
+                'multiple': 'true',
+                'checkbox': 'true',
+                'cascadeCheck': 'false',
+                'placeholder': comboTreePlaceholder
+            }
+        ) }}
     </div>
     
     <div class="mb-2">
@@ -38,7 +45,7 @@
     </div>
     
     <div class="mb-2">
-        <label for="tablature_form_tablature" class="form-label">
+        <label for="tablature_form_tablature" class="form-label required">
             {{ 'vs_wgp.form.tablature.tablature'  | trans( {},'WebGuitarPro' ) }}
         </label>
         <div class="form-field-file">
@@ -48,6 +55,8 @@
             }}) }}
         </div>
     </div>
+    
+    <div class="dropdown-divider mt-4 mb-4"></div>
     
     <div class="text-end">
         {{ form_widget( tabForm.btnSave, {'attr': {'class': 'btn btn-primary' }} ) }}

@@ -24,7 +24,7 @@
                     </div>
                 {% elseif parentItem.attributes.id is defined and parentItem.attributes.id == 'tablature_category' %}
                     <div class="btn-group">
-                        <a class="nav-link menu-link dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                        <a class="nav-link menu-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false"
                             href="{{ parentItem.uri }}"
                         >
                             <i class="{{ parentItem.attributes.iconClass }}"></i> 
@@ -36,7 +36,7 @@
                     </div>
                 {% elseif parentItem.attributes.id is defined and parentItem.attributes.id == 'tablature' %}
                     <div class="btn-group">
-                        <a class="nav-link menu-link dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                        <a class="nav-link menu-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false"
                             href="{{ parentItem.uri }}"
                         >
                             <i class="{{ parentItem.attributes.iconClass }}"></i> 
@@ -50,12 +50,14 @@
                     {% if parentItem.attributes.id is defined and parentItem.attributes.id in ['user_register', 'user_login'] %}
                         {# Dont Show This Items #}
                     {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link menu-link" href="{{ parentItem.uri }}">
-                                <i class="{{ parentItem.attributes.iconClass }}"></i> 
-                                <span>{{ parentItem.name|trans }}</span>
-                            </a>
-                        </li>
+                        {% if( parentItem.displayed ) %}
+                            <li class="nav-item">
+                                <a class="nav-link menu-link" href="{{ parentItem.uri }}">
+                                    <i class="{{ parentItem.attributes.iconClass }}"></i> 
+                                    <span>{{ parentItem.name|trans }}</span>
+                                </a>
+                            </li>
+                        {% endif %}
                     {% endif %}
                 {% endif %}
                 

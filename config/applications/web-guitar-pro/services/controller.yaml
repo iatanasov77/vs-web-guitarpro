@@ -57,6 +57,7 @@ services:
             - '@vs_application.repository.taxon'
             - '@vs_users.security_bridge'
             - '@vs_wgp.repository.tablature'
+            - '@vs_wgp.repository.tablature_category'
             - '%vs_wgp.tablatures_directory%'
         calls:
             - [ setContainer, [ '@service_container' ] ]
@@ -67,6 +68,7 @@ services:
         arguments:
             - '@vs_application.repository.taxonomy'
             - '%vs_wgp.tablature-categories.taxonomy_code%'
+            - '@vs_wgp.repository.tablature_category'
         calls:
             - [ setContainer, [ '@service_container' ] ]
         

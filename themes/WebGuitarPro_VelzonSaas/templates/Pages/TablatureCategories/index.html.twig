@@ -1,0 +1,38 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{ parent() }} :: {{ 'vs_wgp.template.tablature_categories' | trans( {},'WebGuitarPro' ) }}{% endblock %}
+{% block pageTitle %}{{ 'vs_wgp.template.tablature_categories' | trans( {},'WebGuitarPro' ) }}{% endblock %}
+
+{% block content %}
+    <div class="tablatures-container" style="margin-top: 110px">
+        <div id="messages">
+            {% if error is defined %}
+                <div>{{ error.messageKey|trans( error.messageData, 'security' ) }}</div>
+            {% endif %}
+        </div>
+        <div class="card">
+            <h5 class="card-header">{{ 'vs_wgp.template.tablature_categories' | trans( {},'WebGuitarPro' ) }}</h5>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>{{ 'vs_wgp.form.category' | trans( {},'WebGuitarPro' ) }}</th>
+                            <th>{{ 'vs_wgp.template.actions' | trans( {},'WebGuitarPro' ) }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for t in items %}
+                        <tr>
+                            <td>{{ t.name }}</td>
+                            <td>
+                                
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

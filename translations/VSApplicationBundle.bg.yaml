@@ -10,6 +10,7 @@ vs_application:
         site_main:
             login: Вход
             my_tablatures: Моите Таблатури
+            my_tablature_categories: Моите Категории Таблатури
             favorites: Предпочитани
             my_favorites: Предпочитани
             create_tablature_category: Създай Категория

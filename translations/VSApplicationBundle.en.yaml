@@ -10,6 +10,7 @@ vs_application:
         site_main:
             login: Login
             my_tablatures: My Tablatures
+            my_tablature_categories: My Tablature Categories
             favorites: Favorites
             my_favorites: My Favorites
             create_tablature_category: Create Category

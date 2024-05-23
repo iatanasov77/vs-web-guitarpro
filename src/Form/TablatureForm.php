@@ -57,8 +57,8 @@ class TablatureForm extends AbstractForm
             ])
             
             ->add( 'tablature', FileType::class, [
-                'mapped' => false,
-                'required' => true,
+                'mapped'                => false,
+                'required'              => true,
                 
                 'label'                 => 'vs_wgp.form.tablature.tablature',
                 'translation_domain'    => 'WebGuitarPro',
@@ -67,7 +67,7 @@ class TablatureForm extends AbstractForm
                     new File([
                         'maxSize' => '1024k',
                         'mimeTypes' => [
-                            //'application/octet-stream',
+                            'application/octet-stream',
                             'audio/x-guitar-pro',
                         ],
                         'mimeTypesMessage' => 'Please upload a valid GuitarPro file',

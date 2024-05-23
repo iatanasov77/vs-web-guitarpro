@@ -19,6 +19,7 @@ class TablatureCategoryController extends AbstractCrudController
         );
         
         return [
+            'items'                         => $this->getAppUser()->getTabCategories(),
             'tabForm'                       => $this->getTabForm()->createView(),
             'tabCategoryForm'               => $this->getTabCategoryForm()->createView(),
             'taxonomyId'                    => $taxonomy->getId(),
@@ -35,7 +36,7 @@ class TablatureCategoryController extends AbstractCrudController
         $currentUser    = $this->container->get( 'vs_users.security_bridge' )->getUser();
         $entity->setUser( $currentUser );
         
-        $translatableLocale     = $form['currentLocale']->getData();
+        $translatableLocale     = null; // $form['currentLocale']->getData();
         $categoryName           = $form['name']->getData();
         //$parentCategory         = $form['parent']->getData();
         $parentCategory         = $this->easyuiPost( $entity, $request->request->all( 'tablature_category_form' ) );

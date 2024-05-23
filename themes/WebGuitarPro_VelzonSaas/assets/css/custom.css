@@ -57,3 +57,18 @@ label.required:after {
 .table-responsive.profile-subscriptions {
     overflow-x: visible !important;
 }
+
+.textbox.combo {
+    display: block !important;
+    width: 100% !important;
+    
+    padding: 0.3rem 0.9rem !important;
+    font-size: 0.825rem !important;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+}
+
+.textbox-icon.combo-arrow {
+    width: 30px !important;
+    height: 38px !important;
+}

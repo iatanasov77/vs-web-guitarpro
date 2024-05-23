@@ -47,31 +47,33 @@
                 
                 {{ knp_menu_render('mainWebGuitarPro', {'template': 'Menu/main-menu.html.twig'}) }}
             
-                {# Create Tablature Category #}
-                <div class="btn-group">
-                    <a class="nav-link menu-link dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                        href="javascript:void(0)"
-                    >
-                        <i class="bx bx-layer"></i> 
-                        <span>{{ 'vs_application.menu.site_main.create_tablature_category' | trans( {},'VSApplicationBundle' ) }}</span>
-                    </a>
-                    <div class="dropdown-menu">
-                        {% include 'Menu/Forms/tablature_category.html.twig' %}
+                {% if app.user %}
+                    {# Create Tablature Category #}
+                    <div class="btn-group">
+                        <a class="nav-link menu-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false"
+                            href="javascript:void(0)"
+                        >
+                            <i class="bx bx-layer"></i> 
+                            <span>{{ 'vs_application.menu.site_main.create_tablature_category' | trans( {},'VSApplicationBundle' ) }}</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-md p-4" style="width: 300px;">
+                            {% include 'Menu/Forms/tablature_category.html.twig' %}
+                        </div>
                     </div>
-                </div>
-                
-                {# Create Tablature #}
-                <div class="btn-group">
-                    <a class="nav-link menu-link dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                        href="javascript:void(0)"
-                    >
-                        <i class="ri-rocket-line"></i> 
-                        <span>{{ 'vs_application.menu.site_main.create_tablature' | trans( {},'VSApplicationBundle' ) }}</span>
-                    </a>
-                    <div class="dropdown-menu">
-                        {% include 'Menu/Forms/tablature.html.twig' %}
+                    
+                    {# Create Tablature #}
+                    <div class="btn-group">
+                        <a class="nav-link menu-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false"
+                            href="javascript:void(0)"
+                        >
+                            <i class="ri-rocket-line"></i> 
+                            <span>{{ 'vs_application.menu.site_main.create_tablature' | trans( {},'VSApplicationBundle' ) }}</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-md p-4" style="width: 300px;">
+                            {% include 'Menu/Forms/tablature.html.twig' %}
+                        </div>
                     </div>
-                </div>
+                {% endif %}
             </ul>
             
         </div>

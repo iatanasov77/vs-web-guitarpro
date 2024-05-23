@@ -9,7 +9,7 @@ sylius_resource:
             classes:
                 model:      App\Entity\TablatureCategory
                 interface:  Sylius\Component\Resource\Model\ResourceInterface
-                repository: Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository
+                repository: App\Repository\TablatureCategoryRepository
                 controller: App\Controller\WebGuitarPro\TablatureCategoryController
                 form:       App\Form\TablatureCategoryForm
                 

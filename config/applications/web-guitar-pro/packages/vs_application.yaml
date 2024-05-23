@@ -77,6 +77,12 @@ vs_application:
                 route: vs_wgp_tablature_index
                 attributes:
                     iconClass: "bx bx-sitemap"
+            my_tabulature_categories:
+                name: vs_application.menu.site_main.my_tablature_categories
+                route: vs_wgp_tablature_category_index
+                attributes:
+                    iconClass: "bx bx-sitemap"
+                display: false
             my_bookmarks:
                 name: vs_application.menu.site_main.my_bookmarks
                 uri: "javascript:;"
