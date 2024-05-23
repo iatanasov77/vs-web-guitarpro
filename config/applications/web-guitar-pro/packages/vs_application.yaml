@@ -98,6 +98,7 @@ vs_application:
                 name: vs_application.menu.site_main.my_bookmarks
                 uri: "javascript:;"
                 attributes:
+                    id: my_bookmarks
                     iconClass: "ri-briefcase-2-line"
                 childs:
                     my_favorites:

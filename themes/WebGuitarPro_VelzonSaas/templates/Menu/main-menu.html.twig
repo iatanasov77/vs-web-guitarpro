@@ -90,12 +90,14 @@
                     {% if parentItem.attributes.id is defined and parentItem.attributes.id in ['my_bookmarks', 'tablature_category', 'tablature'] %}
                         {# Dont Show This Items #}
                     {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link menu-link" href="{{ parentItem.uri }}">
-                                <i class="{{ parentItem.attributes.iconClass }}"></i> 
-                                <span>{{ parentItem.name|trans }}</span>
-                            </a>
-                        </li>
+                        {% if( parentItem.displayed ) %}
+                            <li class="nav-item">
+                                <a class="nav-link menu-link" href="{{ parentItem.uri }}">
+                                    <i class="{{ parentItem.attributes.iconClass }}"></i> 
+                                    <span>{{ parentItem.name|trans }}</span>
+                                </a>
+                            </li>
+                        {% endif %}
                     {% endif %}
                 {% endif %}
                 
