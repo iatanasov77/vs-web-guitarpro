@@ -1,8 +1,5 @@
-/*
-require( 'bootstrap/js/dist/modal.js' );
 require( 'jquery-easyui/css/easyui.css' );
 require( 'jquery-easyui/js/jquery.easyui.min.js' );
-*/
 
 import { VsTranslator, VsLoadTranslations } from '@/js/includes/bazinga_js_translations.js';
 VsLoadTranslations(['WebGuitarPro']);
@@ -24,6 +21,7 @@ $( function()
             {
                 $( '#formShareContainer' ).html( response );
                 
+                /*
                 $( '#edit_share_form_targetUsers' ).combobox({
                     required: true,
                     multiple: true,
@@ -54,8 +52,13 @@ $( function()
                     prompt: _Translator.trans( 'vs_wgp.form.share_tablature.shared_tablatures_placeholder' ),
                     url: $( '#edit_share_form_tablatures' ).attr( 'data-easyuidata' ),
                 });
+                */
                 
-                $( '#edit-share-modal' ).modal( 'toggle' );
+                /** Bootstrap 5 Modal Toggle */
+                const myModal = new bootstrap.Modal( '#edit-share-modal', {
+                    keyboard: false
+                });
+                myModal.show( $( '#edit-share-modal' ).get( 0 ) );
             },
             error: function()
             {

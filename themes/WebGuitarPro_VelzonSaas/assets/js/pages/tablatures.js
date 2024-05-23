@@ -1,11 +1,8 @@
 require( '@/js/includes/resource-delete.js' );
 require( '@kanety/jquery-simple-tree-table/dist/jquery-simple-tree-table.js' );
 
-/*
-require( 'bootstrap/js/dist/modal.js' );
 require( 'jquery-easyui/css/easyui.css' );
 require( 'jquery-easyui/js/jquery.easyui.min.js' );
-*/
 
 import { VsTranslator, VsLoadTranslations } from '@/js/includes/bazinga_js_translations.js';
 VsLoadTranslations(['WebGuitarPro']);
@@ -85,7 +82,11 @@ $( function()
                     },
                 });
                 
-                $( '#tablature-share-modal' ).modal( 'toggle' );
+                /** Bootstrap 5 Modal Toggle */
+                const myModal = new bootstrap.Modal( '#tablature-share-modal', {
+                    keyboard: false
+                });
+                myModal.show( $( '#tablature-share-modal' ).get( 0 ) );
             },
             error: function()
             {
