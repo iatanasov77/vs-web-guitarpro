@@ -10,6 +10,7 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Common\Collections\ArrayCollection;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
+use Knp\Component\Pager\PaginatorInterface;
 
 use Vankosoft\ApplicationBundle\Repository\TaxonomyRepository;
 use Vankosoft\ApplicationBundle\Repository\TaxonRepository;
@@ -23,6 +24,9 @@ class TablatureExtController extends AbstractController
     use GlobalFormsTrait;
     use TaxonomyTreeDataTrait;
     use CategoryTreeDataTrait;
+    
+    /** @var int */
+    protected $tabsPerPage  = 10;
     
     /** @var ParameterBagInterface */
     protected $params;
@@ -59,9 +63,14 @@ class TablatureExtController extends AbstractController
         $this->tabsDirectory            = $tabsDirectory;
     }
     
-    public function publicTablatures( Request $request ): Response
+    public function publicTablatures( Request $request, PaginatorInterface $paginator ): Response
     {
-        $publicTabs = $this->tabsRepository->findBy( ['enabled' => true], [ 'updatedAt' => 'DESC' ] );
+        $allPublicTabs  = $this->tabsRepository->findBy( ['enabled' => true], [ 'updatedAt' => 'DESC' ] );
+        $publicTabs     = $paginator->paginate(
+            $allPublicTabs,
+            $request->query->getInt( 'page', 1 ) /*page number*/,
+            $this->tabsPerPage /*limit per page*/
+        );
         
         $params     = [
             'tabForm'                       => $this->getTabForm()->createView(),
