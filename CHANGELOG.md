@@ -1,3 +1,28 @@
+3.1.0	|	Release date: **24.05.2024**
+============================================
+* New Features, Fixes and Improvements:
+  - Fix a Doctrine Migration.
+  - Add Separate Global App Js for Login Pages Layout of VelzonSaas Theme.
+  - Add Alerts Showing in VelzonSaas Theme.
+  - Fix Login Form.
+  - Improve Registartion Process.
+  - Create Profile Page in VelzonSaas Theme.
+  - Create Pring Plans Page and Subscribe and Payment for.
+  - Improve CreditCardForm View.
+  - Improve Profile Page Subscriptions Tab.
+  - Add Create Tablature and Category Forms in Main Menu on VelzonSaas Theme.
+  - Some Fix for ProfileController.
+  - Add Tablature Forms for VelzonSaas Theme.
+  - Fix Edit Category
+  - Create Tablature Share Functionality for VelzonSaas Theme.
+  - Improve Application Main Menu.
+  - Add Page For All Public Tablatures.
+  - Create Pagination for Public Tablatures Page.
+  - Improve Application Security Config.
+  - Try to Fix Tablature Share Edit.
+  - Delete WebGuitarPro_AngularJs Theme.
+
+
 3.0.0	|	Release date: **19.05.2024**
 ============================================
 * New Features:
