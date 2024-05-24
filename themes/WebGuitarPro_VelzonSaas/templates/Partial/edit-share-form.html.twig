@@ -1,26 +1,46 @@
+{% import "@VSApplication/Macros/tree.html.twig" as vs_tree %}
+
 {{ form_start( form, {'action': path( 'wgp_share_tablature_my_shares_handle_edit_share_form' ), 'method': 'POST', 'attr': {'class': 'px-4 py-3', 'id': 'formEditShare'}} ) }}
     {{ form_widget( form.id, { 'value': oShare.id} )  }}
     
-    <div class="form-group">
-        {{ form_label( form.targetUsers ) }}
+    <div class="form-group mb-3">
+        {{ form_label( form.targetUsers, null, {
+            'label_attr': {'class': 'form-label required'}
+            }) 
+        }}
         
-        {{ form_widget( form.targetUsers, {
-            'attr': {
-                'class': 'form-control easyui-combobox',
-                'data-easyuidata': path( 'wgp_share_tablature_easyui_targetUsersData' )
+        {% set targetUsersDataSourceUrl   = path( 'wgp_share_tablature_easyui_targetUsersData' ) %}
+        {% set comboTreePlaceholder = 'vs_cms.form.page.categories_placeholder' | trans( {},'VSCmsBundle' ) %}
+        {{ vs_tree.easyuiCombobox( form.targetUsers, targetUsersDataSourceUrl, 0,
+            {
+                'elementSelector': '#edit_share_form_targetUsers',
+                'required': 'true',
+                'multiple': 'true',
+                'checkbox': 'true',
+                'cascadeCheck': 'false',
+                'placeholder': comboTreePlaceholder
             }
-        } ) }}
+        ) }}
     </div>
     
     <div class="form-group">
-        {{ form_label( form.tablatures ) }}
+        {{ form_label( form.tablatures, null, {
+            'label_attr': {'class': 'form-label required'}
+            }) 
+        }}
         
-        {{ form_widget( form.tablatures, {
-            'attr': {
-                'class': 'form-control easyui-combotree',
-                'data-easyuidata': path( 'wgp_share_tablature_easyui_tablaturesData' )
+        {% set tablaturesDataSourceUrl   = path( 'wgp_share_tablature_easyui_tablaturesData' ) %}
+        {% set comboTreePlaceholder = 'vs_cms.form.page.categories_placeholder' | trans( {},'VSCmsBundle' ) %}
+        {{ vs_tree.easyuiCombobox( form.tablatures, tablaturesDataSourceUrl, 0,
+            {
+                'elementSelector': '#edit_share_form_tablatures',
+                'required': 'true',
+                'multiple': 'true',
+                'checkbox': 'true',
+                'cascadeCheck': 'false',
+                'placeholder': comboTreePlaceholder
             }
-        } ) }}
+        ) }}
     </div>
     
 {{ form_end( form, {'render_rest': false} ) }}
