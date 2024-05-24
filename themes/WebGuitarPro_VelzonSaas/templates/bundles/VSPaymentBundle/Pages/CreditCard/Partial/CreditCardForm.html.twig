@@ -1,0 +1,50 @@
+{% if formClass is not defined %}
+    {% set formClass = 'modal__form' %}
+{% endif %}
+
+{{ form_start( form, {'action': formAction, 'method': formMethod, 'attr': {'class': formClass, 'id': 'credit_card_form'}} ) }}
+    {{ form_widget( form.captureUrl, {'attr': {'data-captureKey': captureKey}} ) }}
+    
+    <h4 class="modal__title">
+        <small>{{ 'vs_payment.template.credit_card_description' | trans( {},'VSPaymentBundle' ) }}</small>
+    </h4>
+    
+    <div>
+        {{ form_label( form.name, null, {'label_attr': {'class': 'form-label'}} ) }}
+        {{ form_widget( form.name, {'attr': {'class': 'form-control'}} ) }}
+    </div>
+    
+    <div class="mt-2">
+        {{ form_label( form.number, null, {'label_attr': {'class': 'form-label'}} ) }}
+        {{ form_widget( form.number, {'attr': {'class': 'form-control'}} ) }}
+    </div>
+    
+    <div class="row mt-2 mb-4">
+        <div class="col-3 me-2">
+            <div>
+                {{ form_label( form.ccmonth, null, {'label_attr': {'class': 'form-label'}} ) }}
+                {{ form_widget( form.ccmonth, {'attr': {'class': 'form-select credit_card_input'}} ) }}
+            </div>
+        </div>
+        <div class="col-4 me-2">
+            <div>
+                {{ form_label( form.ccyear, null, {'label_attr': {'class': 'form-label'}} ) }}
+                {{ form_widget( form.ccyear, {'attr': {'class': 'form-select credit_card_input'}} ) }}
+            </div>
+        </div>
+        <div class="col-3">
+            <div>
+                {{ form_label( form.cvv, null, {'label_attr': {'class': 'form-label'}} ) }}
+                {{ form_widget( form.cvv, {'attr': {'class': 'form-control credit_card_input'}} ) }}
+            </div>
+        </div>
+    </div>
+    
+    <div class="text-end">
+        {{ form_widget(form.btnContinue, {
+            'attr': {'class': 'btn btn-primary', 'id': form.btnContinue.vars.id},
+            'id': form.btnContinue.vars.id
+        }) }}
+    </div>
+ 
+{{ form_end( form, {'render_rest': false} ) }}

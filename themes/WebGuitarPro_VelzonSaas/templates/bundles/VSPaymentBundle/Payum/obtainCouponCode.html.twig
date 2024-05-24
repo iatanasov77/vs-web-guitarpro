@@ -1,0 +1,11 @@
+{{ form_start( form, {'action': actionUrl, 'method': 'POST', 'attr': {'id': 'payum_obtain_coupon_code_form'}} ) }}
+    <div class="sign__group">
+        {{ form_label( form.couponCode, null, {'label_attr': {'class': 'sign__label'}} ) }}
+        {{ form_widget( form.couponCode, {'attr': {'class': 'sign__input'}} ) }}
+    </div>
+
+    {{ form_widget( form.btnSubmit, {
+        'attr': {'class': 'sign__btn sign__btn--modal sign__btn--text', 'id': 'SelectPaymentMethodSubmit'},
+        'id': 'SelectPaymentMethodSubmit'
+    }) }}
+{{ form_end(form, {'render_rest': false}) }}

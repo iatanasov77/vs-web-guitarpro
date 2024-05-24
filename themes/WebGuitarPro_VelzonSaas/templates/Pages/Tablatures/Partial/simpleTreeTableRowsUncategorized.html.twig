@@ -3,11 +3,14 @@
     <td>{{ 'vs_wgp.template.uncategorized' | trans( {},'WebGuitarPro' ) }}</td>
     <td></td>
 </tr>
-<script>var uncategorizedTablatures=0;</script>
+<script>
+    const uncategorizedTablatures=0;
+    window.uncategorizedTablatures = uncategorizedTablatures;
+</script>
 
-{% for item in resources %}
-    {% if ( item.categories|length == 0 ) and item.user == app.user %}
-        <script>uncategorizedTablatures++;</script>
+{% for item in app.user.tablatures %}
+    {% if ( item.categories is empty ) and item.user == app.user %}
+        <script>window.uncategorizedTablatures++;</script>
         
         {% set rowClass = ( rowClass == 'simpleTreeTable_Row_Even' ) ? 'simpleTreeTable_Row_Odd' : 'simpleTreeTable_Row_Even' %}
         {% include 'Pages/Tablatures/Partial/simpleTreeTableRows.html.twig' with {'parentId': -1, 'item': item, 'isTab': 1, 'rowClass': rowClass} %}

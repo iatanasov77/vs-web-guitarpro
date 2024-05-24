@@ -43,19 +43,6 @@ final class Version20240514114200 extends AbstractMigration
         $this->addSql('ALTER TABLE WGP_Tablatures_Categories ADD CONSTRAINT FK_97CB9EDBEBE5F332 FOREIGN KEY (tablature_id) REFERENCES WGP_Tablatures (id)');
         $this->addSql('ALTER TABLE WGP_Tablatures_Categories ADD CONSTRAINT FK_97CB9EDB12469DE2 FOREIGN KEY (category_id) REFERENCES WGP_TablatureCategories (id)');
         $this->addSql('ALTER TABLE WGP_Tablatures_Files ADD CONSTRAINT FK_B0C962317E3C61F9 FOREIGN KEY (owner_id) REFERENCES WGP_Tablatures (id) ON DELETE CASCADE');
-        $this->addSql('ALTER TABLE VSAPP_Settings DROP FOREIGN KEY FK_4A491FD507FAB6A');
-        $this->addSql('DROP INDEX IDX_4A491FD507FAB6A ON VSAPP_Settings');
-        $this->addSql('ALTER TABLE VSAPP_Settings CHANGE maintenance_page_id maintenance_page_id  INT DEFAULT NULL');
-        $this->addSql('ALTER TABLE VSAPP_Settings ADD CONSTRAINT FK_4A491FD507FAB6A FOREIGN KEY (maintenance_page_id ) REFERENCES VSCMS_Pages (id) ON DELETE CASCADE');
-        $this->addSql('CREATE INDEX IDX_4A491FD507FAB6A ON VSAPP_Settings (maintenance_page_id )');
-        $this->addSql('ALTER TABLE VSCAT_PricingPlanSubscriptions CHANGE gateway_attributes gateway_attributes JSON DEFAULT NULL');
-        $this->addSql('ALTER TABLE VSCAT_PricingPlans CHANGE gateway_attributes gateway_attributes JSON DEFAULT NULL');
-        $this->addSql('ALTER TABLE VSCAT_Products DROP average_rating');
-        $this->addSql('ALTER TABLE VSPAY_Adjustments CHANGE details details JSON NOT NULL');
-        $this->addSql('ALTER TABLE VSPAY_GatewayConfig CHANGE config config JSON NOT NULL, CHANGE sandbox_config sandbox_config JSON DEFAULT NULL');
-        $this->addSql('ALTER TABLE VSPAY_Payment CHANGE details details JSON NOT NULL');
-        $this->addSql('ALTER TABLE VSUM_Users CHANGE payment_details payment_details JSON DEFAULT NULL');
-        $this->addSql('ALTER TABLE VSUM_UsersInfo CHANGE title title ENUM(\'mr\', \'mrs\', \'miss\')');
     }
 
     public function down(Schema $schema): void
@@ -84,18 +71,5 @@ final class Version20240514114200 extends AbstractMigration
         $this->addSql('DROP TABLE WGP_Tablatures');
         $this->addSql('DROP TABLE WGP_Tablatures_Categories');
         $this->addSql('DROP TABLE WGP_Tablatures_Files');
-        $this->addSql('ALTER TABLE VSAPP_Settings DROP FOREIGN KEY FK_4A491FD507FAB6A');
-        $this->addSql('DROP INDEX IDX_4A491FD507FAB6A ON VSAPP_Settings');
-        $this->addSql('ALTER TABLE VSAPP_Settings CHANGE maintenance_page_id  maintenance_page_id INT DEFAULT NULL');
-        $this->addSql('ALTER TABLE VSAPP_Settings ADD CONSTRAINT FK_4A491FD507FAB6A FOREIGN KEY (maintenance_page_id) REFERENCES VSCMS_Pages (id) ON UPDATE NO ACTION ON DELETE CASCADE');
-        $this->addSql('CREATE INDEX IDX_4A491FD507FAB6A ON VSAPP_Settings (maintenance_page_id)');
-        $this->addSql('ALTER TABLE VSCAT_PricingPlanSubscriptions CHANGE gateway_attributes gateway_attributes JSON DEFAULT NULL');
-        $this->addSql('ALTER TABLE VSCAT_PricingPlans CHANGE gateway_attributes gateway_attributes JSON DEFAULT NULL');
-        $this->addSql('ALTER TABLE VSCAT_Products ADD average_rating DOUBLE PRECISION DEFAULT \'0\' NOT NULL');
-        $this->addSql('ALTER TABLE VSPAY_Adjustments CHANGE details details JSON NOT NULL');
-        $this->addSql('ALTER TABLE VSPAY_GatewayConfig CHANGE config config JSON NOT NULL, CHANGE sandbox_config sandbox_config JSON DEFAULT NULL');
-        $this->addSql('ALTER TABLE VSPAY_Payment CHANGE details details JSON NOT NULL');
-        $this->addSql('ALTER TABLE VSUM_Users CHANGE payment_details payment_details JSON NOT NULL');
-        $this->addSql('ALTER TABLE VSUM_UsersInfo CHANGE title title VARCHAR(255) DEFAULT NULL');
     }
 }

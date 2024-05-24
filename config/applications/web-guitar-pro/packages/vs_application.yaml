@@ -55,9 +55,20 @@ vs_application:
 
     menu:
         mainWebGuitarProMenu:
-            latest_tablatures:
-                name: vs_application.menu.site_main.latest_tablatures
+            home:
+                name: vs_application.menu.site_main.home
                 route: app_home
+                attributes:
+                    iconClass: "bx bxs-dashboard"
+                display: false
+#             latest_tablatures:
+#                 name: vs_application.menu.site_main.latest_tablatures
+#                 route: app_home
+#                 attributes:
+#                     iconClass: "bx bxs-dashboard"
+            public_tablatures:
+                name: vs_application.menu.site_main.public_tablatures
+                route: vs_wgp_public_tablatures
                 attributes:
                     iconClass: "bx bxs-dashboard"
             user_register:
@@ -76,82 +87,43 @@ vs_application:
                 name: vs_application.menu.site_main.my_tablatures
                 route: vs_wgp_tablature_index
                 attributes:
-                    iconClass: "bx bxs-dashboard"
-            my_favorites:
-                name: vs_application.menu.site_main.my_favorites
-                route: tablature_favorite_index
+                    iconClass: "bx bx-sitemap"
+            my_tabulature_categories:
+                name: vs_application.menu.site_main.my_tablature_categories
+                route: vs_wgp_tablature_category_index
                 attributes:
-                    iconClass: "bx bxs-dashboard"
-            my_shares:
-                name: vs_application.menu.site_main.my_shares
-                route: wgp_share_tablature_my_shares
+                    iconClass: "bx bx-sitemap"
+                display: false
+            my_bookmarks:
+                name: vs_application.menu.site_main.my_bookmarks
+                uri: "javascript:;"
                 attributes:
-                    iconClass: "bx bxs-dashboard"
-            shared_to_me:
-                name: vs_application.menu.site_main.shared_to_me
-                route: wgp_share_tablature_shared_to_me
-                attributes:
-                    iconClass: "bx bxs-dashboard"
-
-#         profileMenu:
-#             profile:
-#                 name: vs_application.menu.my_profile
-#                 route: vs_users_profile_show
-#                 attributes:
-#                     iconClass: "fas fa-user me-2"
-#                     target: '_self'
-#                     
-#             language:
-#                 name: vs_application.menu.language
+                    id: my_bookmarks
+                    iconClass: "ri-briefcase-2-line"
+                childs:
+                    my_favorites:
+                        name: vs_application.menu.site_main.my_favorites
+                        route: tablature_favorite_index
+                    divider_1:
+                        isDivider: true
+                    my_shares:
+                        name: vs_application.menu.site_main.my_shares
+                        route: wgp_share_tablature_my_shares
+                    shared_to_me:
+                        name: vs_application.menu.site_main.shared_to_me
+                        route: wgp_share_tablature_shared_to_me
+#             create_tablature_category:
+#                 name: vs_application.menu.site_main.create_tablature_category
 #                 uri: "javascript:;"
 #                 attributes:
-#                     id: language
-#                     iconClass: "fas fa-language me-2"
-#                     target: '_self'
-#                     
-#             divider_0:
-#                 isDivider: true
-#                 
-#             documentation:
-#                 name: vs_application.menu.documentation
+#                     id: tablature_category
+#                     iconClass: "bx bx-layer"
+#             create_tablature:
+#                 name: vs_application.menu.site_main.create_tablature
 #                 uri: "javascript:;"
 #                 attributes:
-#                     iconClass: "fas fa-cog me-2"
-#                     
-#             about:
-#                 name: vs_application.menu.about_application
-#                 route: wgp_about_application
-#                 attributes:
-#                     iconClass: "fas fa-cog me-2"
-#                     
-#             pricing_plans:
-#                 name: vs_application.menu.site_main.extend_your_tablatures_store
-#                 route: vs_payment_pricing_plans
-#                 #route: vs_catalog_pricing_plan_index
-#                 attributes:
-#                     iconClass: "fas fa-cog me-2"
-#             
-#             divider_1:
-#                 isDivider: true
-#                 
-#             alphatab_demo_1:
-#                 name: 'Alphatab Demo 1'
-#                 route: demo_pages_alphatab
-#                 attributes:
-#                     id: alphatab_demo
-#                     iconClass: "fas fa-cog me-2"
-#                 
-#             divider_2:
-#                 isDivider: true
-#             
-#             logout:
-#                 name: vs_application.menu.logout
-#                 route: app_logout
-#                 attributes:
-#                     iconClass: "fas fa-power-off me-2"
-#                     divider_prepend: false
-#                     divider_append: true
-#                     target: '_self'
+#                     id: tablature
+#                     iconClass: "ri-rocket-line"
 
         profileMenu:
             profile:

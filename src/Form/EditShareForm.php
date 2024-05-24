@@ -24,6 +24,8 @@ class EditShareForm extends AbstractType
                 'translation_domain'    => 'WebGuitarPro',
                 
                 'multiple'              => true,
+                'required'              => false,
+                
                 'class'                 => User::class,
                 'choice_label'          => 'email',
                 'placeholder'           => 'vs_wgp.form.share_tablature.target_users_placeholder',
@@ -34,6 +36,8 @@ class EditShareForm extends AbstractType
                 'translation_domain'    => 'WebGuitarPro',
                 
                 'multiple'              => true,
+                'required'              => false,
+                
                 'class'                 => Tablature::class,
                 'choice_label'          => function ( Tablature $tab ) {
                     return $tab->getArtist() . ' - ' . $tab->getSong();

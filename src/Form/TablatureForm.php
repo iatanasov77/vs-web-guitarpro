@@ -1,8 +1,8 @@
 <?php namespace App\Form;
 
 use Vankosoft\ApplicationBundle\Form\AbstractForm;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -37,6 +37,7 @@ class TablatureForm extends AbstractForm
     {
         parent::buildForm( $builder, $options );
         
+        $entity = $builder->getData();
         $builder
             ->add( '_currentUrl', HiddenType::class, ['mapped' => false] )
             
@@ -57,8 +58,8 @@ class TablatureForm extends AbstractForm
             ])
             
             ->add( 'tablature', FileType::class, [
-                'mapped' => false,
-                'required' => true,
+                'mapped'                => false,
+                'required'              => is_null( $entity->getId() ),
                 
                 'label'                 => 'vs_wgp.form.tablature.tablature',
                 'translation_domain'    => 'WebGuitarPro',
@@ -67,7 +68,7 @@ class TablatureForm extends AbstractForm
                     new File([
                         'maxSize' => '1024k',
                         'mimeTypes' => [
-                            //'application/octet-stream',
+                            'application/octet-stream',
                             'audio/x-guitar-pro',
                         ],
                         'mimeTypesMessage' => 'Please upload a valid GuitarPro file',

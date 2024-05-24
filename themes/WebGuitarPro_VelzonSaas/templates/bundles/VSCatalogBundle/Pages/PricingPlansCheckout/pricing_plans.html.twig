@@ -1,0 +1,52 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{ parent() }} :: {{ 'vs_payment.template.pricing_plans_index_title' | trans( {},'VSPaymentBundle' ) }}{% endblock %}
+{% block pageTitle %}{{ 'vs_payment.template.pricing_plans_index_title' | trans( {},'VSPaymentBundle' ) }}{% endblock %}
+
+{% block content %}
+    <div class="row justify-content-center mt-5">
+        <div class="col-lg-5">
+            <div class="text-center mb-4 pb-2">
+                <h4 class="fs-22">{{ 'vs_wgp.template.plan_right_for_you' | trans( {},'WebGuitarPro' ) }}</h4>
+                {% if subscriptions is not empty %}
+                <p class="text-muted mb-4 fs-15">
+                    You have existing subscriptions. 
+                    if you want to pay for any of them, you can do so 
+                    <a href="{{ path( 'vs_users_profile_show' ) }}">here</a>.
+                </p>
+                {% endif %}
+            </div>
+        </div>
+        <!--end col-->
+    </div>
+    <!--end row-->
+
+    {% include '@VSCatalog/Pages/PricingPlansCheckout/Partial/pricing-plans-listing.html.twig' %}
+{% endblock %}
+
+{% block widgets %}
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    <div id="RealPaymentFormContainer" style="display: none;">
+        {% include '@VSPayment/Pages/CreditCard/Partial/StripeJsV2Form.html.twig' with {
+             'formAction': '',
+             'formMethod': 'POST'
+        } %}
+    </div>
+{% endblock %}
+
+{% block modals %}
+    {% include '@VSCatalog/Pages/PricingPlansCheckout/plan-modal.html.twig' %}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    {{ encore_entry_link_tags( 'js/pricing-plans', null, 'WebGuitarPro_VelzonSaas' ) }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    
+    {{ encore_entry_script_tags( 'js/pricing-plans', null, 'WebGuitarPro_VelzonSaas' ) }}
+    {{ encore_entry_script_tags( 'js/profile', null, 'WebGuitarPro_VelzonSaas' ) }}
+{% endblock %}

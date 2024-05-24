@@ -51,24 +51,24 @@ class DefaultController extends BaseDefaultController // AbstractController
             'tabForm'                       => $this->getTabForm()->createView(),
             'tabCategoryForm'               => $this->getTabCategoryForm()->createView(),
             'tabCategoriesTaxonomyId'       => $this->tabCategoriesTaxonomy->getId(),
-            'locales'                       => $this->doctrine->getRepository( 'App\Entity\Application\Locale' )->findAll(),
-            'paidTablatureStoreServices'    => $this->doctrine->getRepository( 'App\Entity\UsersSubscriptions\PayedServiceSubscriptionPeriod' )->findAll(),
             
             // About enabled field - $enabled (public)
             'tabs'                          => $er->findBy( ['enabled' => true], [ 'updatedAt' => 'DESC' ], 10 ),
             
             'tablatureUploadLimited'        => ! $this->checkTablatureLimit(),
         ];
+        //var_dump( $params ); die;
+        
         return new Response( $this->templatingEngine->render( $this->getTemplate(), $params ) );
     }
     
     protected function getTemplate(): string
     {
-        $template   = 'web-guitar-pro/Pages/Dashboard/index.html.twig';
+        $template   = 'web-guitar-pro/Pages/Dashboard/latest_tablatures.html.twig';
         
         $appSettings    = $this->applicationContext->getApplication()->getSettings();
         if ( ! $appSettings->isEmpty() && $appSettings[0]->getTheme() ) {
-            $template   = 'Pages/Dashboard/index.html.twig';
+            $template   = 'Pages/Dashboard/latest_tablatures.html.twig';
         }
         
         return $template;

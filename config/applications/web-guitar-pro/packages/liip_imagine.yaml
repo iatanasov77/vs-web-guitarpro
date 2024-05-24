@@ -37,3 +37,9 @@ liip_imagine:
             filters:
                 thumbnail: { size: [50, 50], mode: outbound }
                 background: { size: [50, 50], position: center, color: '#000000' }
+                
+        users_crud_index_profile_thumb:
+            quality: 75
+            filters:
+                thumbnail: { size: [90, 90], mode: outbound }
+                background: { size: [90, 90], position: center, color: '#000000' }

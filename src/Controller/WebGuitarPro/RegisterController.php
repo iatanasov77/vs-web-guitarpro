@@ -65,7 +65,8 @@ class RegisterController extends BaseRegisterController
         }
         
         if ( $request->isMethod( 'post' ) ) {
-            return parent::index( $request, $mailer );
+            //return parent::index( $request, $mailer );
+            return $this->handleRegisterForm( $request, $mailer );
         }
         
         $params = [
@@ -79,5 +80,69 @@ class RegisterController extends BaseRegisterController
         ];
 
         return $this->render( '@VSUsers/Register/register.html.twig', array_merge( $params, $this->templateParams( $this->getForm() ) ) );
+    }
+    
+    protected function handleRegisterForm( Request $request, MailerInterface $mailer )
+    {
+        $form   = $this->getForm();
+        $form->handleRequest( $request );
+        if ( $form->isSubmitted() ) {
+            $em             = $this->doctrine->getManager();
+            $formUser       = $form->getData();
+            $plainPassword  = $form->get( "plain_password" )->getData();
+            $oUser          = $this->userManager->createUser(
+                \strstr( $formUser->getEmail(), '@', true ),
+                $formUser->getEmail(),
+                $plainPassword
+            );
+            
+            /** Prepare User */
+            $this->prepareUser( $oUser, $form );
+            
+            /** Populate UserInfo Values */
+            $this->populateUserInfo( $oUser, $form );
+            
+            $em->persist( $oUser );
+            $em->flush();
+            
+            /*
+            $pricingPlanId  = $form->get( "pricingPlan" )->getData();
+            if ( $pricingPlanId ) {
+                $pricingPlan    = $this->pricingPlanRepository->find( $pricingPlanId );
+                $this->eventDispatcher->dispatch(
+                    new CreateNewUserSubscriptionEvent( $oUser, $pricingPlan ),
+                    CreateNewUserSubscriptionEvent::NAME
+                );
+            }
+            */
+            
+            $this->sendConfirmationMail( $oUser, $mailer );
+            
+            $this->addFlash(
+                'success',
+                $this->translator->trans( 'vs_application.form.register.alert_success', [], 'VSApplicationBundle' )
+            );
+            
+            return $this->redirectToRoute( $this->params['defaultRedirect'] );
+        }
+    }
+    
+    protected function prepareUser( &$oUser, $form )
+    {
+        $oUser->addRole( $this->userRolesRepository->findByTaxonCode( $this->params['registerRole'] ) );
+        $oUser->addApplication( $this->applicationContext->getApplication() );
+        
+        $preferedLocale = $form->get( "prefered_locale" )->getData();
+        $oUser->setPreferedLocale( $preferedLocale );
+        $oUser->setVerified( false );
+        $oUser->setEnabled( false );
+    }
+    
+    protected function populateUserInfo( &$oUser, $form )
+    {
+        //$oUser->getInfo()->setTitle( $form->get( "title" )->getData() );
+        $oUser->getInfo()->setFirstName( $form->get( "firstName" )->getData() );
+        $oUser->getInfo()->setLastName( $form->get( "lastName" )->getData() );
+        $oUser->getInfo()->setDesignation( $form->get( "designation" )->getData() );
     }
 }

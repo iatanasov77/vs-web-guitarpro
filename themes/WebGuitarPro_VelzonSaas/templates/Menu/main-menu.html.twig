@@ -1,13 +1,74 @@
 {% extends 'knp_menu.html.twig' %}
 
 {% block root %}
-    <ul class="navbar-nav" id="navbar-nav">
-        <li class="menu-title"><span data-key="t-menu">{{ 'vs_application.menu.menu' | trans( {},'VSApplicationBundle' ) }}</span></li>
-        
+
         {# {{ dump( item.children ) }} #}
         {% for key, parentItem in item.children %}
-            {% if parentItem.attributes.id is defined and parentItem.attributes.id == 'user_register' %}
-                {% if not app.user %}
+        
+            {% if app.user %}
+            
+                {% if parentItem.attributes.id is defined and parentItem.attributes.id == 'tablature_category' %}
+                    <div class="btn-group">
+                        <a class="nav-link menu-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false"
+                            href="{{ parentItem.uri }}"
+                        >
+                            <i class="{{ parentItem.attributes.iconClass }}"></i> 
+                            <span>{{ parentItem.name|trans }}</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-md p-4">
+                            {% include 'Menu/Forms/tablature_category.html.twig' %}
+                        </div>
+                    </div>
+                {% elseif parentItem.attributes.id is defined and parentItem.attributes.id == 'tablature' %}
+                    <div class="btn-group">
+                        <a class="nav-link menu-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false"
+                            href="{{ parentItem.uri }}"
+                        >
+                            <i class="{{ parentItem.attributes.iconClass }}"></i> 
+                            <span>{{ parentItem.name|trans }}</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-md p-4">
+                            {% include 'Menu/Forms/tablature.html.twig' %}
+                        </div>
+                    </div>
+                {% else %}
+                    {% if parentItem.attributes.id is defined and parentItem.attributes.id in ['user_register', 'user_login'] %}
+                        {# Dont Show This Items #}
+                    {% else %}
+                        {% if( parentItem.displayed ) %}
+                            {% if( parentItem.hasChildren ) %}
+                                <div class="btn-group">
+                                    <a class="nav-link menu-link dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                        href="{{ parentItem.uri }}"
+                                    >
+                                        <i class="{{ parentItem.attributes.iconClass }}"></i> 
+                                        <span>{{ parentItem.name | trans }}</span>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        {% for childItem in parentItem.children %}
+                                            {% if childItem.extra( 'divider' ) %}
+                                                <div class="dropdown-divider"></div>
+                                            {% else %}
+                                                <a class="dropdown-item" href="{{ childItem.uri }}">{{ childItem.name | trans }}</a>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            {% else %}
+                                <li class="nav-item">
+                                    <a class="nav-link menu-link" href="{{ parentItem.uri }}">
+                                        <i class="{{ parentItem.attributes.iconClass }}"></i> 
+                                        <span>{{ parentItem.name|trans }}</span>
+                                    </a>
+                                </li>
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+                
+            {% else %}
+            
+                {% if parentItem.attributes.id is defined and parentItem.attributes.id == 'user_register' %}
                     <!--  Registration  -->
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="{{ parentItem.uri }}">
@@ -16,9 +77,7 @@
                         </a>
                     </li>
                     <!--/  Registration  -->
-                {% endif %}
-            {% elseif parentItem.attributes.id is defined and parentItem.attributes.id == 'user_login' %}
-                {% if not app.user %}
+                {% elseif parentItem.attributes.id is defined and parentItem.attributes.id == 'user_login' %}
                     <!--  User Login  -->
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="{{ parentItem.uri }}">
@@ -27,15 +86,23 @@
                         </a>
                     </li>
                     <!--/ User Login  -->
+                {% else %}
+                    {% if parentItem.attributes.id is defined and parentItem.attributes.id in ['my_bookmarks', 'tablature_category', 'tablature'] %}
+                        {# Dont Show This Items #}
+                    {% else %}
+                        {% if( parentItem.displayed ) %}
+                            <li class="nav-item">
+                                <a class="nav-link menu-link" href="{{ parentItem.uri }}">
+                                    <i class="{{ parentItem.attributes.iconClass }}"></i> 
+                                    <span>{{ parentItem.name|trans }}</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                    {% endif %}
                 {% endif %}
-            {% else %}
-                <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{ parentItem.uri }}">
-                        <i class="{{ parentItem.attributes.iconClass }}"></i> 
-                        <span>{{ parentItem.name|trans }}</span>
-                    </a>
-                </li>
+                
             {% endif %}
+            
         {% endfor %}
-    </ul>
+
 {% endblock %}

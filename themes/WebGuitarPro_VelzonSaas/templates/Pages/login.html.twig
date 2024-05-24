@@ -29,10 +29,10 @@
                             
                             <div class="mb-3">
                                 <label for="username" class="form-label">
-                                    {{ 'vs_application.form.login.username' | trans( {},'VSApplicationBundle' ) }}
+                                    {{ 'vs_users.form.user.email' | trans( {},'VSUsersBundle' ) }}
                                 </label>
-                                <input type="text" class="form-control" autofocus id="username"
-                                    placeholder="{{ 'vs_application.form.login.username_placeholder' | trans( {},'VSApplicationBundle' ) }}"
+                                <input type="text" class="form-control" autofocus id="username" tabindex="1"
+                                    placeholder="{{ 'vs_users.form.user.email_placeholder' | trans( {},'VSUsersBundle' ) }}"
                                     name="_username" value="{{ last_username }}"
                                 />
                             </div>
@@ -47,7 +47,7 @@
                                     {{ 'vs_application.form.login.password' | trans( {},'VSApplicationBundle' ) }}
                                 </label>
                                 <div class="position-relative auth-pass-inputgroup mb-3">
-                                    <input type="password" class="form-control pe-5 password-input"
+                                    <input type="password" class="form-control pe-5 password-input" tabindex="2"
                                         placeholder="{{ 'vs_application.form.login.password_placeholder' | trans( {},'VSApplicationBundle' ) }}"
                                         id="password-input" name="_password"
                                     />
@@ -58,14 +58,14 @@
                             </div>
 
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="auth-remember-check">
+                                <input class="form-check-input" type="checkbox" value="" id="auth-remember-check" tabindex="3">
                                 <label class="form-check-label" for="auth-remember-check">
                                     {{ 'vs_application.form.login.remember_me' | trans( {},'VSApplicationBundle' ) }}
                                 </label>
                             </div>
 
                             <div class="mt-4">
-                                <button class="btn btn-success w-100" type="submit">
+                                <button class="btn btn-success w-100" type="submit" tabindex="4">
                                     {{ 'vs_application.form.login.button_login' | trans( {},'VSApplicationBundle' ) }}
                                 </button>
                             </div>

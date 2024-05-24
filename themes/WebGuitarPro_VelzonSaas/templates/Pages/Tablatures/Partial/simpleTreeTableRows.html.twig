@@ -4,24 +4,25 @@
 >
 
     <td width="10%">
-    {% if not isTab %}
-        <i class="fa fa-folder" aria-hidden="true"></i>
-    {% else %}
-        {# <img src="{{ asset( 'build/web-guitar-pro-reactjs/images/logo.png' ) }}" width="15" height="15" /> #}
-        <img src="{{ asset( 'build/web-guitar-pro-velzon-saas/images/guitarpro.jpg' ) }}" width="15" height="15" />
-    {% endif %}
+        {% if isTab %}
+            <img src="{{ asset( 'build/web-guitar-pro-velzon-saas/images/guitarpro.jpg' ) }}" width="15" height="15" />
+        {% else %}
+            <i class="fa fa-folder" aria-hidden="true"></i>
+        {% endif %}
     </td>
 
     <td>
-    {% if not isTab %}
-        {# Show Tablature Category Name If Not in Default Locale. #}
-        {{ item.getNameTranslated( app.request.locale ) }}
-    {% else %}
-        {{ item.name }}
-    {% endif %}
+        {% if not isTab %}
+            {# Show Tablature Category Name If Not in Default Locale. #}
+            {{ item.getNameTranslated( app.request.locale ) }}
+        {% else %}
+            {{ item.name }}
+        {% endif %}
     </td>
+    
     <td>
         {% if isTab %}
+        
             <a class="btn btn-primary mr-2"
                 href="{{ url( 'tablature_read', {id: item.id} ) }}"
                 title="{{ 'vs_application.template.items_index_row_action_download' | trans( {},'VSApplicationBundle' ) }}"
@@ -57,7 +58,7 @@
             >
                 <i class="fas fa-window-close"></i>
             </a>
-        	
+            
         {% else %}
         
             <a class="btn btn-primary mr-2"
@@ -79,6 +80,7 @@
         {% endif %}
     </td>
 </tr>
+
 {% if item.children is defined %}
     {% for child in item.children %}
         {% if child.user == app.user %}
@@ -88,8 +90,8 @@
     {% endfor %}
 {% endif %}
 
-{# #}
 {% if item.tablatures is defined %}
+    {# {{ dump( item.tablatures ) }} #}
     {% for tab in item.tablatures %}
         {% if tab.user == app.user %}
             {% set rowClass = ( rowClass == 'simpleTreeTable_Row_Even' ) ? 'simpleTreeTable_Row_Odd' : 'simpleTreeTable_Row_Even' %}
@@ -97,4 +99,3 @@
         {% endif %}
     {% endfor %}
 {% endif %}
-

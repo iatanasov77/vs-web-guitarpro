@@ -1,0 +1,30 @@
+{% extends "base.html.twig" %}
+
+{# Override Blocs #}
+{% block title %}{{ parent() }} :: {{ 'vs_catalog.template.select_payment_method_title' | trans( {},'VSCatalogBundle' ) }}{% endblock %}
+{% block pageTitle %}<i class="icon_genius"></i> {{ 'vs_catalog.template.select_payment_method_title' | trans( {},'VSCatalogBundle' ) }}{% endblock %}
+
+{% block content %}
+    <div class="sign section--bg" data-bg="{{ asset( 'build/sugarbabes-theme/img/bg/section__bg.jpg' ) }}">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="sign__content"> {# id="selectPaymentMethodForm" #}
+                        {% include '@VSCatalog/Pages/PricingPlansCheckout/Partial/select-payment-method-form.html.twig' with {'formClass': 'sign__form'} %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    
+    {{ encore_entry_script_tags( 'js/static-page', null, 'SugarBabesTheme' ) }}
+    
+    {#  #}
+    {{ encore_entry_script_tags( 'js/pricing-plans', null, 'SugarBabesTheme' ) }}
+    {{ encore_entry_script_tags( 'js/profile', null, 'SugarBabesTheme' ) }}
+    
+{% endblock %}

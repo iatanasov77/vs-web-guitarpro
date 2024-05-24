@@ -1,0 +1,50 @@
+<div class="sign__group">
+    
+    {% if NoLabels is not defined or not NoLabels %}
+        {{ form_label(form.paymentMethod.paymentMethod, null, {
+            'label_attr': {'class': 'sign__label'}
+            }) 
+        }}
+    {% endif %}
+    
+    <div id="select_pricing_plan_form_paymentMethod" class="ms-4 mb-2">
+        {% for paymentMethod in form.paymentMethod.paymentMethod %}
+            <div class="form-check mb-2">
+                {{ form_widget( paymentMethod, { 'attr': { 'class': 'form-check-input rPaymentMethod', 'checked': loop.index == 1 } } ) }}
+                {{ form_label( paymentMethod, null, { 'label_attr': {'class': 'form-check-label'} } ) }}
+            </div>
+        {% endfor %}
+    </div>
+    
+    {% if bankTransferInfo %}
+        <div class="sign__text form_input_info mb-5" id="BankTransferInfo" style="display: none;">
+            <div class="row">
+                <div class="col-3">IBAN:</div>
+                <div class="col-9">{{ bankTransferInfo.iban }}</div>
+            </div>
+            <div class="row">
+                <div class="col-3">{{ 'vs_payment.form.select_pricing_plan.bank' | trans( {},'VSPaymentBundle' ) }}:</div>
+                <div class="col-7">{{ bankTransferInfo.bank_name }}</div>
+            </div>
+            <div class="row">
+                <div class="col-3">{{ 'vs_payment.form.select_pricing_plan.reciever' | trans( {},'VSPaymentBundle' ) }}:</div>
+                <div class="col-9">{{ bankTransferInfo.reciever_name }}</div>
+            </div>
+            <div class="row">
+                <div class="col-3">{{ 'vs_payment.form.select_pricing_plan.reason' | trans( {},'VSPaymentBundle' ) }}:</div>
+                <div class="col-9">{{ bankTransferInfo.reason }}</div>
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+<div class="sign__group sign__group--checkbox" id="SetRecurringPayments">
+    <input type="checkbox" id="select_pricing_plan_form_paymentMethod_setRecurringPayments"
+        name="select_pricing_plan_form[paymentMethod][setRecurringPayments]"
+        value="0"
+        {#checked="checked"#}
+    >
+    <label for="select_pricing_plan_form_paymentMethod_setRecurringPayments">
+        {{ 'vs_payment.form.select_pricing_plan.set_recurring_payments' | trans( {},'VSPaymentBundle' ) }}
+    </label>    
+</div>

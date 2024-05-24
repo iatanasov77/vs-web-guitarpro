@@ -51,11 +51,11 @@ security:
                 check_path: app_login
                 username_parameter: _username
                 password_parameter: _password
-                always_use_default_target_path: false
-                default_target_path:  /
+                always_use_default_target_path: true
+                default_target_path:  /my-tablatures/
             logout:
                 path: app_logout
-                target: app_login
+                target: app_home
                 invalidate_session: true
             remember_me:
                 secret: '%kernel.secret%'
@@ -99,7 +99,7 @@ security:
         - { route: 'vs_wgp_tablature_update', roles: [ROLE_SUPER_ADMIN, ROLE_APPLICATION_ADMIN, ROLE_WEB_GUITAR_PRO_ADMIN] }
         - { route: 'vs_wgp_tablature_delete', roles: [ROLE_SUPER_ADMIN, ROLE_APPLICATION_ADMIN, ROLE_WEB_GUITAR_PRO_ADMIN] }
         
-        - { path: ^/tablatures/, roles: PUBLIC_ACCESS } # Tablature ACCESS SHOULD BE CHECK BY A VOTER
+        - { path: ^/tablatures, roles: PUBLIC_ACCESS } # Tablature ACCESS SHOULD BE CHECK BY A VOTER
         - { path: ^/tablatures-ext/, roles: PUBLIC_ACCESS } # Tablature ACCESS SHOULD BE CHECK BY A VOTER
         
         - { path: ^/build/, roles: PUBLIC_ACCESS }

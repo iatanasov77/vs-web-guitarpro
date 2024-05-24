@@ -3,20 +3,22 @@
 {% block root %}
     {% set breadcrumbs = knp_menu_get_breadcrumbs_array(item) %}
 	<ol class="breadcrumb m-0">
-    {% for link in breadcrumbs %}
-        {%- if loop.index == 1 %}
-        	<li class="breadcrumb-item"><a href="/">{{ 'vs_application.menu.home' | trans( {},'VSApplicationBundle' ) }}</a></li>
-        {%- elseif not loop.last %}
-        	{% if ( link.item.attributes.breadcrumb_uri is defined ) %}
-        		<li class="breadcrumb-item"><a href="{{ link.item.attributes.breadcrumb_uri }}">{{ link.label | trans }}</a></li>
-        	{% elseif ( link.item.attributes.breadcrumb_route is defined ) %}
-        		<li class="breadcrumb-item"><a href="{{ path( link.item.attributes.breadcrumb_route ) }}">{{ link.label | trans }}</a></li>
-        	{% else %}
-        		<li class="breadcrumb-item"><a href="{{ link.uri }}">{{ link.label | trans }}</a></li>
-        	{% endif %}
-        {%- else %}
-            <li class="breadcrumb-item active">{{ link.label | trans }}</li>
-        {%- endif %}
-    {%- endfor %}
+        {% for link in breadcrumbs %}
+            {%- if loop.index == 1 %}
+            	<li class="breadcrumb-item"><a href="/">{{ 'vs_application.menu.home' | trans( {},'VSApplicationBundle' ) }}</a></li>
+            {%- elseif link.uri == "/" %}
+                {# Do Nothing #}
+            {%- elseif not loop.last %}
+            	{% if ( link.item.attributes.breadcrumb_uri is defined ) %}
+            		<li class="breadcrumb-item"><a href="{{ link.item.attributes.breadcrumb_uri }}">{{ link.label | trans }}</a></li>
+            	{% elseif ( link.item.attributes.breadcrumb_route is defined ) %}
+            		<li class="breadcrumb-item"><a href="{{ path( link.item.attributes.breadcrumb_route ) }}">{{ link.label | trans }}</a></li>
+            	{% else %}
+            		<li class="breadcrumb-item"><a href="{{ link.uri }}">{{ link.label | trans }}</a></li>
+            	{% endif %}
+            {%- else %}
+                <li class="breadcrumb-item active">{{ link.label | trans }}</li>
+            {%- endif %}
+        {%- endfor %}
     </ol>
 {% endblock %}

@@ -8,17 +8,25 @@ use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Common\Collections\ArrayCollection;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
+use Knp\Component\Pager\PaginatorInterface;
 
 use Vankosoft\ApplicationBundle\Repository\TaxonomyRepository;
 use Vankosoft\ApplicationBundle\Repository\TaxonRepository;
 use Vankosoft\ApplicationBundle\Controller\Traits\TaxonomyTreeDataTrait;
+use Vankosoft\ApplicationBundle\Controller\Traits\CategoryTreeDataTrait;
 use Vankosoft\UsersBundle\Security\SecurityBridge;
+use App\Repository\TablatureCategoryRepository;
 
 class TablatureExtController extends AbstractController
 {
     use GlobalFormsTrait;
     use TaxonomyTreeDataTrait;
+    use CategoryTreeDataTrait;
+    
+    /** @var int */
+    protected $tabsPerPage  = 10;
     
     /** @var ParameterBagInterface */
     protected $params;
@@ -28,6 +36,9 @@ class TablatureExtController extends AbstractController
     
     /** @var EntityRepository */
     protected $tabsRepository;
+    
+    /** @var TablatureCategoryRepository */
+    protected $tabsCategoriesRepository;
     
     /** @var string */
     protected $tabsDirectory;
@@ -39,15 +50,41 @@ class TablatureExtController extends AbstractController
         TaxonRepository $taxonRepository,
         SecurityBridge $securityBridge,
         EntityRepository $tabsRepository,
+        TablatureCategoryRepository $tabsCategoriesRepository,
         string $tabsDirectory
     ) {
-        $this->params               = $params;
-        $this->doctrine             = $doctrine;
-        $this->taxonomyRepository   = $taxonomyRepository;
-        $this->taxonRepository      = $taxonRepository;
-        $this->securityBridge       = $securityBridge;
-        $this->tabsRepository       = $tabsRepository;
-        $this->tabsDirectory        = $tabsDirectory;
+        $this->params                   = $params;
+        $this->doctrine                 = $doctrine;
+        $this->taxonomyRepository       = $taxonomyRepository;
+        $this->taxonRepository          = $taxonRepository;
+        $this->securityBridge           = $securityBridge;
+        $this->tabsRepository           = $tabsRepository;
+        $this->tabsCategoriesRepository = $tabsCategoriesRepository;
+        $this->tabsDirectory            = $tabsDirectory;
+    }
+    
+    public function publicTablatures( Request $request, PaginatorInterface $paginator ): Response
+    {
+        $allPublicTabs  = $this->tabsRepository->findBy( ['enabled' => true], [ 'updatedAt' => 'DESC' ] );
+        $publicTabs     = $paginator->paginate(
+            $allPublicTabs,
+            $request->query->getInt( 'page', 1 ) /*page number*/,
+            $this->tabsPerPage /*limit per page*/
+        );
+        
+        $params     = [
+            'tabForm'                       => $this->getTabForm()->createView(),
+            'tabCategoryForm'               => $this->getTabCategoryForm()->createView(),
+            //'tabCategoriesTaxonomyId'       => $this->tabCategoriesTaxonomy->getId(),
+            
+            // About enabled field - $enabled (public)
+            'tabs'                          => $publicTabs,
+            
+            'tablatureUploadLimited'        => ! $this->checkTablatureLimit(),
+        ];
+        //var_dump( $params ); die;
+        
+        return $this->render( 'Pages/Dashboard/public_tablatures.html.twig', $params );
     }
     
     public function show( Request $request ): Response
@@ -102,12 +139,18 @@ class TablatureExtController extends AbstractController
     
     public function easyuiComboTreeWithSelectedSource( $categoriesTaxonomyId, $tabId, Request $request ): Response
     {
-        return new JsonResponse(
-            $this->easyuiComboTreeDataProvideTaxons(
-                $this->getUserCategoriesTaxons( $request->getLocale() ),
-                $this->getSelectedCategoryTaxons( $tabId )
-            )
-        );
+        $editTab            = $tabId ? $this->tabsRepository->find( $tabId ) : null;
+        $selectedCategories = $editTab  ? $editTab->getCategories()->toArray() : [];
+        $data               = [];
+        
+        $user               = $this->getAppUser();
+        $topCategories      = new ArrayCollection( $this->tabsCategoriesRepository->findBy( ['parent' => null, 'user' => $user] ) );
+        
+        $categoriesTree     = [];
+        $this->getItemsTree( $topCategories, $categoriesTree );
+        $this->buildEasyuiCombotreeDataFromCollection( $categoriesTree, $data, $selectedCategories );
+        
+        return new JsonResponse( $data );
     }
     
     protected function getSelectedCategoryTaxons( $tabId ): array

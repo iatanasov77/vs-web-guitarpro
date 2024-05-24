@@ -71,6 +71,7 @@ Encore
     .addStyleEntry( 'css/app', './themes/WebGuitarPro_VelzonSaas/assets/css/app.scss' )
     .addEntry( 'js/layout', './themes/WebGuitarPro_VelzonSaas/assets/js/layout.js' )
     .addEntry( 'js/app', './themes/WebGuitarPro_VelzonSaas/assets/app.js' )
+    .addEntry( 'js/app-login', './themes/WebGuitarPro_VelzonSaas/assets/app-login.js' )
     
     // Try Import AlphaTab From node_modules
     .addEntry('js/alphatab', './themes/WebGuitarPro_VelzonSaas/assets/js/alphatab.js')
@@ -82,12 +83,13 @@ Encore
     .addEntry( 'js/shared-tablatures', './themes/WebGuitarPro_VelzonSaas/assets/js/pages/shared-tablatures.js' )
     .addEntry( 'js/my-shares', './themes/WebGuitarPro_VelzonSaas/assets/js/pages/my-shares.js' )
     
-//     .addEntry( 'tablature-edit', './themes/WebGuitarPro_VelzonSaas/assets/js/pages/tablature-edit.js' )
-//     .addEntry( 'js/filemanager-file-upload', './themes/WebGuitarPro_VelzonSaas/assets/js/pages/filemanager-file-upload.js' )
+    .addEntry( 'js/tablature-edit', './themes/WebGuitarPro_VelzonSaas/assets/js/pages/tablature-edit.js' )
+    .addEntry( 'js/filemanager-file-upload', './themes/WebGuitarPro_VelzonSaas/assets/js/pages/filemanager-file-upload.js' )
 
-     .addEntry( 'js/authentication', './themes/WebGuitarPro_VelzonSaas/assets/js/pages/authentication.js' )
-//     .addEntry( 'js/profile', './themes/WebGuitarPro_VelzonSaas/assets/js/pages/profile.js' )
-//     .addEntry( 'js/pricing-plans', './themes/WebGuitarPro_VelzonSaas/assets/js/pages/pricing-plans.js' )
+    .addEntry( 'js/authentication', './themes/WebGuitarPro_VelzonSaas/assets/js/pages/authentication.js' )
+    .addEntry( 'js/edit-profile', './themes/WebGuitarPro_VelzonSaas/assets/js/pages/edit-profile.js' )
+    .addEntry( 'js/profile', './themes/WebGuitarPro_VelzonSaas/assets/js/pages/profile.js' )
+    .addEntry( 'js/pricing-plans', './themes/WebGuitarPro_VelzonSaas/assets/js/pages/pricing-plans.js' )
 ;
 
 Encore.configureDefinePlugin( ( options ) => {

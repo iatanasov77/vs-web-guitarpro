@@ -1,0 +1,67 @@
+{% if pageCount > 1 %}
+    <ul class="pagination justify-content-end">
+        {% if previous is defined %}
+    	    <li class="page-item">
+                <a class="page-link" 
+                    href="{{ path( route, query | merge( {( pageParameterName ): previous} ) ) }}"
+                    title="{{ 'label_previous' | trans( {}, 'KnpPaginatorBundle' ) }}"
+                >
+                    <i class="mdi mdi-chevron-left"></i>
+                </a>
+            </li>
+        {% else %}
+            <li class="page-item disabled">
+                <span class="page-link"><i class="mdi mdi-chevron-left"></i></span>
+            </li>
+        {% endif %}
+	
+	    {% if startPage > 1 %}
+	        <a class="page-link" href="{{ path( route, query | merge( {( pageParameterName ): 1} ) ) }}">1</a>
+	
+	        {% if startPage == 3 %}
+	            <a class="page-link" href="{{ path( route, query | merge( {( pageParameterName ): 2} ) ) }}">2</a>
+	        {% elseif startPage != 2 %}
+	            <span>&hellip;</span>
+	        {% endif %}
+	    {% endif %}
+	
+	    {% for page in pagesInRange %}
+	        {% if page != current %}
+	            <li class="page-item">
+	               <a class="page-link" href="{{ path( route, query | merge( {( pageParameterName ): page} ) ) }}">{{ page }}</a>
+	            </li>
+	        {% else %}
+                <li class="page-item page-item--active">
+                    <a class="page-link" href="javascript:void(0);">{{ page }}</a>
+                </li>
+	        {% endif %}
+	
+	    {% endfor %}
+	
+	    {% if pageCount > endPage %}
+	        {% if pageCount > (endPage + 1) %}
+	            {% if pageCount > (endPage + 2) %}
+	                <span>&hellip;</span>
+	            {% else %}
+	                <a class="page-link" href="{{ path( route, query | merge( {( pageParameterName ): ( pageCount - 1 )} ) ) }}">{{ pageCount -1 }}</a>
+	            {% endif %}
+	        {% endif %}
+	        <a href="{{ path( route, query | merge( {( pageParameterName ): pageCount} ) ) }}">{{ pageCount }}</a>
+	    {% endif %}
+	
+	    {% if next is defined %}
+            <li class="page-item">
+                <a class="page-link" 
+                    href="{{ path( route, query | merge( {( pageParameterName ): next} ) ) }}"
+                    title="{{ 'label_next' | trans( {}, 'KnpPaginatorBundle' ) }}"
+                >
+                    <i class="mdi mdi-chevron-right"></i>
+                </a>
+            </li>
+        {% else %}
+            <li class="page-item disabled">
+                <span class="page-link"><i class="mdi mdi-chevron-right"></i></span>
+            </li>
+        {% endif %}
+    </ul>
+{% endif %}

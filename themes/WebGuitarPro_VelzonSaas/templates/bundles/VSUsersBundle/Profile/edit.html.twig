@@ -1,0 +1,88 @@
+{% extends "base-profile.html.twig" %}
+
+{# Import Macros #}
+{% import "@VSApplication/Macros/alerts.html.twig" as alerts %}
+
+{# Override Blocs #}
+{% block title %}{{ parent() }} :: {{ 'vs_users.template.profile_show_title' | trans( {},'VSUsersBundle' ) }}{% endblock %}
+{% block pageTitle %}<i class="fa fa-user-md"></i> {{ 'vs_users.template.profile_show_title' | trans( {},'VSUsersBundle' ) }}{% endblock %}
+
+{% block content %}
+    <div class="position-relative mx-n4 mt-n4">
+        <div class="profile-wid-bg profile-setting-img">
+            <img src="{{ asset( 'build/web-guitar-pro-velzon-saas/images/profile-bg.jpg' ) }}" class="profile-wid-img" alt="">
+            <div class="overlay-content">
+                <div class="text-end p-3">
+                    {% include '@VSUsers/Profile/partial/_profile-change_avatar.html.twig' with {'f': otherForms.changeAvatarForm.createView} %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-xxl-3">
+            <div class="card mt-n5">
+                <div class="card-body p-4">
+                    <div class="text-center">
+                        <div class="profile-user position-relative d-inline-block mx-auto  mb-4">
+                            {% if app.user.info and app.user.info.avatar %}
+                               <img src="{{ app.user.info.avatar.path|imagine_filter('users_crud_index_profile_thumb') }}" alt="" class="rounded-circle avatar-xl img-thumbnail user-profile-image" />
+                            {% else %}
+                                {#
+                                <img src="{{ asset( 'build/web-guitar-pro-velzon-saas/images/users/avatar-1.jpg' ) }}" alt="" class="rounded-circle avatar-xl img-thumbnail user-profile-image" />
+                                #}
+                                <img src="{{ asset( 'build/web-guitar-pro-velzon-saas/images/users/user-dummy-img.jpg' ) }}" alt="" class="rounded-circle avatar-xl img-thumbnail user-profile-image" />
+                            {% endif %}
+                            
+                            {% include '@VSUsers/Profile/partial/_profile-edit_avatar.html.twig' with {'f': otherForms.changeAvatarForm.createView} %}
+                        </div>
+                        <h5 class="fs-16 mb-1">{{ app.user.info.fullName }}</h5>
+                        <p class="text-muted mb-0">{{ app.user.info.designation }}</p>
+                    </div>
+                </div>
+            </div>
+            <!--end card-->
+        </div>
+        <!--end col-->
+        <div class="col-xxl-9">
+            <div class="card mt-xxl-n5">
+                <div class="card-header">
+                    <ul class="nav nav-tabs-custom rounded card-header-tabs border-bottom-0" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-bs-toggle="tab" href="#personalDetails" role="tab">
+                                <i class="fas fa-home"></i>
+                                {{ 'vs_users.form.profile.personal_details' | trans( {},'VSUsersBundle' ) }}
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#changePassword" role="tab">
+                                <i class="far fa-user"></i>
+                                {{ 'vs_users.template.profile_show_tab_change_password' | trans( {},'VSUsersBundle' ) }}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body p-4">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="personalDetails" role="tabpanel">
+                            {% include '@VSUsers/Profile/tab/_profile-edit-form.html.twig' %}
+                        </div>
+                        <!--end tab-pane-->
+                        <div class="tab-pane" id="changePassword" role="tabpanel">
+                            {% include '@VSUsers/Profile/tab/_profile-change_password.html.twig' with {'f': otherForms.changePasswordForm.createView} %}
+                        </div>
+                        <!--end tab-pane-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end col-->
+    </div>
+    <!--end row-->
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    
+    {{ encore_entry_script_tags( 'js/edit-profile', null, 'WebGuitarPro_VelzonSaas' ) }}
+{% endblock %}

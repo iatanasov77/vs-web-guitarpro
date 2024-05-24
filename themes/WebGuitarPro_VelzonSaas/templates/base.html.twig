@@ -21,6 +21,7 @@
     
         {% block head_styles %}            
             {{ encore_entry_link_tags( 'css/app', null, 'WebGuitarPro_VelzonSaas' ) }}
+            {{ encore_entry_link_tags( 'js/app', null, 'WebGuitarPro_VelzonSaas' ) }}
         {% endblock %}
 
         {% block head_scripts %}
@@ -29,7 +30,6 @@
     </head>
     
     <body>
-    
         <!-- Begin page -->
         <div id="layout-wrapper">
             {% include 'Layout/top.html.twig' %}
@@ -45,7 +45,8 @@
     
                 <div class="page-content">
                     <div class="container-fluid">
-                    
+                        {% include 'Layout/alerts.html.twig' %}
+                        
                         {% block header %}
                             <!-- start page title -->
                             <div class="row">
@@ -61,7 +62,7 @@
                             </div>
                             <!-- end page title -->
                         {% endblock %}
-                    
+                        
                         {% block content %}{% endblock %}
                     </div>
                     <!-- container-fluid -->
@@ -76,6 +77,7 @@
         </div>
         <!-- END layout-wrapper -->
         
+        {% block widgets %}{% endblock %}
         {% block modals %}{% endblock %}
         {% block svg %}{% endblock %}
         

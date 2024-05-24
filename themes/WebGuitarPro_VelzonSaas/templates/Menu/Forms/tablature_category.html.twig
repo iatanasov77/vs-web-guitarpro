@@ -1,0 +1,40 @@
+{% import "@VSApplication/Macros/tree.html.twig" as vs_tree %}
+
+{{ form_start( tabCategoryForm, {'action': path( 'vs_wgp_tablature_category_create' ), 'method': 'POST', 'attr': { 'id': "formTablatureCategory"}} ) }}
+    
+    {{ form_widget( tabCategoryForm._currentUrl, {
+        'value': path( app.request.attributes.get( '_route' ), app.request.attributes.get( '_route_params' ) )} )
+    }}
+    
+    {# Documentation: https://www.jeasyui.com/documentation/combotree.php #}
+    {% set comboDataSourceUrl  = url( 'vs_wgp_tablature_categories_tree_combo' ) %}
+    {% set comboTreePlaceholder = 'vs_cms.form.category.parent_category_placeholder' | trans( {},'VSCmsBundle' ) %}
+    <div class="mb-2">
+        {{ form_label( tabCategoryForm.parent, null, {
+            'label_attr': {'class': 'form-label'}
+            }) 
+        }}
+        
+        {{ vs_tree.easyuiCombobox( tabCategoryForm.parent, comboDataSourceUrl, 0,
+            {
+                'elementSelector': '#tablature_category_form_parent',
+                'required': 'false',
+                'multiple': 'false',
+                'checkbox': 'false',
+                'cascadeCheck': 'false',
+                'placeholder': comboTreePlaceholder
+            }
+        ) }}
+    </div>
+    
+    <div class="mb-2">
+        {{ form_label( tabCategoryForm.name, null, {'label_attr': {'class': 'form-label'}} ) }}
+        {{ form_widget( tabCategoryForm.name, {'attr': {'class': 'form-control'}} ) }}
+    </div>
+    
+    <div class="dropdown-divider mt-4 mb-4""></div>
+    
+    <div class="text-end">
+        {{ form_widget( tabCategoryForm.btnSave, {'attr': {'class': 'btn btn-primary' }} ) }}
+    </div>
+{{ form_end( tabCategoryForm, {'render_rest': false} ) }}

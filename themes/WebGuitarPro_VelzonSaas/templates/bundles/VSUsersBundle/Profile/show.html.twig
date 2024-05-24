@@ -1,74 +1,99 @@
-{% extends "base.html.twig" %}
+{% extends "base-profile.html.twig" %}
 
+{# Import Macros #}
+{% import "@VSApplication/Macros/alerts.html.twig" as alerts %}
+
+{# Override Blocs #}
 {% block title %}{{ parent() }} :: {{ 'vs_users.template.profile_show_title' | trans( {},'VSUsersBundle' ) }}{% endblock %}
 {% block pageTitle %}<i class="fa fa-user-md"></i> {{ 'vs_users.template.profile_show_title' | trans( {},'VSUsersBundle' ) }}{% endblock %}
 
 {% block content %}
-    <div class="tablatures-container" style="margin-top: 110px">
-        <div class="card card-profile-form">
-        	<h5 class="card-header">{{ 'vs_users.template.profile_show_title' | trans( {},'VSUsersBundle' ) }}</h5>
-        	<div class="card-body profile-data">
-        		<div class="tab-regular">
-                    <ul class="nav nav-tabs " id="myTab" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="details-tab" data-bs-toggle="tab" href="#details" role="tab" aria-controls="details" aria-selected="true">
-                            	{{ 'vs_users.template.profile_show_tab_details' | trans( {},'VSUsersBundle' ) }}
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="change_password-tab" data-bs-toggle="tab" href="#change_password" role="tab" aria-controls="change_password" aria-selected="false">
-                            	{{ 'vs_users.template.profile_show_tab_change_password' | trans( {},'VSUsersBundle' ) }}
-                            </a>
-                        </li>
-                        
-                    {% if hasSubscriptionsExtension %}
-                        <li class="nav-item">
-                            <a class="nav-link" id="subscriptions-tab" data-bs-toggle="tab" href="#subscriptions" role="tab" aria-controls="subscription" aria-selected="false">
-                                {{ 'vs_users.template.profile_show_tab_subscriptions' | trans( {},'VSUsersBundle' ) }}
-                            </a>
-                        </li>
+    <div class="profile-foreground position-relative mx-n4 mt-n4">
+        <div class="profile-wid-bg">
+            <img src="{{ asset( 'build/web-guitar-pro-velzon-saas/images/profile-bg.jpg' ) }}" alt="" class="profile-wid-img" />
+        </div>
+    </div>
+    <div class="pt-4 mb-4 mb-lg-3 pb-lg-4 profile-wrapper">
+        <div class="row g-4">
+            <div class="col-auto">
+                <div class="avatar-lg">
+                    {% if app.user.info and app.user.info.avatar %}
+                       <img src="{{ app.user.info.avatar.path|imagine_filter('users_crud_index_profile_thumb') }}" alt="" class="img-thumbnail rounded-circle" />
+                    {% else %}
+                        {#
+                        <img src="{{ asset( 'build/web-guitar-pro-velzon-saas/images/users/avatar-1.jpg' ) }}" alt="" class="img-thumbnail rounded-circle" />
+                        #}
+                        <img src="{{ asset( 'build/web-guitar-pro-velzon-saas/images/users/user-dummy-img.jpg' ) }}" alt="" class="img-thumbnail rounded-circle" />
                     {% endif %}
-                        
+                </div>
+            </div>
+            <!--end col-->
+            <div class="col">
+                <div class="p-2">
+                    <h3 class="text-white mb-1">{{ app.user.info.fullName }}</h3>
+                    <p class="text-white text-opacity-75">{{ app.user.info.designation }}</p>
+                </div>
+            </div>
+            <!--end col-->
+            
+
+        </div>
+        <!--end row-->
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div>
+                <div class="d-flex profile-wrapper">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-pills animation-nav profile-nav gap-2 gap-lg-3 flex-grow-1" role="tablist" id="ProfileTabs">
                         <li class="nav-item">
-                            <a class="nav-link" id="activity-tab" data-bs-toggle="tab" href="#activity" role="tab" aria-controls="activity-tab" aria-selected="false">
-                            	{{ 'vs_users.template.profile_show_tab_activity' | trans( {},'VSUsersBundle' ) }}
+                            <a class="nav-link fs-14 active" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab" aria-controls="overview" aria-selected="true">
+                                <i class="ri-airplay-fill d-inline-block d-md-none"></i> 
+                                <span class="d-none d-md-inline-block">
+                                    {{ 'vs_users.template.profile_overview' | trans( {},'VSUsersBundle' ) }}
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fs-14" data-bs-toggle="tab" data-bs-target="#subscriptions" type="button" role="tab" aria-controls="subscriptions" aria-selected="false">
+                                <i class="ri-list-unordered d-inline-block d-md-none"></i> 
+                                <span class="d-none d-md-inline-block">
+                                    {{ 'vs_users.template.profile_show_tab_subscriptions' | trans( {},'VSUsersBundle' ) }}
+                                </span>
                             </a>
                         </li>
                     </ul>
-            		<div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="details" role="tabpanel" aria-labelledby="details-tab">
-                            {% include '@VSUsers/Profile/tab/_profile-edit-form.html.twig' %}
-                        </div>
-                        <div class="tab-pane fade" id="change_password" role="tabpanel" aria-labelledby="change_password-tab">
-                            {% include '@VSUsers/Profile/tab/_profile-change_password.html.twig' with {'f': otherForms.changePasswordForm.createView} %}
-                        </div>
-                        
-                    {% if hasSubscriptionsExtension %}
-                        <div class="tab-pane fade" id="subscriptions" role="tabpanel" aria-labelledby="subscriptions-tab">
-                            {% include '@VSUsers/Profile/tab/_profile-subscriptions.html.twig' %}
-                        </div>
-                    {% endif %}
-                        
-                        <div class="tab-pane fade" id="activity" role="tabpanel" aria-labelledby="activity-tab">
-                            {% include '@VSUsers/Profile/tab/_profile-activity.html.twig' %}
-                        </div>
+                    <div class="flex-shrink-0">
+                        <a href="{{ path( 'vs_users_profile_edit' ) }}" class="btn btn-success">
+                            <i class="ri-edit-box-line align-bottom"></i> 
+                            {{ 'vs_users.template.profile_edit_profile' | trans( {},'VSUsersBundle' ) }}
+                        </a>
                     </div>
                 </div>
+                <!-- Tab panes -->
+                <div class="tab-content pt-4 text-muted">
+                
+                    <div class="tab-pane active" id="overview" role="tabpanel">
+                        {% include '@VSUsers/Profile/tab/_profile-overview.html.twig' %}
+                    </div>
+                    
+                    <div class="tab-pane fade" id="subscriptions" role="tabpanel">
+                        {% include '@VSUsers/Profile/tab/_profile-subscriptions.html.twig' %}
+                    </div>
+                    <!--end tab-pane-->
+                    
+                </div>
+                <!--end tab-content-->
             </div>
         </div>
+        <!--end col-->
     </div>
-{% endblock content %}
-
-{% block stylesheets %} 
-    {{ parent() }}
-    
-    {{ encore_entry_link_tags( 'js/profile', null, 'WebGuitarPro_VelzonSaas' ) }}
+    <!--end row-->
 {% endblock %}
 
 {% block javascripts %}
-	{{ parent() }}
-	
+    {{ parent() }}
+    
     {{ encore_entry_script_tags( 'js/profile', null, 'WebGuitarPro_VelzonSaas' ) }}
-    {{ encore_entry_script_tags( 'js/filemanager-file-upload', null, 'WebGuitarPro_VelzonSaas' ) }}
 {% endblock %}
-

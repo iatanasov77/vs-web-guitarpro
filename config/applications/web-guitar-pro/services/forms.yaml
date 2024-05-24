@@ -3,6 +3,20 @@ services:
         autowire: true
         autoconfigure: true
 
+    vs_users.form.type.registration:
+        class: App\Form\RegistrationForm
+        tags:
+            - { name: form.type, alias: vs_users_registration }
+        arguments:
+            - '%vs_users.model.users.class%'
+            - '@vs_application.repository.locale'
+            - "@request_stack"
+            - '%vs_application.model.application.class%'
+            - '@security.helper'
+            - '%vs_users.registration_form_required_fields%'
+            - '%vs_catalog.model.pricing_plan.class%'
+            - '@vs_catalog.repository.pricing_plan'
+            
     vs_wgp.resources.tablature_category.form:
         class: App\Form\TablatureCategoryForm
         tags:

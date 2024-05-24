@@ -19,34 +19,6 @@ class TablatureController extends AbstractCrudController
 {
     use GlobalFormsTrait;
     
-    public function showAction( Request $request ): Response
-    {
-        $er = $this->getDoctrine()->getRepository( 'App\Entity\Tablature' );
-        $id = $request->attributes->get( 'id' );
-        if ( is_numeric( $id ) ) {
-            $oTablature     = $er->find( $id );
-        } else {
-            $oTablature     = $er->findOneBy( ['slug' => $id] );
-        }
-        
-        if ( ! $this->checkHasAccess( $oTablature ) ) {
-            return $this->redirectToRoute( 'wgp_access_denied' );
-        }
-
-        return $this->render( 'Pages/Tablatures/show.html.twig', [
-            'tabForm'                       => $this->getTabForm()->createView(),
-            'tabCategoryForm'               => $this->getTabCategoryForm()->createView(),
-            'item'                          => $oTablature,
-            'error'                         => false,
-            'tabCategoriesTaxonomyId'       => $this->getTabCategoriesTaxonomy()->getId(),
-            'locales'                       => $this->getDoctrine()->getRepository( 'App\Entity\Application\Locale' )->findAll(),
-            'paidTablatureStoreServices'    => $this->get( 'vs_users_subscriptions.repository.payed_service_subscription_period' )->findAll(),
-            
-            'tablatureUploadLimited'        => ! $this->checkTablatureLimit(),
-            'baseUrl'                       => $this->getParameter( 'vankosoft_host' ),
-        ]);
-    }
-    
     public function deleteAction( Request $request ): Response
     {
         $configuration = $this->requestConfigurationFactory->create( $this->metadata, $request );
@@ -70,11 +42,6 @@ class TablatureController extends AbstractCrudController
             'tabForm'                       => $this->getTabForm()->createView(),
             'tabCategoryForm'               => $this->getTabCategoryForm()->createView(),
             'tabCategoriesTaxonomyId'       => $this->getTabCategoriesTaxonomy()->getId(),
-            'userCategories'                => $this->get( 'vs_wgp.repository.tablature_category' )->findBy( ['user' => $this->getAppUser()] ),
-            'locales'                       => $this->getDoctrine()->getRepository( 'App\Entity\Application\Locale' )->findAll(),
-            'paidTablatureStoreServices'    => $this->get( 'vs_users_subscriptions.repository.payed_service_subscription_period' )->findAll(),
-            
-            'tablatureUploadLimited'        => ! $this->checkTablatureLimit(),
         ];
     }
     
@@ -102,7 +69,9 @@ class TablatureController extends AbstractCrudController
         if ( isset( $formPost['category_taxon'] ) ) {
             if ( is_array( $formPost['category_taxon'] ) ) {
                 foreach ( $formPost['category_taxon'] as $taxonId ) {
-                    $category       = $repo->findOneBy( ['taxon' => $taxonId] );
+                    //$category   = $repo->findOneBy( ['taxon' => $taxonId] );
+                    $category   = $repo->find( $taxonId );
+                    
                     if ( $category ) {
                         $categories[]   = $category;
                         $entity->addCategory( $category );

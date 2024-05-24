@@ -1,0 +1,43 @@
+{{ form_start( form, {'action': actionUrl, 'method': 'POST', 'attr': {'id': 'payum_credit_card_form'}} ) }}
+
+    <h4 class="modal__title">
+        <small>{{ 'vs_payment.template.credit_card_description' | trans( {},'VSPaymentBundle' ) }}</small>
+    </h4>
+    
+    <div class="sign__group">
+        {{ form_label( form.holder, null, {'label_attr': {'class': 'sign__label'}} ) }}
+        {{ form_widget( form.holder, {'attr': {'class': 'sign__input'}} ) }}
+    </div>
+    
+    <div class="sign__group">
+        {{ form_label( form.number, null, {'label_attr': {'class': 'sign__label'}} ) }}
+        {{ form_widget( form.number, {'attr': {'class': 'sign__input'}} ) }}
+    </div>
+    
+    <div class="sign__group">
+        {{ form_label( form.securityCode, null, {'label_attr': {'class': 'sign__label'}} ) }}
+        {{ form_widget( form.securityCode, {'attr': {'class': 'sign__input'}} ) }}
+    </div>
+    
+    <div class="sign__group">
+        {{ form_label( form.expireAt, null, {'label_attr': {'class': 'sign__label'}} ) }}
+        
+        <div id="credit_card_expireAt" class="row">
+            <div class="col-4">
+                {{ form_widget(form.expireAt.month, { attr: { class: 'sign__select' } }) }}
+                {{ form_widget(form.expireAt.day, { attr: { style: 'display:none' } }) }}
+            </div>
+            <div class="col-5">
+                {{ form_widget( form.expireAt.year, { attr: { class: 'sign__select' } } ) }}
+            </div>
+        </div>
+    </div>
+    
+    {{ form_rest( form ) }}
+    
+    <input type="submit"
+        value="{{ 'vs_payment.form.credit_card.continue' | trans( {},'VSPaymentBundle' ) }}"
+        class="sign__btn sign__btn--modal sign__btn--text"
+    />
+
+{{ form_end( form ) }}

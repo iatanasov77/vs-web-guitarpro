@@ -3,54 +3,7 @@ services:
         autowire: true
         autoconfigure: true
         public: true
-
-    App\Controller\WebGuitarPro\Checkout\:
-        resource: '../../../../src/Controller/WebGuitarPro/Checkout'
-        tags: ['controller.service_arguments']
-        autowire: true
-
-    # PAYMENT CONTROLLER
-    ##############################
-    App\Controller\WebGuitarPro\Checkout\PaymentController:
-        public: true
-        autowire: true
-        tags: ['controller.service_arguments']
-        arguments:
-            - '@doctrine'
-            - '@vs_payment_payment'
-            - '@vs_payment.factory.order'
-            - '@vs_payment.factory.order_item'
-            - '@vs_payment.repository.order'
-            - '@vs_users_subscriptions.repository.payed_service_subscription_period'
-            - '@vs_application.repository.taxonomy'
-            - '%vs_wgp.tablature-categories.taxonomy_code%'
-        calls:
-            - [ setContainer, [ '@service_container' ] ]
-
-    # STRIPE CHECKOUT
-    ##############################
-    App\Controller\WebGuitarPro\Checkout\StripeCheckoutController:
-        public: true
-        autowire: true
-        tags: ['controller.service_arguments']
-        arguments:
-            - '@event_dispatcher'
-            - '@translator'
-            - '@doctrine'
-            - '@payum'
-            - '@vs_users.security_bridge'
-            - '@vs_payment_payment'
-            - '@vs_payment.order_factory'
-            - '@vs_payment.pricing_plan_subscriptions_bridge'
-            - '%vs_payment.model.payment.class%'
-            - '%vs_payment.checkout.throw_exception_on_payment_done%'
-            - '%vs_payment.shopping_cart_redirect_on_payment_done%'
-            - '%vs_payment.pricing_plans_redirect_on_payment_done%'
-            - '@vs_application.repository.taxonomy'
-            - '%vs_wgp.tablature-categories.taxonomy_code%'
-        calls:
-            - [ setContainer, [ '@service_container' ] ]
-            
+    
     # VS Catalog Controllers
     ##############################   
     App\Controller\WebGuitarPro\PricingPlanCheckoutController:
