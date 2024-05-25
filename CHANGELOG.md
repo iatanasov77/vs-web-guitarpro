@@ -1,3 +1,10 @@
+3.1.1	|	Release date: **25.05.2024**
+============================================
+* Bug-Fixes:
+  - Fix Some Wrong Path.
+  - Fix Profile Edit Route.
+
+
 3.1.0	|	Release date: **24.05.2024**
 ============================================
 * New Features, Fixes and Improvements:
