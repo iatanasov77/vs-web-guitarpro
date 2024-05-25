@@ -24,7 +24,7 @@ vs_users_profile_show:
     
 vs_users_profile_edit:
     path:     /profile/edit
-    controller: App\Controller\WebGuitarPro\ProfileController::indexAction
+    controller: App\Controller\WebGuitarPro\ProfileController::editAction
 
 vs_users_forgot_password_form:
     path:     /forgot-password
