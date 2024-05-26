@@ -83,6 +83,9 @@ include = "
     /vendor/*
     /.env
     /composer.json
+    
+    /themes
+    /themes/*
     /themes/WebGuitarPro_VelzonSaas
     /themes/WebGuitarPro_VelzonSaas/*
     /VERSION
