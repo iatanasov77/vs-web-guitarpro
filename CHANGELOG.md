@@ -1,3 +1,11 @@
+3.1.2	|	Release date: **26.05.2024**
+============================================
+* New Features and Improvements:
+  - Improve Player Controls Styles.
+  - Move API to Separate Subdomain.
+  - Add 'Robots.txt' to Allow Search Engines.
+
+
 3.1.1	|	Release date: **25.05.2024**
 ============================================
 * Bug-Fixes:

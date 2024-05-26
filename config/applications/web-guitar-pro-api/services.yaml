@@ -1,0 +1,65 @@
+imports:
+#     - { resource: services/security.yaml }
+#     - { resource: services/controller.yaml }
+#     - { resource: services/form.yaml }
+#     - { resource: services/doctrine_extensions.yaml }
+#     - { resource: services/menu.yaml }
+    - { resource: services/uploader.yaml }
+#     - { resource: services/widgets.yaml }
+    - { resource: services/wgp_tablature.yaml }
+    - { resource: services/api_controller.yaml }
+    - { resource: services/api_platform.yaml }
+    
+parameters:
+    locale: 'en_US'
+
+    vankosoft_host: '%env(HOST)%'
+    applicationCompany: 'VankoSoft'
+    applicationTitle: 'Web Guitar Pro API'
+    
+    vs_application.version: !php/const App\WebGuitarProAPIKernel::VERSION
+    vs_application.public_dir: "%kernel.project_dir%/public/web-guitar-pro-api"
+    vs_application.taxon_repository_throw_exception: false
+    
+    vs_users.login_route: 'app_login'
+    vs_users.login_by: 'username'
+    vs_users.default_redirect: 'app_home'
+    vs_users.form_create_account: false
+    
+    # The cookie_lifetime would be set to a relatively high value, 
+    # and the garbage collection gc_maxlifetime would be set to destroy sessions at whatever the desired idle period is.
+    #########################################################################################################################
+    vs_users.gc_maxlifetime: 1800   # 30 minutes
+    vs_users.cookie.domain: '%env(COOKIE_DOMAIN)%'
+    vs_users.cookie.lifetime: 86400 # 24 hours
+    
+    vs_payment.checkout.throw_exception_on_payment_done: false
+    vs_payment.shopping_cart_redirect_on_payment_done: 'app_home'
+    vs_payment.pricing_plans_redirect_on_payment_done: 'vs_payment_pricing_plans'
+    
+    vs_wgp.tablature-categories.taxonomy_code: tablature-categories
+
+services:
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    App\:
+        resource: '../../../src/*'
+        exclude:
+            - '../../../src/DataFixtures/'
+            - '../../../src/DependencyInjection/'
+            - '../../../src/Entity/'
+            - '../../../src/Form/'
+            - '../../../src/Tests/'
+            - '../../../src/Controller/'
+            - '../../../src/Widgets/'
+            - '../../../src/Component/'
+            - '../../../src/Command/'
+            - '../../../src/WebGuitarProAPIKernel.php'
+        autowire: true
+
+    # add more service definitions when explicit configuration is needed
+    # please note that last definitions always *replace* previous ones
+    
+    

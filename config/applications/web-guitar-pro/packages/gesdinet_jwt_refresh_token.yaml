@@ -1,5 +1,0 @@
-# gesdinet_jwt_refresh_token:
-#     # This is the class name of the refresh token, you will need to adjust this to match the class your application will use
-#     refresh_token_class: App\Entity\Api\RefreshToken
-    
-    

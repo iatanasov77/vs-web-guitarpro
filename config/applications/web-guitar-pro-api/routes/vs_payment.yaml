@@ -1,0 +1,37 @@
+app_vs_payment_checkout:
+    resource: "@VSPaymentBundle/Resources/config/routing/checkout.yaml"
+    prefix: /
+
+app_vs_catalog_products:
+    resource: "@VSCatalogBundle/Resources/config/routing/products.yaml"
+    prefix: /
+    
+app_vs_catalog_pricing_plans:
+    resource: "@VSCatalogBundle/Resources/config/routing/pricing_plans.yaml"
+    prefix: /
+
+app_vs_catalog_payment:
+    resource: "@VSCatalogBundle/Resources/config/routing/payment.yaml"
+    prefix: /
+    
+vs_payment_show_payment_methods_form:
+    path: /payment-methods
+    controller: App\Controller\WebGuitarProAPI\ShoppingCartCheckoutController::showPaymentMethodsFormAction
+    options:
+        expose: true
+        
+vs_payment_pricing_plans:
+    path: /pricing-plans-checkout
+    controller: App\Controller\WebGuitarProAPI\PricingPlanCheckoutController::showPricingPlans
+    options:
+        expose: true
+
+vs_payment_show_credit_card_form:
+    path: /credit-card/{formAction}
+    controller: App\Controller\WebGuitarProAPI\CreditCardController::showCreditCardFormAction
+    defaults:
+        formAction: ''
+    options:
+        expose: true
+
+

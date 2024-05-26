@@ -1,0 +1,16 @@
+twig:
+    default_path: '%kernel.project_dir%/templates'
+    debug: '%kernel.debug%'
+    strict_variables: '%kernel.debug%'
+    
+    globals:
+        app_environment: '%env(APP_ENV)%'
+        applicationCompany: '%applicationCompany%'
+        applicationTitle: '%applicationTitle%'
+        formCreateAccount: '%vs_users.form_create_account%'
+        installedBundles: '%kernel.bundles%'
+#         picturesPath: '%vs_application.filemanager_shared_media_gaufrette.app_pictures%'
+        
+    form_themes:
+        - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
+    

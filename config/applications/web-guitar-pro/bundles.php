@@ -51,11 +51,4 @@ return [
     Vankosoft\PaymentBundle\VSPaymentBundle::class => ['all' => true],
     Vankosoft\BoricaBundle\VSBoricaBundle::class => ['all' => true],
     Vankosoft\CatalogBundle\VSCatalogBundle::class => ['all' => true],
-    
-//     ApiPlatform\Symfony\Bundle\ApiPlatformBundle::class => ['all' => true],
-//     Vankosoft\ApiBundle\VSApiBundle::class => ['all' => true],
-//     Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle::class => ['all' => true],
-//     Gesdinet\JWTRefreshTokenBundle\GesdinetJWTRefreshTokenBundle::class => ['all' => true],
-//     Nelmio\CorsBundle\NelmioCorsBundle::class => ['all' => true],
-//     Symfony\Bundle\MercureBundle\MercureBundle::class => ['all' => true],
 ];

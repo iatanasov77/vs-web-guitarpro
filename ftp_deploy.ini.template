@@ -77,20 +77,15 @@ include = "
     /src/*
     /templates
     /templates/*
-    /themes
-    /themes/*
     /translations
     /translations/*
     /vendor
     /vendor/*
     /.env
     /composer.json
-    /themes/WebGuitarPro_AngularJs
-    /themes/WebGuitarPro_AngularJs/*
+    /themes/WebGuitarPro_VelzonSaas
+    /themes/WebGuitarPro_VelzonSaas/*
     /VERSION
-    
-    /public/web-guitar-pro/_themes/vankosoft/web-guitar-pro-angularjs/bundles/apiplatform
-    /public/web-guitar-pro/_themes/vankosoft/web-guitar-pro-angularjs/bundles/apiplatform/*
 "
 
 ; is allowed to delete remote files? (defaults to yes)

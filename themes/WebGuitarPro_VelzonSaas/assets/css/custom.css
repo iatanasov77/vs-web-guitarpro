@@ -72,3 +72,7 @@ label.required:after {
     width: 30px !important;
     height: 38px !important;
 }
+
+#tab-information-modal {
+    --vz-modal-margin: 14rem;
+}

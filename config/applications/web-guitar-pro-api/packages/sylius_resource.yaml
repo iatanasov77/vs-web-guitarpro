@@ -1,0 +1,41 @@
+sylius_resource:
+    translation:
+        #default_locale: '%locale%'
+        locale_provider: sylius.translation_locale_provider.immutable
+        #available_locales_provider: sylius.translation.locales_provider
+        
+    #######################################################################################################################
+    # Override default settings
+    # -------------------------
+    # You Can To Override Many Resource Parameters For All Resources (Including VankoSoft Bundles)
+    # View Available Settings in 
+    #     \Sylius\Bundle\ResourceBundle\DependencyInjection\Configuration::addSettingsSection(ArrayNodeDefinition $node)
+    #######################################################################################################################
+    settings:
+        paginate: 10
+    
+    resources:
+        vs_wgp.tablature_category:
+            driver: doctrine/orm
+            classes:
+                model:      App\Entity\TablatureCategory
+                interface:  Sylius\Component\Resource\Model\ResourceInterface
+                repository: App\Repository\TablatureCategoryRepository
+                controller: App\Controller\WebGuitarPro\TablatureCategoryController
+                form:       App\Form\TablatureCategoryForm
+                
+        vs_wgp.tablature:
+            driver: doctrine/orm
+            classes:
+                model:      App\Entity\Tablature
+                interface:  Sylius\Component\Resource\Model\ResourceInterface
+                repository: Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository
+                controller: App\Controller\WebGuitarPro\TablatureController
+                form:       App\Form\TablatureForm
+        vs_wgp.tablature_file:
+            driver: doctrine/orm
+            classes:
+                model:      App\Entity\TablatureFile
+                interface:  Sylius\Component\Resource\Model\ResourceInterface
+                repository: Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository
+

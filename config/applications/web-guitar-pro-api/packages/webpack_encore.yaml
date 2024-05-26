@@ -1,0 +1,11 @@
+framework:
+    assets:
+        packages:
+            default:
+                json_manifest_path: '%kernel.project_dir%/public/__application_slug__/build/default/manifest.json'
+
+webpack_encore:
+    output_path: '%kernel.project_dir%/public/__application_slug__/build/default'
+    builds:
+        defaultConfig: '%kernel.project_dir%/public/__application_slug__/build/default'
+

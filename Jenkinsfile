@@ -165,6 +165,7 @@ ENDSSH
                             
                             ${PHP_BIN} -d memory_limit=-1 bin/console cache:clear
                             ${PHP_BIN} -d memory_limit=-1 bin/web-guitar-pro cache:clear
+                            ${PHP_BIN} -d memory_limit=-1 bin/web-guitar-pro-api cache:clear
                             
                             ${PHP_BIN} -d memory_limit=-1 bin/console vankosoft:install:info update
                             ${PHP_BIN} -d memory_limit=-1 bin/console vankosoft:load-widgets
@@ -190,6 +191,7 @@ ENDSSH
                             
                             ${PHP_BIN} -d memory_limit=-1 bin/console cache:clear
                             ${PHP_BIN} -d memory_limit=-1 bin/web-guitar-pro cache:clear
+                            ${PHP_BIN} -d memory_limit=-1 bin/web-guitar-pro-api cache:clear
                             
                             ${PHP_BIN} -d memory_limit=-1 bin/console vankosoft:install:info update
                             ${PHP_BIN} -d memory_limit=-1 bin/console vankosoft:load-widgets

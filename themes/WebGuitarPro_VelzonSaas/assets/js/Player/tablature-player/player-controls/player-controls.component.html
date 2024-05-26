@@ -1,14 +1,9 @@
-<nav id="sidebar" class="sidebar active">
+<nav id="sidebar" class="{{'sidebar active ' + navClass}}">
     
     <!-- Display Song Position -->
-    <song-position-item [player]="player" ></song-position-item>
+    <song-position-item [player]="player" class="song-position"></song-position-item>
     
-    <!--
-    <div class="player-controls displayPanel" style="padding: 5px 10px; max-height: 500px;" data-simplebar>
-    <div class="player-controls displayPanel" style="padding: 5px 10px;">
-    <div class="player-controls displayPanel scroll-window" style="padding: 5px 10px;" slimScroll [options]="opts" [scrollEvents]="scrollEvents">
-    -->
-    <div id="PlayerControls" class="player-controls displayPanel" style="padding: 5px 10px;">
+    <div id="PlayerControls" class="{{'player-controls displayPanel ' + navClass}}">
     
         <!-- PlayPause Button -->
         <play-pause-button-item [player]="player" ></play-pause-button-item>

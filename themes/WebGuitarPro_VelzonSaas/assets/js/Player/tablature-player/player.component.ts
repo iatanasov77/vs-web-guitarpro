@@ -17,7 +17,7 @@ export class PlayerComponent implements OnInit, OnDestroy
     alphatabApi: any;
     songDetails: any;
 
-    scoreLoaded: boolean = false;
+    scoreLoaded: boolean    = false;
     
     constructor() { }
     
@@ -28,6 +28,17 @@ export class PlayerComponent implements OnInit, OnDestroy
         
         this.songDetails    = document.querySelector( '#song-details' );
         this.alphatabInit();
+    }
+    
+    ngAfterViewInit(): void
+    {
+        let windowWidth    = $( window ).width();
+        let windowHeight    = $( window ).height();
+        let contentViewPort = windowHeight - 300;
+        
+        if ( contentViewPort < 500 && windowWidth > windowHeight ) {
+            $( '#tablaturePlayer' ).addClass( "player-controls-horizontal" );
+        }
     }
     
     ngOnDestroy()

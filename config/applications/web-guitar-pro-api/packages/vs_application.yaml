@@ -1,0 +1,87 @@
+vs_application_instalator:
+    resources:
+        instalation_info:
+            classes:
+                model: App\Entity\Application\InstalationInfo
+vs_application:
+    project_type: extended_application
+
+    resources:
+        application:
+            classes:
+                model: App\Entity\Application\Application
+        settings:
+            classes:
+                model: App\Entity\Application\Settings
+        taxonomy:
+            classes:
+                model: App\Entity\Application\Taxonomy
+        taxon:
+            classes:
+                model: App\Entity\Application\Taxon
+            translation:
+                classes:
+                    model: App\Entity\Application\TaxonTranslation
+        taxon_image:
+            classes:
+                model: App\Entity\Application\TaxonImage
+        translation:
+            classes:
+                model: App\Entity\Application\Translation
+        logentry:
+            classes:
+                model: App\Entity\Application\LogEntry
+        locale:
+            classes:
+                model: App\Entity\Application\Locale
+        cookie_consent_translation:
+            classes:
+                model: App\Entity\Application\CookieConsentTranslation
+        tags_whitelist_context:
+            classes:
+                model: App\Entity\Application\TagsWhitelistContext
+        tags_whitelist_tag:
+            classes:
+                model: App\Entity\Application\TagsWhitelistTag
+        widget_group:
+            classes:
+                model: App\Entity\Application\WidgetGroup
+        widget:
+            classes:
+                model: App\Entity\Application\Widget
+        widgets_registry:
+            classes:
+                model: App\Entity\Application\WidgetsRegistry
+
+#     menu:
+#         mainApplicationMenu:
+#             products:
+#                 name: Products
+#                 route: vs_catalog_catalog_latest_products
+#             pricing_plans:
+#                 name: Pricing plans
+#                 uri: "javascript:;"
+#                 #route: vs_catalog_pricing_plan_index
+#             contact:
+#                 name: vs_application.menu.contact
+#                 route: vs_application_contact
+# 
+#         profileMenu:
+#             profile:
+#                 name: vs_application.menu.my_profile
+#                 route: vs_users_profile_show
+#                 attributes:
+#                     iconClass: "fas fa-user mr-2"
+#             logout:
+#                 name: vs_application.menu.logout
+#                 route: app_logout
+#                 attributes:
+#                     iconClass: "fas fa-power-off mr-2"
+#             documentation:
+#                 name: vs_application.menu.documentation
+#                 uri: "javascript:;"
+#                 attributes:
+#                     iconClass: "fas fa-cog mr-2"
+                    
+
+     
