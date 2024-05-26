@@ -1,3 +1,9 @@
+3.1.3	|	Release date: **26.05.2024**
+============================================
+* Bug-Fixes:
+  - Fix FTP Deploy Config.
+
+
 3.1.2	|	Release date: **26.05.2024**
 ============================================
 * New Features and Improvements:
