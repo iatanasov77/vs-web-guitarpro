@@ -1,3 +1,9 @@
+3.1.4	|	Release date: **26.05.2024**
+============================================
+* New Features:
+  - Add API ENV Variables for Production.
+
+
 3.1.3	|	Release date: **26.05.2024**
 ============================================
 * Bug-Fixes:
