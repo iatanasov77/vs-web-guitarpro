@@ -18,6 +18,8 @@ export class InformationButtonItemComponent implements OnInit
 {
     @Input() player?: AlphaTabApi;
     
+    tooltipPlace: string   = "right";
+    
     constructor()
     {
         
@@ -26,6 +28,22 @@ export class InformationButtonItemComponent implements OnInit
     ngOnInit(): void
     {
         
+    }
+    
+    ngAfterViewInit(): void
+    {
+        let windowWidth    = $( window ).width();
+        let windowHeight    = $( window ).height();
+        let contentViewPort = windowHeight - 300;
+        let sidebarHeight   = $( '#PlayerControls' ).height();
+        
+        if ( sidebarHeight > contentViewPort && windowWidth > windowHeight ) {
+            this.tooltipPlace   = "bottom";
+        }
+        
+        if ( windowWidth < windowHeight ) {
+            this.tooltipPlace   = "left";
+        }
     }
     
     informationHandler( e: any ): void

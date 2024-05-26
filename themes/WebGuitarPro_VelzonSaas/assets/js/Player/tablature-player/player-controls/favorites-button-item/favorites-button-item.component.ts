@@ -17,11 +17,29 @@ export class FavoritesButtonItemComponent implements OnInit
 {
     @Input() tabId: number = 0;
     
+    tooltipPlace: string   = "right";
+    
     constructor() {}
     
     ngOnInit(): void
     {
         
+    }
+    
+    ngAfterViewInit(): void
+    {
+        let windowWidth    = $( window ).width();
+        let windowHeight    = $( window ).height();
+        let contentViewPort = windowHeight - 300;
+        let sidebarHeight   = $( '#PlayerControls' ).height();
+        
+        if ( sidebarHeight > contentViewPort && windowWidth > windowHeight ) {
+            this.tooltipPlace   = "bottom";
+        }
+        
+        if ( windowWidth < windowHeight ) {
+            this.tooltipPlace   = "left";
+        }
     }
     
     favoriteHandler(): void

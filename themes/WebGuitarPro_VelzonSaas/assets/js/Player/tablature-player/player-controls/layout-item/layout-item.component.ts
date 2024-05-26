@@ -9,14 +9,14 @@ declare var $: any;
     selector: 'layout-item',
     
     template: templateString || 'Template Not Loaded !!!',
-    //templateUrl: './layout-item.component.html',
-    
     styleUrls: []
-    //styleUrls: ['../player-controls.component.scss']
 })
 export class LayoutItemComponent implements OnInit
 {
     @Input() player?: AlphaTabApi;
+    
+    ddClass: string        = "player-menu-right";
+    tooltipPlace: string   = "right";
     
     selectedLayout: any = {
         id: 'page',
@@ -82,6 +82,23 @@ export class LayoutItemComponent implements OnInit
     ngOnInit(): void
     {
         
+    }
+    
+    ngAfterViewInit(): void
+    {
+        let windowWidth    = $( window ).width();
+        let windowHeight    = $( window ).height();
+        let contentViewPort = windowHeight - 300;
+        let sidebarHeight   = $( '#PlayerControls' ).height();
+        
+        if ( sidebarHeight > contentViewPort && windowWidth > windowHeight ) {
+            this.tooltipPlace   = "bottom";
+        }
+        
+        if ( windowWidth < windowHeight ) {
+            this.ddClass   = "";
+            this.tooltipPlace   = "left";
+        }
     }
 
     layoutHandler( layout: any, event: any ): void

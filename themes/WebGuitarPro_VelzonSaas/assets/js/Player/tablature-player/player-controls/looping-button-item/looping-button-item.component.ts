@@ -20,6 +20,8 @@ export class LoopingButtonItemComponent implements OnInit
     
     @Input() player?: AlphaTabApi;
     
+    tooltipPlace: string   = "right";
+    
     constructor()
     {
         this.loopingState   = false;
@@ -28,6 +30,22 @@ export class LoopingButtonItemComponent implements OnInit
     ngOnInit(): void
     {
         
+    }
+    
+    ngAfterViewInit(): void
+    {
+        let windowWidth    = $( window ).width();
+        let windowHeight    = $( window ).height();
+        let contentViewPort = windowHeight - 300;
+        let sidebarHeight   = $( '#PlayerControls' ).height();
+        
+        if ( sidebarHeight > contentViewPort && windowWidth > windowHeight ) {
+            this.tooltipPlace   = "bottom";
+        }
+        
+        if ( windowWidth < windowHeight ) {
+            this.tooltipPlace   = "left";
+        }
     }
     
     loopingHandler(): void

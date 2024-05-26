@@ -13,6 +13,8 @@ export class DownloadButtonItemComponent implements OnInit
 {
     tabUrl: String;
     
+    tooltipPlace: string   = "right";
+    
     constructor()
     {
         this.tabUrl = '';
@@ -21,6 +23,22 @@ export class DownloadButtonItemComponent implements OnInit
     ngOnInit(): void
     {
         this.tabUrl = $( '#tablatureContainer' ).attr( 'data-file' );
+    }
+    
+    ngAfterViewInit(): void
+    {
+        let windowWidth    = $( window ).width();
+        let windowHeight    = $( window ).height();
+        let contentViewPort = windowHeight - 300;
+        let sidebarHeight   = $( '#PlayerControls' ).height();
+        
+        if ( sidebarHeight > contentViewPort && windowWidth > windowHeight ) {
+            this.tooltipPlace   = "bottom";
+        }
+        
+        if ( windowWidth < windowHeight ) {
+            this.tooltipPlace   = "left";
+        }
     }
     
     downloadHandler( e: any ): void

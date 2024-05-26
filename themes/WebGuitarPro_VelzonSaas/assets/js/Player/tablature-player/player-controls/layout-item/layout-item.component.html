@@ -1,11 +1,11 @@
 <div class="player-controls__item"
     placement="top"
-    ngbTooltip="Tablature Layout" placement="right"
+    ngbTooltip="Tablature Layout" placement="{{ tooltipPlace }}"
 >
     <svg class="icon dropdown-toggle" data-bs-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
         <use xlink:href="#icon-layout"></use>
     </svg>
-    <div class="dropdown-menu dropdown-menu-right dropright dropup dropdown-layers player-menu-right">
+    <div class="{{'dropdown-menu dropdown-menu-right dropright dropup ' + ddClass}}">
         <div id="layoutSelector" class="dropdown-menu-background">
         
             <div style="font-weight: bold; padding-left: 10px;">Layout</div>

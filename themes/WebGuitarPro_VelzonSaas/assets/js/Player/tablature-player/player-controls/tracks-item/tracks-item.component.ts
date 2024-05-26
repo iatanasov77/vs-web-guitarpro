@@ -25,6 +25,9 @@ export class TracksItemComponent implements OnInit
     soloTracks: Array<any>    = [];
     muteTracks: Array<any>    = [];
     
+    ddClass: string        = "player-menu-right";
+    tooltipPlace: string   = "right";
+    
     constructor( @Inject(DOCUMENT) private document: Document )
     {
         
@@ -53,6 +56,24 @@ export class TracksItemComponent implements OnInit
             e.preventDefault();
             e.stopPropagation();
         });
+        
+        
+        /** 
+         * Horizontal and Mobile Controlls Views
+         */
+        let windowWidth    = $( window ).width();
+        let windowHeight    = $( window ).height();
+        let contentViewPort = windowHeight - 300;
+        let sidebarHeight   = $( '#PlayerControls' ).height();
+        
+        if ( sidebarHeight > contentViewPort && windowWidth > windowHeight ) {
+            this.tooltipPlace   = "bottom";
+        }
+        
+        if ( windowWidth < windowHeight ) {
+            this.ddClass   = "";
+            this.tooltipPlace   = "left";
+        }
     }
     
     resetElements(): void

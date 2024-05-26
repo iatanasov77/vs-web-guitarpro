@@ -1,5 +1,5 @@
 <div class="player-controls__item"
-    ngbTooltip="Set Speed" placement="right"
+    ngbTooltip="Set Speed" placement="{{ tooltipPlace }}"
 >
     <svg class="icon dropdown-toggle player-button"
         data-bs-toggle="dropdown"
@@ -9,7 +9,7 @@
     >
         <use xlink:href="#speed-selector"></use>
     </svg>
-    <div class="dropdown-menu dropdown-menu-right player-menu-right">
+    <div class="{{'dropdown-menu dropdown-menu-right ' + ddClass}}">
         <div id="speedSelector" class="dropdown-menu-background">
             <ul>
                 <li *ngFor="let speed of speeds"

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AlphaTabApi } from '@coderline/alphatab';
 
 import templateString from './player-controls.component.html'
@@ -20,15 +20,10 @@ export class PlayerControlsComponent implements OnInit
     isLoggedIn: boolean     = false;
     navClass: string        = "vertical";
     
-    //opts?: SlimScrollOptions;
-    //scrollEvents: EventEmitter<SlimScrollEvent>;
-    
     constructor()
     {
         let isLogged        = $( '#alphaTab' ).attr( 'data-user' );
         this.isLoggedIn     = ( String( isLogged ).toLowerCase() == "true" );
-        
-        //this.scrollEvents   = new EventEmitter<SlimScrollEvent>();
     }
     
     ngOnInit(): void
@@ -38,12 +33,17 @@ export class PlayerControlsComponent implements OnInit
     
     ngAfterViewInit(): void
     {
+        let windowWidth    = $( window ).width();
         let windowHeight    = $( window ).height();
         let contentViewPort = windowHeight - 300;
         let sidebarHeight   = $( '#PlayerControls' ).height();
         
-        if ( sidebarHeight > contentViewPort ) {
+        if ( sidebarHeight > contentViewPort && windowWidth > windowHeight ) {
             this.navClass   = "horizontal";
+        }
+        
+        if ( windowWidth < windowHeight ) {
+            this.navClass   += " player-controls-mobile";
         }
     }
 }

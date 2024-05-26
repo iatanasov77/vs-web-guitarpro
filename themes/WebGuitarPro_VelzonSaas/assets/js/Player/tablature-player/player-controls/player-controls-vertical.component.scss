@@ -19,6 +19,13 @@
     padding: 5px 10px;
 }
 
+.player-controls-mobile {
+    right: 10px !important;
+    left: auto !important;
+    top: 75px;
+    background-color: inherit !important;
+}
+
 .displayPanel {
     display: block;
     box-sizing: border-box;

@@ -16,6 +16,8 @@ export class CountInButtonItemComponent implements OnInit
     
     @Input() player?: AlphaTabApi;
     
+    tooltipPlace: string   = "right";
+    
     constructor()
     {
         this.countInVolume   = 0;
@@ -24,6 +26,22 @@ export class CountInButtonItemComponent implements OnInit
     ngOnInit(): void
     {
         
+    }
+    
+    ngAfterViewInit(): void
+    {
+        let windowWidth    = $( window ).width();
+        let windowHeight    = $( window ).height();
+        let contentViewPort = windowHeight - 300;
+        let sidebarHeight   = $( '#PlayerControls' ).height();
+        
+        if ( sidebarHeight > contentViewPort && windowWidth > windowHeight ) {
+            this.tooltipPlace   = "bottom";
+        }
+        
+        if ( windowWidth < windowHeight ) {
+            this.tooltipPlace   = "left";
+        }
     }
     
     countInHandler():void
