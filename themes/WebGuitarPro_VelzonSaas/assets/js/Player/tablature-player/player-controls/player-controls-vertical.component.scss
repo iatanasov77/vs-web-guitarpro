@@ -1,0 +1,206 @@
+#sidebar {
+    position: fixed;
+    z-index: 9999;
+    /*min-width: 250px;
+    max-width: 250px;*/
+    transition: all 0.3s;
+    margin-left: 10px;
+}
+
+#sidebar.active.vertical {
+    min-width: 80px;
+    max-width: 86px;
+    text-align: center;
+}
+    
+.player-controls.vertical {
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 5px 10px;
+}
+
+.displayPanel {
+    display: block;
+    box-sizing: border-box;
+    border-radius: 8px;
+    border: 1px solid #eaeaea;
+    box-shadow: 0 0.5rem 1.2rem;
+}
+
+#sidebar.active .song-position .displayPanel {
+    margin: 0 0 15px 0;
+    padding: 5px 10px;
+}
+
+#sidebar.active .song-position .displayPanel .panelContent {
+    font-size: 12px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.player-controls__item {
+    display: inline-flex;
+    font-size: 30px;
+    padding: 5px;
+    margin-bottom: 10px;
+    color: #212529 !important;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    position: relative !important;
+    transition: all 0.3s ease-in-out;
+}
+
+.player-controls__item::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    /* background: #fff; */
+    transform: scale(0.5);
+    opacity: 0;
+    box-shadow: 0px 5px 10px 0px rgb(76 70 124 / 20%);
+    transition: all 0.3s ease-in-out;
+    transition: all 0.4s cubic-bezier(0.35, 0.57, 0.13, 0.88);
+}
+
+.player-controls__item:hover {
+    color: #532ab9;
+}
+
+.player-controls__item:hover::before {
+    opacity: 1;
+    transform: scale(1.3);
+}
+
+.player-controls__item:active {
+    color: #532ab9;
+}
+
+.player-controls__item:active::before {
+    opacity: 1;
+    transform: scale(1.3);
+}
+
+.icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    stroke-width: 1;
+    stroke: currentColor;
+    fill: currentColor;
+    
+    position: relative;
+    z-index: 2;
+}
+
+.player-menu-right {
+    right: auto !important;
+    left: 55px !important;
+    top: -60px !important;
+    background-color: inherit !important;
+}
+
+#wrapper {
+    position: absolute;
+    top: 100px;
+    background: blue;
+    height: 600px;
+    width: 80%;
+    overflow: auto;
+}
+
+.player-control-active {
+    color: #ffffff !important;
+    background-color: black;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.dropdown-menu-background {
+    border-radius: 6px;
+    margin-left: 0;
+    border: 1px solid black;
+    background-color: #f8f9fa;
+    box-shadow: 0 3px 20px #00000038;
+    z-index: 999;
+}
+
+.dropdown-menu::before {
+    top: 35px;
+    left: -7px;
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: #7386D5;
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+    
+    background-color:#00000010 !important;
+    border: 1px solid black;
+    z-index: -1;
+}
+
+#trackList {
+    width: 280px;
+}
+
+#trackList .track,
+#layoutSelector .track {
+    border-bottom: 1px solid black;
+    padding: 20px;
+}
+
+.-favorite {
+    font-size: 22px !important;
+}
+
+#trackList .track, #layoutSelector .track {
+    border-bottom: 1px solid black;
+    padding: 20px;
+}
+
+.scrollable-menu-side {
+    height: auto;
+    max-height: 385px;
+    overflow-x: hidden;
+}
+
+
+div#speedSelector ul,
+div#layoutSelector {
+    margin-top: 1rem;
+}
+
+div#speedSelector ul li:hover,
+div#layoutSelector ul li:hover {
+    background-color: #eaeaea;
+}
+
+div#speedSelector ul li.active,
+div#layoutSelector ul li.active {
+    color: #00ff;
+}
+
+#trackList div.track:hover {
+    background-color: #eaeaea !important;
+}
+
+.B2925c {
+    font-family: Helvetica Neue Condenced Bold,Arial,sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    font-size: 11px;
+    transition: fill .1s ease;
+}

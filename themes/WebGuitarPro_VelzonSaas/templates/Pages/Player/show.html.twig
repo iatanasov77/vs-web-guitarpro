@@ -25,12 +25,13 @@
         </div>
         
         <div id="tablatureWrapper">
+        
             <div id="song-details" data-user={% if app.user %}{{ app.user.id }}{% else %}0{% endif %}>
                 <h1 class="artist"></h1>
                 <h2 class="title"></h2>
                 <h3 class="album"></h3>
-                
             </div>
+            
             <div id="alphaTab"
                 data-base-url="http://{{ baseUrl }}"
                 data-file="{{ url( 'tablature_read', {id: item.id} ) }}"
@@ -38,6 +39,7 @@
                 data-add-favorite-url="{{ path( 'tablature_favorite', {id: item.id} ) }}"
                 data-use-cdn="{{ alphatabUseCdn }}"
             ></div>
+            
         </div>
     </div>
 {% endblock %}

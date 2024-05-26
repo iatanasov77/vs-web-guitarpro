@@ -1,0 +1,30 @@
+#sidebar.active.horizontal .song-position {
+    float: left;
+}
+
+#sidebar.active.horizontal .song-position .displayPanel {
+    margin-right: 15px !important;
+    height: 70px;
+}
+
+#sidebar.active.horizontal .song-position .displayPanel .panelContent {
+    /*
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    */
+}
+    
+#sidebar.active.horizontal {
+    min-width: 622px;
+    width: 96%;
+    text-align: center;
+}
+    
+.player-controls.horizontal {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    padding: 5px 10px;
+}

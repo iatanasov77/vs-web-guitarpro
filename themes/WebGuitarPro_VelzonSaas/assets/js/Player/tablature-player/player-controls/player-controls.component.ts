@@ -18,6 +18,7 @@ export class PlayerControlsComponent implements OnInit
     @Input() player?: AlphaTabApi;
     
     isLoggedIn: boolean     = false;
+    navClass: string        = "vertical";
     
     //opts?: SlimScrollOptions;
     //scrollEvents: EventEmitter<SlimScrollEvent>;
@@ -37,30 +38,12 @@ export class PlayerControlsComponent implements OnInit
     
     ngAfterViewInit(): void
     {
-        /*
-         Should Create Horizontal Player Controlls Block on Top of Tablature,
-         Because Nothing of Plugins Not Works As Expected
-        */
-        
-        /*
         let windowHeight    = $( window ).height();
         let contentViewPort = windowHeight - 300;
         let sidebarHeight   = $( '#PlayerControls' ).height();
         
         if ( sidebarHeight > contentViewPort ) {
-            $( "#PlayerControls" ).css( "height", contentViewPort );
-            $( "#PlayerControls" ).css( "overflow-y", "auto" );
-            $( "#PlayerControls" ).css( "overflow-x", "hidden" );
+            this.navClass   = "horizontal";
         }
-        */
-        
-        /*
-        $( '#PlayerControls' ).slimScroll({
-            railVisible: false,
-            alwaysVisible: false,
-            color: '#ffffff',
-            height: '300px',
-        });
-        */
     }
 }
