@@ -1,0 +1,17 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    vs_users.form.type.registration:
+        class: App\Form\RegistrationForm
+        tags:
+            - { name: form.type, alias: vs_users_registration }
+        arguments:
+            - '%vs_users.model.users.class%'
+            - '@vs_application.repository.locale'
+            - "@request_stack"
+            - '%vs_application.model.application.class%'
+            - '@security.helper'
+
+    

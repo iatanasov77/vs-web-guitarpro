@@ -1,0 +1,7 @@
+app_pricing_plans:
+    path: /pricing-plans
+    controller: App\Controller\WebGuitarProAPI\PricingPlansController::index
+
+app_pricing_plans_select:
+    path: /pricing-plans/select/{pricingPlanId}
+    controller: App\Controller\WebGuitarProAPI\PricingPlansController::selectPricingPlan

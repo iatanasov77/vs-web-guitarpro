@@ -25,20 +25,20 @@ security:
         #       You can Remove apiToken field from User Model in Library.
         #       It not needed. JWT Provide Best API Authentication Solution
         ################################################################################################
-        api_login:
-            pattern: ^/api/login
-            stateless: true
-            provider: api_provider
-            json_login:
-                check_path: /api/login_check
-                success_handler: lexik_jwt_authentication.handler.authentication_success
-                failure_handler: lexik_jwt_authentication.handler.authentication_failure
-
-        api_main:
-            pattern:   ^/api
-            stateless: true
-            provider: api_provider
-            jwt: ~
+#         api_login:
+#             pattern: ^/api/login
+#             stateless: '%env(bool:ENABLE_API_STATELESS_REQUESTS)%'
+#             provider: api_provider
+#             json_login:
+#                 check_path: /api/login_check
+#                 success_handler: lexik_jwt_authentication.handler.authentication_success
+#                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
+# 
+#         api_main:
+#             pattern:   ^/api
+#             stateless: '%env(bool:ENABLE_API_STATELESS_REQUESTS)%'
+#             provider: api_provider
+#             jwt: ~
         ################################################################################################
         
         main:
@@ -78,9 +78,9 @@ security:
         - { path: /_profiler/.*, roles: PUBLIC_ACCESS }
 
         # API Routes
-        - { path: ^/api-docs, roles: PUBLIC_ACCESS }
-        - { path: ^/api/login, roles: PUBLIC_ACCESS }
-        - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }
+#         - { path: ^/api/api-docs, roles: PUBLIC_ACCESS }
+#         - { path: ^/api/login, roles: PUBLIC_ACCESS }
+#         - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }
         
         # Web Routes
         - { path: ^/$, roles: PUBLIC_ACCESS }

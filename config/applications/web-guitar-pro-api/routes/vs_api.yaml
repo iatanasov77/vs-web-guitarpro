@@ -1,0 +1,13 @@
+vs_api_platform:
+    resource: "@VSApiBundle/Resources/config/routing/api_platform.yaml"
+    prefix: /api
+
+vs_api_users:
+    resource: "@VSApiBundle/Resources/config/routing/api.yaml"
+    prefix: /api
+
+vs_api_test_index:
+    path: /api/test-index
+    controller: App\Controller\Api\TestController::index
+
+

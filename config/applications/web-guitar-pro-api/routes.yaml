@@ -1,0 +1,16 @@
+# app_home:
+#     path: /
+#     controller: App\Controller\WebGuitarProAPI\DefaultController::index
+# 
+# admin_panel:
+#     path: /admin
+#     controller: App\Controller\Application\DefaultController::openAdminPanel
+# 
+# app_set_lang:
+#     path: /set_lang/{lang}
+#     controller: App\Controller\Application\DefaultController::setLanguage
+# 
+# app_set_locale:
+#     path: /set_locale/{locale}
+#     controller: App\Controller\Application\DefaultController::setLocale
+    

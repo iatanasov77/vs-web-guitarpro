@@ -1,0 +1,6 @@
+vs_payment:
+    http_client:
+        verify_peer: false
+        verify_host: false
+
+

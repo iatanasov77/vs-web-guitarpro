@@ -1,0 +1,31 @@
+vs_catalog:
+    resources:
+        product:
+            classes:
+                model: App\Entity\Catalog\Product
+        product_picture:
+            classes:
+                model: App\Entity\Catalog\ProductPicture
+        product_file:
+            classes:
+                model: App\Entity\Catalog\ProductFile
+        product_category:
+            classes:
+                model: App\Entity\Catalog\ProductCategory
+        pricing_plan_category:
+            classes:
+                model: App\Entity\Catalog\PricingPlanCategory
+        pricing_plan:
+            classes:
+                model: App\Entity\Catalog\PricingPlan
+        pricing_plan_subscription:
+            classes:
+                model: App\Entity\Catalog\PricingPlanSubscription
+        association_type:
+            classes:
+                model: App\Entity\Catalog\AssociationType
+        product_association:
+            classes:
+                model: App\Entity\Catalog\ProductAssociation
+
+

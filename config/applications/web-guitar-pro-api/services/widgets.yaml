@@ -1,0 +1,14 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: true
+
+
+    App\Widgets\Test1Widget:
+        tags:
+            - { name: kernel.event_listener, event: widget.start, method: builder }
+            
+    App\Widgets\Test2Widget:
+        tags:
+            - { name: kernel.event_listener, event: widget.start, method: builder }

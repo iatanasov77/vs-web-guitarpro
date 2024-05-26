@@ -1,0 +1,43 @@
+parameters:
+    # Gaufrette File Systems
+    vs_cms.gaufrette.profile.filesystem: vs_application_profile
+    vs_cms.gaufrette.filemanager.filesystem: vs_application_filemanager
+    vs_cms.gaufrette.slider.filesystem: vs_application_slider
+    vs_application.gaufrette.app_pictures.filesystem: vs_application_app_pictures
+    
+    # Gaufrette Shared Media Directories
+    vs_cms.filemanager_shared_media_gaufrette.profile: "%kernel.project_dir%/public/shared_media/gaufrette/profile"
+    vs_cms.filemanager_shared_media_gaufrette.filemanager: "%kernel.project_dir%/public/shared_media/gaufrette/filemanager"
+    vs_cms.filemanager_shared_media_gaufrette.slider: "%kernel.project_dir%/public/shared_media/gaufrette/slider"
+    vs_application.filemanager_shared_media_gaufrette.app_pictures: "%kernel.project_dir%/public/shared_media/gaufrette/app_pictures"
+    
+    # Artgris Shared Media Directories
+    vs_cms.filemanager_shared_media_artgris: '%kernel.project_dir%/public/shared_media/artgris'
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: true
+
+    vs_application.app_pictures_uploader.filesystem:
+        class: Gaufrette\Filesystem
+        arguments: ['%vs_application.gaufrette.app_pictures.filesystem%']
+        factory: ['@knp_gaufrette.filesystem_map', 'get']
+        
+    vs_application.app_pictures_uploader:
+        class: Vankosoft\CmsBundle\Component\Uploader\FilemanagerUploader
+        arguments:
+            - '@vs_application.app_pictures_uploader.filesystem'
+            - '@vs_cms.file_path_generator'
+    
+    # Create a Custom Uploader extending Vankosoft\CmsBundle\Component\Uploader\FilemanagerUploader
+    # Add Needed Configurations in packages/knp_gaufrette.yaml
+    ##################################################################################################
+#    vs_application.custom_uploader:
+#        class: App\Component\Uploader\GamePictureUploader
+#        arguments:
+#            - '@vs_application.app_pictures_uploader.filesystem'
+#            - '@vs_cms.file_path_generator'
+
+

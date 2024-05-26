@@ -1,0 +1,37 @@
+vs_user_authentication:
+    resource: "@VSUsersBundle/Resources/config/routing/authentication.yml"
+    prefix:   /
+    
+vs_user_proffile:
+    resource: "@VSUsersBundle/Resources/config/routing/profile.yml"
+    prefix:   /
+
+app_login:
+    path: /login
+    controller: App\Controller\WebGuitarProAPI\AuthController::login
+
+app_logout:
+    path: /logout
+    controller: App\Controller\WebGuitarProAPI\AuthController::logout
+
+vs_users_register_form:
+    path:     /register
+    controller: App\Controller\WebGuitarProAPI\RegisterController::index
+    
+vs_users_forgot_password_form:
+    path:     /forgot-password
+    controller: App\Controller\WebGuitarProAPI\ForgotPasswordController::indexAction
+
+vs_users_forgot_password_reset:
+    path:     /forgot-password/reset/{token}
+    controller: App\Controller\WebGuitarProAPI\ForgotPasswordController::resetAction
+
+
+vs_users_get_states_for_country:
+    path:     /get-states-for-country/{countryCode}
+    controller: App\Controller\WebGuitarProAPI\RegisterController::getStatesForCountry
+    
+app_profile_show:
+    path:     /my-profile
+    controller: App\Controller\WebGuitarProAPI\ProfileController::showAction
+

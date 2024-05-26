@@ -1,9 +1,21 @@
+# web_profiler:
+#     toolbar: true # %kernel.debug%
+#     intercept_redirects: false
+# 
+# framework:
+#     profiler:
+#         enabled: true # %kernel.debug%
+#         only_exceptions: false
+    
+
+    
+    
 web_profiler:
-    toolbar: true # %kernel.debug%
+    toolbar: false # %kernel.debug%
     intercept_redirects: false
 
 framework:
     profiler:
-        enabled: true # %kernel.debug%
+        enabled: false # %kernel.debug%
         only_exceptions: false
     

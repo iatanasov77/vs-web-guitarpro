@@ -1,0 +1,4 @@
+bazinga_js_translation:
+    resource: "@BazingaJsTranslationBundle/Resources/config/routing/routing.yml"
+    options:
+        expose: true

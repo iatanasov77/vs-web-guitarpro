@@ -1,0 +1,10 @@
+bazinga_js_translation:
+    locale_fallback: en
+    default_domain: VSApplicationBundle
+    active_domains:
+        - VSApplicationBundle
+        - VSCmsBundle
+        - VSUsersBundle
+    active_locales:
+        - en
+        - bg

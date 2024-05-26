@@ -1,0 +1,94 @@
+security:
+    password_hashers:
+        App\Entity\UserManagement\User:
+            algorithm: auto
+            
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+        default_provider:
+            entity:
+                class: App\Entity\UserManagement\User
+                property: email
+        api_provider:
+            entity:
+                class: App\Entity\UserManagement\User
+                property: username
+
+    firewalls:
+        # API Firewall - Uncomment to Use API Firewalls
+        ################################################################################################
+        # Manual: https://symfony.com/bundles/LexikJWTAuthenticationBundle/current/index.html
+        # NOTE: API Firewall Configuration Should Be Before Main Firewall
+        #       You can Remove apiToken field from User Model in Library.
+        #       It not needed. JWT Provide Best API Authentication Solution
+        ################################################################################################
+        api_login:
+            pattern: ^/api/login
+            stateless: '%env(bool:ENABLE_API_STATELESS_REQUESTS)%'
+            provider: api_provider
+            json_login:
+                check_path: /api/login_check
+                success_handler: lexik_jwt_authentication.handler.authentication_success
+                failure_handler: lexik_jwt_authentication.handler.authentication_failure
+
+        api_main:
+            pattern:   ^/api
+            stateless: '%env(bool:ENABLE_API_STATELESS_REQUESTS)%'
+            provider: api_provider
+            jwt: ~
+        ################################################################################################
+        
+        main:
+            lazy: true
+            #pattern: ^/(?!admin)
+            provider: default_provider
+            form_login:
+                enable_csrf: true
+                login_path: app_login
+                check_path: app_login
+                username_parameter: _username
+                password_parameter: _password
+                always_use_default_target_path: false
+                default_target_path:  /
+            logout:
+                path: app_logout
+                target: app_login
+                invalidate_session: true
+
+            custom_authenticators:
+                - vs_users.security.login_form_authenticator
+                #- vs_api.security.api_key_authenticator
+            entry_point: vs_users.security.login_form_authenticator
+       
+    role_hierarchy:
+        ROLE_SUPER_ADMIN: []
+        ROLE_APPLICATION_ADMIN: [ROLE_TEST_VANKOSOFT_APPLICATION_ADMIN]
+        ROLE_TEST_VANKOSOFT_APPLICATION_ADMIN: [ROLE_TEST_VANKOSOFT_APPLICATION_AUTHOR, ROLE_TEST_VANKOSOFT_APPLICATION_USER]
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+        - { path: /_wdt/.*, roles: PUBLIC_ACCESS }
+        - { path: /_profiler/.*, roles: PUBLIC_ACCESS }
+        
+        # API Routes
+        - { path: ^/api/recurring-payment, roles: PUBLIC_ACCESS, requires_channel: '%env(SECURE_SCHEME)%' }
+        - { path: ^/api/api-docs, roles: PUBLIC_ACCESS, requires_channel: '%env(SECURE_SCHEME)%' }
+        - { path: ^/api/login, roles: PUBLIC_ACCESS, requires_channel: '%env(SECURE_SCHEME)%' }
+        - { path: ^/api, roles: IS_AUTHENTICATED_FULLY, requires_channel: '%env(SECURE_SCHEME)%' }
+
+        # Uncomment This If The Home Page is Public
+        ##############################################
+        # - { path: ^/$, roles: PUBLIC_ACCESS }
+
+        - { path: ^/login, roles: PUBLIC_ACCESS, requires_channel: '%env(SECURE_SCHEME)%' }
+        - { path: ^/forgot-password, roles: PUBLIC_ACCESS, requires_channel: '%env(SECURE_SCHEME)%' }
+        - { path: ^/register, roles: PUBLIC_ACCESS, requires_channel: '%env(SECURE_SCHEME)%' }
+        - { path: ^/verify, roles: PUBLIC_ACCESS, requires_channel: '%env(SECURE_SCHEME)%' }
+        - { path: ^/password-generator/json-get-passwords, roles: PUBLIC_ACCESS, requires_channel: '%env(SECURE_SCHEME)%' }
+        - { path: ^/translations/, roles: PUBLIC_ACCESS, requires_channel: '%env(SECURE_SCHEME)%' }
+        
+        - { path: ^/cookie-consent-translations, roles: PUBLIC_ACCESS, requires_channel: '%env(SECURE_SCHEME)%' }
+        #- { path: ^/, roles: [ROLE_SUPER_ADMIN, ROLE_APPLICATION_ADMIN, ROLE_TEST_VANKOSOFT_APPLICATION_ADMIN], requires_channel: '%env(SECURE_SCHEME)%' }
+        - { path: ^/, roles: PUBLIC_ACCESS, requires_channel: '%env(SECURE_SCHEME)%' }
+

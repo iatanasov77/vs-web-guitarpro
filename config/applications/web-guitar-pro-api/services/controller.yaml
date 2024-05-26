@@ -1,0 +1,151 @@
+parameters:
+    ########################################################
+    # Contact Page
+    ########################################################
+    vs_application.contact_email: 'info@bootsshop.com'
+    vs_application.contact.show_address: true
+    vs_application.contact.show_phone: true
+    vs_application.contact.google_map: 'https://maps.google.co.uk/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=18+California,+Fresno,+CA,+United+States&amp;aq=0&amp;oq=18+California+united+state&amp;sll=39.9589,-120.955336&amp;sspn=0.007114,0.016512&amp;ie=UTF8&amp;hq=&amp;hnear=18,+Fresno,+California+93727,+United+States&amp;t=m&amp;ll=36.732762,-119.695787&amp;spn=0.017197,0.100336&amp;z=14&amp;output=embed'
+    vs_application.contact.google_large_map: 'https://maps.google.co.uk/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=18+California,+Fresno,+CA,+United+States&amp;aq=0&amp;oq=18+California+united+state&amp;sll=39.9589,-120.955336&amp;sspn=0.007114,0.016512&amp;ie=UTF8&amp;hq=&amp;hnear=18,+Fresno,+California+93727,+United+States&amp;t=m&amp;ll=36.732762,-119.695787&amp;spn=0.017197,0.100336&amp;z=14'
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    App\Controller\WebGuitarProAPI\:
+        resource: '../../../../src/Controller/WebGuitarProAPI'
+        tags: ['controller.service_arguments']
+        autowire: true
+        exclude:
+            - '../../../../src/Controller/WebGuitarProAPI/ProductController.php'
+    
+    App\Controller\WebGuitarProAPI\ContactController:
+        tags: ['controller.service_arguments']
+        autowire: true
+        arguments:
+            - {
+              contactEmail: '%vs_application.contact_email%',
+              showAddress: '%vs_application.contact.show_address%',
+              showPhone: '%vs_application.contact.show_phone%',
+              googleMap: '%vs_application.contact.google_map%',
+              googleLargeMap: '%vs_application.contact.google_large_map%'
+            }
+            - '@mailer'
+            - '@vs_users.notifications'
+            - '@doctrine'
+            
+    App\Controller\WebGuitarProAPI\ProfileController:
+        public: true
+        autowire: true
+        tags: ['controller.service_arguments']
+        arguments:
+            - '@doctrine'
+            - '%vs_users.model.users.class%'
+            - '@vs_users.manager.user'
+            - '@vs_users.factory.avatar_image'
+            - '@vs_cms.profile_uploader'
+            - '@vs_payment_payment'
+            - '@vs_catalog.repository.pricing_plan'
+            - '@vs_catalog.repository.pricing_plan_category'
+            - '@vs_catalog.repository.pricing_plan_subscription'
+            
+    App\Controller\WebGuitarProAPI\RegisterController:
+        public: true
+        autowire: true
+        tags: ['controller.service_arguments']
+        arguments:
+            - '@doctrine'
+            - '@vs_application.context.application'
+            - '@vs_users.manager.user'
+            - '@vs_users.repository.users'
+            - '@vs_users.factory.users'
+            - '@vs_users.repository.user_roles'
+            - '@mailer'
+            - '@vs_cms.repository.pages'
+            - '@security.user_authenticator'
+            - '@vs_users.security.another_login_form_authenticator'
+            - {
+                registrationForm: '%vs_users.registration_form%',
+                registerRole: '%vs_users.register_role%',
+                defaultRedirect: '%vs_users.default_redirect%',
+                mailerUser: '%vs_application.mailer_user%',
+            }
+        calls:
+            - setTokenGenerator: ['@?symfonycasts.verify_email.token_generator']
+            - setVerifyEmailHelper: ['@?symfonycasts.verify_email.helper']
+            
+    App\Controller\WebGuitarProAPI\ForgotPasswordController:
+        public: true
+        autowire: true
+        tags: ['controller.service_arguments']
+        arguments:
+            - '@doctrine'
+            - '@vs_users.repository.reset_password_request'
+            - '@vs_users.repository.users'
+            - '@mailer'
+            - '@vs_users.factory.reset_password_request'
+            - '@vs_users.manager.user'
+            - {
+                defaultRedirect: '%vs_users.default_redirect%',
+                mailerUser: '%vs_application.mailer_user%',
+            }
+        calls:
+            - setResetPasswordHelper: ['@?symfonycasts.reset_password.helper']
+
+    App\Controller\WebGuitarProAPI\AuthController:
+        tags: ['controller.service_arguments']
+        autowire: true
+        arguments:
+            - '@vs_application.context.application'
+            - '@twig'
+            - '@doctrine'
+    
+    App\Controller\WebGuitarProAPI\DefaultController:
+        tags: ['controller.service_arguments']
+        autowire: true
+        arguments:
+            - '@vs_application.context.application'
+            - '@twig'
+            - '@doctrine'
+            - '@vs_catalog.repository.product_category'
+            - '@vs_catalog.repository.product'
+    
+    App\Controller\WebGuitarProAPI\CreditCardController:
+        tags: ['controller.service_arguments']
+        autowire: false
+        arguments:
+            - '@doctrine'
+            - '@vs_payment.repository.order'
+        calls:
+            - [ setContainer, [ '@service_container' ] ]
+            
+    App\Controller\WebGuitarProAPI\ShoppingCartCheckoutController:
+        tags: ['controller.service_arguments']
+        autowire: false
+        arguments:
+            - '@doctrine'
+            - '@vs_payment.repository.order'
+            - '@vs_payment_payment'
+        calls:
+            - [ setContainer, [ '@service_container' ] ]
+            
+    App\Controller\WebGuitarProAPI\PricingPlanCheckoutController:
+        tags: ['controller.service_arguments']
+        autowire: true
+        arguments:
+            - '@doctrine'
+            - '@event_dispatcher'
+            - '@vs_users.security_bridge'
+            - '@vs_payment.factory.order'
+            - '@vs_payment.repository.order'
+            - '@vs_payment.factory.order_item'
+            - '@vs_payment.repository.payment_method'
+            - '@vs_payment_payment'
+            - '@vs_payment.order_factory'
+            - '@vs_payment.repository.gateway_config'
+            - '@vs_catalog.repository.pricing_plan_category'
+            - '@vs_catalog.repository.pricing_plan'
+            - '@vs_catalog.repository.pricing_plan_subscription'
+        calls:
+            - [ setContainer, [ '@service_container' ] ]
