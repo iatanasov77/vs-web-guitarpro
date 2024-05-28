@@ -9,7 +9,6 @@ use Vankosoft\PaymentBundle\Model\Interfaces\UserPaymentAwareInterface;
 use Vankosoft\PaymentBundle\Model\Traits\UserPaymentAwareEntity;
 use Vankosoft\PaymentBundle\Model\Interfaces\CustomerInterface;
 use Vankosoft\PaymentBundle\Model\Traits\CustomerEntity;
-
 use Vankosoft\CatalogBundle\Model\Interfaces\UserSubscriptionAwareInterface;
 use Vankosoft\CatalogBundle\Model\Traits\UserSubscriptionAwareEntity;
 

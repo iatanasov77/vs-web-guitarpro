@@ -8,7 +8,6 @@ twig:
         applicationTitle: '%applicationTitle%'
         hasTopSearch: '%hasTopSearch%'
         formCreateAccount: '%vs_users.form_create_account%'
-        webSiteUrl: "http://website.url"
         installedBundles: '%kernel.bundles%'
         pageCategoriesTaxonomyCode: '%vs_application.page_categories.taxonomy_code%'
         
