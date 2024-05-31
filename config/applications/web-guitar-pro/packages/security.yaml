@@ -83,26 +83,26 @@ security:
 #         - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }
         
         # Web Routes
-        - { path: ^/$, roles: PUBLIC_ACCESS }
-        - { path: ^/login, roles: PUBLIC_ACCESS }
-        - { path: ^/forgot-password, roles: PUBLIC_ACCESS }
-        - { path: ^/register, roles: PUBLIC_ACCESS }
-        - { path: ^/verify, roles: PUBLIC_ACCESS }
-        - { path: ^/password-generator/json-get-passwords, roles: PUBLIC_ACCESS }
-        - { path: ^/translations/, roles: PUBLIC_ACCESS }
-        - { path: ^/cookie-consent-translations, roles: PUBLIC_ACCESS }
+        - { path: ^/$, roles: PUBLIC_ACCESS, requires_channel: '%env(SECURE_SCHEME)%' }
+        - { path: ^/login, roles: PUBLIC_ACCESS, requires_channel: '%env(SECURE_SCHEME)%' }
+        - { path: ^/forgot-password, roles: PUBLIC_ACCESS, requires_channel: '%env(SECURE_SCHEME)%' }
+        - { path: ^/register, roles: PUBLIC_ACCESS, requires_channel: '%env(SECURE_SCHEME)%' }
+        - { path: ^/verify, roles: PUBLIC_ACCESS, requires_channel: '%env(SECURE_SCHEME)%' }
+        - { path: ^/password-generator/json-get-passwords, roles: PUBLIC_ACCESS, requires_channel: '%env(SECURE_SCHEME)%' }
+        - { path: ^/translations/, roles: PUBLIC_ACCESS, requires_channel: '%env(SECURE_SCHEME)%' }
+        - { path: ^/cookie-consent-translations, roles: PUBLIC_ACCESS, requires_channel: '%env(SECURE_SCHEME)%' }
         
-        - { path: ^/set_locale, roles: PUBLIC_ACCESS }
-        - { path: ^/about-application, roles: PUBLIC_ACCESS }
+        - { path: ^/set_locale, roles: PUBLIC_ACCESS, requires_channel: '%env(SECURE_SCHEME)%' }
+        - { path: ^/about-application, roles: PUBLIC_ACCESS, requires_channel: '%env(SECURE_SCHEME)%' }
         
-        - { route: 'vs_wgp_tablature_create', roles: [ROLE_SUPER_ADMIN, ROLE_APPLICATION_ADMIN, ROLE_WEB_GUITAR_PRO_ADMIN] }
-        - { route: 'vs_wgp_tablature_update', roles: [ROLE_SUPER_ADMIN, ROLE_APPLICATION_ADMIN, ROLE_WEB_GUITAR_PRO_ADMIN] }
-        - { route: 'vs_wgp_tablature_delete', roles: [ROLE_SUPER_ADMIN, ROLE_APPLICATION_ADMIN, ROLE_WEB_GUITAR_PRO_ADMIN] }
+        - { route: 'vs_wgp_tablature_create', roles: [ROLE_SUPER_ADMIN, ROLE_APPLICATION_ADMIN, ROLE_WEB_GUITAR_PRO_ADMIN], requires_channel: '%env(SECURE_SCHEME)%' }
+        - { route: 'vs_wgp_tablature_update', roles: [ROLE_SUPER_ADMIN, ROLE_APPLICATION_ADMIN, ROLE_WEB_GUITAR_PRO_ADMIN], requires_channel: '%env(SECURE_SCHEME)%' }
+        - { route: 'vs_wgp_tablature_delete', roles: [ROLE_SUPER_ADMIN, ROLE_APPLICATION_ADMIN, ROLE_WEB_GUITAR_PRO_ADMIN], requires_channel: '%env(SECURE_SCHEME)%' }
         
         - { path: ^/tablatures, roles: PUBLIC_ACCESS } # Tablature ACCESS SHOULD BE CHECK BY A VOTER
         - { path: ^/tablatures-ext/, roles: PUBLIC_ACCESS } # Tablature ACCESS SHOULD BE CHECK BY A VOTER
         
-        - { path: ^/build/, roles: PUBLIC_ACCESS }
-        - { path: ^/, roles: [ROLE_SUPER_ADMIN, ROLE_APPLICATION_ADMIN, ROLE_WEB_GUITAR_PRO_ADMIN] }
+        - { path: ^/build/, roles: PUBLIC_ACCESS, requires_channel: '%env(SECURE_SCHEME)%' }
+        - { path: ^/, roles: [ROLE_SUPER_ADMIN, ROLE_APPLICATION_ADMIN, ROLE_WEB_GUITAR_PRO_ADMIN], requires_channel: '%env(SECURE_SCHEME)%' }
         
 

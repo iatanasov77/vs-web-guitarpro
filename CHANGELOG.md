@@ -1,3 +1,13 @@
+3.2.0	|	Release date: **31.05.2024**
+============================================
+* New Features:
+  - Update AdminPanel Routes Config.
+  - Litle Refactoring.
+  - Update Doctrine Config for Production Environement.
+  - Update Security Access Control Config.
+  - Set Google Measurement ID.
+
+
 3.1.4	|	Release date: **26.05.2024**
 ============================================
 * New Features:

@@ -39,17 +39,16 @@ return [
     winzou\Bundle\StateMachineBundle\winzouStateMachineBundle::class => ['all' => true],
     JMS\SerializerBundle\JMSSerializerBundle::class => ['all' => true],
     
+    FOS\JsRoutingBundle\FOSJsRoutingBundle::class => ['all' => true],
+    Bazinga\Bundle\JsTranslationBundle\BazingaJsTranslationBundle::class => ['all' => true],
     Bazinga\Bundle\HateoasBundle\BazingaHateoasBundle::class => ['all' => true],
+    Hackzilla\Bundle\PasswordGeneratorBundle\HackzillaPasswordGeneratorBundle::class => ['all' => true],
     
     Vankosoft\AgentBundle\VSAgentBundle::class => ['all' => true],
     Vankosoft\ApplicationInstalatorBundle\VSApplicationInstalatorBundle::class => ['all' => true],
     Vankosoft\ApplicationBundle\VSApplicationBundle::class => ['all' => true],
     Vankosoft\CmsBundle\VSCmsBundle::class => ['all' => true],
     Vankosoft\UsersBundle\VSUsersBundle::class => ['all' => true],
-    
-    FOS\JsRoutingBundle\FOSJsRoutingBundle::class => ['all' => true],
-    Bazinga\Bundle\JsTranslationBundle\BazingaJsTranslationBundle::class => ['all' => true],
-    Hackzilla\Bundle\PasswordGeneratorBundle\HackzillaPasswordGeneratorBundle::class => ['all' => true],
     
 //     Oneup\UploaderBundle\OneupUploaderBundle::class => ['all' => true],
 //     Oneup\FlysystemBundle\OneupFlysystemBundle::class => ['all' => true],

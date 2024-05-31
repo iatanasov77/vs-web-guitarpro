@@ -67,11 +67,11 @@ security:
         - { path: /_wdt/.*, roles: PUBLIC_ACCESS }
         - { path: /_profiler/.*, roles: PUBLIC_ACCESS }
         
-        - { path: ^/login, roles: PUBLIC_ACCESS }
-        - { path: ^/register, roles: PUBLIC_ACCESS }
-        - { path: ^/verify, roles: PUBLIC_ACCESS }
-        - { path: ^/forgot-password, roles: PUBLIC_ACCESS }
-        - { path: ^/forgot-password/reset/, roles: PUBLIC_ACCESS }
+        - { path: ^/login, roles: PUBLIC_ACCESS, requires_channel: '%env(SECURE_SCHEME)%' }
+        - { path: ^/register, roles: PUBLIC_ACCESS, requires_channel: '%env(SECURE_SCHEME)%' }
+        - { path: ^/verify, roles: PUBLIC_ACCESS, requires_channel: '%env(SECURE_SCHEME)%' }
+        - { path: ^/forgot-password, roles: PUBLIC_ACCESS, requires_channel: '%env(SECURE_SCHEME)%' }
+        - { path: ^/forgot-password/reset/, roles: PUBLIC_ACCESS, requires_channel: '%env(SECURE_SCHEME)%' }
         
-        - { path: ^/, roles: [ROLE_SUPER_ADMIN] }
+        - { path: ^/, roles: [ROLE_SUPER_ADMIN], requires_channel: '%env(SECURE_SCHEME)%' }
 

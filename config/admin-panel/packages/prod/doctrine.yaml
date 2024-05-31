@@ -2,6 +2,9 @@ doctrine:
     dbal:
         server_version: "10.1.41-MariaDB"
         
+        # Because:  Syntax error or access violation: 1305 SAVEPOINT DOCTRINE_2 does not exist
+        use_savepoints: false
+        
     orm:
         auto_generate_proxy_classes: true
         
