@@ -18,6 +18,7 @@ parameters:
     applicationTitle: 'vs_application.template.super_admin_panel'
     hasTopSearch: true
     
+    vs_agent.enabled: false
     vs_application.version: !php/const App\AdminPanelKernel::VERSION
     vs_application.public_dir: "%kernel.project_dir%/public/admin-panel"
     vs_application.page_categories.taxonomy_code: 'page-categories'
