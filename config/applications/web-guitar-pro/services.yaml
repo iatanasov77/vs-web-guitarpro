@@ -17,6 +17,7 @@ parameters:
     applicationTitle: 'WebGuitarPro'
     hasTopSearch: false
     
+    vs_agent.enabled: false
     vs_application.version: !php/const App\WebGuitarProKernel::VERSION
     vs_application.public_dir: "%kernel.project_dir%/public/web-guitar-pro"
     

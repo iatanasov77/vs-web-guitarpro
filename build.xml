@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="VankoSoft.Org" default="build">
+<project name="WebGuitarPro" default="build">
     <resolvepath propertyName="root_path" file="./" />
     
     <!-- <target name="install-production" depends="setup-backend-production,setup-frontend-production"></target> -->

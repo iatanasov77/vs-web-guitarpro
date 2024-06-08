@@ -1,3 +1,10 @@
+3.2.1	|	Release date: **08.06.2024**
+============================================
+* New Features and Improvements:
+  - Use CrudOwnerModelsVoter to Show Only Onwned Categories and Projects.
+  - Add Some Improvements.
+
+
 3.2.0	|	Release date: **31.05.2024**
 ============================================
 * New Features:
