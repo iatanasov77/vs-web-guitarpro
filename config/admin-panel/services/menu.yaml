@@ -3,8 +3,7 @@ parameters:
     #vs_application.menu.config_file: "%kernel.project_dir%/config/admin-panel/packages/vs_application.yaml"
     
     # If You create Any Custom Menue, add it to menus array to can use for breadcrumbs
-    #vs_application.main_menus: ['profileMenu', 'mainSystemMenu', 'mainCmsMenu']
-    vs_application.main_menus: ['profileMenu', 'mainSystemMenu', 'mainCmsMenu', 'mainUsersSubscriptionsMenu', 'mainPaymentMenu']
+    vs_application.main_menus: ['profileMenu', 'mainSystemMenu', 'mainCmsMenu', 'mainUsersSubscriptionsMenu', 'mainPaymentMenu', 'mainCatalogMenu']
 
 services:
     # Custom Menus
