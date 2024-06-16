@@ -40,6 +40,7 @@ vs_wgp:
         my_tablatures: Моите Таблатури
         owner: Притежател
         my_favorites: Предпочитани
+        search_results: Резултати от търсене
         
         button_play: Плейни Таблатурата
         button_remove_favorite: Премахни от Предпочитани

@@ -162,4 +162,9 @@ services:
             - '@doctrine'
             - '@vs_application.repository.taxonomy'
             - '%vs_wgp.tablature-categories.taxonomy_code%'
-
+            
+    App\Controller\WebGuitarPro\SearchTablaturesController:
+        tags: ['controller.service_arguments']
+        autowire: true
+        arguments:
+            - '@vs_wgp.repository.tablature'

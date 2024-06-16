@@ -15,7 +15,7 @@ parameters:
     vankosoft_host: '%env(HOST)%'
     applicationCompany: VankoSoft
     applicationTitle: 'WebGuitarPro'
-    hasTopSearch: false
+    hasTopSearch: true
     
     vs_agent.enabled: false
     vs_application.version: !php/const App\WebGuitarProKernel::VERSION
