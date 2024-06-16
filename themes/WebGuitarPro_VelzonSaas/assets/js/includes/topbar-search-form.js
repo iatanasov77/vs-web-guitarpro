@@ -25,5 +25,16 @@ export function initTopbarSearch() {
                 searchOptions.classList.add( "d-none" );
             }
         });
+        
+        searchOptions.addEventListener( "click", function () {
+            searchInput.value = "";
+            searchOptions.classList.add( "d-none" );
+        });
+
+        document.body.addEventListener( "click", function ( e ) {
+            if ( e.target.getAttribute( "id" ) !== "custom-search-options" ) {
+                searchOptions.classList.add( "d-none" );
+            }
+        });
     }
 }
