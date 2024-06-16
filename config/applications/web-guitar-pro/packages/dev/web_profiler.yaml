@@ -6,16 +6,3 @@ framework:
     profiler:
         enabled: true # %kernel.debug%
         only_exceptions: false
-    
-
-    
-    
-# web_profiler:
-#     toolbar: false # %kernel.debug%
-#     intercept_redirects: false
-# 
-# framework:
-#     profiler:
-#         enabled: false # %kernel.debug%
-#         only_exceptions: false
-    
