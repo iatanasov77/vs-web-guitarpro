@@ -128,7 +128,7 @@
                         </button>
                         <div class="dropdown-menu dropdown-menu-end profile-menu">
                             <!-- item-->
-                            <h6 class="dropdown-header">Welcome {{ app.user.info.fullName }}!</h6>
+                            <h6 class="dropdown-header">{{ 'vs_wgp.template.menu.welcome' | trans( {},'WebGuitarPro' ) }} {{ app.user.info.fullName }}!</h6>
                             
                             {{ knp_menu_render('profile', {'template': '@VSApplication/Menu/profile.html.twig'}) }}
                         </div>
