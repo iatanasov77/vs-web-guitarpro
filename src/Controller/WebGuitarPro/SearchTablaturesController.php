@@ -25,7 +25,7 @@ class SearchTablaturesController extends AbstractController
     public function index( Request $request, PaginatorInterface $paginator ): Response
     {
         $criteria   = $formPost   = $request->request->get( 'searchCriteria' );
-        $queryBuilder   = $this->tablaturesRepository->searchTablatures( $criteria );
+        $queryBuilder   = $this->tablaturesRepository->searchTablatures( $criteria, $this->getAppUser() );
         $resources      = $paginator->paginate(
             $queryBuilder,
             $request->query->getInt( 'page', 1 ) /*page number*/,
