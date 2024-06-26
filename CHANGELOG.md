@@ -1,3 +1,13 @@
+3.3.0	|	Release date: **26.06.2024**
+============================================
+* New Features and Improvements:
+  - Enable WebProfiler for Dev Environement.
+  - Create Search for Tablatures.
+  - Improve searchTablatures Repository Method.
+  - Add Some Translations.
+  - Upgrade to Angular 16.
+
+
 3.2.1	|	Release date: **08.06.2024**
 ============================================
 * New Features and Improvements:

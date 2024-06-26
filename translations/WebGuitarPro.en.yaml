@@ -4,6 +4,7 @@ vs_wgp:
         reset_password_with: Reset password with WebGuitarPro
         
         menu:
+            welcome: Welcome
             login: Login
             my_tablatures: My Tablatures
             favorites: Favorites
@@ -40,6 +41,8 @@ vs_wgp:
         my_tablatures: My Tablatures
         owner: Owner
         my_favorites: My Favorites
+        search_placeholder: Search...
+        search_results: Search Results
         
         button_play: Play Tablature
         button_remove_favorite: Remove Favorite

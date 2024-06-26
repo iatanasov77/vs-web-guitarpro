@@ -71,6 +71,12 @@ vs_application:
                 route: vs_wgp_public_tablatures
                 attributes:
                     iconClass: "bx bxs-dashboard"
+            search_tablatures:
+                name: vs_application.form.search
+                route: wgp_search_tablatures
+                attributes:
+                    iconClass: "bx bxs-dashboard"
+                display: false
             user_register:
                 name: vs_wgp.form.login.register
                 route: vs_users_register_form

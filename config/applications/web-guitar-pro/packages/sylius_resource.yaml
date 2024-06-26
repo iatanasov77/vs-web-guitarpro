@@ -8,7 +8,6 @@ sylius_resource:
             driver: doctrine/orm
             classes:
                 model:      App\Entity\TablatureCategory
-                interface:  Sylius\Component\Resource\Model\ResourceInterface
                 repository: App\Repository\TablatureCategoryRepository
                 controller: App\Controller\WebGuitarPro\TablatureCategoryController
                 form:       App\Form\TablatureCategoryForm
@@ -17,14 +16,12 @@ sylius_resource:
             driver: doctrine/orm
             classes:
                 model:      App\Entity\Tablature
-                interface:  Sylius\Component\Resource\Model\ResourceInterface
-                repository: Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository
+                repository: App\Repository\TablatureRepository
                 controller: App\Controller\WebGuitarPro\TablatureController
                 form:       App\Form\TablatureForm
         vs_wgp.tablature_file:
             driver: doctrine/orm
             classes:
                 model:      App\Entity\TablatureFile
-                interface:  Sylius\Component\Resource\Model\ResourceInterface
                 repository: Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository
 

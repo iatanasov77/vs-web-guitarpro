@@ -82,3 +82,6 @@ wgp_about_application:
     path: /about-application
     controller: App\Controller\WebGuitarPro\PagesController::aboutApplication
 
+wgp_search_tablatures:
+    path: /search-tablatures
+    controller: App\Controller\WebGuitarPro\SearchTablaturesController::index
