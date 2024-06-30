@@ -1,5 +1,8 @@
+
+
 sylius_resource:
     translation:
+        enabled: true
         #default_locale: '%locale%'
         locale_provider: sylius.translation_locale_provider.immutable
         #available_locales_provider: sylius.translation.locales_provider

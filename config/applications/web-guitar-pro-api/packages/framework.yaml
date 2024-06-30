@@ -8,6 +8,10 @@ framework:
     # https://symfony.com/doc/current/reference/configuration/framework.html#configuration-framework-http_method_override
     http_method_override: true
 
+    set_locale_from_accept_language: true
+    set_content_language_from_locale: true
+    enabled_locales: ['en', 'bg']
+
     php_errors:
         log: true
 
