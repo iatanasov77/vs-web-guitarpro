@@ -11,8 +11,8 @@ App\Entity\Tablature:
 
         tablatureFile:
             groups: ['tablature:read', 'tablature-category:read']
-        categories:
-            groups: ['tablature:read', 'tablature:create', 'tablature:update', 'tablature-category:read']
+#         categories:
+#             groups: ['tablature:read', 'tablature:create', 'tablature:update', 'tablature-category:read']
         
         user:
             groups: ['tablature:read']

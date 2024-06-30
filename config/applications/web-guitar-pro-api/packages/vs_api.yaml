@@ -6,6 +6,9 @@ imports:
     - { resource: "@VSApiBundle/Resources/config/app/nelmio_cors.yaml" }
     - { resource: "@VSApiBundle/Resources/config/app/mercure.yaml" }
 
+api_platform:
+    eager_loading:
+        max_joins: 100
 
 vs_api:
     enabled: true
