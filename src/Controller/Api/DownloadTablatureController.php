@@ -23,8 +23,9 @@ class DownloadTablatureController extends AbstractController
         $this->tabsDirectory        = $tabsDirectory;
     }
     
-    public function download( $id, $originalName, Request $request ): Response
+    public function __invoke( $id, $originalName, Request $request ): Response
     {
+        //die( $id );
         $oTablature     = $this->tabsRepository->find( $id );
         
         $fileTablature  = $this->tabsDirectory . '/' . $oTablature->getTablatureFile()->getPath();

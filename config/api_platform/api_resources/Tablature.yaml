@@ -74,6 +74,20 @@ resources:
                 uriTemplate: /tablatures/{id}
                 normalizationContext:
                     groups: ['tablature:read']
+                    
+            tablature_download:
+                class: ApiPlatform\Metadata\Get
+                method: GET
+                uriTemplate: /download/{id}-{originalName}
+                controller: App\Controller\Api\DownloadTablatureController
+                
+                read: false # Disable ReadListener
+                write: false
+                deserialize: false,
+                
+                normalizationContext:
+                    groups: ['tablature:read']
+            
             tablature_post:
                 class: ApiPlatform\Metadata\Post
                 method: POST
@@ -123,6 +137,7 @@ resources:
                                         tablature:
                                             type: string
                                             format: binary
+            
             tablature_delete:
                 class: ApiPlatform\Metadata\Delete
                 method: DELETE
