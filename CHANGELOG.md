@@ -1,3 +1,15 @@
+3.3.1	|	Release date: **05.07.2024**
+============================================
+* Bug-Fixes and Improvements:
+  - Some Fixes.
+  - Fix TablatureCategory ApiPlatform Serialization.
+  - Improve Tablature ApiPlatform Serialization.
+  - Improve Some API Platform Configuration.
+  - Create Tablature Download API Route.
+  - Add New Route for Download Tablature.
+  - Improve API Controllers.
+
+
 3.3.0	|	Release date: **26.06.2024**
 ============================================
 * New Features and Improvements:
