@@ -80,6 +80,7 @@ Encore
     // Pages Assets
     .addEntry( 'js/home', './themes/WebGuitarPro_VelzonSaas/assets/js/pages/home.js' )
     .addEntry( 'js/tablatures', './themes/WebGuitarPro_VelzonSaas/assets/js/pages/tablatures.js' )
+    .addEntry( 'js/tablatures-share', './themes/WebGuitarPro_VelzonSaas/assets/js/pages/tablatures-share.js' )
     .addEntry( 'js/shared-tablatures', './themes/WebGuitarPro_VelzonSaas/assets/js/pages/shared-tablatures.js' )
     .addEntry( 'js/my-shares', './themes/WebGuitarPro_VelzonSaas/assets/js/pages/my-shares.js' )
     

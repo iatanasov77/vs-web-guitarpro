@@ -1,0 +1,3 @@
+vs_wgp_tablature_download:
+    path: /api/download/{id}-{originalName}
+    controller: App\Controller\WebGuitarPro\DownloadTablatureController::download

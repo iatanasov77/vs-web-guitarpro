@@ -2,19 +2,15 @@ App\Entity\TablatureCategory:
     attributes:
         id:
             groups: ['tablature-category:read']
-        taxon:
-            groups: ['tablature-category:read', 'tablature-category:create', 'tablature-category:update']
         parent:
+            groups: ['tablature-category:read', 'tablature-category:create', 'tablature-category:update']
+        code:
+            groups: ['tablature-category:read', 'tablature-category:create', 'tablature-category:update']
+        name:
+            groups: ['tablature-category:read', 'tablature-category:create', 'tablature-category:update']
+        description:
             groups: ['tablature-category:read', 'tablature-category:create', 'tablature-category:update']
         children:
             groups: ['tablature-category:read', 'tablature-category:create', 'tablature-category:update']
         tablatures:
-            groups: ['tablature-category:read', 'tablature-category:create', 'tablature-category:update']
-
-
-App\Entity\Application\Taxon:
-    attributes:
-        name:
-            groups: ['tablature-category:read']
-
-
+            groups: ['tablature:read', 'tablature-category:read', 'tablature-category:create', 'tablature-category:update']

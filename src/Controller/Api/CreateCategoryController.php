@@ -11,6 +11,7 @@ use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Vankosoft\ApplicationBundle\Component\SlugGenerator;
 use Vankosoft\ApplicationBundle\Component\Status;
 use App\Entity\Application\Taxonomy;
+use App\Entity\TablatureCategory;
 
 class CreateCategoryController extends AbstractController
 {
@@ -66,7 +67,7 @@ class CreateCategoryController extends AbstractController
         $this->taxonomy                 = $taxonomyRepository->findByCode( $taxonomyCode );
     }
     
-    public function  __invoke( Request $request ): JsonResponse
+    public function  __invoke( Request $request ): TablatureCategory
     {
         // $request->get( "token" )
         $requestBody    = \json_decode( $request->getContent(), true );
@@ -89,10 +90,13 @@ class CreateCategoryController extends AbstractController
         $em->persist( $entity );
         $em->flush();
         
+        /*
         return new JsonResponse([
             'status'    => Status::STATUS_OK,
             'message'   => $this->translator->trans( 'vs_api.messages.resource_create_successfull', [], 'VSApiBundle' ),
             'data'      => $entity,
         ]);
+        */
+        return $entity;
     }
 }

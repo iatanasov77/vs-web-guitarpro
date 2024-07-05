@@ -7,7 +7,7 @@
         <div class="btn-group">
         {% if isTab %}
             <a class="btn btn-primary mr-2"
-                href="{{ url( 'tablature_read', {id: item.id} ) }}"
+                href="{{ url( 'vs_wgp_tablature_download', {id: item.id, originalName: item.tablatureFile.originalName} ) }}"
                 title="{{ 'vs_application.template.items_index_row_action_download' | trans( {},'VSApplicationBundle' ) }}"
             >
                 <i class="fas fa-download"></i>

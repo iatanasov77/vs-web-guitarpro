@@ -1,4 +1,4 @@
-<?php namespace App\Controller\Api;
+<?php namespace App\Controller\WebGuitarPro;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,7 +23,7 @@ class DownloadTablatureController extends AbstractController
         $this->tabsDirectory        = $tabsDirectory;
     }
     
-    public function __invoke( $id, $originalName, Request $request ): Response
+    public function download( $id, $originalName, Request $request ): Response
     {
         //die( $id );
         $oTablature     = $this->tabsRepository->find( $id );

@@ -85,3 +85,7 @@ wgp_about_application:
 wgp_search_tablatures:
     path: /search-tablatures
     controller: App\Controller\WebGuitarPro\SearchTablaturesController::index
+    
+vs_wgp_tablature_download:
+    path: /api/download/{id}-{originalName}
+    controller: App\Controller\WebGuitarPro\DownloadTablatureController::download

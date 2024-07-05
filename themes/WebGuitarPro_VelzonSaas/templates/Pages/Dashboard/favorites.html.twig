@@ -36,7 +36,7 @@
                                                     <td>{{ t.user.info.fullName }}</td>
                                                     <td>
                                                         <a class="btn btn-primary mr-2"
-                                                            href="{{ url( 'tablature_read', {id: t.id} ) }}"
+                                                            href="{{ url( 'vs_wgp_tablature_download', {id: t.id, originalName: t.tablatureFile.originalName} ) }}"
                                                             title="{{ 'vs_application.template.items_index_row_action_download' | trans( {},'VSApplicationBundle' ) }}"
                                                         >
                                                             <i class="fas fa-download"></i>
