@@ -168,3 +168,10 @@ services:
         autowire: true
         arguments:
             - '@vs_wgp.repository.tablature'
+            
+    App\Controller\WebGuitarPro\DownloadTablatureController:
+        tags: ['controller.service_arguments']
+        autowire: true
+        arguments:
+            - '@vs_wgp.repository.tablature'
+            - '%vs_wgp.tablatures_directory%'
