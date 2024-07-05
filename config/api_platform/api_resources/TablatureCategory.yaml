@@ -20,9 +20,9 @@ resources:
                 deserialize: false,
                 
                 normalizationContext:
-                    groups: ['tablature:read']
+                    groups: ['tablature-category:read']
                 denormalizationContext:
-                    groups: ['tablature:create']
+                    groups: ['tablature-category:create']
             
             category_put:
                 class: ApiPlatform\Metadata\Put
@@ -35,9 +35,9 @@ resources:
                 deserialize: false,
                 
                 normalizationContext:
-                    groups: ['tablature:read']
+                    groups: ['tablature-category:read']
                 denormalizationContext:
-                    groups: ['tablature:update']
+                    groups: ['tablature-category:update']
                 
             category_delete:
                 class: ApiPlatform\Metadata\Delete
@@ -45,4 +45,34 @@ resources:
                 uriTemplate: /my-categories/{id}
                 controller: App\Controller\Api\DeleteCategoryController
 
-
+        properties:
+            id:
+                identifier: true
+                writeable: false
+                required: false
+            parent:
+                writeable: true
+                required: false
+            code:
+                writeable: true
+                required: false
+            enabled:
+                writeable: true
+            name:
+                writeable: true
+                required: true
+            description:
+                writeable: true
+                required: false
+                
+#             user:
+#                 writeable: true
+#                 required: true
+            createdBy:
+                writeable: false
+            updatedBy:
+                writeable: false
+            createdAt:
+                writeable: false
+            updatedAt:
+                writeable: false

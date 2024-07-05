@@ -8,6 +8,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Vankosoft\ApplicationBundle\Component\Status;
+use App\Entity\TablatureCategory;
 
 class EditCategoryController extends AbstractController
 {
@@ -35,7 +36,7 @@ class EditCategoryController extends AbstractController
         $this->tabCategoryRepository    = $tabCategoryRepository;
     }
     
-    public function  __invoke( $id, Request $request ): JsonResponse
+    public function  __invoke( $id, Request $request ): TablatureCategory
     {
         // $request->get( "token" )
         $requestBody    = \json_decode( $request->getContent(), true );
@@ -54,10 +55,13 @@ class EditCategoryController extends AbstractController
         $em->persist( $entity );
         $em->flush();
         
+        /*
         return new JsonResponse([
             'status'    => Status::STATUS_OK,
             'message'  => $this->translator->trans( 'vs_api.messages.resource_update_successfull', [], 'VSApiBundle' ),
             'data'      => $entity,
         ]);
+        */
+        return $entity;
     }
 }
