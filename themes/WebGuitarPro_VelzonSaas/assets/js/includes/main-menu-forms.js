@@ -19,7 +19,4 @@ $( function()
         
         this.submit();
     });
-    
-    $( '#tabCategoryFormParent' ).find( 'span:first' ).remove();
-    $( '#tabFormCategoryTaxon' ).find( 'span:first' ).remove();
 });

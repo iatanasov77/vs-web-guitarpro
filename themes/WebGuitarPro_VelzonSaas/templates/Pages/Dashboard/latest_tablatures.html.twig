@@ -64,3 +64,15 @@
     </div>
 {% endblock %}
 
+{% block head_styles %}
+    {{ parent() }}
+    
+    {{ encore_entry_link_tags( 'js/home', null, 'WebGuitarPro_VelzonSaas' ) }}
+{% endblock %}  
+
+{% block javascripts %}
+    {{ parent() }}
+    
+    {{ encore_entry_script_tags( 'js/home', null, 'WebGuitarPro_VelzonSaas' ) }}
+{% endblock %}
+
