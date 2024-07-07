@@ -16,7 +16,7 @@
     {# Documentation: https://www.jeasyui.com/documentation/combotree.php #}
     {% set comboDataSourceUrl  = url( 'vs_wgp_tablature_categories_tree_combo' ) %}
     {% set comboTreePlaceholder = 'vs_cms.form.page.categories_placeholder' | trans( {},'VSCmsBundle' ) %}
-    <div class="mb-2">
+    <div class="mb-2" id="tabFormCategoryTaxon">
         {{ form_label( tabForm.category_taxon, null, {
             'label_attr': {'class': 'form-label required'}
             }) 

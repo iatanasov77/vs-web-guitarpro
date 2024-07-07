@@ -9,7 +9,7 @@
     {# Documentation: https://www.jeasyui.com/documentation/combotree.php #}
     {% set comboDataSourceUrl  = url( 'vs_wgp_tablature_categories_tree_combo' ) %}
     {% set comboTreePlaceholder = 'vs_cms.form.category.parent_category_placeholder' | trans( {},'VSCmsBundle' ) %}
-    <div class="mb-2">
+    <div class="mb-2" id="tabCategoryFormParent">
         {{ form_label( tabCategoryForm.parent, null, {
             'label_attr': {'class': 'form-label'}
             }) 

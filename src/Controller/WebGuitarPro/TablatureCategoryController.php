@@ -40,6 +40,7 @@ class TablatureCategoryController extends AbstractCrudController
         $categoryName           = $form['name']->getData();
         //$parentCategory         = $form['parent']->getData();
         $parentCategory         = $this->easyuiPost( $entity, $request->request->all( 'tablature_category_form' ) );
+        //var_dump( $parentCategory ); die;
         
         /*
          * Create Category
