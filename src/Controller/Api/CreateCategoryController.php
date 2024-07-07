@@ -44,6 +44,9 @@ class CreateCategoryController extends AbstractController
     /** @var Taxonomy */
     private $taxonomy;
     
+    /** @var string */
+    private $defaultLocale;
+    
     public function __construct(
         TokenStorageInterface $tokenStorage,
         ManagerRegistry $doctrine,
@@ -54,7 +57,8 @@ class CreateCategoryController extends AbstractController
         RepositoryInterface $taxonRepository,
         SlugGenerator $slugGenerator,
         RepositoryInterface $taxonomyRepository,
-        string $taxonomyCode
+        string $taxonomyCode,
+        string $defaultLocale
     ) {
         $this->tokenStorage             = $tokenStorage;
         $this->doctrine                 = $doctrine;
@@ -65,6 +69,7 @@ class CreateCategoryController extends AbstractController
         $this->taxonRepository          = $taxonRepository;
         $this->slugGenerator            = $slugGenerator;
         $this->taxonomy                 = $taxonomyRepository->findByCode( $taxonomyCode );
+        $this->defaultLocale            = $defaultLocale;
     }
     
     public function  __invoke( Request $request ): TablatureCategory
@@ -76,9 +81,10 @@ class CreateCategoryController extends AbstractController
         
         $entity->setUser( $this->getUser() );
         
+        $translatableLocale = isset( $requestBody['locale'] ) ? $requestBody['locale'] : $this->defaultLocale;
         $newTaxon   = $this->createTaxon(
             $requestBody['name'],
-            $request->getLocale(),
+            $translatableLocale,
             $parentCategory ? $parentCategory->getTaxon() : null,
             $this->taxonomy->getId()
         );
