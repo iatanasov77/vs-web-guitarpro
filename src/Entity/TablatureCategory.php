@@ -27,7 +27,7 @@ class TablatureCategory implements ResourceInterface, TaxonDescendentInterface
     private $parent;
     
     /** @var TablatureCategory[] */
-    #[ORM\OneToMany(targetEntity: TablatureCategory::class, mappedBy: "parent", cascade: ["persist", "remove"], orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: TablatureCategory::class, mappedBy: "parent", indexBy: "id", cascade: ["persist", "remove"], orphanRemoval: true)]
     private $children;
     
     #[ORM\ManyToMany(targetEntity: Tablature::class, mappedBy: "categories", indexBy: "id")]
