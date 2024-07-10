@@ -19,13 +19,4 @@ $( function()
         
         this.submit();
     });
-    
-    let categorySelector    = "#tablature_form_category_taxon";
-    EasyuiCombobox( $( categorySelector ), {
-        required: false,
-        multiple: true,
-        checkboxId: "tablature_category_taxon",
-        values: {},
-    });
-    VsRemoveDuplicates();
 });

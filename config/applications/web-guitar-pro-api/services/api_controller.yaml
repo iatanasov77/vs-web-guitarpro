@@ -69,6 +69,7 @@ services:
             - '@vs_application.slug_generator'
             - '@vs_application.repository.taxonomy'
             - '%vs_wgp.tablature-categories.taxonomy_code%'
+            - '%locale%'
             
     App\Controller\Api\EditCategoryController:
         tags: ['controller.service_arguments']
@@ -78,6 +79,7 @@ services:
             - '@doctrine'
             - '@translator'
             - '@vs_wgp.repository.tablature_category'
+            - '%locale%'
             
     App\Controller\Api\DeleteCategoryController:
         tags: ['controller.service_arguments']

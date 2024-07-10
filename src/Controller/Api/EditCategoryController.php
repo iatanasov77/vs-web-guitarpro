@@ -24,16 +24,21 @@ class EditCategoryController extends AbstractController
     /** @var RepositoryInterface */
     private $tabCategoryRepository;
     
+    /** @var string */
+    private $defaultLocale;
+    
     public function __construct(
         TokenStorageInterface $tokenStorage,
         ManagerRegistry $doctrine,
         TranslatorInterface $translator,
-        RepositoryInterface $tabCategoryRepository
+        RepositoryInterface $tabCategoryRepository,
+        string $defaultLocale
     ) {
         $this->tokenStorage             = $tokenStorage;
         $this->doctrine                 = $doctrine;
         $this->translator               = $translator;
         $this->tabCategoryRepository    = $tabCategoryRepository;
+        $this->defaultLocale            = $defaultLocale;
     }
     
     public function  __invoke( $id, Request $request ): TablatureCategory
@@ -43,7 +48,8 @@ class EditCategoryController extends AbstractController
         $entity         = $this->tabCategoryRepository->find( $id );
         $parentCategory = $this->tabCategoryRepository->find( $requestBody['parentCategory'] );
         
-        $entity->getTaxon()->setCurrentLocale( $request->getLocale() );
+        $translatableLocale = isset( $requestBody['locale'] ) ? $requestBody['locale'] : $this->defaultLocale;
+        $entity->getTaxon()->setCurrentLocale( $translatableLocale );
         $entity->getTaxon()->setName( $requestBody['name'] );
         if ( $parentCategory ) {
             $entity->getTaxon()->setParent( $parentCategory->getTaxon() );
