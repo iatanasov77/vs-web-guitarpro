@@ -76,3 +76,7 @@ label.required:after {
 #tab-information-modal {
     --vz-modal-margin: 14rem;
 }
+
+.tree-file {
+	background: url(../../../../public/shared_assets/build/web-guitar-pro-velzon-saas/images/tree_icons.03fe9a76.png) no-repeat -208px 0 !important;
+}
