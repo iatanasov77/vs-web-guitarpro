@@ -90,5 +90,7 @@ services:
             - '@translator'
             - '@vs_wgp.repository.tablature_category'
 
-
+    App\Controller\Api\SharedToMeTablaturesController:
+        tags: ['controller.service_arguments']
+        autowire: true
 

@@ -1,0 +1,8 @@
+App\Entity\TablatureShare:
+    attributes:
+        id:
+            groups: ['tablature-category:read']
+        name:
+            groups: ['tablature-category:read', 'tablature-category:create', 'tablature-category:update']
+        tablatures:
+            groups: ['tablature:read', 'tablature-category:read', 'tablature-category:create', 'tablature-category:update']

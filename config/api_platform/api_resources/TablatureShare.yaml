@@ -1,0 +1,26 @@
+resources:
+    App\Entity\TablatureShare:
+        operations:
+            shared_to_me_tablatures_get:
+                class: ApiPlatform\Metadata\GetCollection
+                method: GET
+                uriTemplate: /shared-to-me
+                controller: App\Controller\Api\SharedToMeTablaturesController
+                normalizationContext:
+                    groups: ['tablature-category:read']
+
+        properties:
+            id:
+                identifier: true
+                writeable: false
+                required: false
+            name:
+                writeable: true
+                required: true
+            tablatures:
+                writeable: true
+                required: false
+                
+#             user:
+#                 writeable: true
+#                 required: true
