@@ -1,3 +1,11 @@
+3.4.0	|	Release date: **10.07.2024**
+============================================
+* Bug-Fixes and Improvements:
+  - Fix Create/Update Tablatures in API.
+  - Fix Main Menu Forms Duplicate EasyUi Fields
+  - Make TablatureCategory Children Indexed to Can be JsonObject in API Response.
+
+
 3.3.1	|	Release date: **05.07.2024**
 ============================================
 * Bug-Fixes and Improvements:
