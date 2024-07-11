@@ -2,6 +2,10 @@ vs_wgp:
     template:
         remember_my_password: Wait, I remember my password...
         reset_password_with: Reset password with WebGuitarPro
+        new: New
+        select: Select
+        result: Result
+        remove: Remove
         
         menu:
             welcome: Welcome
