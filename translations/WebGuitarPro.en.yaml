@@ -92,6 +92,11 @@ vs_wgp:
             agreement_text: By creating an account, you agree the
             terms_and_conditions: terms and conditions
             
+        tablature_category:
+            create_title: Create New Category
+            title: Edit Category
+            tablature_details: Category Details
+        
         tablature:
             artist: Artist
             song: Song
@@ -101,6 +106,7 @@ vs_wgp:
         tablature_update:
             create_title: Create New Tablature
             title: Edit Tablature
+            tablature_details: Tablature Details
             
         share_tablature:
             name: Share Name
