@@ -74,6 +74,18 @@
                 </div>
                 #}
                 
+                <div class="ms-1 header-item">
+                    <a class="btn top-menu-button" href="{{ path( 'wgp_about_application' ) }}">
+                        <span>{{ 'vs_wgp.template.menu.about_application' | trans( {},'WebGuitarPro' ) }}</span>
+                    </a>
+                </div>
+                    
+                <div class="ms-1 header-item">
+                    <a class="btn top-menu-button" href="{{ path( 'vs_application_contact' ) }}">
+                        <span>{{ 'vs_application.template.contact_page.visit_us' | trans( {},'VSApplicationBundle' ) }}</span>
+                    </a>
+                </div>
+                
                 <div class="dropdown ms-1 topbar-head-dropdown header-item">
                     {% set currentLang = ( app.request.locale | split( '_' ) )[1] | lower %}
                     {% set currentFlag = 'build/web-guitar-pro-velzon-saas/images/flags/' ~ currentLang ~ '.svg' %}

@@ -31,11 +31,8 @@ class PagesController extends AbstractController
         $params = [
             'tabForm'                       => $this->getTabForm()->createView(),
             'tabCategoryForm'               => $this->getTabCategoryForm()->createView(),
-            'tabCategoriesTaxonomyId'       => $this->tabCategoriesTaxonomy->getId(),
-            'locales'                       => $this->doctrine->getRepository( 'App\Entity\Application\Locale' )->findAll(),
-            'paidTablatureStoreServices'    => $this->doctrine->getRepository( 'App\Entity\UsersSubscriptions\PayedServiceSubscriptionPeriod' )->findAll(),
-            'tablatureUploadLimited'        => ! $this->checkTablatureLimit(),
             
+            'tablatureUploadLimited'        => ! $this->checkTablatureLimit(),
             'pageAbout'                     => $this->doctrine->getRepository( 'App\Entity\Cms\Page' )->findBySlug( 'about-application' ),
         ];
         return $this->render( 'Pages/Pages/about_application.html.twig', $params );

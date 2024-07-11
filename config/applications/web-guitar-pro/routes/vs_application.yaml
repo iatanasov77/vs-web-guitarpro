@@ -16,7 +16,7 @@ vs_application_frontend:
     options:
         expose: true
 
-# vs_application_contact:
-#     path: /contact
-#     controller: App\Controller\SugarBabes\ContactController::index
+vs_application_contact:
+    path: /contact
+    controller: App\Controller\WebGuitarPro\ContactController::index
 
