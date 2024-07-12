@@ -9,7 +9,7 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 use Doctrine\Persistence\ManagerRegistry;
 use Sylius\Component\Resource\Factory\Factory;
 
-use App\Component\Uploader\TablatureUploader;
+use App\Component\TablatureUploader\TablatureUploader;
 use App\Entity\Tablature;
 
 /*
