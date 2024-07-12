@@ -15,6 +15,10 @@ knp_gaufrette:
         vs_application_app_pictures:
             local:
                 directory: "%vs_application.filemanager_shared_media_gaufrette.app_pictures%"
+        vs_wgp_tablatures:
+            local:
+                directory: "%vs_wgp.tablatures_directory%"
+                create: true
     filesystems:
         vs_application_profile:
             adapter: "%vs_cms.gaufrette.profile.filesystem%"
@@ -24,4 +28,6 @@ knp_gaufrette:
             adapter: "%vs_cms.gaufrette.slider.filesystem%"
         vs_application_app_pictures:
             adapter: "%vs_application.gaufrette.app_pictures.filesystem%"
+        vs_wgp_tablatures:
+            adapter: "vs_wgp_tablatures"
 
