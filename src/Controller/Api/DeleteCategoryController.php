@@ -44,8 +44,11 @@ class DeleteCategoryController extends AbstractController
         $em->flush();
         
         return new JsonResponse([
-            'status'   => Status::STATUS_OK,
-            'message'  => $this->translator->trans( 'vs_api.messages.resource_delete_successfull', [], 'VSApiBundle' ),
+            'status'    => Status::STATUS_OK,
+            'message'   => $this->translator->trans( 'vs_api.messages.resource_delete_successfull', [], 'VSApiBundle' ),
+            'data'      => [
+                'id' => $id,
+            ]
         ]);
     }
 }
