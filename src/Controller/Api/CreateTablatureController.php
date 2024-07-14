@@ -61,11 +61,9 @@ class CreateTablatureController extends AbstractController
         $formData   = $this->getFormData( $request );
         $entity     = $this->tablaturesFactory->createNew();
         
-        foreach ( $formData['categories'] as $categoryId ) {
-            $category   = $this->categoriesRepository->find( $categoryId );
-            if ( $category ) {
-                $entity->addCategory( $category );
-            }
+        $category   = $this->categoriesRepository->find( $formData['category'] );
+        if ( $category ) {
+            $entity->addCategory( $category );
         }
         
         $entity->setEnabled( filter_var( $formData['published'], FILTER_VALIDATE_BOOLEAN ) );
@@ -96,7 +94,7 @@ class CreateTablatureController extends AbstractController
             'published' => $request->request->get( 'published' ),
             'artist'    => $request->request->get( 'artist' ),
             'song'      => $request->request->get( 'song' ),
-            'categories'=> $request->request->all( 'categories' ),
+            'category'  => $request->request->get( 'category' ),
         ];    
     }
     

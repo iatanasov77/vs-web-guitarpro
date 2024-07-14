@@ -8,7 +8,7 @@ final class UploadedFileDenormalizer implements DenormalizerInterface
     /**
      * {@inheritdoc}
      */
-    public function denormalize($data, string $type, string $format = null, array $context = []): UploadedFile
+    public function denormalize( $data, string $type, string $format = null, array $context = [] ): UploadedFile
     {
         return $data;
     }
@@ -16,7 +16,7 @@ final class UploadedFileDenormalizer implements DenormalizerInterface
     /**
      * {@inheritdoc}
      */
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization( $data, $type, $format = null ): bool
     {
         return $data instanceof UploadedFile;
     }
