@@ -8,6 +8,7 @@ use App\Entity\Tablature;
 
 class MyTablaturesController extends AbstractController
 {
+    /** @var TokenStorageInterface */
     private $tokenStorage;
     
     public function __construct( TokenStorageInterface $tokenStorage )

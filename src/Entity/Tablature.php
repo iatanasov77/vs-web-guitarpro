@@ -28,6 +28,9 @@ class Tablature implements ResourceInterface
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy: "favorites", indexBy: "id", cascade: ["all"])]
     private $favoriteUsers;
     
+    #[ORM\ManyToMany(targetEntity: TablatureShare::class, mappedBy: "tablatures", indexBy: "id", cascade: ["all"])]
+    private $shares;
+    
     /** @var string */
     #[ORM\Column(type: "string", length: 255, nullable: false)]
     private $artist;

@@ -2,6 +2,10 @@ vs_wgp:
     template:
         remember_my_password: Wait, I remember my password...
         reset_password_with: Reset password with WebGuitarPro
+        new: Нови
+        select: Избрани
+        result: Резултата
+        remove: Премахване
         
         menu:
             welcome: Добре дошъл
@@ -92,6 +96,11 @@ vs_wgp:
             agreement_text: Чрез създаване на акаунт, вие се съгласявате със
             terms_and_conditions: правилата и условията
             
+        tablature_category:
+            create_title: Create New Category
+            title: Edit Category
+            tablature_details: Category Details
+        
         tablature:
             artist: Артист
             song: Песен
@@ -101,6 +110,7 @@ vs_wgp:
         tablature_update:
             create_title: Създаване Нова Таблатура
             title: Редакция на Таблатура
+            tablature_details: Таблатура Детаили
 
         share_tablature:
             name: Име на Споделяне

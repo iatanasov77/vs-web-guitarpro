@@ -9,6 +9,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Vankosoft\ApplicationBundle\Component\Status;
 use App\Entity\TablatureCategory;
+use App\Component\Exception\ApiRequestException;
 
 class EditCategoryController extends AbstractController
 {
@@ -47,6 +48,10 @@ class EditCategoryController extends AbstractController
         $requestBody    = \json_decode( $request->getContent(), true );
         $entity         = $this->tabCategoryRepository->find( $id );
         $parentCategory = $this->tabCategoryRepository->find( $requestBody['parentCategory'] );
+        
+        if ( ! $entity ) {
+            throw new ApiRequestException( 'Not Exists Category with ID: ' . $id );
+        }
         
         $translatableLocale = isset( $requestBody['locale'] ) ? $requestBody['locale'] : $this->defaultLocale;
         $entity->getTaxon()->setCurrentLocale( $translatableLocale );

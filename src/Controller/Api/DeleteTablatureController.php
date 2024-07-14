@@ -54,8 +54,11 @@ class DeleteTablatureController extends AbstractController
         $em->flush();
         
         return new JsonResponse([
-            'status'   => Status::STATUS_OK,
-            'message'  => $this->translator->trans( 'softuni_api.messages.resource_delete_successfull', [], 'SoftuniApi' ),
+            'status'    => Status::STATUS_OK,
+            'message'   => $this->translator->trans( 'softuni_api.messages.resource_delete_successfull', [], 'SoftuniApi' ),
+            'data'      => [
+                'id' => $id,
+            ],
         ]);
     }
     

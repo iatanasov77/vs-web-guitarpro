@@ -17,26 +17,27 @@ final class MultipartDecoder implements DecoderInterface
     /**
      * {@inheritdoc}
      */
-    public function decode(string $data, string $format, array $context = []): ?array
+    public function decode( string $data, string $format, array $context = [] ): ?array
     {
         $request = $this->requestStack->getCurrentRequest();
         
-        if (!$request) {
+        if ( ! $request ) {
             return null;
         }
         
-        return array_map(static function (string $element) {
-            // Multipart form values will be encoded in JSON.
-            $decoded = json_decode($element, true);
-            
-            return \is_array($decoded) ? $decoded : $element;
-        }, $request->request->all()) + $request->files->all();
+        return array_map( static function ( string $element ) {
+                // Multipart form values will be encoded in JSON.
+                $decoded = json_decode( $element, true );
+                
+                return \is_array( $decoded ) ? $decoded : $element;
+            }, $request->request->all()
+        ) + $request->files->all();
     }
     
     /**
      * {@inheritdoc}
      */
-    public function supportsDecoding(string $format): bool
+    public function supportsDecoding( string $format ): bool
     {
         return self::FORMAT === $format;
     }

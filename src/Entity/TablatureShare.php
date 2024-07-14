@@ -28,7 +28,7 @@ class TablatureShare implements ResourceInterface
     private $targetUsers;
     
     /** @var Collection|Tablature[] */
-    #[ORM\ManyToMany(targetEntity: Tablature::class)]
+    #[ORM\ManyToMany(targetEntity: Tablature::class, inversedBy: "shares", indexBy: "id")]
     #[ORM\JoinTable(name: "WGP_TablatureShares_Tablatures")]
     #[ORM\JoinColumn(name: "share_id", referencedColumnName: "id")]
     #[ORM\InverseJoinColumn(name: "tablature_id", referencedColumnName: "id")]

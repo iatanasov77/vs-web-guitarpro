@@ -52,20 +52,20 @@ class TablatureCategoryForm extends AbstractForm
                 'label'                 => 'vs_cms.form.category.parent_category',
                 'translation_domain'    => 'VSCmsBundle',
                 'class'                 => $this->categoryClass,
-                'query_builder'         => function ( EntityRepository $er ) use ( $category )
-                {
-                    $qb = $er->createQueryBuilder( 'tc' );
-                    if  ( $category && $category->getId() ) {
-                        $qb->where( 'tc.id != :id' )->setParameter( 'id', $category->getId() );
-                    }
+//                 'query_builder'         => function ( EntityRepository $er ) use ( $category )
+//                 {
+//                     $qb = $er->createQueryBuilder( 'tc' );
+//                     if  ( $category && $category->getId() ) {
+//                         $qb->where( 'tc.id != :id' )->setParameter( 'id', $category->getId() );
+//                     }
                     
-                    $token  = $this->tokenStorage->getToken();
-                    if ( $token ) {
-                        $qb->where( 'tc.user = :user' )->setParameter( 'user', $token->getUser() );
-                    }
+//                     $token  = $this->tokenStorage->getToken();
+//                     if ( $token ) {
+//                         $qb->where( 'tc.user = :user' )->setParameter( 'user', $token->getUser() );
+//                     }
                     
-                    return $qb;
-                },
+//                     return $qb;
+//                 },
                 'choice_label'  => function ( $category ) {
                     return $category->getNameTranslated( $this->requestStack->getMainRequest()->getLocale() );
                 },

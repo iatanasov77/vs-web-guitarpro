@@ -7,9 +7,10 @@ use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Doctrine\Persistence\ManagerRegistry;
+use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Sylius\Component\Resource\Factory\Factory;
 
-use App\Component\Uploader\TablatureUploader;
+use App\Component\TablatureUploader\TablatureUploader;
 use App\Entity\Tablature;
 
 /*
@@ -26,6 +27,9 @@ class CreateTablatureController extends AbstractController
     /** @var ManagerRegistry */
     private $doctrine;
     
+    /** @var RepositoryInterface */
+    private $categoriesRepository;
+    
     /** @var Factory */
     private $tablaturesFactory;
     
@@ -38,12 +42,15 @@ class CreateTablatureController extends AbstractController
     public function __construct(
         TokenStorageInterface $tokenStorage,
         ManagerRegistry $doctrine,
+        RepositoryInterface $categoriesRepository,
         Factory $tablaturesFactory,
         Factory $tablaturesFilesFactory,
         TablatureUploader $uploader
     ) {
         $this->tokenStorage             = $tokenStorage;
         $this->doctrine                 = $doctrine;
+        $this->categoriesRepository     = $categoriesRepository;
+        $this->tablaturesFactory        = $tablaturesFactory;
         $this->tablaturesFactory        = $tablaturesFactory;
         $this->tablaturesFilesFactory   = $tablaturesFilesFactory;
         $this->uploader                 = $uploader;
@@ -54,6 +61,11 @@ class CreateTablatureController extends AbstractController
         $formData   = $this->getFormData( $request );
         $entity     = $this->tablaturesFactory->createNew();
         
+        $category   = $this->categoriesRepository->find( $formData['category'] );
+        if ( $category ) {
+            $entity->addCategory( $category );
+        }
+        
         $entity->setEnabled( filter_var( $formData['published'], FILTER_VALIDATE_BOOLEAN ) );
         $entity->setArtist( $formData['artist'] );
         $entity->setSong( $formData['song'] );
@@ -61,6 +73,7 @@ class CreateTablatureController extends AbstractController
         $entity->setUser( $this->getUser() );
         
         $tabFile    = $request->files->get( 'tablature' );
+        //\file_put_contents( '/vagrant/tmp/debug.txt', print_r( $request->files->all(), true ) ); die;
         //var_dump( $tabFile->getClientOriginalName() ); die;
         if ( $tabFile ) {
             $this->createTablature( $entity, $tabFile );
@@ -81,6 +94,7 @@ class CreateTablatureController extends AbstractController
             'published' => $request->request->get( 'published' ),
             'artist'    => $request->request->get( 'artist' ),
             'song'      => $request->request->get( 'song' ),
+            'category'  => $request->request->get( 'category' ),
         ];    
     }
     

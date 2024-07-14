@@ -9,6 +9,7 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 use Doctrine\Persistence\ManagerRegistry;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 
+use App\Component\Exception\ApiRequestException;
 use App\Component\Uploader\TablatureUploader;
 use App\Entity\Tablature;
 
@@ -42,6 +43,10 @@ class EditTablatureController extends AbstractController
     {
         $formData   = $this->getFormData( $request );
         $entity     = $this->tablaturesRepository->find( $id );
+        
+        if ( ! $entity ) {
+            throw new ApiRequestException( 'Not Exists Tablature with ID: ' . $id );
+        }
         
         if ( $formData['published'] !== null ) {
             $entity->setEnabled( filter_var( $formData['published'], FILTER_VALIDATE_BOOLEAN ) );
