@@ -61,6 +61,7 @@ class CreateTablatureController extends AbstractController
         $entity->setUser( $this->getUser() );
         
         $tabFile    = $request->files->get( 'tablature' );
+        //\file_put_contents( '/vagrant/tmp/debug.txt', print_r( $request->files->all(), true ) ); die;
         //var_dump( $tabFile->getClientOriginalName() ); die;
         if ( $tabFile ) {
             $this->createTablature( $entity, $tabFile );
