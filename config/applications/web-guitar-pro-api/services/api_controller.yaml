@@ -25,6 +25,7 @@ services:
         arguments:
             - '@security.token_storage'
             - '@doctrine'
+            - '@vs_wgp.repository.tablature_category'
             - '@vs_wgp.factory.tablature'
             - '@vs_wgp.factory.tablature_file'
             - '@vs_wgp.tablature_uploader'

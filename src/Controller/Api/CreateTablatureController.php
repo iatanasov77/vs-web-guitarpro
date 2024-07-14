@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Doctrine\Persistence\ManagerRegistry;
+use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Sylius\Component\Resource\Factory\Factory;
 
 use App\Component\TablatureUploader\TablatureUploader;
@@ -26,6 +27,9 @@ class CreateTablatureController extends AbstractController
     /** @var ManagerRegistry */
     private $doctrine;
     
+    /** @var RepositoryInterface */
+    private $categoriesRepository;
+    
     /** @var Factory */
     private $tablaturesFactory;
     
@@ -38,12 +42,15 @@ class CreateTablatureController extends AbstractController
     public function __construct(
         TokenStorageInterface $tokenStorage,
         ManagerRegistry $doctrine,
+        RepositoryInterface $categoriesRepository,
         Factory $tablaturesFactory,
         Factory $tablaturesFilesFactory,
         TablatureUploader $uploader
     ) {
         $this->tokenStorage             = $tokenStorage;
         $this->doctrine                 = $doctrine;
+        $this->categoriesRepository     = $categoriesRepository;
+        $this->tablaturesFactory        = $tablaturesFactory;
         $this->tablaturesFactory        = $tablaturesFactory;
         $this->tablaturesFilesFactory   = $tablaturesFilesFactory;
         $this->uploader                 = $uploader;
@@ -53,6 +60,13 @@ class CreateTablatureController extends AbstractController
     {
         $formData   = $this->getFormData( $request );
         $entity     = $this->tablaturesFactory->createNew();
+        
+        foreach ( $formData['categories'] as $categoryId ) {
+            $category   = $this->categoriesRepository->find( $categoryId );
+            if ( $category ) {
+                $entity->addCategory( $category );
+            }
+        }
         
         $entity->setEnabled( filter_var( $formData['published'], FILTER_VALIDATE_BOOLEAN ) );
         $entity->setArtist( $formData['artist'] );
@@ -82,6 +96,7 @@ class CreateTablatureController extends AbstractController
             'published' => $request->request->get( 'published' ),
             'artist'    => $request->request->get( 'artist' ),
             'song'      => $request->request->get( 'song' ),
+            'categories'=> $request->request->all( 'categories' ),
         ];    
     }
     
