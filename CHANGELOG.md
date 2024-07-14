@@ -1,3 +1,20 @@
+3.4.1	|	Release date: **14.07.2024**
+============================================
+* New Features and Improvements:
+  - Add CSS Style for EasyUi Tree.
+  - Get Shared To Me Tablatures From API.
+  - Create About and Contacts Pages.
+  - Add Notifications Dropdown on Top Bar.
+  - Improve API Controllers.
+  - Improve API Delete Controllers.
+  - Create Tablatures Gaufrete Filesystem in API Application.
+  - Improve API Application.
+  - Add category for Tablature on API CreateTablatureController.
+* Bug-Fixes:
+  - Fix Tablature and Category Update Pages.
+  - Fix API CreateTbalatureController .
+
+
 3.4.0	|	Release date: **10.07.2024**
 ============================================
 * Bug-Fixes and Improvements:
