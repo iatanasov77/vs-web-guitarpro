@@ -3,3 +3,5 @@ gesdinet_jwt_refresh_token:
     # you will need to adjust this to match the class your application will use
     refresh_token_class: App\Entity\Api\RefreshToken
     
+    # 1 year
+    ttl: 31556926

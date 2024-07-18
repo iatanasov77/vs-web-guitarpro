@@ -1,3 +1,10 @@
+3.4.2	|	Release date: **18.07.2024**
+============================================
+* Bug-Fixes and Improvements:
+  - Make Contact Page Public.
+  - Add Configuration for API Refresh Tokens.
+
+
 3.4.1	|	Release date: **14.07.2024**
 ============================================
 * New Features and Improvements:
