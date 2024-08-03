@@ -31,6 +31,9 @@ node ( label: 'php-host' ) {
     def APP_FTP_PASSWORD;
     def APP_FTP_URL;
     
+    def VANKOSOFT_API_USER;
+    def VANKOSOFT_API_PASSWORD;
+    
     stage( 'Configure Environement' ) {
     
         // Bind Git Credentials
@@ -78,6 +81,12 @@ node ( label: 'php-host' ) {
             APP_FTP_URL         = "${FTP_HOST}/web/project/${BUILD_ENVIRONMENT}/"
             REMOTE_DIR          = "${APP_DIR}/${BUILD_ENVIRONMENT}"
         }
+        
+        // Bind VankoSoft API Credentials
+        withCredentials([usernamePassword(credentialsId: "vankosoft-issues-api", usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+            VANKOSOFT_API_USER      = "$USERNAME"
+            VANKOSOFT_API_PASSWORD  = "$PASSWORD"
+        }
     }
     
     stage( 'Source Checkout' ) {
@@ -111,11 +120,21 @@ node ( label: 'php-host' ) {
         
         CONFIG_TEMPLATE = readFile( 'ftp_deploy.ini.template' )
         writeFile file: 'ftp_deploy.ini',
-                text: vankosoftJob.renderTemplate( CONFIG_TEMPLATE, ['environement': BUILD_ENVIRONMENT, 'url': APP_FTP_URL, 'user': APP_FTP_USER, 'password': APP_FTP_PASSWORD] )
+                text: vankosoftJob.renderTemplate( CONFIG_TEMPLATE, [
+                    'environement': BUILD_ENVIRONMENT,
+                    'url': APP_FTP_URL,
+                    'user': APP_FTP_USER,
+                    'password': APP_FTP_PASSWORD
+                ])
         
         CONFIG_TEMPLATE = readFile( ".env.${BUILD_ENVIRONMENT}" )
         writeFile file: '.env',
-                text: vankosoftJob.renderTemplate( CONFIG_TEMPLATE, ['database_url': APP_DATABASE_URL, 'app_host': APP_HOST] )
+                text: vankosoftJob.renderTemplate( CONFIG_TEMPLATE, [
+                    'database_url': APP_DATABASE_URL,
+                    'app_host': APP_HOST,
+                    'vankosoft_api_user': VANKOSOFT_API_USER,
+                    'vankosoft_api_password': VANKOSOFT_API_PASSWORD
+                ])
     }
     
     stage( 'Before Deploy (Create Backup on Hosting, Set Maintenance Mode etc.)' ) {

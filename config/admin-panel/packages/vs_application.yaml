@@ -7,11 +7,11 @@ vs_application:
     project_type: extended_application
     
     vankosoft_api:
-        enabled: false
+        enabled: true
         project: 'web-guitar-pro'
         connection:
-            host: 'http://api.vankosoft.org/api'
-            user: apiadmin
+            host: '%env(VANKOSOFT_API_HOST)%'
+            user: '%env(VANKOSOFT_API_USER)%'
             password: '%env(VANKOSOFT_API_PASSWORD)%'
     
     resources:
@@ -212,6 +212,23 @@ vs_application:
                         routeParameters:
                           id: int
                         display: false
+                        
+            #########################################################################
+            # Uncomment this section If You need to Use VankoSoft Issue Tracker
+            #########################################################################
+            project_issues:
+                name: vs_application.menu.project_issues
+                uri: "javascript:;"
+                attributes:
+                    iconClass: ri-rocket-line
+                    breadcrumb_route: vs_application_project_issues_index
+                childs:
+                    list_issues:
+                        name: vs_application.menu.project_issues
+                        route: vs_application_project_issues_index
+                    create_issues:
+                        name: vs_application.menu.create_issue
+                        route: vs_application_project_issues_create
                         
         mainCmsMenu:
             cms:
