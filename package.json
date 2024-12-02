@@ -13,7 +13,7 @@
         "@popperjs/core": "^2.11.6",
         "bootstrap": "^5.2.3",
         "bootstrap-sass": "^3.4.1",
-        "ckeditor4": "4.22.1",
+        "ckeditor4": "4.24.0",
         "lightbox2": "^2.11.3",
         "highlight.js": "^11.0.1",
         "glyphicons-only-bootstrap": "^1.0.1",
