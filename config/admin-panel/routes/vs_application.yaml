@@ -25,3 +25,9 @@ vs_application_password_generator:
 vs_application_widgets:
     resource: "@VSApplicationBundle/Resources/config/routing/widgets.yaml"
     prefix:   /
+    
+vs_application_frontend:
+    resource: "@VSApplicationBundle/Resources/config/routing/frontend.yaml"
+    prefix:   /
+    options:
+        expose: true
