@@ -1,3 +1,11 @@
+3.5.0	|	Release date: **24.12.2024**
+============================================
+* New Features:
+  - Improve Vankosoft API Configs.
+  - Use VankoSoft API Credentials from ENV Variables.
+  - Update Front-End and Back-End Dependencies.
+
+
 3.4.4	|	Release date: **18.07.2024**
 ============================================
 * Bug-Fixes:
