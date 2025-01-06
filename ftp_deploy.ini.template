@@ -51,6 +51,7 @@ ignore = "
     /assets
     
     /docs
+    /public/index.php
     /templates/base.html.twig
     /src/Kernel.php
     /config/packages

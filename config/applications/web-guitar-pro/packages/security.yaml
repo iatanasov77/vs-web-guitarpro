@@ -100,9 +100,9 @@ security:
         - { route: 'vs_wgp_tablature_update', roles: [ROLE_SUPER_ADMIN, ROLE_APPLICATION_ADMIN, ROLE_WEB_GUITAR_PRO_ADMIN], requires_channel: '%env(SECURE_SCHEME)%' }
         - { route: 'vs_wgp_tablature_delete', roles: [ROLE_SUPER_ADMIN, ROLE_APPLICATION_ADMIN, ROLE_WEB_GUITAR_PRO_ADMIN], requires_channel: '%env(SECURE_SCHEME)%' }
         
-        - { path: ^/tablatures, roles: PUBLIC_ACCESS } # Tablature ACCESS SHOULD BE CHECK BY A VOTER
-        - { path: ^/tablatures-ext/, roles: PUBLIC_ACCESS } # Tablature ACCESS SHOULD BE CHECK BY A VOTER
-        - { path: ^/search-tablatures, roles: PUBLIC_ACCESS }
+        - { path: ^/tablatures, roles: PUBLIC_ACCESS, requires_channel: '%env(SECURE_SCHEME)%' } # Tablature ACCESS SHOULD BE CHECK BY A VOTER
+        - { path: ^/tablatures-ext/, roles: PUBLIC_ACCESS, requires_channel: '%env(SECURE_SCHEME)%' } # Tablature ACCESS SHOULD BE CHECK BY A VOTER
+        - { path: ^/search-tablatures, roles: PUBLIC_ACCESS, requires_channel: '%env(SECURE_SCHEME)%' }
         
         - { path: ^/build/, roles: PUBLIC_ACCESS, requires_channel: '%env(SECURE_SCHEME)%' }
         - { path: ^/, roles: [ROLE_SUPER_ADMIN, ROLE_APPLICATION_ADMIN, ROLE_WEB_GUITAR_PRO_ADMIN], requires_channel: '%env(SECURE_SCHEME)%' }

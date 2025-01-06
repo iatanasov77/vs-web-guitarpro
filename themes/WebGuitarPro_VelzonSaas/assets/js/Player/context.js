@@ -1,4 +1,4 @@
 export const context    =  {
     isProduction: IS_PRODUCTION,
-    backendURL: IS_PRODUCTION ? 'http://guitarpro.vankosoft.org/api' : 'http://wgp.lh/api'
+    backendURL: IS_PRODUCTION ? 'https://api.guitarpro.vankosoft.org/api' : 'https://api.wgp.lh/api'
 }

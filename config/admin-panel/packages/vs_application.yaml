@@ -299,6 +299,65 @@ vs_application:
                           id: int
                         display: false
             
+            website_elements:
+                name: vs_application.menu.website_elements
+                uri: "javascript:;"
+                attributes:
+                    iconClass: ri-pencil-ruler-2-line
+                childs:
+                    faq_list:
+                        name: vs_application.menu.frequently_asked_questions
+                        route: vs_cms_helpcenter_question_index
+                    faq_create:
+                        name: vs_application.menu.create_question
+                        route: vs_cms_helpcenter_question_create
+                        display: true
+                    faq_update:
+                        name: vs_application.menu.update_question
+                        route: vs_cms_helpcenter_question_update
+                        routeParameters:
+                            id: int
+                        display: false
+                    quick_links_list:
+                        name: vs_application.menu.quick_links_list
+                        route: vs_cms_quick_link_index
+                    quick_links_create:
+                        name: vs_application.menu.quick_links_create
+                        route: vs_cms_quick_link_create
+                        display: true
+                    quick_links_update:
+                        name: vs_application.menu.quick_links_update
+                        route: vs_cms_quick_link_update
+                        routeParameters:
+                            id: int
+                        display: false
+                    sliders_list:
+                        name: vs_application.menu.sliders_list
+                        route: vs_cms_slider_index
+                    sliders_create:
+                        name: vs_application.menu.sliders_create
+                        route: vs_cms_slider_create
+                        display: true
+                    sliders_update:
+                        name: vs_application.menu.sliders_update
+                        route: vs_cms_slider_update
+                        routeParameters:
+                            id: int
+                        display: false
+                    banner_places_list:
+                        name: vs_application.menu.banner_places_list
+                        route: vs_cms_banner_place_index
+                    banner_places_create:
+                        name: vs_application.menu.banner_places_create
+                        route: vs_cms_banner_place_create
+                        display: true
+                    banner_places_update:
+                        name: vs_application.menu.banner_places_update
+                        route: vs_cms_banner_place_update
+                        routeParameters:
+                            id: int
+                        display: false
+            
             filemanager_vankosoft:
                 name: vs_application.menu.vankoSoft_file_manager
                 uri: "javascript:;"
@@ -413,11 +472,8 @@ vs_application:
                     # Payum/Stripe Objects Entries
                     ################################
                     gateway_config_stripe_subscription_plans:
-                        name: vs_application.menu.stripe_subscription_plans
-                        route: gateway_config_stripe_subscription_objects_index
-                    gateway_config_stripe_coupons:
-                        name: vs_application.menu.stripe_coupons
-                        route: gateway_config_stripe_coupon_objects_index
+                        name: vs_application.menu.stripe_objects
+                        route: gateway_config_stripe_objects_index
                         
             currencies:
                 name: vs_application.menu.currencies

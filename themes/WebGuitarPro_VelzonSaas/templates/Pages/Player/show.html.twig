@@ -4,10 +4,10 @@
 {% block pageTitle %}<i class="icon_genius"></i> {{ 'vs_wgp.template.tablatures' | trans( {},'WebGuitarPro' ) }} :: {{ item.artist }} - {{ item.song }}{% endblock %}
 
 {% block content %}
-    <base href="http://{{ baseUrl }}/" />
+    <base href="https://{{ baseUrl }}/" />
     
     <div id="tablatureContainer"
-        data-base-url="http://{{ baseUrl }}"
+        data-base-url="https://{{ baseUrl }}"
         data-file="{{ url( 'tablature_read', {id: item.id} ) }}"
         data-user="{% if app.user %}{{ app.user.id }}{% else %}0{% endif %}"
         data-add-favorite-url="{{ path( 'tablature_favorite', {id: item.id} ) }}"
@@ -33,7 +33,7 @@
             </div>
             
             <div id="alphaTab"
-                data-base-url="http://{{ baseUrl }}"
+                data-base-url="https://{{ baseUrl }}"
                 data-file="{{ url( 'tablature_read', {id: item.id} ) }}"
                 data-user="{% if app.user %}true{% else %}false{%  endif %}"
                 data-add-favorite-url="{{ path( 'tablature_favorite', {id: item.id} ) }}"

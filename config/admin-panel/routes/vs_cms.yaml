@@ -14,6 +14,12 @@ vs_cms_toc:
     options:
         expose: true
 
+vs_cms_website_elements:
+    resource: "@VSCmsBundle/Resources/config/routing/website_elements.yaml"
+    prefix: /
+    options:
+        expose: true
+
 vs_cms_filemanager:
     resource: "@VSCmsBundle/Resources/config/routing/filemanager.yml"
     prefix: /vs_filemanager

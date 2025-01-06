@@ -36,3 +36,12 @@ vs_cms:
         slider_item_photo:
             classes:
                 model: App\Entity\Cms\SliderItemPhoto
+        banner_place:
+            classes:
+                model: App\Entity\Cms\BannerPlace
+        banner:
+            classes:
+                model: App\Entity\Cms\Banner
+        banner_image:
+            classes:
+                model: App\Entity\Cms\BannerImage
