@@ -1,3 +1,11 @@
+3.6.0	|	Release date: **06.01.2025**
+============================================
+* New Features:
+  - Update AdminPanel Menu Config.
+  - Update VankoSoft Application Library and Catalog Extension.
+  - Force HTTPS in All Applications.
+
+
 3.5.0	|	Release date: **24.12.2024**
 ============================================
 * New Features:
