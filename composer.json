@@ -20,14 +20,16 @@
         "ext-iconv": "*",
         "guzzlehttp/promises": "*",
         "php-http/httplug": "*",
+        
         "symfony/dotenv": "6.4.*",
         "symfony/flex": "^1.17|^2",
         "symfony/http-client": "6.4.*",
         "symfony/notifier": "6.4.*",
         "symfony/runtime": "6.4.*",
-        "vankosoft/api-bundle": "^3.0",
-        "vankosoft/application": "1.11.*",
-        "vankosoft/catalog-bundle": "^1.4"
+        
+        "vankosoft/application": "1.12.*",
+        "vankosoft/catalog-bundle": "^2.0",
+        "vankosoft/api-bundle": "^3.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5",
