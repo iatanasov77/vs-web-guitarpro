@@ -86,3 +86,6 @@ label.required:after {
 	background: url( "~jquery-easyui/images/tree_icons.png" ) no-repeat -208px 0 !important;
 }
 
+.main-menu .dropdown-toggle::after {
+    border-top: none !important;
+}
