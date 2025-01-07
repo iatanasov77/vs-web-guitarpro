@@ -11,6 +11,7 @@
         "@fortawesome/fontawesome-free": "^6.1.0",
         "@kanety/jquery-simple-tree-table": "^0.5.0",
         "@popperjs/core": "^2.11.6",
+        "stimulus": "^3.2",
         "bootstrap": "^5.2.3",
         "ckeditor4": "4.22.1",
         
@@ -98,17 +99,20 @@
         "@babel/preset-env": "^7.24.7",
         "@babel/preset-react": "^7.24.7",
         "core-js": "^3.0.0",
-        "file-loader": "^6.0.0",
-        "regenerator-runtime": "^0.13.2",
-        "resolve-url-loader": "2",
-        "sass": "^1.77.6",
-        "sass-loader": "^16.0.1",
-        "stimulus": "^2.0.0",
         
         "eslint": "^8.0.0",
         "webpack": "^5.72",
         "webpack-cli": "^5.1.4",
         "webpack-notifier": "^1.15.0",
+        
+        "file-loader": "^6.0.0",
+        "regenerator-runtime": "^0.13.2",
+        "raw-loader": "^4.0.2",
+        "resolve-url-loader": "5.0.0",
+        "sass": "^1.77.6",
+        "sass-loader": "^16.0.1",
+        "ts-loader": "^9.0.0",
+        "typescript": "~5.2.2",
                 
         "@angular-devkit/build-angular": "^17.3.9",
         "@angular/cli": "~17.2.3",
@@ -123,10 +127,7 @@
         "karma-chrome-launcher": "~3.2.0",
         "karma-coverage": "~2.2.0",
         "karma-jasmine": "~5.1.0",
-        "karma-jasmine-html-reporter": "~2.0.0",
-        "raw-loader": "^4.0.2",
-        "ts-loader": "^9.0.0",
-        "typescript": "~5.2.2"
+        "karma-jasmine-html-reporter": "~2.0.0"
     },
     "resolutions": {
         "@kanety/jquery-simple-tree-table/jquery": "3.6.3",
