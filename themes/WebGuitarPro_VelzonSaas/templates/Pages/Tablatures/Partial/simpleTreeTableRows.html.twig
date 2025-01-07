@@ -20,6 +20,28 @@
         {% endif %}
     </td>
     
+    <td style="text-align: center;">
+        {% if isTab %}
+            {% if item.public %}
+                <i class="fas fa-check" style="color: #82c91e;">
+            {% else %}
+                <i class="fas fa-times" style="color: #ff1e1e;"></i>
+            {% endif %}
+        {% endif %}
+    </td>
+    
+    <td>
+        {% if isTab %}
+            {{ item.createdAt | date( 'd.m.Y H:i:s' ) }}
+        {% endif %}
+    </td>
+    
+    <td>
+        {% if isTab %}
+            {{ item.updatedAt | date( 'd.m.Y H:i:s' ) }}
+        {% endif %}
+    </td>
+                                
     <td>
         {% if isTab %}
         
