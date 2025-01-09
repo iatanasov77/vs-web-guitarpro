@@ -1,3 +1,13 @@
+3.6.1	|	Release date: **09.01.2025**
+============================================
+* New Features and Improvements:
+  - Update Frontend Packages Dependencies.
+  - Some CSS Fix on Main Application Menu.
+  - Improve My Tablatures Page.
+  - Set Alphatab Version From ENV Variable.
+  - Update Jenkinsfile to Google Measurement Id For ENV Var.
+
+
 3.6.0	|	Release date: **06.01.2025**
 ============================================
 * New Features:
