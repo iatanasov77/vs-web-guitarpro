@@ -35,6 +35,9 @@ node ( label: 'php-host' ) {
     def APP_FTP_PASSWORD;
     def APP_FTP_URL;
     
+    def GOOGLE_MEASUREMENT_CREDENTIALS_ID   = 'guitarpro-google-measurement-id';
+    def GOOGLE_MEASUREMENT_ID               = 'G-abc123';
+    
     def VANKOSOFT_API_USER;
     def VANKOSOFT_API_PASSWORD;
     
@@ -84,6 +87,11 @@ node ( label: 'php-host' ) {
             APP_FTP_PASSWORD    = "$PASSWORD"
             APP_FTP_URL         = "${FTP_HOST}/web/project/${BUILD_ENVIRONMENT}/"
             REMOTE_DIR          = "${APP_DIR}/${BUILD_ENVIRONMENT}"
+        }
+        
+        // Bind Google Measurement Id
+        withCredentials([string(credentialsId: "${GOOGLE_MEASUREMENT_CREDENTIALS_ID}", variable: 'MEASUREMENT_ID')]) {
+            GOOGLE_MEASUREMENT_ID   = "$MEASUREMENT_ID"
         }
         
         // Bind VankoSoft API Credentials
@@ -136,6 +144,7 @@ node ( label: 'php-host' ) {
                 text: vankosoftJob.renderTemplate( CONFIG_TEMPLATE, [
                     'database_url': APP_DATABASE_URL,
                     'app_host': APP_HOST,
+                    'google_measurement_id': GOOGLE_MEASUREMENT_ID,
                     'vankosoft_api_user': VANKOSOFT_API_USER,
                     'vankosoft_api_password': VANKOSOFT_API_PASSWORD
                 ])

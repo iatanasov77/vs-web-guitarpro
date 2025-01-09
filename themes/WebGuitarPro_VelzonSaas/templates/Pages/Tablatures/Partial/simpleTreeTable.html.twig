@@ -1,4 +1,14 @@
 <table class="table table-hover align-middle table-nowrap mb-0" id="tblTablatures">
+	<thead>
+	   <tr>
+	       <th></th>
+	       <th>{{ 'vs_wgp.form.tablature.tablature' | trans( {},'WebGuitarPro' ) }}</th>
+	       <th>{{ 'vs_application.template.items_index_row_published' | trans( {},'VSApplicationBundle' ) }}</th>
+	       <th>{{ 'vs_application.template.items_index_row_created' | trans( {},'VSApplicationBundle' ) }}</th>
+           <th>{{ 'vs_application.template.items_index_row_updated' | trans( {},'VSApplicationBundle' ) }}</th>
+	       <th>{{ 'vs_application.template.items_index_row_action' | trans( {},'VSApplicationBundle' ) }}</th>
+	   </tr>
+	</thead>
 	<tbody>
         {% set rowClass = 'simpleTreeTable_Row_Odd' %}
         {% for item in app.user.tabCategories %}
