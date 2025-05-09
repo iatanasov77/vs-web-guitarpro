@@ -51,7 +51,6 @@ class CreateTablatureController extends AbstractController
         $this->doctrine                 = $doctrine;
         $this->categoriesRepository     = $categoriesRepository;
         $this->tablaturesFactory        = $tablaturesFactory;
-        $this->tablaturesFactory        = $tablaturesFactory;
         $this->tablaturesFilesFactory   = $tablaturesFilesFactory;
         $this->uploader                 = $uploader;
     }

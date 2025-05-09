@@ -6,14 +6,6 @@ vs_application_instalator:
 vs_application:
     project_type: extended_application
     
-    vankosoft_api:
-        enabled: true
-        project: 'web-guitar-pro'
-        connection:
-            host: '%env(VANKOSOFT_API_HOST)%'
-            user: '%env(VANKOSOFT_API_USER)%'
-            password: '%env(VANKOSOFT_API_PASSWORD)%'
-    
     resources:
         application:
             classes:
@@ -212,23 +204,6 @@ vs_application:
                         routeParameters:
                           id: int
                         display: false
-                        
-            #########################################################################
-            # Uncomment this section If You need to Use VankoSoft Issue Tracker
-            #########################################################################
-            project_issues:
-                name: vs_application.menu.project_issues
-                uri: "javascript:;"
-                attributes:
-                    iconClass: ri-rocket-line
-                    breadcrumb_route: vs_application_project_issues_index
-                childs:
-                    list_issues:
-                        name: vs_application.menu.project_issues
-                        route: vs_application_project_issues_index
-                    create_issues:
-                        name: vs_application.menu.create_issue
-                        route: vs_application_project_issues_create
                         
         mainCmsMenu:
             cms:
@@ -695,6 +670,20 @@ vs_application:
                         display: false
         
         profileMenu:
+            about:
+                name: vs_application.menu.about
+                route: vs_application_about
+                attributes:
+                    iconClass: "fas fa-info me-2"
+                    target: '_self'
+            
+            contact:
+                name: vs_application.menu.contact
+                route: vs_application_contact
+                attributes:
+                    iconClass: "fas fa-user mr-2"
+                    target: '_self'
+            
             profile:
                 name: vs_application.menu.my_profile
                 route: vs_users_profile_show
