@@ -35,8 +35,6 @@ class TablatureUploader extends AbstractFileUploader
             file_get_contents( $tablatureFile->getFile()->getPathname() )
         );
         
-        if ( method_exists ( $this->filesystem->getAdapter(), 'mimeType' ) ) {
-            $tablatureFile->setType( $this->filesystem->getAdapter()->mimeType( $tablatureFile->getPath() ) );
-        }
+        $tablatureFile->setType( $this->filesystem->mimeType( $tablatureFile->getPath() ) );
     }
 }
