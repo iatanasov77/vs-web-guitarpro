@@ -10,6 +10,7 @@ twig:
         formCreateAccount: '%vs_users.form_create_account%'
         installedBundles: '%kernel.bundles%'
         pageCategoriesTaxonomyCode: '%vs_application.page_categories.taxonomy_code%'
+        useCkEditor: '%env(resolve:USE_CKEDITOR)%'
         
     form_themes:
         - '@FOSCKEditor/Form/ckeditor_widget.html.twig'

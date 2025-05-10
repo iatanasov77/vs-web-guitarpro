@@ -1,0 +1,24 @@
+oneup_flysystem:
+    adapters:
+        vs_application_app_pictures:
+            local:
+                location: "%vs_cms.filemanager_shared_media_gaufrette.app_pictures%"
+        vs_application_profile:
+            local:
+                location: "%vs_cms.filemanager_shared_media_gaufrette.profile%"
+        vs_application_filemanager:
+            local:
+                location: "%vs_cms.filemanager_shared_media_gaufrette.filemanager%"
+        vs_application_slider:
+            local:
+                location: "%vs_cms.filemanager_shared_media_gaufrette.slider%"
+    
+    filesystems:
+        vs_application_app_pictures:
+            adapter: "%vs_cms.gaufrette.app_pictures.filesystem%"
+        vs_application_profile:
+            adapter: "%vs_cms.gaufrette.profile.filesystem%"
+        vs_application_filemanager:
+            adapter: "%vs_cms.gaufrette.filemanager.filesystem%"
+        vs_application_slider:
+            adapter: "%vs_cms.gaufrette.slider.filesystem%"
