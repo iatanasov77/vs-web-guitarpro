@@ -17,17 +17,6 @@ services:
         autoconfigure: true
         public: true
 
-    vs_application.app_pictures_uploader.filesystem:
-        class: Gaufrette\Filesystem
-        arguments: ['%vs_application.gaufrette.app_pictures.filesystem%']
-        factory: ['@knp_gaufrette.filesystem_map', 'get']
-        
-    vs_application.app_pictures_uploader:
-        class: Vankosoft\CmsBundle\Component\Uploader\FilemanagerUploader
-        arguments:
-            - '@vs_application.app_pictures_uploader.filesystem'
-            - '@vs_cms.file_path_generator'
-    
     # Create a Custom Uploader extending Vankosoft\CmsBundle\Component\Uploader\FilemanagerUploader
     # Add Needed Configurations in packages/knp_gaufrette.yaml
     ##################################################################################################
@@ -36,5 +25,3 @@ services:
 #        arguments:
 #            - '@vs_application.app_pictures_uploader.filesystem'
 #            - '@vs_cms.file_path_generator'
-
-
