@@ -1,3 +1,14 @@
+3.6.2	|	Release date: **10.05.2025**
+============================================
+* New Features and Improvements:
+  - Update DBAL Database Version for Prod Environement.
+  - Remove Vankosoft Issue Tracking.
+  - Update to the New Version of Vankosoft Application Library.
+* Bug-Fixes:
+  - Some Other Fixes.
+  - Fix Tablature Uploader.
+
+
 3.6.1	|	Release date: **09.01.2025**
 ============================================
 * New Features and Improvements:
