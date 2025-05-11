@@ -64,12 +64,14 @@ class RegisterController extends BaseRegisterController
             return $this->redirectToRoute( $this->params['defaultRedirect'] );
         }
         
-        if ( $request->isMethod( 'post' ) ) {
+        $form   = $this->getForm();
+        $form->handleRequest( $request );
+        if ( $form->isSubmitted() && $form->isValid() ) {
             //return parent::index( $request, $mailer );
             return $this->handleRegisterForm( $request, $mailer );
         }
         
-        $params = [
+        return $this->render( '@VSUsers/Register/register.html.twig', array_merge( [
             'tabForm'                       => $this->getTabForm()->createView(),
             'tabCategoryForm'               => $this->getTabCategoryForm()->createView(),
             'tabCategoriesTaxonomyId'       => $this->tabCategoriesTaxonomy->getId(),
@@ -77,9 +79,7 @@ class RegisterController extends BaseRegisterController
             'paidTablatureStoreServices'    => $this->doctrine->getRepository( 'App\Entity\UsersSubscriptions\PayedServiceSubscriptionPeriod' )->findAll(),
             
             'tablatureUploadLimited'        => ! $this->checkTablatureLimit(),
-        ];
-
-        return $this->render( '@VSUsers/Register/register.html.twig', array_merge( $params, $this->templateParams( $this->getForm() ) ) );
+        ], $this->templateParams( $form ) ) );
     }
     
     protected function handleRegisterForm( Request $request, MailerInterface $mailer )

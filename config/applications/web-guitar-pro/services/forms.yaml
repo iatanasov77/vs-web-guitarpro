@@ -12,6 +12,7 @@ services:
             - '@vs_application.repository.locale'
             - "@request_stack"
             - '%vs_application.model.application.class%'
+            - '%vs_users.model.user_roles.class%'
             - '@security.helper'
             - '%vs_users.registration_form_required_fields%'
             - '%vs_catalog.model.pricing_plan.class%'
