@@ -1,3 +1,9 @@
+3.6.3	|	Release date: **11.05.2025**
+============================================
+* Bug-Fixes:
+  - Fix Registration Form.
+
+
 3.6.2	|	Release date: **10.05.2025**
 ============================================
 * New Features and Improvements:
