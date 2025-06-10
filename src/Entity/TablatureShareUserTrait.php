@@ -3,6 +3,10 @@
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
 
+/**
+ * @Doctrine\Common\Annotations\Annotation\IgnoreAnnotation( "ORM\MappedSuperclass" )
+ * @Doctrine\Common\Annotations\Annotation\IgnoreAnnotation("ORM\Column")
+ */
 trait TablatureShareUserTrait
 {
     #[ORM\OneToMany(targetEntity: TablatureShare::class, mappedBy: "owner", indexBy: "id", cascade: ["all"])]

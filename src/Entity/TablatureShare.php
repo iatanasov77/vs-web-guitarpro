@@ -7,6 +7,10 @@ use Doctrine\Common\Collections\Collection;
 
 use App\Entity\UserManagement\User;
 
+/**
+ * @Doctrine\Common\Annotations\Annotation\IgnoreAnnotation( "ORM\MappedSuperclass" )
+ * @Doctrine\Common\Annotations\Annotation\IgnoreAnnotation("ORM\Column")
+ */
 #[ORM\Entity]
 #[ORM\Table(name: "WGP_TablatureShares")]
 #[ORM\UniqueConstraint(name: 'owner_share_unique_idx', columns: ["owner_id", "name"])]
