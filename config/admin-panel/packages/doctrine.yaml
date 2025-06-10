@@ -17,9 +17,6 @@ doctrine:
             
         mapping_types:
             enum: string
-            
-        profiling_collect_backtrace: '%kernel.debug%'
-        use_savepoints: true
 
     orm:
         auto_generate_proxy_classes: true
@@ -37,14 +34,12 @@ doctrine:
         mappings:
             App:
                 is_bundle: false
-                #type: annotation
                 type: attribute
                 dir: '%kernel.project_dir%/src/Entity'
                 prefix: 'App\Entity'
                 alias: App
 
             gedmo_tree:
-                #type: annotation
                 type: attribute
                 prefix: Gedmo\Tree\Entity
                 dir: "%kernel.project_dir%/vendor/gedmo/doctrine-extensions/src/Tree/Entity"
@@ -52,7 +47,6 @@ doctrine:
                 is_bundle: false
                 
             translatable:
-                #type: annotation
                 type: attribute
                 prefix: Gedmo\Translatable\Entity
                 dir: "%kernel.project_dir%/vendor/gedmo/doctrine-extensions/src/Translatable/Entity/MappedSuperclass"
@@ -60,15 +54,13 @@ doctrine:
                 is_bundle: false
                 
             loggable:
-                #type: annotation
                 type: attribute
                 prefix: Gedmo\Loggable\Entity
-                dir: "%kernel.project_dir%/vendor/gedmo/doctrine-extensions/src/Loggable/Entity"
+                dir: "%kernel.project_dir%/vendor/gedmo/doctrine-extensions/src/Loggable/Entity/MappedSuperclass"
                 alias: GedmoLoggable
                 is_bundle: false
                 
             sortable:
-                #type: annotation
                 type: attribute
                 prefix: Gedmo\Sortable\Entity
                 dir: "%kernel.project_dir%/vendor/gedmo/doctrine-extensions/src/Sortable/Entity"

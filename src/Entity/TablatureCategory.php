@@ -8,6 +8,10 @@ use Vankosoft\ApplicationBundle\Model\Interfaces\TaxonDescendentInterface;
 use Vankosoft\ApplicationBundle\Model\Traits\TaxonDescendentEntity;
 use App\Entity\UserManagement\User;
 
+/**
+ * @Doctrine\Common\Annotations\Annotation\IgnoreAnnotation( "ORM\MappedSuperclass" )
+ * @Doctrine\Common\Annotations\Annotation\IgnoreAnnotation("ORM\Column")
+ */
 #[ORM\Entity]
 #[ORM\Table(name: "WGP_TablatureCategories")]
 class TablatureCategory implements ResourceInterface, TaxonDescendentInterface

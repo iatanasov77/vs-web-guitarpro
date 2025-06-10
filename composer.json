@@ -27,8 +27,8 @@
         "symfony/notifier": "6.4.*",
         "symfony/runtime": "6.4.*",
         
-        "vankosoft/application": "1.12.*",
-        "vankosoft/catalog-bundle": "^2.0",
+        "vankosoft/application": "1.13.*",
+        "vankosoft/catalog-bundle": "^2.4",
         "vankosoft/api-bundle": "^3.0"
     },
     "require-dev": {

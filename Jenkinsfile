@@ -116,7 +116,7 @@ node ( label: 'php-host' ) {
             export COMPOSER_ALLOW_SUPERUSER=1;
             
             # https://www.makeuseof.com/javascript-heap-out-of-memory-error-fix/
-            export NODE_OPTIONS='--max-old-space-size=4096';
+            export NODE_OPTIONS='--max-old-space-size=2048';
             
             /usr/local/bin/phing install-${BUILD_ENVIRONMENT} -verbose -debug
         """

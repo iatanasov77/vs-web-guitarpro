@@ -56,4 +56,6 @@ vs_payment:
         customer_group:
             classes:
                 model: App\Entity\Payment\CustomerGroup
-            
+        exchange_rate_service:
+            classes:
+                model: App\Entity\Payment\ExchangeRateService
