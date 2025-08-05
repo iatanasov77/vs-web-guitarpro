@@ -1,4 +1,7 @@
-app_vs_payment_checkout:
-    resource: "@VSPaymentBundle/Resources/config/routing/checkout.yaml"
+vs_payment_shopping_cart:
+    resource: "@VSPaymentBundle/Resources/config/routing/shopping_cart.yaml"
     prefix: /
 
+vs_payment_checkout:
+    resource: "@VSPaymentBundle/Resources/config/routing/checkout.yaml"
+    prefix: /

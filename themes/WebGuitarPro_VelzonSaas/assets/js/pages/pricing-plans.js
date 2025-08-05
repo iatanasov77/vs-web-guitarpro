@@ -1,7 +1,7 @@
-import { ChoosePlan } from '../includes/pricing-plans.js';
-import { SubmitCreditCardForm, SubmitPaymentForm } from '@@/js/Stripe/StripeJsV2.js';
+import '../includes/pricing-plans.js';
+import { SubmitCreditCardForm, SubmitPaymentForm } from '@@@/js/Stripe/StripeJsV2.js';
 
-import { SubmitPayumCreditCardForm } from '@@/js/Payum/Payum.js';
+import { SubmitPayumCreditCardForm } from '@@@/js/Payum/Payum.js';
 
 $( function()
 {

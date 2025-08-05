@@ -1,5 +1,5 @@
 import { VsCookieConsent } from '@/vendor/vs_cookieconsent/cookieconsent.js';
-import { VsPath } from '@/js/includes/fos_js_routes.js';
+import { VsPath } from '@@/js/includes/fos_js_routes.js';
 
 const routes    = require( '../../../../../public/shared_assets/js/fos_js_routes_application.json' );
 

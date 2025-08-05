@@ -20,7 +20,7 @@ vs_payment_show_payment_methods_form:
     options:
         expose: true
         
-vs_payment_pricing_plans:
+vs_catalog_pricing_plans:
     path: /pricing-plans-checkout
     controller: App\Controller\WebGuitarProAPI\PricingPlanCheckoutController::showPricingPlans
     options:

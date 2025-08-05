@@ -13,8 +13,10 @@ Encore
     .enableVersioning(Encore.isProduction())
     
     .addAliases({
-        '@': path.resolve( __dirname, '../../vendor/vankosoft/application/src/Vankosoft/ApplicationBundle/Resources/themes/default/assets' ),
-        '@@': path.resolve( __dirname, '../../vendor/vankosoft/payment-bundle/lib/Resources/assets' )
+        '@': path.resolve( __dirname, '../../public/shared_assets' ),
+        '@@': path.resolve( __dirname, '../../vendor/vankosoft/application/src/Vankosoft/ApplicationBundle/Resources/themes/default/assets' ),
+        '@@@': path.resolve( __dirname, '../../vendor/vankosoft/payment-bundle/lib/Resources/assets' ),
+        '@@@@': path.resolve( __dirname, '../../vendor/vankosoft/catalog-bundle/lib/Resources/themes/default/assets' )
     })
     
     .enableSassLoader(function(sassOptions) {}, {
