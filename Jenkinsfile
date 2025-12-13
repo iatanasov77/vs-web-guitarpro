@@ -13,7 +13,7 @@ node ( label: 'php-host' ) {
     def REMOTE_SSH_USER         = 'root'
     def REMOTE_DIR
     
-    final PHP_BIN               = '/usr/bin/php8.2'
+    final PHP_BIN               = '/usr/bin/php8.4'
     
     final GIT_CREDENTIALS_ID    = 'github-iatanasov77';
     final GIT_URI               = 'github.com/iatanasov77/vs-web-guitarpro.git'

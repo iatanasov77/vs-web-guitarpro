@@ -10,7 +10,8 @@ declare var $: any;
     selector: 'app-player',
     
     template: templateString || 'Template Not Loaded !!!',
-    styles: [cssString || 'Template Not Loaded !!!',]
+    styles: [cssString || 'Template Not Loaded !!!',],
+    standalone: false
 })
 export class PlayerComponent implements OnInit, OnDestroy
 {

@@ -11,8 +11,9 @@ declare var $: any;
     template: templateString || 'Template Not Loaded !!!',
     //templateUrl: './print-item.component.html',
     
-    styleUrls: []
-    //styleUrls: ['../player-controls.component.scss']
+    styleUrls: [],
+    //styleUrls: ['../player-controls.component.scss'],
+    standalone: false
 })
 export class PrintItemComponent implements OnInit
 {

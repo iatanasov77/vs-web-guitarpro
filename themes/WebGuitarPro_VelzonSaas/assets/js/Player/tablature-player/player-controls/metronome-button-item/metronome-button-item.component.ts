@@ -11,8 +11,9 @@ declare var $: any;
     template: templateString || 'Template Not Loaded !!!',
     //templateUrl: './metronome-button-item.component.html',
     
-    styleUrls: []
-    //styleUrls: ['../player-controls.component.scss']
+    styleUrls: [],
+    //styleUrls: ['../player-controls.component.scss'],
+    standalone: false
 })
 export class MetronomeButtonItemComponent implements OnInit
 {

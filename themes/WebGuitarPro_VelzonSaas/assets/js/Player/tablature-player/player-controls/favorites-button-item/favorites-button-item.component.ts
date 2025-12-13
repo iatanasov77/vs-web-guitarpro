@@ -10,8 +10,9 @@ declare var $: any;
     template: templateString || 'Template Not Loaded !!!',
     //templateUrl: './favorites-button-item.component.html',
     
-    styleUrls: []
-    //styleUrls: ['../player-controls.component.scss']
+    styleUrls: [],
+    //styleUrls: ['../player-controls.component.scss'],
+    standalone: false
 })
 export class FavoritesButtonItemComponent implements OnInit
 {
