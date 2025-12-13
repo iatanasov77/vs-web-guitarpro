@@ -27,8 +27,8 @@ export class LayoutItemComponent implements OnInit
     };
     
     selectedStaveprofile: any   = {
-        staveprofile: StaveProfile.ScoreTab,
-        text: 'ScoreTab',
+        staveprofile: StaveProfile.Tab,
+        text: 'Tab',
     }
     
     layouts: Array<any>         = [

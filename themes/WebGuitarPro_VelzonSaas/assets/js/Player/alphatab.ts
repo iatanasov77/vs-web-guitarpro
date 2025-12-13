@@ -5,6 +5,8 @@ declare global {
 }
 declare var $: any;
 
+import { LayoutMode, StaveProfile } from '@coderline/alphatab';
+
 //import * as alphaTab from '@coderline/alphatab';
 let alphaTab  = require( "@coderline/alphatab" );
 //window.alphaTab = alphaTab;
@@ -28,8 +30,8 @@ export function alphatabApi(): any
             fontDirectory: baseUrl + '/build/web-guitar-pro-velzon-saas/font/'
         },
         display: {
-            layoutMode: 'page',
-            staveProfile: 'scoretab'
+            layoutMode: LayoutMode.Page,
+            staveProfile: StaveProfile.Tab
         },
         notation: {
             rhythmMode: 'ShowWithBars',
