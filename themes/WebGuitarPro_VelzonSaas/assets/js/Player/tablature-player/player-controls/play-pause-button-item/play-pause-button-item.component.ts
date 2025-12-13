@@ -11,8 +11,9 @@ declare var $: any;
     template: templateString || 'Template Not Loaded !!!',
     //templateUrl: './play-pause-button-item.component.html',
     
-    styleUrls: []
-    //styleUrls: ['../player-controls.component.scss']
+    styleUrls: [],
+    //styleUrls: ['../player-controls.component.scss'],
+    standalone: false
 })
 export class PlayPauseButtonItemComponent implements OnInit
 {

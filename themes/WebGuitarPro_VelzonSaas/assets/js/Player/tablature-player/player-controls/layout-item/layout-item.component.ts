@@ -9,7 +9,8 @@ declare var $: any;
     selector: 'layout-item',
     
     template: templateString || 'Template Not Loaded !!!',
-    styleUrls: []
+    styleUrls: [],
+    standalone: false
 })
 export class LayoutItemComponent implements OnInit
 {
@@ -26,8 +27,8 @@ export class LayoutItemComponent implements OnInit
     };
     
     selectedStaveprofile: any   = {
-        staveprofile: StaveProfile.ScoreTab,
-        text: 'ScoreTab',
+        staveprofile: StaveProfile.Tab,
+        text: 'Tab',
     }
     
     layouts: Array<any>         = [

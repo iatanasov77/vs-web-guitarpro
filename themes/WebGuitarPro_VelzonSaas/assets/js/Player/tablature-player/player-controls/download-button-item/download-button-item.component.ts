@@ -7,7 +7,8 @@ declare var $: any;
 @Component({
     selector: 'download-button-item',
     template: templateString || 'Template Not Loaded !!!',
-    styleUrls: []
+    styleUrls: [],
+    standalone: false
 })
 export class DownloadButtonItemComponent implements OnInit
 {

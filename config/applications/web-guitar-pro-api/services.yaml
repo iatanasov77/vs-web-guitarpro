@@ -30,7 +30,7 @@ parameters:
     
     vs_payment.checkout.throw_exception_on_payment_done: false
     vs_payment.shopping_cart_redirect_on_payment_done: 'app_home'
-    vs_payment.pricing_plans_redirect_on_payment_done: 'vs_payment_pricing_plans'
+    vs_payment.pricing_plans_redirect_on_payment_done: 'vs_catalog_pricing_plans'
     
     vs_wgp.tablature-categories.taxonomy_code: tablature-categories
 

@@ -28,7 +28,7 @@
         "symfony/runtime": "6.4.*",
         
         "vankosoft/application": "1.13.*",
-        "vankosoft/catalog-bundle": "^2.4",
+        "vankosoft/catalog-bundle": "^2.5",
         "vankosoft/api-bundle": "^3.0",
         
         "doctrine/dbal": "^3.0"

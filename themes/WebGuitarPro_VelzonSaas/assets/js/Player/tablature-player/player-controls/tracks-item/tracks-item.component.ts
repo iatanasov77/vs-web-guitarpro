@@ -14,7 +14,8 @@ declare var $: any;
     selector: 'tracks-item',
     
     template: templateString || 'Template Not Loaded !!!',
-    styles: [cssString || 'Template Not Loaded !!!',]
+    styles: [cssString || 'Template Not Loaded !!!',],
+    standalone: false
 })
 export class TracksItemComponent implements OnInit
 {

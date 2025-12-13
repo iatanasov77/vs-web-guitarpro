@@ -1,3 +1,13 @@
+3.7.1	|	Release date: **13.12.2025**
+============================================
+* New Features and Improvements:
+  - Improve Frontend Dependencies.
+  - Update to New Versions of Vankosoft Libs.
+  - Update Angular Version to 20.
+  - Update '@coderline/alphatab' to Latest Version.
+  - Change Default StaveProfile of Tab Viwer to Tab Only.
+
+
 3.7.0	|	Release date: **10.06.2025**
 ============================================
 * New Features:

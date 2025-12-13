@@ -13,7 +13,7 @@ node ( label: 'php-host' ) {
     def REMOTE_SSH_USER         = 'root'
     def REMOTE_DIR
     
-    final PHP_BIN               = '/usr/bin/php8.2'
+    final PHP_BIN               = '/usr/bin/php8.4'
     
     final GIT_CREDENTIALS_ID    = 'github-iatanasov77';
     final GIT_URI               = 'github.com/iatanasov77/vs-web-guitarpro.git'
@@ -111,16 +111,6 @@ node ( label: 'php-host' ) {
     }
     
     stage( 'Build Application' ) {
-        sh """
-            export COMPOSER_HOME='/home/vagrant/.composer';
-            export COMPOSER_ALLOW_SUPERUSER=1;
-            
-            # https://www.makeuseof.com/javascript-heap-out-of-memory-error-fix/
-            export NODE_OPTIONS='--max-old-space-size=2048';
-            
-            /usr/local/bin/phing install-${BUILD_ENVIRONMENT} -verbose -debug
-        """
-        
         CONFIG_TEMPLATE = readFile( 'ftp_deploy.ini.template' )
         writeFile file: 'ftp_deploy.ini',
                 text: vankosoftJob.renderTemplate( CONFIG_TEMPLATE, [
@@ -137,6 +127,16 @@ node ( label: 'php-host' ) {
                     'app_host': APP_HOST,
                     'google_measurement_id': GOOGLE_MEASUREMENT_ID
                 ])
+        
+        sh """
+            export COMPOSER_HOME='/home/vagrant/.composer';
+            export COMPOSER_ALLOW_SUPERUSER=1;
+            
+            # https://www.makeuseof.com/javascript-heap-out-of-memory-error-fix/
+            export NODE_OPTIONS='--max-old-space-size=2048';
+            
+            /usr/local/bin/phing install-${BUILD_ENVIRONMENT} -verbose -debug
+        """
     }
     
     stage( 'Before Deploy (Create Backup on Hosting, Set Maintenance Mode etc.)' ) {

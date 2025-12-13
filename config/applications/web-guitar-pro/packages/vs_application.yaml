@@ -155,7 +155,7 @@ vs_application:
                   
             pricing_plans:
                 name: vs_application.menu.site_main.extend_your_tablatures_store
-                route: vs_payment_pricing_plans
+                route: vs_catalog_pricing_plans
                 #route: vs_catalog_pricing_plan_index
                 attributes:
                     iconClass: "fas fa-cog me-1"

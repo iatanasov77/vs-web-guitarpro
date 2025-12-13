@@ -10,7 +10,8 @@ declare var $: any;
     selector: 'player-controls',
     
     template: templateString || 'Template Not Loaded !!!',
-    styles: [cssString || 'Template Not Loaded !!!',]
+    styles: [cssString || 'Template Not Loaded !!!',],
+    standalone: false
 })
 export class PlayerControlsComponent implements OnInit
 {

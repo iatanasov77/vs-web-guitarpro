@@ -2,11 +2,11 @@
 // bin/sugarbabes fos:js-routing:dump --format=json --target=public/shared_assets/js/fos_js_routes_application.json
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 var routes  = require( '../../../../../public/shared_assets/js/fos_js_routes_application.json' );
-import { VsPath } from '@/js/includes/fos_js_routes.js';
+import { VsPath } from '@@/js/includes/fos_js_routes.js';
 
-import { ChoosePlan, PayPlan, PaySubscription } from '../includes/pricing-plans.js';
-import { SubmitCreditCardForm, SubmitPaymentForm } from '@@/js/Stripe/StripeJsV2.js';
-import { SubmitPayumCreditCardForm } from '@@/js/Payum/Payum.js';
+import '../includes/pricing-plans.js';
+import { SubmitCreditCardForm, SubmitPaymentForm } from '@@@/js/Stripe/StripeJsV2.js';
+import { SubmitPayumCreditCardForm } from '@@@/js/Payum/Payum.js';
 
 window.CreateSubscriptionSubmited    = false;
 window.CancelSubscriptionSubmited    = false;

@@ -7,10 +7,10 @@ require( 'jquery-easyui/js/jquery.easyui.min.js' );
 import * as bootstrap from 'bootstrap';
 window.bootstrap = bootstrap;
 
-import { VsTranslator, VsLoadTranslations } from '@/js/includes/bazinga_js_translations.js';
+import { VsTranslator, VsLoadTranslations } from '@@/js/includes/bazinga_js_translations.js';
 VsLoadTranslations(['WebGuitarPro']);
 
-require( '@/js/includes/resource-delete.js' );
+require( '@@/js/includes/resource-delete.js' );
 
 $( function()
 {
