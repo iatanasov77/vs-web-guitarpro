@@ -17,15 +17,6 @@ if ( useCdn ) {
 
 export function alphatabApi(): any
 {
-    if ( useCdn ) {
-        return alphatabApiFromCdn();
-    }
-    
-    return alphatabApiFromNodeModules();
-}
-
-function alphatabApiFromCdn(): any
-{
     const element       = $( "#alphaTab" ).get( 0 );
     
     let alphatabApi     = new alphaTab.AlphaTabApi( element, {
@@ -59,44 +50,6 @@ function alphatabApiFromCdn(): any
             soundFont: '/build/web-guitar-pro-velzon-saas/js/soundfont/sonivox.sf2'
         },
         logging: 'debug',
-    });
-    
-    return alphatabApi;
-}
-
-function alphatabApiFromNodeModules(): any
-{
-    const element       = $( "#alphaTab" ).get( 0 );
-    
-    let alphatabApi     = new alphaTab.AlphaTabApi( element, {
-        core: {
-            logLevel: 'debug',
-            engine: 'html5',
-            tracks: 0,
-        },
-        display: {
-            layoutMode: LayoutMode.Page,
-            staveProfile: StaveProfile.Tab
-        },
-        notation: {
-            rhythmMode: 'ShowWithBars',
-            elements: {
-                scoreTitle: false,
-                scoreSubTitle: false,
-                scoreArtist: false,
-                scoreAlbum: false,
-                scoreWords: false,
-                scoreMusic: false,
-                scoreWordsAndMusic: false,
-                scoreCopyright: false
-            }
-            
-        },
-        player: {
-            enablePlayer: true,
-            enableUserInteraction: true,
-            enableCursor: true,
-        },
     });
     
     return alphatabApi;
