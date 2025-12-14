@@ -23,7 +23,7 @@ export class DownloadButtonItemComponent implements OnInit
     
     ngOnInit(): void
     {
-        this.tabUrl = $( '#tablatureContainer' ).attr( 'data-file' );
+        this.tabUrl = $( '#alphaTab' ).attr( 'data-file' );
     }
     
     ngAfterViewInit(): void

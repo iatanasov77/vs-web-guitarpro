@@ -9,11 +9,13 @@ body.tablature-player {
     
 #song-details {
     font-family: 'Georgia';
-    width: 90%;
     display: block;
     margin: auto;
+    /*
     position: absolute !important;
+    width: 90%;
     right: 50px;
+    */
 }
 
 /* Hide empty elements */

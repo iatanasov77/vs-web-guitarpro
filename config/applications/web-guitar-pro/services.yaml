@@ -52,7 +52,8 @@ parameters:
     vs_application.taxon_repository_throw_exception: false
     
     vs_wgp.tablature-categories.taxonomy_code: tablature-categories
-    vs_wgp.alphatab.use_cdn: 'true'
+    
+    vs_wgp.alphatab.use_cdn: '%env(ALPHATAB_USE_CDN)%'
     vs_wgp.alphatab.version: '%env(ALPHATAB_VERSION)%'
     
 services:

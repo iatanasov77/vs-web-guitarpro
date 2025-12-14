@@ -10,7 +10,6 @@ import { LayoutMode, StaveProfile } from '@coderline/alphatab';
 //import * as alphaTab from '@coderline/alphatab';
 let alphaTab  = require( "@coderline/alphatab" );
 
-const baseUrl   = $( "#tablatureContainer" ).attr( 'data-base-url' );
 const useCdn    = $( "#alphaTab" ).attr( 'data-use-cdn' ) == 'true' ? true : false;
 if ( useCdn ) {
     alphaTab    = window.alphaTab;
@@ -34,7 +33,7 @@ function alphatabApiFromCdn(): any
             logLevel: 'debug',
             engine: 'html5',
             tracks: 0,
-            fontDirectory: baseUrl + '/build/web-guitar-pro-velzon-saas/js/font/'
+            fontDirectory: '/build/web-guitar-pro-velzon-saas/js/font/'
         },
         display: {
             layoutMode: LayoutMode.Page,
@@ -57,7 +56,7 @@ function alphatabApiFromCdn(): any
             enablePlayer: true,
             enableUserInteraction: true,
             enableCursor: true,
-            soundFont: baseUrl + '/build/web-guitar-pro-velzon-saas/js/soundfont/sonivox.sf2'
+            soundFont: '/build/web-guitar-pro-velzon-saas/js/soundfont/sonivox.sf2'
         },
         logging: 'debug',
     });
