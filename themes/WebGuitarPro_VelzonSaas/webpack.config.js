@@ -36,9 +36,9 @@ Encore
     }))
     
     .addPlugin(new AlphaTabWebPackPlugin({
-        //assetOutputDir: path.resolve( '../' ),
-        //audioWorklets: false,
-        //webWorkers: false
+        assetOutputDir: false,
+        audioWorklets: false,
+        webWorkers: false,
     }))
     
     /* Embed Angular Component Templates. */
@@ -60,8 +60,8 @@ Encore
     
     // Coderline AlphaTab
     .copyFiles([
-        {from: './node_modules/@coderline/alphatab/dist/font/', to: 'font/[name].[ext]'},
-        {from: './node_modules/@coderline/alphatab/dist/soundfont/', to: 'soundfont/[name].[ext]'}
+        {from: './node_modules/@coderline/alphatab/dist/font/', to: 'js/font/[name].[ext]'},
+        {from: './node_modules/@coderline/alphatab/dist/soundfont/', to: 'js/soundfont/[name].[ext]'}
     ])
 
     // Application Images

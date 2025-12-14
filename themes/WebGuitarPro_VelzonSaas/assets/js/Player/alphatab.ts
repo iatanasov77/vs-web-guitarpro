@@ -34,7 +34,7 @@ function alphatabApiFromCdn(): any
             logLevel: 'debug',
             engine: 'html5',
             tracks: 0,
-            fontDirectory: baseUrl + '/build/web-guitar-pro-velzon-saas/font/'
+            fontDirectory: baseUrl + '/build/web-guitar-pro-velzon-saas/js/font/'
         },
         display: {
             layoutMode: LayoutMode.Page,
@@ -57,7 +57,7 @@ function alphatabApiFromCdn(): any
             enablePlayer: true,
             enableUserInteraction: true,
             enableCursor: true,
-            soundFont: baseUrl + '/build/web-guitar-pro-velzon-saas/soundfont/sonivox.sf2'
+            soundFont: baseUrl + '/build/web-guitar-pro-velzon-saas/js/soundfont/sonivox.sf2'
         },
         logging: 'debug',
     });
@@ -74,7 +74,6 @@ function alphatabApiFromNodeModules(): any
             logLevel: 'debug',
             engine: 'html5',
             tracks: 0,
-            fontDirectory: baseUrl + '/build/web-guitar-pro-velzon-saas/font/'
         },
         display: {
             layoutMode: LayoutMode.Page,
@@ -98,7 +97,6 @@ function alphatabApiFromNodeModules(): any
             enablePlayer: true,
             enableUserInteraction: true,
             enableCursor: true,
-            soundFont: baseUrl + '/build/web-guitar-pro-velzon-saas/soundfont/sonivox.sf2'
         },
     });
     
