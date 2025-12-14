@@ -3,6 +3,9 @@ const webpack   = require('webpack');
 const path      = require('path');
 const AngularCompilerPlugin = require('@ngtools/webpack').AngularWebpackPlugin;
 
+//import { AlphaTabWebPackPlugin } from '@coderline/alphatab-webpack';
+const AlphaTabWebPackPlugin = require('@coderline/alphatab-webpack').AlphaTabWebPackPlugin;
+
 Encore
     .setOutputPath( 'public/shared_assets/build/web-guitar-pro-velzon-saas/' )
     .setPublicPath( '/build/web-guitar-pro-velzon-saas/' )
@@ -32,6 +35,12 @@ Encore
         "entryModule": './themes/WebGuitarPro_VelzonSaas/assets/js/Player/main.ts',
     }))
     
+    .addPlugin(new AlphaTabWebPackPlugin({
+        assetOutputDir: false,
+        audioWorklets: false,
+        webWorkers: false,
+    }))
+    
     /* Embed Angular Component Templates. */
     .addLoader({
         test: /\.(html)$/,
@@ -51,8 +60,8 @@ Encore
     
     // Coderline AlphaTab
     .copyFiles([
-        {from: './node_modules/@coderline/alphatab/dist/font/', to: 'font/[name].[ext]'},
-        {from: './node_modules/@coderline/alphatab/dist/soundfont/', to: 'soundfont/[name].[ext]'}
+        {from: './node_modules/@coderline/alphatab/dist/font/', to: 'js/font/[name].[ext]'},
+        {from: './node_modules/@coderline/alphatab/dist/soundfont/', to: 'js/soundfont/[name].[ext]'}
     ])
 
     // Application Images

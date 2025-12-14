@@ -45,6 +45,8 @@
         "move-js": "^0.5",
                 
         "@coderline/alphatab": "^1.7",
+        "@coderline/alphatab-webpack": "^1.7",
+        
         "bootstrap-slider": "^11.0.2",
         "@angular/localize": "^20.0",
         "@angular/animations": "^20.0",
