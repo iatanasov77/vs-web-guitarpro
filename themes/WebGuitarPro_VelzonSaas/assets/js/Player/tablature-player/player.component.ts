@@ -20,6 +20,9 @@ export class PlayerComponent implements OnInit, OnDestroy
 
     scoreLoaded: boolean    = false;
     
+    width: any;
+    height: any;
+    
     constructor() { }
     
     ngOnInit(): void
@@ -33,11 +36,11 @@ export class PlayerComponent implements OnInit, OnDestroy
     
     ngAfterViewInit(): void
     {
-        let windowWidth    = $( window ).width();
-        let windowHeight    = $( window ).height();
-        let contentViewPort = windowHeight - 300;
+        this.width    = $( window ).width();
+        this.height    = $( window ).height();
+        let contentViewPort = this.height - 300;
         
-        if ( contentViewPort < 500 && windowWidth > windowHeight ) {
+        if ( contentViewPort < 500 && this.width > this.height ) {
             $( '#tablaturePlayer' ).addClass( "player-controls-horizontal" );
         }
     }

@@ -2,4 +2,8 @@
 <app-loader *ngIf="!scoreLoaded"></app-loader>
 -->
 
-<player-controls *ngIf="scoreLoaded == true" [player]="alphatabApi"></player-controls>
+<player-controls *ngIf="scoreLoaded == true"
+    [player]="alphatabApi"
+    [width]="width"
+    [height]="height"
+></player-controls>

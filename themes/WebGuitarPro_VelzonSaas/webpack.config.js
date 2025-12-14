@@ -3,6 +3,9 @@ const webpack   = require('webpack');
 const path      = require('path');
 const AngularCompilerPlugin = require('@ngtools/webpack').AngularWebpackPlugin;
 
+//import { AlphaTabWebPackPlugin } from '@coderline/alphatab-webpack';
+const AlphaTabWebPackPlugin = require('@coderline/alphatab-webpack').AlphaTabWebPackPlugin;
+
 Encore
     .setOutputPath( 'public/shared_assets/build/web-guitar-pro-velzon-saas/' )
     .setPublicPath( '/build/web-guitar-pro-velzon-saas/' )
@@ -30,6 +33,12 @@ Encore
     .addPlugin(new AngularCompilerPlugin({
         "tsConfigPath": './themes/WebGuitarPro_VelzonSaas/assets/js/Player/tsconfig.app.json',
         "entryModule": './themes/WebGuitarPro_VelzonSaas/assets/js/Player/main.ts',
+    }))
+    
+    .addPlugin(new AlphaTabWebPackPlugin({
+        //assetOutputDir: path.resolve( '../' ),
+        //audioWorklets: false,
+        //webWorkers: false
     }))
     
     /* Embed Angular Component Templates. */

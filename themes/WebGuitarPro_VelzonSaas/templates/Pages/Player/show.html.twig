@@ -67,7 +67,9 @@
     {{ parent() }}
     
     {% if alphatabUseCdn == 'true' %}
+        {#  #}
         <script src="https://cdn.jsdelivr.net/npm/@coderline/alphatab@{{ alphatabUseVersion }}/dist/alphaTab.min.js"></script>
+        
     {% endif %}
 {% endblock %}
         
