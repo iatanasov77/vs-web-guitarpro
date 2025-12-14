@@ -9,6 +9,8 @@ vs_wgp_player_show:
 tablature_read:
     path: /tablatures-ext/{id}/read
     controller: App\Controller\WebGuitarPro\TablatureExtController::read
+    options:
+        expose: true
     
 vs_wgp_tablature_categories_tree_combo_with_selected:
     path: /tablatures-ext/easyui-{categoriesTaxonomyId}-{tabId}

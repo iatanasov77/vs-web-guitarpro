@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// bin/sugarbabes fos:js-routing:dump --format=json --target=public/shared_assets/js/fos_js_routes_application.json
+// bin/web-guitar-pro fos:js-routing:dump --format=json --target=public/shared_assets/js/fos_js_routes_application.json
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 var routes  = require( '../../../../../public/shared_assets/js/fos_js_routes_application.json' );
 import { VsPath } from '@@/js/includes/fos_js_routes.js';
