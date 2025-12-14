@@ -1,3 +1,9 @@
+3.7.2	|	Release date: **14.12.2025**
+============================================
+* New Features and Improvements:
+  - Trying to Load Alphatab From Node.Js
+
+
 3.7.1	|	Release date: **13.12.2025**
 ============================================
 * New Features and Improvements:
