@@ -121,7 +121,11 @@
         "@types/webpack": "^5.28",
         "compression-webpack-plugin": "^10.0",
         
-        "camelcase": "^8.0"
+        "camelcase": "^8.0",
+        
+        "worker-loader": "^3.0",
+        "worker-plugin": "^5.0",
+        "@angular-builders/custom-webpack": "^20.0"
     },
     "resolutions": {
         "@kanety/jquery-simple-tree-table/jquery": "3.6.3",

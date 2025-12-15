@@ -5,6 +5,7 @@ const AngularCompilerPlugin = require('@ngtools/webpack').AngularWebpackPlugin;
 
 //import { AlphaTabWebPackPlugin } from '@coderline/alphatab-webpack';
 const AlphaTabWebPackPlugin = require('@coderline/alphatab-webpack').AlphaTabWebPackPlugin;
+//const WorkerPlugin = require('worker-plugin');
 
 Encore
     .setOutputPath( 'public/shared_assets/build/web-guitar-pro-velzon-saas/' )
@@ -41,10 +42,28 @@ Encore
         webWorkers: false,
     }))
     
+    /*  
+    .addPlugin(new WorkerPlugin({
+        globalObject: false,
+        preserveTypeModule: true,
+        plugins: [
+            'AlphaTabWebPackPlugin'
+        ]
+    }))
+    */
+    
     /* Embed Angular Component Templates. */
     .addLoader({
         test: /\.(html)$/,
         use: 'raw-loader',
+    })
+    
+    .addLoader({
+        test: /\.worklet\.ts$/,
+        loader: 'worker-loader',
+        options: {
+            inline: true,
+        },
     })
 
     /**

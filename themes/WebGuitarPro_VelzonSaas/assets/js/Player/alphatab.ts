@@ -31,6 +31,7 @@ export function alphatabApi(): any
             //file: VsPath( 'tablature_read', {id: tabId}, routes ),
             logLevel: 'debug',
             engine: 'html5',
+            useWorkers: false,
             tracks: 0,
             fontDirectory: '/build/web-guitar-pro-velzon-saas/js/font/'
         },

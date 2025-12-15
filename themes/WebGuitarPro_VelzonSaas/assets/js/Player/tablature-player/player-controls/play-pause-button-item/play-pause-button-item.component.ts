@@ -41,10 +41,10 @@ export class PlayPauseButtonItemComponent implements OnInit
     {
         let windowWidth    = $( window ).width();
         let windowHeight    = $( window ).height();
-        let contentViewPort = windowHeight - 300;
-        let sidebarHeight   = $( '#PlayerControls' ).height();
+        //let contentViewPort = windowHeight - 300;
+        //let sidebarHeight   = $( '#PlayerControls' ).height();
         
-        if ( sidebarHeight > contentViewPort && windowWidth > windowHeight ) {
+        if ( windowWidth > windowHeight ) { // sidebarHeight > contentViewPort && 
             this.tooltipPlace   = "bottom";
         }
         
@@ -55,9 +55,10 @@ export class PlayPauseButtonItemComponent implements OnInit
     
     playPause(): void
     {
-        if ( ! this.playerState )
+        if ( ! this.playerState ) {
             $( '#btnPlayPause' ).addClass( 'player-control-active  -xl' );
- 
+        }
+        
         if ( this.player ) {
             this.player.playPause();
         }
