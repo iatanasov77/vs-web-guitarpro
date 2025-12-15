@@ -28,20 +28,34 @@ body.tablature-player {
 }
 
 #alphaTab {
+    /*
     width: 90%;
     display: block;
     margin: auto;
     padding-bottom: 20px;
     position: absolute !important;
     right: 50px;
+    */
+    
+    /*
+    overflow-y: auto;
+    top: 100px;
+    bottom: 0;
+    */
+    
+    
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative !important;
 }
-
 
 /*
  * https://alphatab.net/docs/guides/styling-player/
  */
- .at-cursors {
-     z-index: 0 !important;
+.at-cursors {
+    z-index: 0 !important;
 }
 
 .at-cursor-bar {
