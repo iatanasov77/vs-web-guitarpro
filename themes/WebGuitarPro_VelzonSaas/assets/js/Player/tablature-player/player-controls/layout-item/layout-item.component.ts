@@ -1,9 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { AlphaTabApi, LayoutMode, StaveProfile } from '@coderline/alphatab';
 
 import templateString from './layout-item.component.html'
-
-declare var $: any;
 
 @Component({
     selector: 'layout-item',
@@ -12,9 +10,11 @@ declare var $: any;
     styleUrls: [],
     standalone: false
 })
-export class LayoutItemComponent implements OnInit
+export class LayoutItemComponent implements OnChanges
 {
     @Input() player?: AlphaTabApi;
+    @Input() width: any;
+    @Input() height: any;
     
     ddClass: string        = "player-menu-right";
     tooltipPlace: string   = "right";
@@ -80,23 +80,23 @@ export class LayoutItemComponent implements OnInit
         
     }
     
-    ngOnInit(): void
+    ngOnChanges( changes: SimpleChanges ): void
     {
-        
+        if (
+            changes['width'] ||
+            changes['height']
+        ) {
+            this.recalculateGeometry();
+        }
     }
     
-    ngAfterViewInit(): void
+    recalculateGeometry(): void
     {
-        let windowWidth    = $( window ).width();
-        let windowHeight    = $( window ).height();
-        let contentViewPort = windowHeight - 300;
-        let sidebarHeight   = $( '#PlayerControls' ).height();
-        
-        if ( sidebarHeight > contentViewPort && windowWidth > windowHeight ) {
+        if ( this.width > this.height ) { // sidebarHeight > contentViewPort && 
             this.tooltipPlace   = "bottom";
         }
         
-        if ( windowWidth < windowHeight ) {
+        if ( this.width < this.height ) {
             this.ddClass   = "";
             this.tooltipPlace   = "left";
         }
@@ -114,7 +114,6 @@ export class LayoutItemComponent implements OnInit
             this.player.updateSettings();
             this.player.render();
         }
-        //$( event.target ).closest( ".dropdown-menu" ).toggleClass( 'show' );
     }
     
     staveprofileHandler(  staveprofile: any, event: any  ): void
@@ -129,6 +128,5 @@ export class LayoutItemComponent implements OnInit
             this.player.updateSettings();
             this.player.render();
         }
-        //$( event.target ).closest( ".dropdown-menu" ).toggleClass( 'show' );
     }
 }

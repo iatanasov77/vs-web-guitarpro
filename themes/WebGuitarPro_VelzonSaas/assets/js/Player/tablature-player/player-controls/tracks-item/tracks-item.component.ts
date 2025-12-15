@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Inject } from '@angular/core';
+import { Component, Input, OnInit, Inject, OnChanges, SimpleChanges } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { AlphaTabApi } from '@coderline/alphatab';
 
@@ -17,9 +17,11 @@ declare var $: any;
     styles: [cssString || 'Template Not Loaded !!!',],
     standalone: false
 })
-export class TracksItemComponent implements OnInit
+export class TracksItemComponent implements OnInit, OnChanges
 {
     @Input() player?: AlphaTabApi;
+    @Input() width: any;
+    @Input() height: any;
     
     scoreTracks: Array<any>    = [];
     
@@ -57,21 +59,30 @@ export class TracksItemComponent implements OnInit
             e.preventDefault();
             e.stopPropagation();
         });
+    }
+    
+    ngOnChanges( changes: SimpleChanges ): void
+    {
+        if (
+            changes['width'] ||
+            changes['height']
+        ) {
+            this.recalculateGeometry();
+        }
+    }
+    
+    recalculateGeometry(): void
+    {
+        //alert( this.height );
+        // let contentViewPort = this.height - 300;
+        // let sidebarHeight   = $( '#PlayerControls' ).height();
         
-        
-        /** 
-         * Horizontal and Mobile Controlls Views
-         */
-        let windowWidth    = $( window ).width();
-        let windowHeight    = $( window ).height();
-        let contentViewPort = windowHeight - 300;
-        let sidebarHeight   = $( '#PlayerControls' ).height();
-        
-        if ( sidebarHeight > contentViewPort && windowWidth > windowHeight ) {
+        //alert( sidebarHeight );
+        if ( this.width > this.height ) { // sidebarHeight > contentViewPort && 
             this.tooltipPlace   = "bottom";
         }
         
-        if ( windowWidth < windowHeight ) {
+        if ( this.width < this.height ) {
             this.ddClass   = "";
             this.tooltipPlace   = "left";
         }
