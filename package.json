@@ -58,6 +58,8 @@
         "@angular/material": "^20.0",
         "@angular/platform-browser": "^20.0",
         "@angular/platform-browser-dynamic": "^20.0",
+        "@ngx-translate/core": "^17.0",
+        "@ngx-translate/http-loader": "^17.0",
         "@ng-bootstrap/ng-bootstrap": "^19.0",
         "ngx-bootstrap-slider": "^2.1",
         "@types/bootstrap-slider": "^11.0",

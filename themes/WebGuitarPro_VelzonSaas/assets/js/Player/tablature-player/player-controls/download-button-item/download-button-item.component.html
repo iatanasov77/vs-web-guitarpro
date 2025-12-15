@@ -1,5 +1,5 @@
 <div class="player-controls__item"
-    ngbTooltip="Download Tablature" placement="{{ tooltipPlace }}"
+    ngbTooltip="{{ 'player_controls.tooltip.download_tablature' | translate }}" placement="{{ tooltipPlace }}"
     (click)="downloadHandler( $event )"
 >
     <a id="PlayerDownloadButton" href="{{ tabUrl }}">

@@ -1,4 +1,5 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Inject, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 import templateString from './favorites-button-item.component.html'
 
@@ -22,7 +23,7 @@ export class FavoritesButtonItemComponent implements OnChanges
     
     tooltipPlace: string   = "right";
     
-    constructor() {}
+    constructor( @Inject( TranslateService ) private translate: TranslateService ) {}
     
     ngOnChanges( changes: SimpleChanges ): void
     {

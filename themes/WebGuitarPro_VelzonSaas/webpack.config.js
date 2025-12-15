@@ -83,11 +83,11 @@ Encore
         {from: './node_modules/@coderline/alphatab/dist/soundfont/', to: 'js/soundfont/[name].[ext]'}
     ])
 
-    // Application Images
-    .copyFiles({
-         from: './themes/WebGuitarPro_VelzonSaas/assets/images',
-         to: 'images/[path][name].[ext]',
-     })
+    // Application Assets
+    .copyFiles([
+        {from: './themes/WebGuitarPro_VelzonSaas/assets/images', to: 'images/[path][name].[ext]'},
+        {from: './themes/WebGuitarPro_VelzonSaas/assets/i18n', to: 'i18n/[path][name].[ext]'},
+     ])
      
      // Velzon Images
     .copyFiles([

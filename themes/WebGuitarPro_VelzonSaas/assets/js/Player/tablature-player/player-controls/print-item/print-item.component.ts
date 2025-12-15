@@ -1,4 +1,5 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Inject, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { AlphaTabApi } from '@coderline/alphatab';
 
 import templateString from './print-item.component.html'
@@ -21,7 +22,7 @@ export class PrintItemComponent implements OnChanges
     
     tooltipPlace: string   = "right";
     
-    constructor()
+    constructor( @Inject( TranslateService ) private translate: TranslateService )
     {
         
     }

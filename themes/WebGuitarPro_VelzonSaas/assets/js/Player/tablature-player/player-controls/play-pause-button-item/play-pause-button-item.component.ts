@@ -1,4 +1,5 @@
-import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Inject, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { AlphaTabApi } from '@coderline/alphatab';
 
 import templateString from './play-pause-button-item.component.html'
@@ -25,7 +26,7 @@ export class PlayPauseButtonItemComponent implements OnInit, OnChanges
     
     tooltipPlace: string   = "right";
     
-    constructor()
+    constructor( @Inject( TranslateService ) private translate: TranslateService )
     {
         
     }

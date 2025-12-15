@@ -1,5 +1,6 @@
-import { Component, Input, OnInit, Inject, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Inject, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { TranslateService } from '@ngx-translate/core';
 import { AlphaTabApi } from '@coderline/alphatab';
 
 import Slider from 'bootstrap-slider';
@@ -31,8 +32,10 @@ export class TracksItemComponent implements OnInit, OnChanges
     ddClass: string        = "player-menu-right";
     tooltipPlace: string   = "right";
     
-    constructor( @Inject(DOCUMENT) private document: Document )
-    {
+    constructor(
+        @Inject(DOCUMENT) private document: Document,
+        @Inject( TranslateService ) private translate: TranslateService
+    ) {
         
     }
     
