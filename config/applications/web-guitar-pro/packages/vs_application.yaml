@@ -149,6 +149,12 @@ vs_application:
                 route: wgp_about_application
                 attributes:
                     iconClass: "mdi mdi-lifebuoy text-muted fs-16 align-middle me-1"
+            
+            download_store_application:
+                name: vs_application.menu.download_store_application
+                route: wgp_download_store_application
+                attributes:
+                    iconClass: "mdi mdi-lifebuoy text-muted fs-16 align-middle me-1"
                   
             divider_1:
                 isDivider: true

@@ -84,6 +84,10 @@ wgp_about_application:
     path: /about-application
     controller: App\Controller\WebGuitarPro\PagesController::aboutApplication
 
+wgp_download_store_application:
+    path: /download-store-application
+    controller: App\Controller\WebGuitarPro\PagesController::downloadStoreApplication
+
 wgp_search_tablatures:
     path: /search-tablatures
     controller: App\Controller\WebGuitarPro\SearchTablaturesController::index

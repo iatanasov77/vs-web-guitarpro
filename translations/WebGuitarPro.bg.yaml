@@ -20,6 +20,7 @@ vs_wgp:
             language: Език
             documentation: Документация
             about_application: За Приложението
+            download_store_application: Download Store App
             logout: Изход
             extend_your_tablatures_store: Увеличете Вашият Таблатури Склад
             latest_tablatures: Най-нови Таблатури

@@ -7,6 +7,8 @@ use Doctrine\Persistence\ManagerRegistry;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 use Vankosoft\ApplicationBundle\Model\Interfaces\TaxonomyInterface;
 
+use App\Entity\Cms\Page;
+
 class PagesController extends AbstractController
 {
     use GlobalFormsTrait;
@@ -33,8 +35,20 @@ class PagesController extends AbstractController
             'tabCategoryForm'               => $this->getTabCategoryForm()->createView(),
             
             'tablatureUploadLimited'        => ! $this->checkTablatureLimit(),
-            'pageAbout'                     => $this->doctrine->getRepository( 'App\Entity\Cms\Page' )->findBySlug( 'about-application' ),
+            'pageAbout'                     => $this->doctrine->getRepository( Page::class )->findBySlug( 'about-application' ),
         ];
         return $this->render( 'Pages/Pages/about_application.html.twig', $params );
+    }
+    
+    public function downloadStoreApplication( Request $request ): Response
+    {
+        $params = [
+            'tabForm'                       => $this->getTabForm()->createView(),
+            'tabCategoryForm'               => $this->getTabCategoryForm()->createView(),
+            
+            'tablatureUploadLimited'        => ! $this->checkTablatureLimit(),
+            'pageDownloadStoreApp'                     => $this->doctrine->getRepository( Page::class )->findBySlug( 'download-store-application' ),
+        ];
+        return $this->render( 'Pages/Pages/download_store_application.html.twig', $params );
     }
 }
