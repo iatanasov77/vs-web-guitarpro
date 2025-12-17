@@ -1,3 +1,16 @@
+3.7.3	|	Release date: **17.12.2025**
+============================================
+* New Features and Improvements:
+  - Improve Loading Alphatab Player.
+  - Trying to Load Alphatab From Node.Js
+  - Try To Fix Tablature Player View Port Stylling.
+  - Improove Modal Dialogs.
+  - Improve All PlayerControls as Pass Window width and height as Inputs.
+  - Add Translations for FrontEnd Aplication.
+  - Fix Some Deprecations.
+  - Create a Static Page for Downloading a Store Application.
+
+
 3.7.2	|	Release date: **14.12.2025**
 ============================================
 * New Features and Improvements:
