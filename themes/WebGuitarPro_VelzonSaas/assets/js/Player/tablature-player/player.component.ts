@@ -79,6 +79,7 @@ export class PlayerComponent implements OnInit, OnDestroy
          */
         this.alphatabApi.playerReady.on( () => {
             console.log( 'Player Ready !!!' );
+            window.scrollTo( 0, 0 );
         });
     }
 }

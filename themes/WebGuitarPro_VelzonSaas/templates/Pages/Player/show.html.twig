@@ -22,7 +22,8 @@
             </div>
             
             <div id="alphaTab"
-                data-file="{{ url( 'tablature_read', {id: item.id} ) }}"
+                data-file="{{ path( 'tablature_read', {id: item.id} ) }}"
+                data-tabId="{{ item.id }}"
                 data-user="{% if app.user %}true{% else %}false{%  endif %}"
                 data-add-favorite-url="{{ path( 'tablature_favorite', {id: item.id} ) }}"
                 data-use-cdn="{{ alphatabUseCdn }}"

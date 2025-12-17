@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { AlphaTabApi } from '@coderline/alphatab';
 
 import templateString from './play-pause-button-item.component.html'
@@ -15,15 +16,17 @@ declare var $: any;
     //styleUrls: ['../player-controls.component.scss'],
     standalone: false
 })
-export class PlayPauseButtonItemComponent implements OnInit
+export class PlayPauseButtonItemComponent implements OnInit, OnChanges
 {
     playerState?: number;
     
     @Input() player?: AlphaTabApi;
+    @Input() width: any;
+    @Input() height: any;
     
     tooltipPlace: string   = "right";
     
-    constructor()
+    constructor( @Inject( TranslateService ) private translate: TranslateService )
     {
         
     }
@@ -37,27 +40,38 @@ export class PlayPauseButtonItemComponent implements OnInit
         }
     }
     
-    ngAfterViewInit(): void
+    ngOnChanges( changes: SimpleChanges ): void
     {
-        let windowWidth    = $( window ).width();
-        let windowHeight    = $( window ).height();
-        let contentViewPort = windowHeight - 300;
-        let sidebarHeight   = $( '#PlayerControls' ).height();
+        if (
+            changes['width'] ||
+            changes['height']
+        ) {
+            this.recalculateGeometry();
+        }
+    }
+    
+    recalculateGeometry(): void
+    {
+        //alert( this.height );
+        // let contentViewPort = this.height - 300;
+        // let sidebarHeight   = $( '#PlayerControls' ).height();
         
-        if ( sidebarHeight > contentViewPort && windowWidth > windowHeight ) {
+        //alert( sidebarHeight );
+        if ( this.width > this.height ) { // sidebarHeight > contentViewPort && 
             this.tooltipPlace   = "bottom";
         }
         
-        if ( windowWidth < windowHeight ) {
+        if ( this.width < this.height ) {
             this.tooltipPlace   = "left";
         }
     }
     
     playPause(): void
     {
-        if ( ! this.playerState )
+        if ( ! this.playerState ) {
             $( '#btnPlayPause' ).addClass( 'player-control-active  -xl' );
- 
+        }
+        
         if ( this.player ) {
             this.player.playPause();
         }

@@ -1,0 +1,18 @@
+{
+    "player_controls": {
+        "tooltip": {
+            "play_pause": "Play / Pause",
+            "count_in": "Count-In",
+            "download_tablature": "Download Tablature",
+            "add_to_favorites": "Add to Favorites",
+            "tablature_information": "Tablature Information",
+            "tablature_layout": "Tablature Layout",
+            "loop_tablature": "Loop Tablature",
+            "metronome": "Metronome",
+            "print_tablature": "Print Tablature",
+            "set_speed": "Set Speed",
+            "stop_playing_tablature": "Stop Playing Tablature",
+            "tablature_tracks": "Tablature Tracks"
+        }
+    }
+}

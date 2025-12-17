@@ -1,3 +1,9 @@
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// bin/web-guitar-pro fos:js-routing:dump --format=json --target=public/shared_assets/js/fos_js_routes_application.json
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// var routes  = require( '../../../../../public/shared_assets/js/fos_js_routes_application.json' );
+// import { VsPath } from '@@/js/includes/fos_js_routes.js';
+
 declare global {
     interface Window {
         alphaTab: any;
@@ -18,11 +24,14 @@ if ( useCdn ) {
 export function alphatabApi(): any
 {
     const element       = $( "#alphaTab" ).get( 0 );
+    const tabId       = $( "#alphaTab" ).attr( 'data-tabId' );
     
     let alphatabApi     = new alphaTab.AlphaTabApi( element, {
         core: {
+            //file: VsPath( 'tablature_read', {id: tabId}, routes ),
             logLevel: 'debug',
             engine: 'html5',
+            useWorkers: false,
             tracks: 0,
             fontDirectory: '/build/web-guitar-pro-velzon-saas/js/font/'
         },

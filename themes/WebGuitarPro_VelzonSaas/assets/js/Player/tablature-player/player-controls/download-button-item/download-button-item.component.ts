@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit, OnChanges, SimpleChanges  } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 import templateString from './download-button-item.component.html'
 
@@ -12,11 +13,14 @@ declare var $: any;
 })
 export class DownloadButtonItemComponent implements OnInit
 {
+    @Input() width: any;
+    @Input() height: any;
+    
     tabUrl: String;
     
     tooltipPlace: string   = "right";
     
-    constructor()
+    constructor( @Inject( TranslateService ) private translate: TranslateService )
     {
         this.tabUrl = '';
     }
@@ -26,18 +30,28 @@ export class DownloadButtonItemComponent implements OnInit
         this.tabUrl = $( '#alphaTab' ).attr( 'data-file' );
     }
     
-    ngAfterViewInit(): void
+    ngOnChanges( changes: SimpleChanges ): void
     {
-        let windowWidth    = $( window ).width();
-        let windowHeight    = $( window ).height();
-        let contentViewPort = windowHeight - 300;
-        let sidebarHeight   = $( '#PlayerControls' ).height();
+        if (
+            changes['width'] ||
+            changes['height']
+        ) {
+            this.recalculateGeometry();
+        }
+    }
+    
+    recalculateGeometry(): void
+    {
+        //alert( this.height );
+        // let contentViewPort = this.height - 300;
+        // let sidebarHeight   = $( '#PlayerControls' ).height();
         
-        if ( sidebarHeight > contentViewPort && windowWidth > windowHeight ) {
+        //alert( sidebarHeight );
+        if ( this.width > this.height ) { // sidebarHeight > contentViewPort && 
             this.tooltipPlace   = "bottom";
         }
         
-        if ( windowWidth < windowHeight ) {
+        if ( this.width < this.height ) {
             this.tooltipPlace   = "left";
         }
     }

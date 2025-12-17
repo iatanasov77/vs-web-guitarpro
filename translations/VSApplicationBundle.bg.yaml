@@ -6,6 +6,7 @@ vs_application:
         logout: Изход
         documentation: Документация
         about_application: За Приложението
+        download_store_application: Download Store App
         
         site_main:
             home: Начало

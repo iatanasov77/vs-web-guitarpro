@@ -1,6 +1,4 @@
 security:
-    enable_authenticator_manager: true
-    
     password_hashers:
         App\Entity\UserManagement\User:
             algorithm: auto
@@ -94,6 +92,7 @@ security:
         
         - { path: ^/set_locale, roles: PUBLIC_ACCESS, requires_channel: '%env(SECURE_SCHEME)%' }
         - { path: ^/about-application, roles: PUBLIC_ACCESS, requires_channel: '%env(SECURE_SCHEME)%' }
+        - { path: ^/download-store-application, roles: PUBLIC_ACCESS, requires_channel: '%env(SECURE_SCHEME)%' }
         - { path: ^/contact, roles: PUBLIC_ACCESS, requires_channel: '%env(SECURE_SCHEME)%' }
         
         - { route: 'vs_wgp_tablature_create', roles: [ROLE_SUPER_ADMIN, ROLE_APPLICATION_ADMIN, ROLE_WEB_GUITAR_PRO_ADMIN], requires_channel: '%env(SECURE_SCHEME)%' }

@@ -5,6 +5,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxBootstrapSliderModule } from 'ngx-bootstrap-slider';
+import { TranslatePipe, provideTranslateService, provideTranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader, provideTranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClientModule, HttpClient, provideHttpClient } from '@angular/common/http';
 
 import { PlayerComponent } from './player.component';
 import { PlayerControlsComponent } from './player-controls/player-controls.component';
@@ -51,6 +54,16 @@ import { DownloadButtonItemComponent } from './player-controls/download-button-i
         NgbModule,
         NgxBootstrapSliderModule,
         //NgSlimScrollModule
+        
+        TranslatePipe,
+
+    ],
+    providers: [
+        provideHttpClient(),
+        provideTranslateService({
+            loader: provideTranslateHttpLoader({prefix:'/build/web-guitar-pro-velzon-saas/i18n/', suffix:'.json'}),
+            fallbackLang: 'en'
+        })
     ],
     bootstrap: [PlayerComponent]
 })

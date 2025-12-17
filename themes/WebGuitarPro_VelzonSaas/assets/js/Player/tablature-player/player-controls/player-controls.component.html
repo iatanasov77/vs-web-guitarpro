@@ -6,40 +6,40 @@
     <div id="PlayerControls" class="{{'player-controls displayPanel ' + navClass}}">
     
         <!-- PlayPause Button -->
-        <play-pause-button-item [player]="player" ></play-pause-button-item>
+        <play-pause-button-item [player]="player" [width]="width" [height]="height"></play-pause-button-item>
 
         <!-- Stop Button -->
-        <stop-button-item [player]="player" ></stop-button-item>
+        <stop-button-item [player]="player" [width]="width" [height]="height"></stop-button-item>
         
         <!-- Looping Button -->
-        <looping-button-item [player]="player" ></looping-button-item>
+        <looping-button-item [player]="player" [width]="width" [height]="height"></looping-button-item>
         
         <!-- Metronome Button -->
-        <metronome-button-item [player]="player" ></metronome-button-item>
+        <metronome-button-item [player]="player" [width]="width" [height]="height"></metronome-button-item>
         
         <!-- CountIn Button -->
-        <count-in-button-item [player]="player" ></count-in-button-item>
+        <count-in-button-item [player]="player" [width]="width" [height]="height"></count-in-button-item>
         
         <!-- Tracks Button -->
-        <tracks-item [player]="player" ></tracks-item>
+        <tracks-item [player]="player" [width]="width" [height]="height"></tracks-item>
         
         <!-- Speed Button -->
-        <speed-item [player]="player" ></speed-item>
+        <speed-item [player]="player" [width]="width" [height]="height"></speed-item>
         
         <!-- Layout Button -->
-        <layout-item [player]="player" ></layout-item>
+        <layout-item [player]="player" [width]="width" [height]="height"></layout-item>
         
         <!-- Print Button -->
-        <print-item [player]="player" ></print-item>
+        <print-item [player]="player" [width]="width" [height]="height"></print-item>
         
         <!-- Favorites Button -->
-        <favorites-button-item *ngIf="isLoggedIn" [tabId]="tabId" ></favorites-button-item>
+        <favorites-button-item *ngIf="isLoggedIn" [tabId]="tabId" [width]="width" [height]="height"></favorites-button-item>
         
         <!-- Information Button -->
-        <information-button-item [player]="player" ></information-button-item>
+        <information-button-item [player]="player" [width]="width" [height]="height"></information-button-item>
         
         <!-- Download Button -->
-        <download-button-item></download-button-item>
+        <download-button-item [width]="width" [height]="height"></download-button-item>
     </div>
 
 </nav>

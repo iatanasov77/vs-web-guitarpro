@@ -1,9 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { AlphaTabApi } from '@coderline/alphatab';
 
 import templateString from './print-item.component.html'
-
-declare var $: any;
 
 @Component({
     selector: 'print-item',
@@ -15,34 +14,36 @@ declare var $: any;
     //styleUrls: ['../player-controls.component.scss'],
     standalone: false
 })
-export class PrintItemComponent implements OnInit
+export class PrintItemComponent implements OnChanges
 {
     @Input() player?: AlphaTabApi;
+    @Input() width: any;
+    @Input() height: any;
     
     tooltipPlace: string   = "right";
     
-    constructor()
+    constructor( @Inject( TranslateService ) private translate: TranslateService )
     {
         
     }
     
-    ngOnInit(): void
+    ngOnChanges( changes: SimpleChanges ): void
     {
-        
+        if (
+            changes['width'] ||
+            changes['height']
+        ) {
+            this.recalculateGeometry();
+        }
     }
     
-    ngAfterViewInit(): void
+    recalculateGeometry(): void
     {
-        let windowWidth    = $( window ).width();
-        let windowHeight    = $( window ).height();
-        let contentViewPort = windowHeight - 300;
-        let sidebarHeight   = $( '#PlayerControls' ).height();
-        
-        if ( sidebarHeight > contentViewPort && windowWidth > windowHeight ) {
+        if ( this.width > this.height ) { // sidebarHeight > contentViewPort && 
             this.tooltipPlace   = "bottom";
         }
         
-        if ( windowWidth < windowHeight ) {
+        if ( this.width < this.height ) {
             this.tooltipPlace   = "left";
         }
     }
