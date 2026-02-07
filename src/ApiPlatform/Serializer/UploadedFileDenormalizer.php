@@ -16,8 +16,16 @@ final class UploadedFileDenormalizer implements DenormalizerInterface
     /**
      * {@inheritdoc}
      */
-    public function supportsDenormalization( $data, $type, $format = null ): bool
+    public function supportsDenormalization( mixed $data, string $type, ?string $format = null, array $context = [] ): bool
     {
         return $data instanceof UploadedFile;
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function getSupportedTypes( ?string $format ): array
+    {
+        return self::FORMAT === $format ? ['object' => true] : [];
     }
 }
