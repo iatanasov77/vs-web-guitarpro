@@ -1,3 +1,9 @@
+3.7.4	|	Release date: **07.02.2026**
+============================================
+* New Features:
+  - Update to Vankosoft Core 1.14
+
+
 3.7.3	|	Release date: **17.12.2025**
 ============================================
 * New Features and Improvements:

@@ -28,7 +28,7 @@ class TablatureCategoryController extends AbstractCrudController
         ];
     }
     
-    protected function prepareEntity( &$entity, &$form, Request $request )
+    protected function prepareEntity( &$entity, &$form, Request $request ): void
     {
         $currentUser    = $this->container->get( 'vs_users.security_bridge' )->getUser();
         $entity->setUser( $currentUser );

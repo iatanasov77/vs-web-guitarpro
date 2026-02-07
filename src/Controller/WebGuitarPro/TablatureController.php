@@ -45,7 +45,7 @@ class TablatureController extends AbstractCrudController
         ];
     }
     
-    protected function prepareEntity( &$entity, &$form, Request $request )
+    protected function prepareEntity( &$entity, &$form, Request $request ): void
     {
         if ( ! $this->checkTablatureLimit() ) {
             $this->redirectToRoute( 'wgp_upoad_tablatures_limited' );
