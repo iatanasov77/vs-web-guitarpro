@@ -1,3 +1,9 @@
+3.8.1	|	Release date: **08.02.2026**
+============================================
+* Bug-Fixes:
+  - Fix Missing Primary Key of RefreshToken Entity.
+
+
 3.8.0	|	Release date: **08.02.2026**
 ============================================
 * New Features:
