@@ -19,10 +19,6 @@ use App\Entity\TablatureCategory;
 use App\Entity\Tablature;
 use App\Entity\TablatureShareUserTrait;
 
-/**
- * @Doctrine\Common\Annotations\Annotation\IgnoreAnnotation( "ORM\MappedSuperclass" )
- * @Doctrine\Common\Annotations\Annotation\IgnoreAnnotation("ORM\Column")
- */
 #[ORM\Entity]
 #[ORM\Table(name: "VSUM_Users")]
 class User extends BaseUser implements
