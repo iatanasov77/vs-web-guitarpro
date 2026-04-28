@@ -54,6 +54,9 @@
             "oomphinc/composer-installers-extender": true,
             "symfony/runtime": true,
             "php-http/discovery": true
+        },
+        "audit": {
+            "block-insecure": false
         }
     },
     "autoload": {
