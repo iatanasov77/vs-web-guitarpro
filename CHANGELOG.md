@@ -1,3 +1,9 @@
+3.8.2	|	Release date: **28.04.2026**
+============================================
+* New Features:
+  - Remove Annotations from All Entities. It is NOT Needed.
+
+
 3.8.1	|	Release date: **08.02.2026**
 ============================================
 * Bug-Fixes:
