@@ -90,7 +90,7 @@
         "@vankosoft/jquery-easyui-extensions": "^2.0"
     },
     "devDependencies": {
-        "@symfony/webpack-encore": "^5.0",
+        "@symfony/webpack-encore": "^6.0",
         "@ckeditor/ckeditor5-dev-utils": "^43.0",
         "@babel/core": "^7.24.7",
         "@babel/preset-env": "^7.24.7",
@@ -106,7 +106,7 @@
         "regenerator-runtime": "^0.13.2",
         "raw-loader": "^4.0.2",
         "resolve-url-loader": "^5.0",
-        "sass": "1.32.13",
+        "sass": "1.33.0",
         "sass-loader": "^16.0.1",
         "ts-loader": "^9.0",
         "typescript": "~5.8",
